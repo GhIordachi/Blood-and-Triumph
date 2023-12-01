@@ -18,15 +18,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2089288, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
       propertyPath: orthographic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2089288, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
       propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11481238, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
+      propertyPath: height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481238, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
+      propertyPath: smoothing
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481238, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
       propertyPath: rotateSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481238, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
+      propertyPath: cameraTarget
+      value: 
+      objectReference: {fileID: 1187377071151445805, guid: d385dc6775a683f419a47779202f00b7,
+        type: 3}
+    - target: {fileID: 11481238, guid: 16dc4b51d7b30f74a9fd33417596daa7, type: 3}
+      propertyPath: cameraTargetOffsetY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224150913842070756, guid: 16dc4b51d7b30f74a9fd33417596daa7,
         type: 3}

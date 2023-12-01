@@ -26265,13 +26265,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8409527174451325993, guid: 6ba6709d7c338264989ad9237ff73594,
         type: 3}
+      propertyPath: height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409527174451325993, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
+      propertyPath: smoothing
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409527174451325993, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
       propertyPath: cameraTarget
       value: 
       objectReference: {fileID: 1289490579}
+    - target: {fileID: 8409527174451325993, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
+      propertyPath: cameraTargetOffsetY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8409527174457442263, guid: 6ba6709d7c338264989ad9237ff73594,
         type: 3}
       propertyPath: m_Name
       value: Camera Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409527174457442265, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409527174458686967, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409527174458686967, guid: 6ba6709d7c338264989ad9237ff73594,
+        type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8622419084583606363, guid: 6ba6709d7c338264989ad9237ff73594,
         type: 3}
