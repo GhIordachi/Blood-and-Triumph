@@ -204,46 +204,64 @@ namespace RPGCharacterAnims
 			rpgCharacterController.StartAction("DiveRoll", 1);
 		}
 
-		private void Aiming()
-		{
-			if (rpgCharacterController.hasAimedWeapon) {
-				if (HasAimInput()) {
-					if (rpgCharacterController.CanStartAction("Aim")) { rpgCharacterController.StartAction("Aim"); }
-				} else {
-					if (rpgCharacterController.CanEndAction("Aim")) { rpgCharacterController.EndAction("Aim"); }
-				}
+        private void Aiming()
+        {
+            if (rpgCharacterController.hasAimedWeapon)
+            {
+                if (HasAimInput())
+                {
+                    if (rpgCharacterController.CanStartAction("Aim")) { rpgCharacterController.StartAction("Aim"); }
+                }
+                else
+                {
+                    if (rpgCharacterController.CanEndAction("Aim")) { rpgCharacterController.EndAction("Aim"); }
+                }
 
-				if (rpgCharacterController.rightWeapon == ( int )Weapon.TwoHandBow) {
+                if (rpgCharacterController.rightWeapon == (int)Weapon.TwoHandBow)
+                {
+                    // If using the bow, we want to pull back slowly on the bow string while the
+                    // Left Mouse button is down, and shoot when it is released.
+                    if (Mouse.current.leftButton.isPressed)
+                    {
+                        bowPull += 0.05f;
+                    }
+                    else if (Mouse.current.leftButton.wasReleasedThisFrame)
+                    {
+                        if (rpgCharacterController.CanStartAction("Shoot")) { rpgCharacterController.StartAction("Shoot"); }
+                    }
+                    else
+                    {
+                        bowPull = 0f;
+                    }
+                    bowPull = Mathf.Clamp(bowPull, 0f, 1f);
+                }
+                else
+                {
+                    // If using a gun or a crossbow, we want to fire when the left mouse button is pressed.
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
+                    {
+                        if (rpgCharacterController.CanStartAction("Shoot")) { rpgCharacterController.StartAction("Shoot"); }
+                    }
+                }
 
-					// If using the bow, we want to pull back slowly on the bow string while the
-					// Left Mouse button is down, and shoot when it is released.
-					if (Input.GetMouseButton(0)) {
-						bowPull += 0.05f;
-					} else if (Input.GetMouseButtonUp(0)) {
-						if (rpgCharacterController.CanStartAction("Shoot")) { rpgCharacterController.StartAction("Shoot"); }
-					} else {
-						bowPull = 0f;
-					}
-					bowPull = Mathf.Clamp(bowPull, 0f, 1f);
-				} else {
-					// If using a gun or a crossbow, we want to fire when the left mouse button is pressed.
-					if (Input.GetMouseButtonDown(0)) {
-						if (rpgCharacterController.CanStartAction("Shoot")) { rpgCharacterController.StartAction("Shoot"); }
-					}
-				}
-				// Reload.
-				if (Input.GetMouseButtonDown(2)) {
-					if (rpgCharacterController.CanStartAction("Reload")) { rpgCharacterController.StartAction("Reload"); }
-				}
-				// Finally, set aim location and bow pull.
-				rpgCharacterController.SetAimInput(rpgCharacterController.target.position);
-				rpgCharacterController.SetBowPull(bowPull);
-			} else {
-				Strafing();
-			}
-		}
+                // Reload.
+                if (Mouse.current.middleButton.wasPressedThisFrame)
+                {
+                    if (rpgCharacterController.CanStartAction("Reload")) { rpgCharacterController.StartAction("Reload"); }
+                }
 
-		private void Strafing()
+                // Finally, set aim location and bow pull.
+                rpgCharacterController.SetAimInput(rpgCharacterController.target.position);
+                rpgCharacterController.SetBowPull(bowPull);
+            }
+            else
+            {
+                Strafing();
+            }
+        }
+
+
+        private void Strafing()
 		{
 			if (rpgCharacterController.canStrafe) {
 				if (!rpgCharacterController.hasAimedWeapon) {
