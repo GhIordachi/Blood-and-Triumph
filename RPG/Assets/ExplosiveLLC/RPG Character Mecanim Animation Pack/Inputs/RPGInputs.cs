@@ -225,7 +225,7 @@ namespace RPGCharacterAnims
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""Up"",
                     ""id"": ""2120b965-d816-4b44-838a-869511df56c4"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -236,7 +236,7 @@ namespace RPGCharacterAnims
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""Down"",
                     ""id"": ""826155c0-f5d3-45d0-a964-1cd39e4de24d"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -247,23 +247,23 @@ namespace RPGCharacterAnims
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""57c3d98e-ba54-40a2-87d3-9640624cf46d"",
+                    ""name"": ""Left"",
+                    ""id"": ""7d755c4b-0227-45ac-b513-4c94ecffc744"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse and Keyboard"",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""ded9887c-d549-4d24-8f18-e42ff97d6611"",
+                    ""name"": ""Right"",
+                    ""id"": ""8418c341-9a4c-49cd-8edf-2b22e83c64fa"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse and Keyboard"",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true

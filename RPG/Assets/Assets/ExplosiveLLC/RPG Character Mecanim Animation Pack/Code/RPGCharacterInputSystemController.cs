@@ -115,33 +115,28 @@ namespace RPGCharacterAnims
 				inputSwitchLeft = rpgInputs.RPGCharacter.WeaponLeft.WasPressedThisFrame();
 				inputSwitchRight = rpgInputs.RPGCharacter.WeaponRight.WasPressedThisFrame();
 				inputSwitchUp = rpgInputs.RPGCharacter.WeaponUp.WasPressedThisFrame();
-
-				// Injury toggle.
-				if (Keyboard.current.iKey.wasPressedThisFrame) {
-                    if (rpgCharacterController.CanStartAction("Injure")) {
-                        rpgCharacterController.StartAction("Injure");
-                    } else if (rpgCharacterController.CanEndAction("Injure")) {
-                        rpgCharacterController.EndAction("Injure");
+                // Sprint toggle.
+                if (Keyboard.current.leftShiftKey.isPressed)
+                {
+                    if (rpgCharacterController.CanStartAction("Sprint"))
+                    {
+                        rpgCharacterController.StartAction("Sprint");
                     }
                 }
-                // Headlook toggle.
-                if (Keyboard.current.lKey.wasPressedThisFrame) {
-                    rpgCharacterController.ToggleHeadlook();
+                else if (rpgCharacterController.CanEndAction("Sprint"))
+                {
+                    rpgCharacterController.EndAction("Sprint");
                 }
-                // Slow time toggle.
-                if (Keyboard.current.tKey.wasPressedThisFrame) {
-                    if (rpgCharacterController.CanStartAction("SlowTime")) {
-                        rpgCharacterController.StartAction("SlowTime", 0.125f);
-                    } else if (rpgCharacterController.CanEndAction("SlowTime")) {
-                        rpgCharacterController.EndAction("SlowTime");
+                // Crouch toggle.
+                if (Keyboard.current.ctrlKey.wasPressedThisFrame)
+                {
+                    if (rpgCharacterController.CanStartAction("Crouch"))
+                    {
+                        rpgCharacterController.StartAction("Crouch");
                     }
-                }
-                // Pause toggle.
-                if (Keyboard.current.pKey.wasPressedThisFrame) {
-                    if (rpgCharacterController.CanStartAction("SlowTime")) {
-                        rpgCharacterController.StartAction("SlowTime", 0f);
-                    } else if (rpgCharacterController.CanEndAction("SlowTime")) {
-                        rpgCharacterController.EndAction("SlowTime");
+                    else if (rpgCharacterController.CanEndAction("Crouch"))
+                    {
+                        rpgCharacterController.EndAction("Crouch");
                     }
                 }
             } catch (System.Exception) { Debug.LogError("Inputs not found!  Character must have Player Input component."); }
