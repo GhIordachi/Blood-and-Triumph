@@ -7,15 +7,17 @@ namespace GI
 {
     public class AnimatorHandler : MonoBehaviour
     {
+        PlayerManager playerManager;
         public Animator anim;
-        public InputHandler inputHandler;
-        public PlayerLocomotion playerLocomotion;
+        InputHandler inputHandler;
+        PlayerLocomotion playerLocomotion;
         int vertical;
         int horizontal;
         public bool canRotate;
 
         public void Initialize()
         {
+            playerManager = GetComponentInParent<PlayerManager>();
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
@@ -23,7 +25,7 @@ namespace GI
             horizontal = Animator.StringToHash("Horizontal");
         }
 
-        public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement)
+        public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
         {
             #region Vertical
             float v = 0;
@@ -75,6 +77,12 @@ namespace GI
             }
             #endregion
 
+            if(isSprinting)
+            {
+                v = 2;
+                h = horizontalMovement;
+            }
+
             anim.SetFloat(vertical,v,0.1f,Time.deltaTime);
             anim.SetFloat(horizontal,h,0.1f,Time.deltaTime);
         }
@@ -98,7 +106,7 @@ namespace GI
 
         private void OnAnimatorMove()
         {
-            if(inputHandler.isInteracting == false)
+            if(playerManager.isInteracting == false)
             {
                 return;
             }
