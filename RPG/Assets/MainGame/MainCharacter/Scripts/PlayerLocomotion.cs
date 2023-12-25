@@ -94,7 +94,7 @@ namespace GI
 
             float speed = movementSpeed;
 
-            if(inputHandler.sprintFlag)
+            if(inputHandler.sprintFlag && inputHandler.moveAmount > 0.5)
             {
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
@@ -102,7 +102,16 @@ namespace GI
             }
             else
             {
-                moveDirection *= speed;
+                if (inputHandler.moveAmount < 0.5)
+                {
+                    moveDirection *= speed;
+                    playerManager.isSprinting = false;
+                }
+                else
+                {
+                    playerManager.isSprinting = false;
+                    moveDirection *= speed;
+                }
             }
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
@@ -181,7 +190,7 @@ namespace GI
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Locomotion", false);
+                        animatorHandler.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
@@ -213,7 +222,7 @@ namespace GI
             {
                 if(playerManager.isInteracting || inputHandler.moveAmount > 0)
                 {
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
+                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
                 }
                 else
                 {

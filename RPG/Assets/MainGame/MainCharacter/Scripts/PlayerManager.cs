@@ -21,7 +21,7 @@ namespace GI
 
         private void Awake()
         {
-            cameraHandler = CameraHandler.singleton;
+            cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
         void Start()
@@ -58,7 +58,8 @@ namespace GI
         {
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
-            isSprinting = inputHandler.b_Input;
+            inputHandler.rb_Input = false;
+            inputHandler.rt_Input = false;
 
             if (isInAir)
             {
