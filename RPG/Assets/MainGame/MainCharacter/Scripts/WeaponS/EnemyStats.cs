@@ -30,11 +30,13 @@ namespace GI {
 
         public void TakeDamage(int damage)
         {
-            currentHealth = currentHealth - damage;
+            if (currentHealth > 0)
+            {
+                currentHealth = currentHealth - damage;
 
-            animator.Play("Damage_01");
-
-            if (currentHealth <= 0)
+                animator.Play("Damage_01");
+            }
+            else
             {
                 currentHealth = 0;
                 animator.Play("Death_01");
