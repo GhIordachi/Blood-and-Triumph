@@ -16,6 +16,7 @@ namespace GI
         public bool t_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool jump_Input;
         public bool d_Pad_Up;
         public bool d_Pad_Down;
         public bool d_Pad_Left;
@@ -65,6 +66,7 @@ namespace GI
             HandleAttackInput(delta);
             HandleQuickSlotInput();
             HandleInteractingButtonInput();
+            HandleJumpInput();
         }
 
         private void MoveInput(float delta)
@@ -147,6 +149,11 @@ namespace GI
         private void HandleInteractingButtonInput()
         {
             inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
+        }
+
+        private void HandleJumpInput()
+        {
+            inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
         }
     }
 }

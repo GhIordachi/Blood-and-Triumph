@@ -39,6 +39,9 @@ namespace GI
         [SerializeField]
         float fallingSpeed = 45;
 
+        public float jumpForce = 250f;
+        public bool jumpForceApplied;
+
         void Start()
         {
             playerManager = GetComponent<PlayerManager>();
@@ -51,6 +54,22 @@ namespace GI
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+        }
+
+        private void FixedUpdate()
+        {
+            if (jumpForceApplied)
+            {
+                StartCoroutine(JumpCo());
+                rigidbody.AddForce(transform.up * jumpForce);
+
+            }
+        }
+
+        private IEnumerator JumpCo()
+        {
+            yield return new WaitForSeconds(0.35f);
+            jumpForceApplied = false;
         }
 
         #region Movement
@@ -230,6 +249,28 @@ namespace GI
                 }
             }
         }
+
+        public void HandleJumping()
+        {            
+            if (playerManager.isInteracting)
+                return;
+
+            if(inputHandler.jump_Input)
+            {
+                if(inputHandler.moveAmount > 0)
+                {
+                    jumpForceApplied = true;
+                    moveDirection = cameraObject.forward * inputHandler.vertical;
+                    moveDirection += cameraObject.right * inputHandler.horizontal;
+                    moveDirection.Normalize();
+                    animatorHandler.PlayTargetAnimation("Jump", true);
+                    moveDirection.y = 0;
+                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = jumpRotation;
+                }
+            }
+        }
+
         #endregion
     }
 }

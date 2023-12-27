@@ -43,11 +43,13 @@ namespace GI
 
             isInteracting = anim.GetBool("isInteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
         }
@@ -74,6 +76,7 @@ namespace GI
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.t_Input = false;
+            inputHandler.jump_Input = false;
 
 
             if (isInAir)
