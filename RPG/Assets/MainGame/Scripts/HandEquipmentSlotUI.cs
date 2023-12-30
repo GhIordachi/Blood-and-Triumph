@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace GI {
     public class HandEquipmentSlotUI : MonoBehaviour
     {
+        UIManager uIManager;
         public Image icon;
         WeaponItem weapon;
 
@@ -17,6 +18,11 @@ namespace GI {
         public bool leftHandSlot02;
         public bool leftHandSlot03;
         public bool leftHandSlot04;
+
+        private void Awake()
+        {
+            uIManager = FindObjectOfType<UIManager>();
+        }
 
         public void AddItem(WeaponItem newWeapon)
         {
@@ -32,6 +38,42 @@ namespace GI {
             icon.sprite = null;
             icon.enabled = false;
             gameObject.SetActive(false);
+        }
+
+        public void SelectThisSlot()
+        {
+            if (rightHandSlot01)
+            {
+                uIManager.rightHandSlot01Selected = true;
+            }
+            else if (rightHandSlot02)
+            {
+                uIManager.rightHandSlot02Selected = true;
+            }
+            else if (rightHandSlot03)
+            {
+                uIManager.rightHandSlot03Selected = true;
+            }
+            else if (rightHandSlot04)
+            {
+                uIManager.rightHandSlot04Selected = true;
+            }
+            else if (leftHandSlot01)
+            {
+                uIManager.leftHandSlot01Selected= true;
+            }
+            else if (leftHandSlot02)
+            {
+                uIManager.leftHandSlot02Selected = true;
+            }
+            else if (leftHandSlot03)
+            {
+                uIManager.leftHandSlot03Selected = true;
+            }
+            else if (leftHandSlot04)
+            {
+                uIManager.leftHandSlot04Selected = true;
+            }
         }
     }
 }

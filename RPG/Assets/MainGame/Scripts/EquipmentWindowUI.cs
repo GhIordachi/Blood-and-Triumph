@@ -14,12 +14,7 @@ namespace GI {
         public bool leftHandSlot03Selected;
         public bool leftHandSlot04Selected;
 
-        HandEquipmentSlotUI[] handEquipmentSlotUI;
-
-        private void Awake()
-        {
-            handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
-        }
+        public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
         public void LoadWeaponOnEquipmentScreen(PlayerInventory playerInventory)
         {
