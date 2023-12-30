@@ -18,6 +18,9 @@ namespace GI
         public bool rt_Input;
         public bool jump_Input;
         public bool inventory_Input;
+        public bool lockOn_Input;
+        public bool lockOnRight_Input;
+        public bool lockOnLeft_Input;
 
         public bool d_Pad_Up;
         public bool d_Pad_Down;
@@ -27,6 +30,7 @@ namespace GI
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+        public bool lockOnFlag;
         public bool inventoryFlag;
         public float rollInputTimer;
 
@@ -34,6 +38,7 @@ namespace GI
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        CameraHandler cameraHandler;
         UIManager uiManager;
 
         Vector2 movementInput;
@@ -45,6 +50,7 @@ namespace GI
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
             uiManager = FindObjectOfType<UIManager>();
+            cameraHandler = FindObjectOfType<CameraHandler>();
         }
 
         public void OnEnable()
@@ -61,6 +67,9 @@ namespace GI
                 inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+                inputActions.PlayerActions.LockOn.performed += i => lockOn_Input = true;
+                inputActions.PlayerMovement.LockOnTargetLeft.performed += i => lockOnLeft_Input = true;
+                inputActions.PlayerMovement.LockOnTargetRight.performed += i => lockOnRight_Input = true;
             }
 
             inputActions.Enable();
@@ -73,14 +82,15 @@ namespace GI
 
         public void TickInput(float delta)
         {
-            MoveInput(delta);
+            HandleMoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotInput();
             HandleInventoryInput();
+            HandleLockOnInput();
         }
 
-        private void MoveInput(float delta)
+        private void HandleMoveInput(float delta)
         {
             horizontal = movementInput.x;
             vertical = movementInput.y;
@@ -170,6 +180,46 @@ namespace GI
                     uiManager.hudWindow.SetActive(true);
                 }
             }
+        }
+
+        private void HandleLockOnInput()
+        {
+            if (lockOn_Input && lockOnFlag == false)
+            {
+                lockOn_Input = false;               
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.nearestLockOnTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
+                    lockOnFlag = true;
+                }
+            }
+            else if (lockOn_Input && lockOnFlag)
+            {
+                lockOn_Input = false;
+                lockOnFlag = false;
+                cameraHandler.ClearLockOnTargets();
+            }
+
+            if(lockOnFlag && lockOnLeft_Input)
+            {
+                lockOnLeft_Input = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.leftLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+                }
+            } else if (lockOnFlag && lockOnRight_Input)
+            {
+                lockOnRight_Input = false;
+                cameraHandler.HandleLockOn();
+                if( cameraHandler.rightLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+                }
+            }
+
+            cameraHandler.SetCameraHeight();
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 namespace GI
 {
-    public class PlayerManager : MonoBehaviour
-    {
+    public class PlayerManager : CharacterManager
+    { 
         InputHandler inputHandler;
         Animator anim;
         CameraHandler cameraHandler;
