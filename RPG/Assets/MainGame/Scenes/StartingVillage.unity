@@ -3075,6 +3075,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 726259297}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &728198373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 472167252158125367, guid: 9be1096551caf714bbd130b200743176,
+    type: 3}
+  m_PrefabInstance: {fileID: 5387215483782570886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &743758305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,6 +3534,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789525366}
   m_CullTransparentMesh: 1
+--- !u!1 &801630325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801630326}
+  - component: {fileID: 801630327}
+  m_Layer: 0
+  m_Name: Back Weapon Slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &801630326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801630325}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.011564505, y: -0.55465347, z: 0.07476808, w: 0.82863474}
+  m_LocalPosition: {x: -27.2, y: 7.2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1211593270}
+  m_LocalEulerAnglesHint: {x: 3.657, y: -67.342, z: 7.875}
+--- !u!114 &801630327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801630325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5845b60d747ab4c4d95d70625139579c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 801630326}
+  currentWeapon: {fileID: 0}
+  isLeftHandSlot: 0
+  isRightHandSlot: 0
+  isBackSlot: 1
+  curentWeaponModel: {fileID: 0}
 --- !u!1001 &805373658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4803,6 +4865,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 2105059652}
+--- !u!114 &1199451870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7887020226722821873, guid: 9be1096551caf714bbd130b200743176,
+    type: 3}
+  m_PrefabInstance: {fileID: 5387215483782570886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1211593270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8831245054303511317, guid: 9894f532cf0217c40b9e3c2901bdb981,
+    type: 3}
+  m_PrefabInstance: {fileID: 7911984489576259939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252785504
 GameObject:
   m_ObjectHideFlags: 0
@@ -7547,6 +7627,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2553232719415609186, guid: 9be1096551caf714bbd130b200743176,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Hand Slot
+      objectReference: {fileID: 0}
     - target: {fileID: 2826219826939535263, guid: 9be1096551caf714bbd130b200743176,
         type: 3}
       propertyPath: m_Name
@@ -7746,6 +7831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131254672910668053, guid: 9be1096551caf714bbd130b200743176,
+        type: 3}
+      propertyPath: m_Name
+      value: Left Hand Slot
       objectReference: {fileID: 0}
     - target: {fileID: 7042964034456237777, guid: 9be1096551caf714bbd130b200743176,
         type: 3}
@@ -7977,6 +8067,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9192436702902192968, guid: 9be1096551caf714bbd130b200743176,
+        type: 3}
+      propertyPath: leftWeaponIcon
+      value: 
+      objectReference: {fileID: 1199451870}
+    - target: {fileID: 9192436702902192968, guid: 9be1096551caf714bbd130b200743176,
+        type: 3}
+      propertyPath: rightWeaponIcon
+      value: 
+      objectReference: {fileID: 728198373}
     - target: {fileID: 9207967500404593583, guid: 9be1096551caf714bbd130b200743176,
         type: 3}
       propertyPath: m_IsActive
@@ -8172,6 +8272,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526393453}
+    - targetCorrespondingSourceObject: {fileID: 8831245054303511317, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 801630326}
     - targetCorrespondingSourceObject: {fileID: 8831245054303486051, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
       insertIndex: -1
@@ -8239,8 +8343,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 7911984489576259940}
+  currentWeapon: {fileID: 0}
   isLeftHandSlot: 0
   isRightHandSlot: 1
+  isBackSlot: 0
   curentWeaponModel: {fileID: 0}
 --- !u!114 &7911984489576259945
 MonoBehaviour:
@@ -8255,8 +8361,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 1057640419}
+  currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0
+  isBackSlot: 0
   curentWeaponModel: {fileID: 0}
 --- !u!1 &8289748204999461522 stripped
 GameObject:

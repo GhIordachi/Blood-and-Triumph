@@ -22,9 +22,14 @@ namespace GI {
             if (inputHandler.comboFlag)
             {
                 animatorHandler.anim.SetBool("canDoCombo", false);
+
                 if (lastAttack == weapon.OH_Light_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                }
+                else if(lastAttack == weapon.th_light_attack_01)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.th_light_attack_02, true);
                 }
             }
         }
@@ -32,15 +37,35 @@ namespace GI {
         public void HandleLightAttack(WeaponItem weapon)
         {
             weaponSlotManager.attackingWeapon = weapon;
-            animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-            lastAttack = weapon.OH_Light_Attack_1;
+
+            if (inputHandler.twoHandFlag)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.th_light_attack_01, true);
+                lastAttack = weapon.th_light_attack_01;
+            }
+            else
+            {                
+                animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
+                lastAttack = weapon.OH_Light_Attack_1;
+            }
+            
         }
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
             weaponSlotManager.attackingWeapon = weapon;
-            animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
-            lastAttack = weapon.OH_Heavy_Attack_1;
+
+            if (inputHandler.twoHandFlag)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.th_heavy_attack_01, true);
+                lastAttack = weapon.th_heavy_attack_01;
+            }
+            else
+            {                
+                animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+                lastAttack = weapon.OH_Heavy_Attack_1;
+            }
+            
         }
     }
 }
