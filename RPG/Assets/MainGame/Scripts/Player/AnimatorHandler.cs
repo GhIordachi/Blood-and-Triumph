@@ -5,10 +5,9 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace GI
 {
-    public class AnimatorHandler : MonoBehaviour
+    public class AnimatorHandler : AnimatorManager
     {
-        PlayerManager playerManager;
-        public Animator anim;
+        PlayerManager playerManager;        
         InputHandler inputHandler;
         PlayerLocomotion playerLocomotion;
         int vertical;
@@ -85,13 +84,6 @@ namespace GI
 
             anim.SetFloat(vertical,v,0.1f,Time.deltaTime);
             anim.SetFloat(horizontal,h,0.1f,Time.deltaTime);
-        }
-
-        public void PlayTargetAnimation(string targetAnim, bool isInteracting)
-        {
-            anim.applyRootMotion = isInteracting;
-            anim.SetBool("isInteracting", isInteracting);
-            anim.CrossFade(targetAnim, 0.2f);
         }
 
         public void CanRotate()

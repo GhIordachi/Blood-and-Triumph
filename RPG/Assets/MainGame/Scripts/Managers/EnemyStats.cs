@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GI {
-    public class EnemyStats : MonoBehaviour
-    {
-        public int healthLevel = 10;
-        public int maxHealth;
-        public int currentHealth;
-
+    public class EnemyStats : CharacterStats
+    {        
         Animator animator;
 
         private void Awake()
