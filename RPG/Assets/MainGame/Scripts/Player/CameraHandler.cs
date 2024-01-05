@@ -91,7 +91,7 @@ namespace GI
             }
             else
             {
-                float velocity = 0f;
+                //float velocity = 0f;
 
                 Vector3 dir = currentLockOnTarget.position - transform.position;
                 dir.Normalize();
