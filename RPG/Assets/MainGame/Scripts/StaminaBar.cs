@@ -8,6 +8,11 @@ namespace GI {
     {
         public Slider slider;
 
+        private void Start()
+        {
+            slider = GetComponent<Slider>();
+        }
+
         public void SetMaxStamina(float maxStamina)
         {
             slider.maxValue = maxStamina;
