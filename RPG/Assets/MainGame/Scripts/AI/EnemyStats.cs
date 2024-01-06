@@ -26,6 +26,9 @@ namespace GI {
 
         public void TakeDamage(int damage)
         {
+            if (isDead)
+                return;
+
             if (currentHealth > 0)
             {
                 currentHealth = currentHealth - damage;
@@ -36,7 +39,7 @@ namespace GI {
             {
                 currentHealth = 0;
                 animator.Play("Death_01");
-                //Handle player death
+                isDead = true;
             }
         }
     }
