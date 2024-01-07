@@ -14,7 +14,7 @@ Shader "SyntyStudios/SkyGradient"
 
 	SubShader
 	{
-		Tags{ "RenderType" = "Opaque" "Queue" = "AlphaTest+0" "IgnoreProjector" = "True" "DisableBatching" = "True" "IsEmissive" = "true" "RenderPipeline" = "UniversalPipeline" }
+		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
 		Cull Back
 		CGPROGRAM
 		#pragma target 3.0

@@ -23,7 +23,7 @@ Shader "SyntyStudios/Trees"
 
 	SubShader
 	{
-		Tags{ "RenderType" = "Opaque" "Queue" = "AlphaTest+0" "IgnoreProjector" = "True" "DisableBatching" = "True" "IsEmissive" = "true" }
+		Tags{ "RenderType" = "Opaque"  "Queue" = "AlphaTest+0" "IgnoreProjector" = "True" "DisableBatching" = "True" "IsEmissive" = "true"  }
 		Cull Off
 		Stencil
 		{
