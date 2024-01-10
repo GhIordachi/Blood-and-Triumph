@@ -17,6 +17,7 @@ namespace GI
         public bool y_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool critical_Attack_Input;
         public bool jump_Input;
         public bool inventory_Input;
         public bool lockOn_Input;
@@ -35,6 +36,8 @@ namespace GI
         public bool lockOnFlag;
         public bool inventoryFlag;
         public float rollInputTimer;
+
+        public Transform criticalAttackRayCastStartPoint;
 
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
@@ -77,6 +80,7 @@ namespace GI
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => lockOnLeft_Input = true;
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => lockOnRight_Input = true;
                 inputActions.PlayerActions.Y.performed += i => y_Input = true;
+                inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
 
             }
 
@@ -97,6 +101,7 @@ namespace GI
             HandleInventoryInput();
             HandleLockOnInput();
             HandleTwoHandInput();
+            HandleCriticalAttackInput();
         }
 
         private void HandleMoveInput(float delta)
@@ -234,6 +239,15 @@ namespace GI
                     weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
                     weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
                 }
+            }
+        }
+
+        private void HandleCriticalAttackInput()
+        {
+            if(critical_Attack_Input)
+            {
+                critical_Attack_Input = false;
+                playerAttacker.AttemptBackStabOrRiposte();
             }
         }
     }

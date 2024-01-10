@@ -185,6 +185,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Critical Attack",
+                    "type": "Button",
+                    "id": "6b968342-d12b-44c7-976b-3eea0d09e6b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pick Up Item",
                     "type": "Button",
                     "id": "3b571671-9723-485c-942f-9ff5d7104748",
@@ -248,7 +257,7 @@
                     "name": "",
                     "id": "dea6a8ea-6a99-4fec-b9bd-272ccc6a519e",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -318,6 +327,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc7b9212-3214-4eac-8de5-6687fe7c793f",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Critical Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
