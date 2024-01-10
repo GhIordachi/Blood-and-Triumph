@@ -756,8 +756,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.75
-        functionName: CloseDamageCollider
+      - time: 0.25364137
+        functionName: TakeCriticalDamageAnimationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

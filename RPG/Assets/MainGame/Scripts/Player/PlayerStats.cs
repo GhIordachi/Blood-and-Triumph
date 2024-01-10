@@ -9,7 +9,7 @@ namespace GI {
         HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointBar focusPointBar;
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
@@ -20,7 +20,7 @@ namespace GI {
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
         void Start()
@@ -79,6 +79,17 @@ namespace GI {
                 animatorHandler.PlayTargetAnimation("Death_01", true);
                 isDead = true;
                 //Handle player death
+            }
+        }
+
+        public void TakeDamageNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
             }
         }
 

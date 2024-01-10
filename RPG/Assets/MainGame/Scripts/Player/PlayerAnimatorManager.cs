@@ -5,18 +5,19 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace GI
 {
-    public class AnimatorHandler : AnimatorManager
+    public class PlayerAnimatorManager : AnimatorManager
     {
-        PlayerManager playerManager;        
+        PlayerManager playerManager;
+        PlayerStats playerStats;
         InputHandler inputHandler;
         PlayerLocomotion playerLocomotion;
         int vertical;
         int horizontal;
-        public bool canRotate;
 
         public void Initialize()
         {
             playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
@@ -82,18 +83,18 @@ namespace GI
                 h = horizontalMovement;
             }
 
-            anim.SetFloat(vertical,v,0.1f,Time.deltaTime);
-            anim.SetFloat(horizontal,h,0.1f,Time.deltaTime);
+            anim.SetFloat(vertical,v,0.1f,Time.fixedDeltaTime);
+            anim.SetFloat(horizontal,h,0.1f,Time.fixedDeltaTime);
         }
 
         public void CanRotate()
         {
-            canRotate = true;
+            anim.SetBool("canRotate", true);
         }
 
         public void StopRotation()
         {
-            canRotate = false;
+            anim.SetBool("canRotate", false);
         }
 
         public void EnableCombo()
@@ -114,6 +115,12 @@ namespace GI
         public void DisableIsInvulnerable()
         {
             anim.SetBool("isInvulnerable", false);
+        }
+
+        public override void TakeCriticalDamageAnimationEvent()
+        {
+            playerStats.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
+            playerManager.pendingCriticalDamage = 0;
         }
 
         private void OnAnimatorMove()
