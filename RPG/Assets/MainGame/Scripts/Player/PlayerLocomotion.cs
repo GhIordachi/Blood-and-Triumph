@@ -8,6 +8,7 @@ namespace GI
     {
         CameraHandler cameraHandler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         Transform cameraObject;
         InputHandler inputHandler;
         public Vector3 moveDirection;
@@ -40,8 +41,11 @@ namespace GI
         [SerializeField]
         float fallingSpeed = 45;
 
-        public float jumpForce = 250f;
-        public bool jumpForceApplied;
+        [Header("Stamina Costs")]
+        [SerializeField]
+        int rollStaminaCost = 15;
+        int backStepStaminaCost = 12;
+        int sprintStaminaCost = 1;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -49,14 +53,15 @@ namespace GI
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
+            playerManager = GetComponent<PlayerManager>();
+            playerStats = GetComponent<PlayerStats>();
+            rigidbody = GetComponent<Rigidbody>();
+            inputHandler = GetComponent<InputHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
         void Start()
         {
-            playerManager = GetComponent<PlayerManager>();
-            rigidbody = GetComponent<Rigidbody>();
-            inputHandler = GetComponent<InputHandler>();
-            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
@@ -65,22 +70,6 @@ namespace GI
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
 
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
-        }
-
-        private void FixedUpdate()
-        {
-            if (jumpForceApplied)
-            {
-                StartCoroutine(JumpCo());
-                rigidbody.AddForce(transform.up * jumpForce);
-
-            }
-        }
-
-        private IEnumerator JumpCo()
-        {
-            yield return new WaitForSeconds(0.35f);
-            jumpForceApplied = false;
         }
 
         #region Movement
@@ -167,6 +156,7 @@ namespace GI
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
+                playerStats.TakeStaminaDamage(sprintStaminaCost);
             }
             else
             {
@@ -199,6 +189,11 @@ namespace GI
         {
             if (animatorHandler.anim.GetBool("isInteracting"))
                 return;
+
+            //Check if we have stamina, if we do not, return.
+            if (playerStats.currentStamina <= 0)
+                return;
+
             if(inputHandler.rollFlag)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -210,10 +205,12 @@ namespace GI
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
+                    playerStats.TakeStaminaDamage(rollStaminaCost);
                 }
                 else
                 {
                     animatorHandler.PlayTargetAnimation("StepBack", true);
+                    playerStats.TakeStaminaDamage(backStepStaminaCost);
                 }
             }
         }
@@ -306,11 +303,13 @@ namespace GI
             if (playerManager.isInteracting)
                 return;
 
-            if(inputHandler.jump_Input)
+            if (playerStats.currentStamina <= 0)
+                return;
+
+            if (inputHandler.jump_Input)
             {
                 if(inputHandler.moveAmount > 0)
                 {
-                    jumpForceApplied = true;
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
                     moveDirection.Normalize();
