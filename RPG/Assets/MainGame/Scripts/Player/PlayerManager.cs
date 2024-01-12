@@ -97,6 +97,7 @@ namespace GI
             }
         }
 
+        #region Player Interactions
         public void CheckForInteractableObject()
         {
             RaycastHit hit;
@@ -133,6 +134,16 @@ namespace GI
                 }
             }
         }
+
+        public void OpenChestInteraction(Transform playerStandingHereWhenOpeningChest)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
+            transform.position = playerStandingHereWhenOpeningChest.transform.position;
+            //Change the animation to an open chest animation
+            playerAnimatorManager.PlayTargetAnimation("Pick Up Item", true);
+        }
+
+        #endregion
 
     }
 }

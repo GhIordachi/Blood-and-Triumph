@@ -139,5 +139,10 @@ namespace GI {
 
             focusPointBar.SetCurrentFocusPoint(currentFocusPoints);
         }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
+        }
     }
 }

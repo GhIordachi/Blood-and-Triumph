@@ -17,6 +17,8 @@ namespace GI {
         public float maxFocusPoints;
         public float currentFocusPoints;
 
+        public int soulCount = 0;
+
         public bool isDead;
     }
 }
