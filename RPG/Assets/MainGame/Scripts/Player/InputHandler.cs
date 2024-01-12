@@ -17,6 +17,7 @@ namespace GI
         public bool y_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool parry_Input;
         public bool critical_Attack_Input;
         public bool jump_Input;
         public bool inventory_Input;
@@ -73,6 +74,7 @@ namespace GI
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+                inputActions.PlayerActions.Parry.performed += i => parry_Input = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
@@ -159,6 +161,18 @@ namespace GI
             if (rt_Input)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
+
+            if (parry_Input)
+            {
+                if(twoHandFlag)
+                {
+                    //two handing weapon art
+                }
+                else
+                {
+                    playerAttacker.HandleParryAction();
+                }
             }
         }
 

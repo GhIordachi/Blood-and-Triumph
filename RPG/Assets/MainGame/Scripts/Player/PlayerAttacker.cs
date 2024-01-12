@@ -14,6 +14,7 @@ namespace GI {
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 15;
+        LayerMask riposteLayer = 1 << 16;
 
         private void Awake()
         {
@@ -98,6 +99,19 @@ namespace GI {
                 PerformRBMagicAction(playerInventory.rightWeapon);
             }
         }
+
+        public void HandleParryAction() 
+        {
+            if(playerInventory.leftWeapon.isShieldWeapon)
+            {
+                //Perform shield weapon art
+                PerformParryWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if (playerInventory.leftWeapon.isMeleeWeapon)
+            {
+                //do a light attack
+            }
+        }
         #endregion
 
         #region Attack Actions
@@ -142,6 +156,22 @@ namespace GI {
             }
         }
 
+        private void PerformParryWeaponArt(bool isTwoHanding)
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (isTwoHanding)
+            {
+                //perform weapon art for right weapon
+            }
+            else
+            {
+                //Perform weapon art for left weapon
+                animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
+            }
+        }
+
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
@@ -165,7 +195,7 @@ namespace GI {
                 if(enemyCharacterManager != null)
                 {
                     //Check for Team ID so you can't back stab allies or yourself
-                    playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position;
+                    playerManager.transform.position = enemyCharacterManager.backStabCollider.criticalDamageStandPoint.position;
 
                     Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
                     rotationDirection = hit.transform.position - playerManager.transform.position;
@@ -180,6 +210,32 @@ namespace GI {
 
                     animatorHandler.PlayTargetAnimation("Back Stab", true);
                     enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                }
+            }
+            else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
+                transform.TransformDirection(Vector3.forward), out hit, 0.7f, riposteLayer))
+            {
+                //Check for Team ID
+                CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+
+                if(enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
+                {
+                    playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamageStandPoint.position;
+
+                    Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+                    rotationDirection = hit.transform.position - playerManager.transform.position;
+                    rotationDirection.y = 0;
+                    rotationDirection.Normalize();
+                    Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                    Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                    playerManager.transform.rotation = targetRotation;
+
+                    int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
+                    animatorHandler.PlayTargetAnimation("Riposte", true);
+                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }

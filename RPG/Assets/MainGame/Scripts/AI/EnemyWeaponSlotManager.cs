@@ -71,10 +71,12 @@ namespace GI
             if(isLeft)
             {
                 leftHandDamageCollider = leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
+                leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
+                rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
         }
 

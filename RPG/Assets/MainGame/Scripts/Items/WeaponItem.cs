@@ -29,6 +29,9 @@ namespace GI
         public string th_light_attack_02;
         public string th_heavy_attack_01;
 
+        [Header("Weapon Art")]
+        public string weapon_art;
+
         [Header("Stamina Costs")]
         public int baseStamina;
         public float lightAttackMultiplier;
@@ -39,6 +42,7 @@ namespace GI
         public bool isFaithCaster;
         public bool isPyroCaster;
         public bool isMeleeWeapon;
+        public bool isShieldWeapon;
 
     }
 }

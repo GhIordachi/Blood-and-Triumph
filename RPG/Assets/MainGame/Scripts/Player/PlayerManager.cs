@@ -32,7 +32,7 @@ namespace GI
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
-            backStabCollider = GetComponentInChildren<BackStabCollider>();
+            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             anim = GetComponentInChildren<Animator>();
@@ -75,6 +75,7 @@ namespace GI
             inputHandler.rollFlag = false;            
             inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
+            inputHandler.parry_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;

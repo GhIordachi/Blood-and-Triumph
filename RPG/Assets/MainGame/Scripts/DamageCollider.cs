@@ -6,6 +6,7 @@ namespace GI
 {
     public class DamageCollider : MonoBehaviour
     {
+        public CharacterManager characterManager;
         Collider damageCollider;
 
         public int currentWeaponDamage = 25;
@@ -33,6 +34,17 @@ namespace GI
             if(collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+
+                if(enemyCharacterManager != null)
+                {
+                    if (enemyCharacterManager.isParrying)
+                    {
+                        //Check here if you are parryable
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if(playerStats != null )
                 {
@@ -43,6 +55,17 @@ namespace GI
             if(collision.tag == "Enemy")
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+
+                if (enemyCharacterManager != null)
+                {
+                    if (enemyCharacterManager.isParrying)
+                    {
+                        //Check here if you are parryable
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if (enemyStats != null)
                 {

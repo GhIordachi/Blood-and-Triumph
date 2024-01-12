@@ -22,6 +22,36 @@ namespace GI
             enemyManager.pendingCriticalDamage = 0;
         }
 
+        public void EnableIsParrying()
+        {
+            enemyManager.isParrying = true;
+        }
+
+        public void DisableIsParrying()
+        {
+            enemyManager.isParrying = false;
+        }
+
+        public void EnableCanBeRiposted()
+        {
+            enemyManager.canBeRiposted = true;
+        }
+
+        public void DisableCanBeRiposted()
+        {
+            enemyManager.canBeRiposted = false;
+        }
+
+        public void CanRotate()
+        {
+            anim.SetBool("canRotate", true);
+        }
+
+        public void StopRotation()
+        {
+            anim.SetBool("canRotate", false);
+        }
+
         public void AwardSoulsOnDeath()
         {
             //Scan for the player in the scene and award him

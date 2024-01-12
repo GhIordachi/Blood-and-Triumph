@@ -109,14 +109,20 @@ namespace GI
 
         private void LoadLeftWeaponDamageCollider()
         {
-            leftHandDamageCollider = leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+            if (leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>() != null)
+            {
+                leftHandDamageCollider = leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
+                leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+            }
         }
 
         private void LoadRightWeaponDamageCollider()
         {
-            rightHandDamageCollider = rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+            if (rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>() != null)
+            {
+                rightHandDamageCollider = rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
+                rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+            }
         }
 
         public void OpenDamageCollider()
@@ -133,8 +139,14 @@ namespace GI
 
         public void CloseDamageCollider()
         {
-            rightHandDamageCollider.DisableDamageCollider();
-            leftHandDamageCollider.DisableDamageCollider();
+            if(leftHandDamageCollider != null)
+            {
+                leftHandDamageCollider.DisableDamageCollider();
+            }
+            if(rightHandDamageCollider != null)
+            {
+                rightHandDamageCollider.DisableDamageCollider();
+            }
         }
 
         #endregion
