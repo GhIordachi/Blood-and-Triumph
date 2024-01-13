@@ -16,6 +16,9 @@ namespace GI
             //If in attack range return attack State
             //If we in a cooldown after attacking, return this state and continue circling player
             //if the player runs out of range, return to the pursue target state
+            if (enemyManager.isInteracting)
+                return this;
+
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
             HandleRotateTowardsTarget(enemyManager);

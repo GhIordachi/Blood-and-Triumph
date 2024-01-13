@@ -13,6 +13,9 @@ namespace GI
             //Chase the target
             //If within attack range, return combat stance state
             //if target is out of range, return to this state and keep chasing the target
+            if (enemyManager.isInteracting)
+                return this;
+
             if (enemyManager.isPerformingAction)
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f,Time.deltaTime);
@@ -29,8 +32,6 @@ namespace GI
             }
 
             HandleRotateTowardsTarget(enemyManager);
-            enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
-            enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
             if(distanceFromTarget <= enemyManager.maximumAttackRange)
             {

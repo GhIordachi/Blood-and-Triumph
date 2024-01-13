@@ -1633,12 +1633,17 @@ PrefabInstance:
     - target: {fileID: 7408605841504101646, guid: 1a6a57555c7069549ac062530fcb7dad,
         type: 3}
       propertyPath: canBeRiposted
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7408605841504101646, guid: 1a6a57555c7069549ac062530fcb7dad,
         type: 3}
       propertyPath: isInteracting
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408605841504101646, guid: 1a6a57555c7069549ac062530fcb7dad,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7408605841504101646, guid: 1a6a57555c7069549ac062530fcb7dad,
         type: 3}
