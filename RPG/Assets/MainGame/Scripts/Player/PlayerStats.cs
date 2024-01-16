@@ -6,7 +6,7 @@ namespace GI {
     public class PlayerStats : CharacterStats
     {
         PlayerManager playerManager;
-        HealthBar healthBar;
+        public HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointBar focusPointBar;
         PlayerAnimatorManager animatorHandler;
@@ -17,7 +17,7 @@ namespace GI {
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
-            healthBar = FindObjectOfType<HealthBar>();
+            //healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
@@ -59,7 +59,7 @@ namespace GI {
             return maxFocusPoints;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
             if (playerManager.isInvulnerable)
                 return;
@@ -71,7 +71,7 @@ namespace GI {
 
             healthBar.SetCurrentHealth(currentHealth);
 
-            animatorHandler.PlayTargetAnimation("Damage_01", true);
+            animatorHandler.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
             {

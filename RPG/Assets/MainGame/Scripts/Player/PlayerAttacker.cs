@@ -6,6 +6,7 @@ namespace GI {
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerAnimatorManager animatorHandler;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -19,6 +20,7 @@ namespace GI {
         private void Awake()
         {
             animatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -100,6 +102,11 @@ namespace GI {
             }
         }
 
+        public void HandleBlockAction()
+        {
+            PerformBlockingAction();
+        }
+
         public void HandleParryAction() 
         {
             if(playerInventory.leftWeapon.isShieldWeapon)
@@ -177,6 +184,21 @@ namespace GI {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
         }
 
+        #endregion
+
+        #region Defense Actions
+        private void PerformBlockingAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (playerManager.isBlocking)
+                return;
+
+            animatorHandler.PlayTargetAnimation("Block", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
+            playerManager.isBlocking = true;
+        }
         #endregion
 
         public void AttemptBackStabOrRiposte()

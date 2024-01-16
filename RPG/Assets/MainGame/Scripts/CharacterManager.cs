@@ -16,6 +16,7 @@ namespace GI {
         public bool canBeRiposted;
         public bool canBeParried;
         public bool isParrying;
+        public bool isBlocking;
 
         //Damage will be inflicted during an animation event
         //Used in backstab or riposte animations

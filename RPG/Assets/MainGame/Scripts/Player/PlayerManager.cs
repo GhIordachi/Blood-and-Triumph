@@ -50,6 +50,7 @@ namespace GI
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
             isInvulnerable = anim.GetBool("isInvulnerable");
+            anim.SetBool("isBlocking", isBlocking);
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isDead", playerStats.isDead);
             playerAnimatorManager.canRotate = anim.GetBool("canRotate");

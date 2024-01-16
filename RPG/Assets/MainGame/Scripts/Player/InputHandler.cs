@@ -17,6 +17,7 @@ namespace GI
         public bool y_Input;
         public bool rb_Input;
         public bool rt_Input;
+        public bool block_Input;
         public bool parry_Input;
         public bool critical_Attack_Input;
         public bool jump_Input;
@@ -45,6 +46,7 @@ namespace GI
         PlayerInventory playerInventory;
         PlayerManager playerManager;
         PlayerStats playerStats;
+        BlockingCollider blockingCollider;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
@@ -60,6 +62,7 @@ namespace GI
             playerManager = GetComponent<PlayerManager>();
             playerStats = GetComponent<PlayerStats>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
@@ -74,6 +77,8 @@ namespace GI
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+                inputActions.PlayerActions.Block.performed += i => block_Input = true;
+                inputActions.PlayerActions.Block.canceled += i => block_Input = false;
                 inputActions.PlayerActions.Parry.performed += i => parry_Input = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
@@ -102,7 +107,7 @@ namespace GI
         {
             HandleMoveInput(delta);
             HandleRollInput(delta);
-            HandleAttackInput(delta);
+            HandleCombatInput(delta);
             HandleQuickSlotInput();
             HandleInventoryInput();
             HandleLockOnInput();
@@ -150,7 +155,7 @@ namespace GI
             }
         }
 
-        private void HandleAttackInput(float delta)
+        private void HandleCombatInput(float delta)
         {            
             //RB Input handles the Right hand weapon's light attack
             if (rb_Input)
@@ -165,13 +170,28 @@ namespace GI
 
             if (parry_Input)
             {
-                if(twoHandFlag)
+                if (twoHandFlag)
                 {
                     //two handing weapon art
                 }
                 else
                 {
                     playerAttacker.HandleParryAction();
+                }
+            }
+
+            if (block_Input)
+            {
+                //Do a block
+                playerAttacker.HandleBlockAction();
+            }
+            else
+            {
+                playerManager.isBlocking = false;
+
+                if(blockingCollider.blockingCollider.enabled)
+                {
+                    blockingCollider.DisableBlockingCollider();
                 }
             }
         }

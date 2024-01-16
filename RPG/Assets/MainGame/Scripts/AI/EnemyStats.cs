@@ -7,6 +7,8 @@ namespace GI {
     {        
         EnemyAnimatorManager enemyAnimatorManager;
 
+        public UIEnemyHealthBar healthBar;
+
         public int souldAwardedOnDeath = 50;
 
         private void Awake()
@@ -18,6 +20,7 @@ namespace GI {
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -30,6 +33,8 @@ namespace GI {
         {
             currentHealth = currentHealth - damage;
 
+            healthBar.SetHealth(currentHealth);
+
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
@@ -37,13 +42,15 @@ namespace GI {
             }
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
             if (isDead)
                 return;
 
             currentHealth = currentHealth - damage;
-            enemyAnimatorManager.PlayTargetAnimation("Damage_01", true);
+            healthBar.SetHealth(currentHealth);
+
+            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
             {

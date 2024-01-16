@@ -9,7 +9,7 @@ namespace GI {
         public EnemyAttackAction[] enemyAttacks;
         public EnemyAttackAction currentAttack;
 
-        bool isComboing = false;
+        bool willDoComboNextAttack = false;
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
@@ -25,10 +25,10 @@ namespace GI {
             }
             else if (enemyManager.isInteracting && enemyManager.canDoCombo)
             {
-                if (isComboing)
+                if (willDoComboNextAttack)
                 {
+                    willDoComboNextAttack = false;
                     enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                    isComboing = false;
                 }
             }
 
@@ -60,11 +60,12 @@ namespace GI {
                             enemyAnimatorManager.anim.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
                             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
                             enemyManager.isPerformingAction = true;
+                            RollForComboChance(enemyManager);
 
-                            if (currentAttack.canCombo)
+                            if (currentAttack.canCombo && willDoComboNextAttack)
                             {
                                 currentAttack = currentAttack.comboAction;
-                                return this;                                
+                                return this;
                             }
                             else
                             {
@@ -161,6 +162,16 @@ namespace GI {
                 enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
                 enemyManager.enemyRigidBody.velocity = targetVelocity;
                 enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
+            }
+        }
+
+        private void RollForComboChance(EnemyManager enemyManager)
+        {
+            float comboChance = Random.Range(0, 100);
+
+            if(enemyManager.allowAIToPerformCombos && comboChance <= enemyManager.comboLikelyHood)
+            {
+                willDoComboNextAttack = true;
             }
         }
     }
