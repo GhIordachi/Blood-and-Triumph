@@ -1755,6 +1755,12 @@ PrefabInstance:
       objectReference: {fileID: 2033285881}
     - target: {fileID: 4518448914396507484, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
+      propertyPath: currentSpell
+      value: 
+      objectReference: {fileID: 11400000, guid: ecf4806ef24eddc4b985d75bea7cc069,
+        type: 2}
+    - target: {fileID: 4518448914396507484, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
       propertyPath: weaponsInLeftHandSlots.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145,
@@ -1764,6 +1770,12 @@ PrefabInstance:
       propertyPath: weaponsInLeftHandSlots.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145,
+        type: 2}
+    - target: {fileID: 4518448914396507484, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: weaponsInRightHandSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4018e19f11774264bb89fd4d5306cc0b,
         type: 2}
     - target: {fileID: 8831245054303240401, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}

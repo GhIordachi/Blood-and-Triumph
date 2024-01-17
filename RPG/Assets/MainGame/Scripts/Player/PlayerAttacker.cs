@@ -5,6 +5,7 @@ using UnityEngine;
 namespace GI {
     public class PlayerAttacker : MonoBehaviour
     {
+        CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
         PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
@@ -19,6 +20,7 @@ namespace GI {
 
         private void Awake()
         {
+            cameraHandler = FindAnyObjectByType<CameraHandler>();
             animatorHandler = GetComponent<PlayerAnimatorManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
@@ -153,7 +155,21 @@ namespace GI {
                 {
                     if(playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("No", true);
+                    }
+                }
+            }
+            else if(weapon.isPyroCaster)
+            {
+                if (playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+                {
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
                     }
                     else
                     {
@@ -181,7 +197,8 @@ namespace GI {
 
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats, cameraHandler, weaponSlotManager);
+            animatorHandler.anim.SetBool("isFiringSpell", true);
         }
 
         #endregion
