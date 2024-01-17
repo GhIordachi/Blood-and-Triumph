@@ -1761,6 +1761,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4518448914396507484, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
+      propertyPath: currentConsumable
+      value: 
+      objectReference: {fileID: 11400000, guid: 64542ecc594d25d4bb9a188fa6cc13d1,
+        type: 2}
+    - target: {fileID: 4518448914396507484, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
       propertyPath: weaponsInLeftHandSlots.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145,
@@ -1794,6 +1800,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6787434020549195446}
+    - targetCorrespondingSourceObject: {fileID: 8831245054303215631, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6787434020549195447}
   m_SourcePrefab: {fileID: 100100000, guid: 9894f532cf0217c40b9e3c2901bdb981, type: 3}
 --- !u!4 &6787434020549195444 stripped
 Transform:
@@ -1820,6 +1830,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockingCollider: {fileID: 1098058239}
+--- !u!114 &6787434020549195447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787434020549195445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7360fc793695d40419fa4d366ea650d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentParticleFX: {fileID: 0}
+  instantiatedFXModel: {fileID: 0}
+  amountToBeHealed: 0
 --- !u!1001 &7263637630997633409
 PrefabInstance:
   m_ObjectHideFlags: 0

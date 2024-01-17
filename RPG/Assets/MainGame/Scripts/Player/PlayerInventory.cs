@@ -8,6 +8,7 @@ namespace GI
     {
         WeaponSlotManager weaponSlotManager;
 
+        public ConsumableItem currentConsumable;
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
