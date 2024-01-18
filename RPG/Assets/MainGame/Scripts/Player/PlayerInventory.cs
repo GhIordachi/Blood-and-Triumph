@@ -8,10 +8,14 @@ namespace GI
     {
         WeaponSlotManager weaponSlotManager;
 
+        [Header("Quick Slots Items")]
         public ConsumableItem currentConsumable;
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
+
+        [Header("Current Equipment")]
+        public HelmetEquipment currentHelmetEquipment;
 
         public WeaponItem unarmedWeapon;
 

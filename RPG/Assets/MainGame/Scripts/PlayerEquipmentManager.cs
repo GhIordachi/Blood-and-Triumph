@@ -8,12 +8,26 @@ namespace GI
     {
         InputHandler inputHandler;
         PlayerInventory playerInventory;
+
+        [Header("Equipment Model Changers")]
+        HelmetModelChanger helmetModelChanger;
+
         public BlockingCollider blockingCollider;
 
         private void Awake()
         {
             inputHandler = GetComponentInParent<InputHandler>();
             playerInventory = GetComponentInParent<PlayerInventory>();
+            helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
+        }
+
+        private void Start()
+        {
+            if (helmetModelChanger != null)
+            {
+                helmetModelChanger.UnEquipAllHelmetModels();
+                helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmetEquipment.helmetModelName);
+            }
         }
 
         public void OpenBlockingCollider()
