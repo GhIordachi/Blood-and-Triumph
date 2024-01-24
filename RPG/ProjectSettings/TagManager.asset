@@ -8,6 +8,7 @@ TagManager:
   - Collide
   - Enemy
   - Interactable
+  - Illusionary Wall
   layers:
   - Default
   - TransparentFX

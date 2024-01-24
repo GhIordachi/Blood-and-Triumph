@@ -64,16 +64,11 @@ namespace GI {
             if (playerManager.isInvulnerable)
                 return;
 
-            if (isDead)
-                return;
-
-            currentHealth = currentHealth - damage;
-
+            base.TakeDamage(damage, damageAnimation);
             healthBar.SetCurrentHealth(currentHealth);
-
             animatorHandler.PlayTargetAnimation(damageAnimation, true);
 
-            if(currentHealth <= 0)
+            if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("Death_01", true);

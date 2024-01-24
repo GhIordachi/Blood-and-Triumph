@@ -21,9 +21,43 @@ namespace GI {
 
         public bool isDead;
 
-        public virtual void TakeDamage(int damage, string damageAnimation = "Damage_01")
-        {
+        [Header("Armor Absorptions")]
+        public float physicalDamageAbsorptionHead;
+        public float physicalDamageAbsorptionBody;
+        public float physicalDamageAbsorptionLegs;
+        public float physicalDamageAbsorptionHands;
 
+        //Fire absorption
+        //Lightning absorption
+        //Magic absorption
+        //Dark absorption
+
+        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
+        {
+            if (isDead) 
+                return;
+
+            float totalPhysicalDamageAbsorption = 1 - 
+                (1 - physicalDamageAbsorptionHead / 100) * 
+                (1 - physicalDamageAbsorptionBody / 100) *
+                (1 - physicalDamageAbsorptionHands / 100) *
+                (1 - physicalDamageAbsorptionLegs / 100);
+
+            physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+            Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
+
+            float finalDamage = physicalDamage; //+ fireDamage + magicDamage etc.
+
+            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
+
+            Debug.Log("Total damage dealt is " + finalDamage);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
         }
     }
 }

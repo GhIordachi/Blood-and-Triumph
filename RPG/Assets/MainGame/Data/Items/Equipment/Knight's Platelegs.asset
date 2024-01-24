@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
-  m_Name: Knight's Helmet
+  m_Script: {fileID: 11500000, guid: 1e295521925508548a4a08f7b922ce10, type: 3}
+  m_Name: Knight's Platelegs
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Knight's Helmet
-  physicalDefense: 7
-  helmetModelName: Male_Helmet_13
+  itemName: Knight's Platelegs
+  physicalDefense: 10
+  hipModelName: Chr_Hips_Male_04
+  leftLegName: Male_Left_Leg_14
+  rightLegName: Male_Right_Leg_14
