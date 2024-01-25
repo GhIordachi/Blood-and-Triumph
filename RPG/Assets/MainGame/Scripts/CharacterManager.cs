@@ -18,6 +18,10 @@ namespace GI {
         public bool isParrying;
         public bool isBlocking;
 
+        [Header("Movement Flags")]
+        public bool isRotatingWithRootMotion;
+        public bool canRotate;
+
         [Header("Spells")]
         public bool isFiringSpell;
 
