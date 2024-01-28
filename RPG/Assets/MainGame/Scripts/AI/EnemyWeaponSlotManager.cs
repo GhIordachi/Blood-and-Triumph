@@ -15,7 +15,20 @@ namespace GI
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
 
+        EnemyStats enemyStats;
+
         private void Awake()
+        {
+            enemyStats = GetComponentInParent<EnemyStats>();
+            LoadWeaponHolderSlots();
+        }
+
+        private void Start()
+        {
+            LoadWeaponsOnBothHands();
+        }
+
+        private void LoadWeaponHolderSlots()
         {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -29,11 +42,6 @@ namespace GI
                     rightHandSlot = weaponSlot;
                 }
             }
-        }
-
-        private void Start()
-        {
-            LoadWeaponsOnBothHands();
         }
 
         public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
@@ -109,5 +117,19 @@ namespace GI
         //{
         //    //anim.SetBool("canDoCombo", false);
         //}
+
+        #region Handle Weapon's Poise Bonus
+
+        public void GrantWeaponAttackingPoiseBonus()
+        {
+            enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence + enemyStats.offensivePoiseBonus;
+        }
+
+        public void ResetWeaponAttackingPoiseBonus()
+        {
+            enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
+        }
+
+        #endregion
     }
 }

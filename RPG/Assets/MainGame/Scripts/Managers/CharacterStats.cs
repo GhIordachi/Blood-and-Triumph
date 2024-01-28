@@ -19,6 +19,13 @@ namespace GI {
 
         public int soulCount = 0;
 
+        [Header("Poise")]
+        public float totalPoiseDefence; //The total poise during damage calculation
+        public float offensivePoiseBonus; //The poise you Gain during an attack with a weapon
+        public float armorPoiseBonus; //The poise you Gain from wearing what ever you have equipped
+        public float totalPoiseResetTime = 15;
+        public float poiseResetTimer = 0;
+
         public bool isDead;
 
         [Header("Armor Absorptions")]
@@ -31,6 +38,16 @@ namespace GI {
         //Lightning absorption
         //Magic absorption
         //Dark absorption
+
+        protected virtual void Update()
+        {
+            HandlePoiseResetTimer();
+        }
+
+        private void Start()
+        {
+            totalPoiseDefence = armorPoiseBonus;
+        }
 
         public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
         {
@@ -57,6 +74,18 @@ namespace GI {
             {
                 currentHealth = 0;
                 isDead = true;
+            }
+        }
+
+        public virtual void HandlePoiseResetTimer()
+        {
+            if(poiseResetTimer > 0)
+            {
+                poiseResetTimer = poiseResetTimer - Time.deltaTime;
+            }
+            else
+            {
+                totalPoiseDefence = armorPoiseBonus;
             }
         }
     }

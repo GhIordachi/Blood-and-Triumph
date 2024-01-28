@@ -27,7 +27,6 @@ namespace GI
         public bool canDoCombo;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
-        public bool isInvulnerable;
 
         private void Awake()
         {

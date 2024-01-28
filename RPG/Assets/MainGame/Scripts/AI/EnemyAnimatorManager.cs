@@ -7,12 +7,16 @@ namespace GI
     public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyBossManager enemyBossManager;
         EnemyStats enemyStats;
+
+
 
         private void Awake()
         {
             anim = GetComponent<Animator>();
             enemyManager = GetComponentInParent<EnemyManager>();
+            enemyBossManager = GetComponentInParent<EnemyBossManager>();
             enemyStats = GetComponentInParent<EnemyStats>();
         }
 
@@ -87,6 +91,13 @@ namespace GI
                     soulCountBar.SetSoulCountText(playerStats.soulCount);
                 }
             }
+        }
+
+        public void InstantiateBossParticleFX()
+        {
+            BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
+
+            GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
         }
 
         private void OnAnimatorMove()

@@ -119,6 +119,7 @@ namespace GI
             {
                 leftHandDamageCollider = leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
                 leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+                leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
             }
         }
 
@@ -128,6 +129,7 @@ namespace GI
             {
                 rightHandDamageCollider = rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
                 rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+                rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
             }
         }
 
@@ -137,7 +139,7 @@ namespace GI
             {
                 rightHandDamageCollider.EnableDamageCollider();
             }
-            else
+            else if (leftHandDamageCollider != null)
             {
                 leftHandDamageCollider.EnableDamageCollider();
             }
@@ -168,6 +170,20 @@ namespace GI
         {
             Debug.Log("Heavy Attack Multiplier: " + attackingWeapon.heavyAttackMultiplier);
             playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
+        }
+
+        #endregion
+
+        #region Handle Weapon's Poise Bonus
+
+        public void GrantWeaponAttackingPoiseBonus()
+        {
+            playerStats.totalPoiseDefence = playerStats.totalPoiseDefence + attackingWeapon.offensivePoiseBonus;
+        }
+
+        public void ResetWeaponAttackingPoiseBonus()
+        {
+            playerStats.totalPoiseDefence = playerStats.armorPoiseBonus;
         }
 
         #endregion

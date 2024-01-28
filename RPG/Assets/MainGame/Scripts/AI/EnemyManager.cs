@@ -32,6 +32,7 @@ namespace GI {
 
         [Header("AI Combat Settings")]
         public bool allowAIToPerformCombos;
+        public bool isPhaseShifting;
         public float comboLikelyHood;
 
         private void Awake()
@@ -56,6 +57,8 @@ namespace GI {
 
             isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool("isRotatingWithRootMotion");
             isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
+            isInvulnerable = enemyAnimatorManager.anim.GetBool("isInvulnerable");
+            isPhaseShifting = enemyAnimatorManager.anim.GetBool("isPhaseShifting");
             canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
             canRotate = enemyAnimatorManager.anim.GetBool("canRotate");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);

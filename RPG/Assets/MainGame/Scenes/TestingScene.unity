@@ -2883,7 +2883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad13877295b48846b517fee1c28ef52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 2238193175239763361}
+  combatStanceState: {fileID: 6115030378814645926}
 --- !u!4 &1365576643
 Transform:
   m_ObjectHideFlags: 0
@@ -8690,23 +8690,6 @@ Transform:
   - {fileID: 1365576643}
   m_Father: {fileID: 3543761531687324339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2238193175239763361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6115030378814645925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4a1dfa09ce4fb488d42932060eb584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackState: {fileID: 5267260673850435038}
-  enemyAttacks:
-  - {fileID: 11400000, guid: ace6bbff2359f0347b8a9d14fc78845e, type: 2}
-  - {fileID: 11400000, guid: 872cd03655a387047b27c189bc0575fb, type: 2}
-  pursueTargetState: {fileID: 3034456210725261650}
 --- !u!4 &2368780359322713116
 Transform:
   m_ObjectHideFlags: 0
@@ -8810,7 +8793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa5f50abfa497a4daffe82bb297024b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 2238193175239763361}
+  combatStanceState: {fileID: 6115030378814645926}
   rotateTowardsTargetState: {fileID: 1365576642}
 --- !u!4 &3061809182807456088
 Transform:
@@ -9006,6 +8989,11 @@ MonoBehaviour:
   maxFocusPoints: 0
   currentFocusPoints: 0
   soulCount: 0
+  totalPoiseDefence: 50
+  offensivePoiseBonus: 0
+  armorPoiseBonus: 75
+  totalPoiseResetTime: 15
+  poiseResetTimer: 0
   isDead: 0
   physicalDamageAbsorptionHead: 0
   physicalDamageAbsorptionBody: 0
@@ -9141,7 +9129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ec5d1ff2e502a4b8845ad377fcd60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatStanceState: {fileID: 2238193175239763361}
+  combatStanceState: {fileID: 6115030378814645926}
   pursueTargetState: {fileID: 3034456210725261650}
   rotateTowardsTargetState: {fileID: 1365576642}
   currentAttack: {fileID: 0}
@@ -9252,6 +9240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Male_Right_Leg_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 201660842867108342, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: isInvulnerable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 201660842867108342, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
@@ -9633,6 +9626,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2033285881}
+    - target: {fileID: 3532222662013698618, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: healthLevel
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3730405970952907982, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
       propertyPath: m_Name
@@ -9736,7 +9734,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponsInRightHandSlots.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7,
+      objectReference: {fileID: 11400000, guid: e6a50df94f95f7047a910c2bff7edfe6,
         type: 2}
     - target: {fileID: 4557658682679935535, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
@@ -9762,6 +9760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Male_Left_Leg_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062947011893806569, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5064083328342493357, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
@@ -12805,7 +12808,7 @@ Animator:
   m_GameObject: {fileID: 6012507295727454345}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8b2bc2ee5a96ede42b6d179e41749982, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0944d8568aa12ed45aa10dde60c1c4d0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -12825,7 +12828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3061809182807456088}
-  - component: {fileID: 2238193175239763361}
+  - component: {fileID: 6115030378814645926}
   m_Layer: 12
   m_Name: Combat Stance State
   m_TagString: Untagged
@@ -12833,6 +12836,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6115030378814645926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115030378814645925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a952ec8de5b00f4f99e240be8f4f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackState: {fileID: 5267260673850435038}
+  enemyAttacks:
+  - {fileID: 11400000, guid: ace6bbff2359f0347b8a9d14fc78845e, type: 2}
+  - {fileID: 11400000, guid: 872cd03655a387047b27c189bc0575fb, type: 2}
+  pursueTargetState: {fileID: 3034456210725261650}
+  hasPhaseShifted: 0
+  secondPhaseAttacks:
+  - {fileID: 11400000, guid: 91c3d3a1a390a2d4080a4c4344b934f1, type: 2}
+  - {fileID: 11400000, guid: 85d96602e17c3074a8e080f9d1121951, type: 2}
 --- !u!1 &6204244920217848267
 GameObject:
   m_ObjectHideFlags: 0
@@ -13103,6 +13127,7 @@ MonoBehaviour:
   canBeParried: 0
   isParrying: 0
   isBlocking: 0
+  isInvulnerable: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isFiringSpell: 0
@@ -13121,6 +13146,7 @@ MonoBehaviour:
   minimumDetectionAngle: -50
   currentRecoveryTime: 0
   allowAIToPerformCombos: 1
+  isPhaseShifting: 0
   comboLikelyHood: 100
 --- !u!114 &7413285053086771529
 MonoBehaviour:
@@ -13191,7 +13217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f698746d149d2164895256323a047a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandWeapon: {fileID: 11400000, guid: 6a26e886abfb0f64aabc12fd54af93be, type: 2}
+  rightHandWeapon: {fileID: 11400000, guid: dcab2312f41f52540951dbf8aae079a1, type: 2}
   leftHandWeapon: {fileID: 0}
 --- !u!195 &8114334194301940904
 NavMeshAgent:
@@ -13482,6 +13508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Ion The Terrifying
+  particleFX: {fileID: 6484487748914672286, guid: 318e87bd27ab8cb4094cd14747411db2,
+    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

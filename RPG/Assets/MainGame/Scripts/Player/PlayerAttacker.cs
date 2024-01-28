@@ -75,6 +75,8 @@ namespace GI {
             if (playerStats.currentStamina <= 0)
                 return;
 
+            animatorHandler.anim.SetBool("isUsingRightHand", true);
+
             weaponSlotManager.attackingWeapon = weapon;
 
             if (inputHandler.twoHandFlag)
@@ -101,6 +103,14 @@ namespace GI {
                 playerInventory.rightWeapon.isFaithCaster || playerInventory.rightWeapon.isPyroCaster)
             {
                 PerformRBMagicAction(playerInventory.rightWeapon);
+            }
+        }
+
+        public void HandleRTAction()
+        {
+            if (playerInventory.rightWeapon.isMeleeWeapon)
+            {
+                PerformRTMeleeAction();
             }
         }
 
@@ -142,6 +152,17 @@ namespace GI {
                 animatorHandler.anim.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventory.rightWeapon);
             }
+        }
+
+        private void PerformRTMeleeAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+            if (playerManager.canDoCombo)
+                return;
+
+            animatorHandler.anim.SetBool("isUsingRightHand", true);
+            HandleHeavyAttack(playerInventory.rightWeapon);
         }
 
         private void PerformRBMagicAction(WeaponItem weapon)
