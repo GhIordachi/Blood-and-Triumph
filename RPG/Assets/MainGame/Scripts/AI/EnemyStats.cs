@@ -6,21 +6,27 @@ namespace GI {
     public class EnemyStats : CharacterStats
     {        
         EnemyAnimatorManager enemyAnimatorManager;
-
+        EnemyBossManager enemyBossManager;
         public UIEnemyHealthBar healthBar;
 
         public int souldAwardedOnDeath = 50;
 
+        public bool isBoss; 
+
         private void Awake()
         {
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyBossManager = GetComponent<EnemyBossManager>();
+            maxHealth = SetMaxHealthFromHealthLevel();
+            currentHealth = maxHealth;
         }
 
         void Start()
         {
-            maxHealth = SetMaxHealthFromHealthLevel();
-            currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
+            if (!isBoss)
+            {
+                healthBar.SetMaxHealth(maxHealth);
+            }
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -45,7 +51,15 @@ namespace GI {
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
             base.TakeDamage(damage, damageAnimation);
-            healthBar.SetHealth(currentHealth);
+
+            if(!isBoss)
+            {
+                healthBar.SetHealth(currentHealth);
+            }
+            else if(isBoss && enemyBossManager != null)
+            {
+                enemyBossManager.UpdateBossHealthBar(currentHealth);
+            }
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)

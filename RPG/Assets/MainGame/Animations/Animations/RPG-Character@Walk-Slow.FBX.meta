@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: a6e833647d522494f83e25a6e218364b
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -704,7 +704,7 @@ ModelImporter:
     second: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -713,26 +713,27 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: Motion
+    removeConstantScaleCurves: 0
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'B_Spine' has translation animation that will
-      be discarded.\n"
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'B_Spine' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tRightLowerLeg
       average position error 0.2 mm and maximum position error 1.1 mm at time 0:13
-      (27.1%) Frame 13\n\tLeftUpperArm average position error 3.1 mm and maximum position
-      error 5.5 mm at time 1:18 (100.0%) Frame 48\n\tLeftLowerArm average position
-      error 3.1 mm and maximum position error 5.5 mm at time 0: 0 (0.0%) Frame 0\n\tLeftHand
-      average position error 3.1 mm and maximum position error 5.5 mm at time 0: 0
-      (0.0%) Frame 0\n\tRightUpperArm average position error 3.1 mm and maximum position
-      error 5.5 mm at time 0: 0 (0.0%) Frame 0\n\tRightLowerArm average position error
-      3.1 mm and maximum position error 5.6 mm at time 1:18 (100.0%) Frame 48\n\tRightHand
-      average position error 3.1 mm and maximum position error 5.5 mm at time 1:18
-      (100.0%) Frame 48\n\tHead average position error 3.1 mm and maximum position
-      error 5.5 mm at time 0: 0 (0.0%) Frame 0\n"
+      (27.1%) Frame 13\n\tLeftUpperArm average position error 3.1 mm and maximum
+      position error 5.5 mm at time 1:18 (100.0%) Frame 48\n\tLeftLowerArm average
+      position error 3.1 mm and maximum position error 5.5 mm at time 0: 0 (0.0%)
+      Frame 0\n\tLeftHand average position error 3.1 mm and maximum position error
+      5.5 mm at time 1:18 (100.0%) Frame 48\n\tRightUpperArm average position error
+      3.1 mm and maximum position error 5.5 mm at time 0: 0 (0.0%) Frame 0\n\tRightLowerArm
+      average position error 3.1 mm and maximum position error 5.6 mm at time 1:18
+      (100.0%) Frame 48\n\tRightHand average position error 3.1 mm and maximum position
+      error 5.5 mm at time 1:18 (100.0%) Frame 48\n\tHead average position error
+      3.1 mm and maximum position error 5.5 mm at time 0: 0 (0.0%) Frame 0\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -756,28 +757,86 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 1
-      loopBlendOrientation: 1
+      loopBlendOrientation: 0
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.39035353
-        functionName: FootR
+      - time: 0.32941177
+        functionName: DisableCollision
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8549336
-        functionName: FootL
+      transformMask: []
+      maskType: 3
+      maskSource: {fileID: 101100000, guid: 4ebc95c8618479f4d8251c7dafa10029, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk-Slow (1)
+      takeName: Take 001
+      internalID: -6474621660900478409
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {fileID: 101100000, guid: 4ebc95c8618479f4d8251c7dafa10029, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk-Slow (2)
+      takeName: Take 001
+      internalID: 6992372720171963354
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.65882355
+        functionName: EnableCollision
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -794,26 +853,36 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 2
@@ -824,7 +893,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -1547,8 +1615,13 @@ ModelImporter:
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e57e9b8cd5e115f4f8d7736473e5c7fd,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
