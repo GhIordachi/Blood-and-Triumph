@@ -24,13 +24,13 @@ namespace GI
         public string spellDescription;
 
         public virtual void AttemptToCastSpell
-            (PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
+            (PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager)
         {
             Debug.Log("You attempt to cast a spell");
         }
 
         public virtual void SuccessfullyCastSpell
-            (PlayerAnimatorManager animatorHandler, PlayerStats playerStats, CameraHandler cameraHandler, WeaponSlotManager weaponSlotManager)
+            (PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, CameraHandler cameraHandler, PlayerWeaponSlotManager weaponSlotManager)
         {
             Debug.Log("You successfully cast a spell!");
             playerStats.DeductFocusPoints(focusPointCost);

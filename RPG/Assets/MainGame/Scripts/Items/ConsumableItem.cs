@@ -18,7 +18,7 @@ namespace GI
         public bool isInteracting;
 
         public virtual void AttemptToConsumeItem
-            (PlayerAnimatorManager playerAnimatorManager, WeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+            (PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {
             if(currentItemAmount > 0)
             {
