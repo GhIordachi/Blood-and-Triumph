@@ -13,6 +13,8 @@ namespace GI {
         PlayerStatsManager playerStatsManager;
         PlayerInventoryManager playerInventoryManager;
         PlayerWeaponSlotManager playerWeaponSlotManager;
+        PlayerEffectsManager playerEffectsManager;
+
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 15;
@@ -27,6 +29,7 @@ namespace GI {
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             inputHandler = GetComponent<InputHandler>();
         }
 
@@ -152,6 +155,8 @@ namespace GI {
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventoryManager.rightWeapon);
             }
+
+            playerEffectsManager.PlayWeaponFX(false);
         }
 
         private void PerformRTMeleeAction()

@@ -26782,7 +26782,7 @@ GameObject:
   - component: {fileID: 3749906747676225892}
   m_Layer: 14
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26795,7 +26795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3518764288112849341}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26937,24 +26937,24 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8740795437660957664}
   backStabCollider: {fileID: 5404877232421971678}
   riposteCollider: {fileID: 4840853069231372143}
+  isInteracting: 0
   canBeRiposted: 0
   canBeParried: 0
+  canDoCombo: 0
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
+  isSprinting: 0
+  isInAir: 0
+  isGrounded: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
-  isInteracting: 0
-  isSprinting: 0
-  isInAir: 0
-  isGrounded: 0
-  canDoCombo: 0
-  isUsingRightHand: 0
-  isUsingLeftHand: 0
 --- !u!114 &3418846675523578496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26980,7 +26980,7 @@ MonoBehaviour:
   currentHandEquipment: {fileID: 11400000, guid: 1cf20dc01058b5340a0b6066ed15f3d1,
     type: 2}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: 69a9109f986e9474c9b5571ae1e1c3b8, type: 2}
+  - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
   - {fileID: 11400000, guid: fcbc49563f707034cae0b8181f34da79, type: 2}
   - {fileID: 11400000, guid: 4018e19f11774264bb89fd4d5306cc0b, type: 2}
   - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
@@ -27042,6 +27042,7 @@ MonoBehaviour:
   maxFocusPoints: 0
   currentFocusPoints: 0
   soulCount: 0
+  souldAwardedOnDeath: 50
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -27081,12 +27082,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef57113d0dcae4428640df8647b9c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 69a9109f986e9474c9b5571ae1e1c3b8, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
+  backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
+  attackingWeapon: {fileID: 0}
 --- !u!114 &1127101467167168901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27136,6 +27138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7360fc793695d40419fa4d366ea650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodSplatterFX: {fileID: 1407402442211574, guid: 5d31a5b9b348544439d8079453188ecc,
+    type: 3}
+  rightWeaponFX: {fileID: 0}
+  leftWeaponFX: {fileID: 0}
   currentParticleFX: {fileID: 0}
   instantiatedFXModel: {fileID: 0}
   amountToBeHealed: 0

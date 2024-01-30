@@ -13,14 +13,8 @@ namespace GI
         bool hasCollided = false;
 
         CharacterStatsManager spellTarget;
-        Rigidbody rigidbody;
 
         Vector3 impactNormal; //Used to rotate the impact particles
-
-        private void Awake()
-        {
-            rigidbody = GetComponent<Rigidbody>();
-        }
 
         private void Start()
         {

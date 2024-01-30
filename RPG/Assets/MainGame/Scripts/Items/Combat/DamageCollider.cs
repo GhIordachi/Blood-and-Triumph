@@ -41,18 +41,19 @@ namespace GI
             if(collision.tag == "Player")
             {
                 PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
-                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                CharacterManager playerCharacterManager = collision.GetComponent<CharacterManager>();
+                CharacterEffectsManager playerEffectsManager = collision.GetComponent<CharacterEffectsManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-                if(enemyCharacterManager != null)
+                if(playerCharacterManager != null)
                 {
-                    if (enemyCharacterManager.isParrying)
+                    if (playerCharacterManager.isParrying)
                     {
                         //Check here if you are parryable
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
                         return;
                     }
-                    else if(shield != null && enemyCharacterManager.isBlocking)
+                    else if(shield != null && playerCharacterManager.isBlocking)
                     {
                         float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsortion) / 100;
 
@@ -69,7 +70,10 @@ namespace GI
                 {
                     playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
                     playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
-                    Debug.Log("Player's Poise is currently " + playerStats.totalPoiseDefence);
+
+                    //Detects where the collider is hit by the weapon
+                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position); 
+                    playerEffectsManager.PlayBloodSplatterFX(contactPoint);
 
                     if (playerStats.totalPoiseDefence > poiseBreak)
                     {
@@ -86,6 +90,7 @@ namespace GI
             {
                 EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                CharacterEffectsManager enemyEffectsManager = collision.GetComponent<CharacterEffectsManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
                 if (enemyCharacterManager != null)
@@ -112,7 +117,10 @@ namespace GI
                 {
                     enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                     enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
-                    Debug.Log("Enemies Poise is currently " + enemyStats.totalPoiseDefence);
+
+                    //Detects where the collider is hit by the weapon
+                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                    enemyEffectsManager.PlayBloodSplatterFX(contactPoint);
 
                     if (enemyStats.isBoss)
                     {

@@ -7,6 +7,7 @@ namespace GI
     public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyEffectsManager enemyEffectsManager;
         EnemyBossManager enemyBossManager;
 
         protected override void Awake()
@@ -14,6 +15,7 @@ namespace GI
             base.Awake();
             animator = GetComponent<Animator>();
             enemyManager = GetComponent<EnemyManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
         }
 
@@ -39,6 +41,11 @@ namespace GI
             BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
 
             GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
+        }
+
+        public void PlayWeaponTrailFX()
+        {
+            enemyEffectsManager.PlayWeaponFX(false);
         }
 
         private void OnAnimatorMove()

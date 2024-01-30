@@ -12,6 +12,7 @@ namespace GI
         PlayerManager playerManager;
         PlayerInventoryManager playerInventoryManager;
         PlayerStatsManager playerStatsManager;
+        PlayerEffectsManager playerEffectsManager;
 
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
@@ -23,7 +24,8 @@ namespace GI
             playerManager = GetComponent<PlayerManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             animator = GetComponent<Animator>();
-            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();   
+            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             LoadWeaponHolderSlots();
         }
 
@@ -120,6 +122,7 @@ namespace GI
                 leftHandDamageCollider = leftHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
                 leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.baseDamage;
                 leftHandDamageCollider.poiseBreak = playerInventoryManager.leftWeapon.poiseBreak;
+                playerEffectsManager.leftWeaponFX = leftHandSlot.curentWeaponModel.GetComponentInChildren<WeaponFX>();
             }
         }
 
@@ -130,6 +133,7 @@ namespace GI
                 rightHandDamageCollider = rightHandSlot.curentWeaponModel.GetComponentInChildren<DamageCollider>();
                 rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
                 rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
+                playerEffectsManager.rightWeaponFX = rightHandSlot.curentWeaponModel.GetComponentInChildren<WeaponFX>();
             }
         }
 
