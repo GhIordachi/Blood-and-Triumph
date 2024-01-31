@@ -9,6 +9,7 @@ namespace GI {
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyStatsManager enemyStatsManager;
+        EnemyEffectsManager enemyEffectsManager;
 
         public State currentState;
         public CharacterStatsManager currentTarget;
@@ -36,6 +37,7 @@ namespace GI {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
+            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
@@ -58,6 +60,11 @@ namespace GI {
             canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
             canRotate = enemyAnimatorManager.animator.GetBool("canRotate");
             enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+        }
+
+        private void FixedUpdate()
+        {
+            enemyEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()

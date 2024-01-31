@@ -76,6 +76,9 @@ namespace GI {
             if (playerManager.isInvulnerable)
                 return;
 
+            if(isDead) 
+                return;
+
             base.TakeDamage(damage, damageAnimation);
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
@@ -83,14 +86,32 @@ namespace GI {
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                playerAnimatorManager.PlayTargetAnimation("Death_01", true);
                 isDead = true;
-                //Handle player death
+                playerAnimatorManager.PlayTargetAnimation("Death_01", true);
+            }
+        }
+
+        public override void TakePoisonDamage(int damage)
+        {
+            if (isDead)
+                return;
+
+            base.TakePoisonDamage(damage);
+            healthBar.SetCurrentHealth(currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+                playerAnimatorManager.PlayTargetAnimation("Death_01", true);
             }
         }
 
         public override void TakeDamageNoAnimation(int damage)
         {
+            if (isDead)
+                return;
+
             base.TakeDamageNoAnimation(damage);
             healthBar.SetCurrentHealth(currentHealth);
         }

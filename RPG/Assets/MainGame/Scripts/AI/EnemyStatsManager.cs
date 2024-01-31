@@ -7,7 +7,7 @@ namespace GI {
     {
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
-        public UIEnemyHealthBar healthBar;
+        public UIEnemyHealthBar enemyHealthBar;
 
         public bool isBoss; 
 
@@ -23,7 +23,7 @@ namespace GI {
         {
             if (!isBoss)
             {
-                healthBar.SetMaxHealth(maxHealth);
+                enemyHealthBar.SetMaxHealth(maxHealth);
             }
         }
 
@@ -35,15 +35,41 @@ namespace GI {
 
         public override void TakeDamageNoAnimation(int damage)
         {
+            if (isDead)
+                return;
+
             base.TakeDamageNoAnimation(damage);
 
             if (!isBoss)
             {
-                healthBar.SetHealth(currentHealth);
+                enemyHealthBar.SetHealth(currentHealth);
             }
             else if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            }
+        }
+
+        public override void TakePoisonDamage(int damage)
+        {
+            if (isDead)
+                return;
+
+            base.TakePoisonDamage(damage);
+            if (!isBoss)
+            {
+                enemyHealthBar.SetHealth(currentHealth);
+            }
+            else if (isBoss && enemyBossManager != null)
+            {
+                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            }
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+                enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
             }
         }
 
@@ -54,12 +80,14 @@ namespace GI {
 
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
-            
+            if (isDead)
+                return;
+
             base.TakeDamage(damage, damageAnimation);
 
             if(!isBoss)
             {
-                healthBar.SetHealth(currentHealth);
+                enemyHealthBar.SetHealth(currentHealth);
             }
             else if(isBoss && enemyBossManager != null)
             {
@@ -76,8 +104,8 @@ namespace GI {
         private void HandleDeath()
         {
             currentHealth = 0;
-            enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
             isDead = true;
+            enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
         }
     }
 }

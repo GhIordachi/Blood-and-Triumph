@@ -12,6 +12,7 @@ namespace GI
         CameraHandler cameraHandler;
         PlayerLocomotionManager playerLocomotion;
         PlayerStatsManager playerStatsManager;
+        PlayerEffectsManager playerEffectsManager;
         PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
@@ -26,6 +27,7 @@ namespace GI
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             animator = GetComponent<Animator>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
         }
@@ -56,9 +58,11 @@ namespace GI
         private void FixedUpdate()
         {
             float delta = Time.fixedDeltaTime;
+
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRotation(delta);
+            playerEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()
