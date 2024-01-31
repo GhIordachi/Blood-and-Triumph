@@ -17,7 +17,6 @@ namespace GI {
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
-            //healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
@@ -71,7 +70,7 @@ namespace GI {
             return maxFocusPoints;
         }
 
-        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
         {
             if (playerManager.isInvulnerable)
                 return;
@@ -79,7 +78,7 @@ namespace GI {
             if(isDead) 
                 return;
 
-            base.TakeDamage(damage, damageAnimation);
+            base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
@@ -107,12 +106,12 @@ namespace GI {
             }
         }
 
-        public override void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
             if (isDead)
                 return;
 
-            base.TakeDamageNoAnimation(damage);
+            base.TakeDamageNoAnimation(physicalDamage, fireDamage);
             healthBar.SetCurrentHealth(currentHealth);
         }
 

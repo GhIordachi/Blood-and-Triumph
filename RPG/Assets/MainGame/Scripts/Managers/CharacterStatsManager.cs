@@ -35,7 +35,11 @@ namespace GI {
         public float physicalDamageAbsorptionLegs;
         public float physicalDamageAbsorptionHands;
 
-        //Fire absorption
+        public float fireDamageAbsorptionHead;
+        public float fireDamageAbsorptionBody;
+        public float fireDamageAbsorptionLegs;
+        public float fireDamageAbsorptionHands;
+
         //Lightning absorption
         //Magic absorption
         //Dark absorption
@@ -50,7 +54,7 @@ namespace GI {
             totalPoiseDefence = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
+        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation = "Damage_01")
         {
             if (isDead) 
                 return;
@@ -63,9 +67,17 @@ namespace GI {
 
             physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
 
+            float totalFireDamageAbsorption = 1 -
+                (1 - fireDamageAbsorptionHead / 100) *
+                (1 - fireDamageAbsorptionBody / 100) *
+                (1 - fireDamageAbsorptionHands / 100) *
+                (1 - fireDamageAbsorptionLegs / 100);
+
+            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
+
             Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
 
-            float finalDamage = physicalDamage; //+ fireDamage + magicDamage etc.
+            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
 
             currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 
@@ -78,9 +90,32 @@ namespace GI {
             }
         }
 
-        public virtual void TakeDamageNoAnimation(int damage)
+        public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            currentHealth = currentHealth - damage;
+            if (isDead)
+                return;
+
+            float totalPhysicalDamageAbsorption = 1 -
+                (1 - physicalDamageAbsorptionHead / 100) *
+                (1 - physicalDamageAbsorptionBody / 100) *
+                (1 - physicalDamageAbsorptionHands / 100) *
+                (1 - physicalDamageAbsorptionLegs / 100);
+
+            physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+            float totalFireDamageAbsorption = 1 -
+                (1 - fireDamageAbsorptionHead / 100) *
+                (1 - fireDamageAbsorptionBody / 100) *
+                (1 - fireDamageAbsorptionHands / 100) *
+                (1 - fireDamageAbsorptionLegs / 100);
+
+            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
+
+            Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
+
+            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
+
+            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 
             if (currentHealth <= 0)
             {

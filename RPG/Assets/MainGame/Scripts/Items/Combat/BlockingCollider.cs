@@ -9,6 +9,7 @@ namespace GI
         public BoxCollider blockingCollider;
 
         public float blockingPhysicalDamageAbsortion;
+        public float blockingFireDamageAbsortion;
 
         private void Awake()
         {

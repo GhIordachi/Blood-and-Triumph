@@ -8,7 +8,7 @@ namespace GI
     public class DamageCollider : MonoBehaviour
     {
         public CharacterManager characterManager;
-        Collider damageCollider;
+        protected Collider damageCollider;
         public bool enabledDamageColliderOnStartUp = false;
 
         [Header("Poise")]
@@ -16,9 +16,13 @@ namespace GI
         public float offensivePoiseBonus;
 
         [Header("Damage")]
-        public int currentWeaponDamage = 25;
+        public int physicalDamage;
+        public int fireDamage;
+        public int magicDamage;
+        public int lightningDamage;
+        public int darkDamage;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             damageCollider = GetComponent<Collider>();
             damageCollider.gameObject.SetActive(true);
@@ -38,116 +42,56 @@ namespace GI
 
         private void OnTriggerEnter(Collider collision)
         {
-            if(collision.tag == "Player")
+            if(collision.tag == "Character")
             {
-                PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
-                CharacterManager playerCharacterManager = collision.GetComponent<CharacterManager>();
-                CharacterEffectsManager playerEffectsManager = collision.GetComponent<CharacterEffectsManager>();
+                CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
+                CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
+                CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-                if(playerCharacterManager != null)
+                if(enemyManager != null)
                 {
-                    if (playerCharacterManager.isParrying)
+                    if (enemyManager.isParrying)
                     {
                         //Check here if you are parryable
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
                         return;
                     }
-                    else if(shield != null && playerCharacterManager.isBlocking)
+                    else if(shield != null && enemyManager.isBlocking)
                     {
-                        float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsortion) / 100;
+                        float physicalDamageAfterBlock = physicalDamage - (physicalDamage * shield.blockingPhysicalDamageAbsortion) / 100;
+                        float fireDamageAfterBlock = fireDamage - (fireDamage * shield.blockingFireDamageAbsortion) / 100;
 
-                        if(playerStats != null)
+                        if(enemyStats != null)
                         {
-                            playerStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard");
+                            enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), Mathf.RoundToInt(fireDamageAfterBlock), "Block Guard");
                             return;
                         }
                     }
                 }
 
 
-                if(playerStats != null )
-                {
-                    playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
-                    playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
-
-                    //Detects where the collider is hit by the weapon
-                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position); 
-                    playerEffectsManager.PlayBloodSplatterFX(contactPoint);
-
-                    if (playerStats.totalPoiseDefence > poiseBreak)
-                    {
-                        playerStats.TakeDamageNoAnimation(currentWeaponDamage);
-                    }
-                    else
-                    {
-                        playerStats.TakeDamage(currentWeaponDamage);
-                    }
-                }
-            }
-
-            if(collision.tag == "Enemy")
-            {
-                EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
-                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
-                CharacterEffectsManager enemyEffectsManager = collision.GetComponent<CharacterEffectsManager>();
-                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
-
-                if (enemyCharacterManager != null)
-                {
-                    if (enemyCharacterManager.isParrying)
-                    {
-                        //Check here if you are parryable
-                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
-                        return;
-                    }
-                    else if (shield != null && enemyCharacterManager.isBlocking)
-                    {
-                        float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsortion) / 100;
-
-                        if (enemyStats != null)
-                        {
-                            enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard");
-                            return;
-                        }
-                    }
-                }
-
-                if (enemyStats != null)
+                if(enemyStats != null )
                 {
                     enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                     enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
 
                     //Detects where the collider is hit by the weapon
-                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-                    enemyEffectsManager.PlayBloodSplatterFX(contactPoint);
+                    Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position); 
+                    enemyEffects.PlayBloodSplatterFX(contactPoint);
 
-                    if (enemyStats.isBoss)
+                    if (enemyStats.totalPoiseDefence > poiseBreak)
                     {
-                        if (enemyStats.totalPoiseDefence > poiseBreak)
-                        {
-                            enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                        }
-                        else
-                        {
-                            Debug.Log("alright");
-                            enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                            enemyStats.BreakGuard();
-                        }
+                        enemyStats.TakeDamageNoAnimation(physicalDamage, fireDamage);
                     }
                     else
                     {
-                        if (enemyStats.totalPoiseDefence > poiseBreak)
-                        {
-                            enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                        }
-                        else
-                        {
-                            enemyStats.TakeDamage(currentWeaponDamage);
-                        }
-                    }                   
+                        enemyStats.TakeDamage(physicalDamage, fireDamage);
+                    }
                 }
             }
+
+            
 
             if(collision.tag == "Illusionary Wall")
             {

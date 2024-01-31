@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Shadow
-  - Collide
   - Enemy
   - Interactable
   - Illusionary Wall
+  - Character
   layers:
   - Default
   - TransparentFX

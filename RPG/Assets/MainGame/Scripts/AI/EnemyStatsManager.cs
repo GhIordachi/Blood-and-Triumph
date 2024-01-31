@@ -33,12 +33,12 @@ namespace GI {
             return maxHealth;
         }
 
-        public override void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
             if (isDead)
                 return;
 
-            base.TakeDamageNoAnimation(damage);
+            base.TakeDamageNoAnimation(physicalDamage,fireDamage);
 
             if (!isBoss)
             {
@@ -78,12 +78,12 @@ namespace GI {
             enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
-        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
         {
             if (isDead)
                 return;
 
-            base.TakeDamage(damage, damageAnimation);
+            base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
 
             if(!isBoss)
             {

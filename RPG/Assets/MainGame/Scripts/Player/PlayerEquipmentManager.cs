@@ -77,6 +77,7 @@ namespace GI
                     nakedHeadModel.SetActive(false);
                     helmetModelChanger.EquipHelmetModelByName(playerInventoryManager.currentHelmetEquipment.helmetModelName);
                     playerStatsManager.physicalDamageAbsorptionHead = playerInventoryManager.currentHelmetEquipment.physicalDefense;
+                    playerStatsManager.fireDamageAbsorptionHead = playerInventoryManager.currentHelmetEquipment.fireDefense;
                     Debug.Log("Head absorption is " + playerStatsManager.physicalDamageAbsorptionHead + "%");
                 }
                 else
@@ -97,6 +98,7 @@ namespace GI
                     upperLeftArmModelChanger.EquipArmModelByName(playerInventoryManager.currentTorsoEquipment.upperLeftArmModelName);
                     upperRightArmModelChanger.EquipArmModelByName(playerInventoryManager.currentTorsoEquipment.upperRightArmModelName);
                     playerStatsManager.physicalDamageAbsorptionBody = playerInventoryManager.currentTorsoEquipment.physicalDefense;
+                    playerStatsManager.fireDamageAbsorptionBody = playerInventoryManager.currentTorsoEquipment.fireDefense;
                     Debug.Log("Body absorption is " + playerStatsManager.physicalDamageAbsorptionBody + "%");
                 }
                 else
@@ -120,6 +122,7 @@ namespace GI
                     leftLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.leftLegName);
                     rightLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.rightLegName);
                     playerStatsManager.physicalDamageAbsorptionLegs = playerInventoryManager.currentLegEquipment.physicalDefense;
+                    playerStatsManager.fireDamageAbsorptionLegs = playerInventoryManager.currentLegEquipment.fireDefense;
                     Debug.Log("Legs absorption is " + playerStatsManager.physicalDamageAbsorptionLegs + "%");
                 }
                 else
@@ -145,6 +148,7 @@ namespace GI
                     leftHandModelChanger.EquipArmModelByName(playerInventoryManager.currentHandEquipment.leftHandModelName);
                     rightHandModelChanger.EquipArmModelByName(playerInventoryManager.currentHandEquipment.rightHandModelName);
                     playerStatsManager.physicalDamageAbsorptionHands = playerInventoryManager.currentHandEquipment.physicalDefense;
+                    playerStatsManager.fireDamageAbsorptionHands = playerInventoryManager.currentHandEquipment.fireDefense;
                     Debug.Log("Hands absorption is " + playerStatsManager.physicalDamageAbsorptionHands + "%");
                 }
                 else

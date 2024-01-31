@@ -8,5 +8,6 @@ namespace GI
     {
         [Header("Defense Bonus")]
         public float physicalDefense;
+        public float fireDefense;
     }
 }
