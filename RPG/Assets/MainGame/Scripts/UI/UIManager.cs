@@ -8,6 +8,7 @@ namespace GI {
     {
         public PlayerInventoryManager playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
+        private QuickSlotsUI quickSlotsUI;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -30,10 +31,17 @@ namespace GI {
         public Transform weaponInventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
 
+        private void Awake()
+        {
+            quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+        }
+
         private void Start()
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerInventory);
+            quickSlotsUI.UpdateCurrentSpellIcon(playerInventory.currentSpell);
+            quickSlotsUI.UpdateCurrentConsumableIcon(playerInventory.currentConsumable);
         }
 
         public void UpdateUI()

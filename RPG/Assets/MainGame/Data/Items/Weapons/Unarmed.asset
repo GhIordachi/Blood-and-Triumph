@@ -17,26 +17,15 @@ MonoBehaviour:
   modelPrefab: {fileID: 5906368666681195516, guid: 5dc28e3d61c61f84292f8e5552596ade,
     type: 3}
   isUnarmed: 1
-  baseDamage: 25
+  weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
+  offHandIdleAnimation: Left Arm Empty
+  weaponType: 3
+  physicalDamage: 0
+  fireDamage: 0
   criticalDamageMultiplier: 4
   poiseBreak: 0
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 0
-  right_hand_idle: Right Arm Empty
-  left_hand_idle: Left Arm Empty
-  th_idle: 
-  OH_Light_Attack_1: 
-  OH_Light_Attack_2: 
-  OH_Heavy_Attack_1: 
-  th_light_attack_01: 
-  th_light_attack_02: 
-  th_heavy_attack_01: 
-  weapon_art: 
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
-  isSpellCaster: 0
-  isFaithCaster: 0
-  isPyroCaster: 0
-  isMeleeWeapon: 1
-  isShieldWeapon: 0

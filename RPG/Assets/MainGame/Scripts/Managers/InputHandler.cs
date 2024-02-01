@@ -109,6 +109,9 @@ namespace GI
 
         public void TickInput(float delta)
         {
+            if(playerStatsManager.isDead) 
+                return;
+
             HandleMoveInput(delta);
             HandleRollInput(delta);
             HandleCombatInput(delta);
@@ -284,12 +287,16 @@ namespace GI
 
                 if(twoHandFlag)
                 {
+                    playerManager.isTwoHandingWeapon = true;
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    playerWeaponSlotManager.LoadTwoHandIKTargets(true);
                 }
                 else
                 {
+                    playerManager.isTwoHandingWeapon = false;
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    playerWeaponSlotManager.LoadTwoHandIKTargets(false);
                 }
             }
         }

@@ -15,6 +15,19 @@ namespace GI {
         PlayerWeaponSlotManager playerWeaponSlotManager;
         PlayerEffectsManager playerEffectsManager;
 
+        [Header("Attack Animations")]
+        string oh_light_attack_01 = "OH_Light_Attack_01";
+        string oh_light_attack_02 = "OH_Light_Attack_02";
+        string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
+        string oh_heavy_attack_02 = "OH_Heavy_Attack_02";
+
+        string th_light_attack_01 = "TH_Light_Attack_01";
+        string th_light_attack_02 = "TH_Light_Attack_02";
+        string th_heavy_attack_01 = "TH_Heavy_Attack_01";
+        string th_heavy_attack_02 = "TH_Heavy_Attack_02";
+
+        string weapon_art = "Weapon_Art";
+
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 15;
@@ -33,6 +46,52 @@ namespace GI {
             inputHandler = GetComponent<InputHandler>();
         }
 
+        public void HandleRBAction()
+        {
+            playerAnimatorManager.EraseHandIKForWeapon();
+
+            if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            {
+                PerformRBMeleeAction();
+            }
+            else if (playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.PyromancyCaster)
+            {
+                PerformRBMagicAction(playerInventoryManager.rightWeapon);
+            }
+        }
+
+        public void HandleRTAction()
+        {
+            if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword)
+            {
+                PerformRTMeleeAction();
+            }
+        }
+
+        public void HandleBlockAction()
+        {
+            PerformBlockingAction();
+        }
+
+        public void HandleParryAction()
+        {
+            if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
+            {
+                //Perform shield weapon art
+                PerformParryWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
+            {
+                //do a light attack
+            }
+        }
+
+
+
         public void HandleWeaponCombo(WeaponItem weapon)
         {
             if (playerStatsManager.currentStamina <= 0)
@@ -42,13 +101,13 @@ namespace GI {
             {
                 playerAnimatorManager.animator.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.OH_Light_Attack_1)
+                if (lastAttack == oh_light_attack_01)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    playerAnimatorManager.PlayTargetAnimation(oh_light_attack_02, true);
                 }
-                else if(lastAttack == weapon.th_light_attack_01)
+                else if(lastAttack == th_light_attack_01)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.th_light_attack_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(th_light_attack_02, true);
                 }
             }
         }
@@ -62,13 +121,13 @@ namespace GI {
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.th_light_attack_01, true);
-                lastAttack = weapon.th_light_attack_01;
+                playerAnimatorManager.PlayTargetAnimation(th_light_attack_01, true);
+                lastAttack =th_light_attack_01;
             }
             else
             {                
-                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-                lastAttack = weapon.OH_Light_Attack_1;
+                playerAnimatorManager.PlayTargetAnimation(oh_light_attack_01, true);
+                lastAttack = oh_light_attack_01;
             }
             
         }
@@ -84,59 +143,19 @@ namespace GI {
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.th_heavy_attack_01, true);
-                lastAttack = weapon.th_heavy_attack_01;
+                playerAnimatorManager.PlayTargetAnimation(th_heavy_attack_01, true);
+                lastAttack = th_heavy_attack_01;
             }
             else
             {                
-                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
-                lastAttack = weapon.OH_Heavy_Attack_1;
+                playerAnimatorManager.PlayTargetAnimation(oh_heavy_attack_01, true);
+                lastAttack = oh_heavy_attack_01;
             }
             
         }
 
-        #region Input Actions
-        public void HandleRBAction()
-        {
-            if(playerInventoryManager.rightWeapon.isMeleeWeapon)
-            {
-                PerformRBMeleeAction();
-            }
-            else if (playerInventoryManager.rightWeapon.isSpellCaster || 
-                playerInventoryManager.rightWeapon.isFaithCaster || playerInventoryManager.rightWeapon.isPyroCaster)
-            {
-                PerformRBMagicAction(playerInventoryManager.rightWeapon);
-            }
-        }
 
-        public void HandleRTAction()
-        {
-            if (playerInventoryManager.rightWeapon.isMeleeWeapon)
-            {
-                PerformRTMeleeAction();
-            }
-        }
 
-        public void HandleBlockAction()
-        {
-            PerformBlockingAction();
-        }
-
-        public void HandleParryAction() 
-        {
-            if(playerInventoryManager.leftWeapon.isShieldWeapon)
-            {
-                //Perform shield weapon art
-                PerformParryWeaponArt(inputHandler.twoHandFlag);
-            }
-            else if (playerInventoryManager.leftWeapon.isMeleeWeapon)
-            {
-                //do a light attack
-            }
-        }
-        #endregion
-
-        #region Attack Actions
         private void PerformRBMeleeAction()
         {
             if (playerManager.canDoCombo)
@@ -170,12 +189,27 @@ namespace GI {
             HandleHeavyAttack(playerInventoryManager.rightWeapon);
         }
 
+        private void PerformBlockingAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (playerManager.isBlocking)
+                return;
+
+            playerAnimatorManager.PlayTargetAnimation("Block", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
+            playerManager.isBlocking = true;
+        }
+
+
+
         private void PerformRBMagicAction(WeaponItem weapon)
         {
             if (playerManager.isInteracting)
                 return;
 
-            if (weapon.isFaithCaster)
+            if (weapon.weaponType == WeaponType.FaithCaster)
             {
                 if(playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
                 {
@@ -189,7 +223,7 @@ namespace GI {
                     }
                 }
             }
-            else if(weapon.isPyroCaster)
+            else if(weapon.weaponType == WeaponType.PyromancyCaster)
             {
                 if (playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isPyroSpell)
                 {
@@ -217,7 +251,7 @@ namespace GI {
             else
             {
                 //Perform weapon art for left weapon
-                playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
+                playerAnimatorManager.PlayTargetAnimation(weapon_art, true);
             }
         }
 
@@ -227,22 +261,6 @@ namespace GI {
             playerAnimatorManager.animator.SetBool("isFiringSpell", true);
         }
 
-        #endregion
-
-        #region Defense Actions
-        private void PerformBlockingAction()
-        {
-            if (playerManager.isInteracting)
-                return;
-
-            if (playerManager.isBlocking)
-                return;
-
-            playerAnimatorManager.PlayTargetAnimation("Block", false, true);
-            playerEquipmentManager.OpenBlockingCollider();
-            playerManager.isBlocking = true;
-        }
-        #endregion
 
         public void AttemptBackStabOrRiposte()
         {
@@ -274,7 +292,7 @@ namespace GI {
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
-                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
+                    enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
                 }
             }
             else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
@@ -300,7 +318,7 @@ namespace GI {
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Riposte", true);
-                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
+                    enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }

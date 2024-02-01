@@ -5,6 +5,11 @@ using UnityEngine;
 namespace GI {
     public class CharacterStatsManager : MonoBehaviour
     {
+        CharacterAnimatorManager characterAnimatorManager;
+
+        [Header("Team I.D")]
+        public int teamIDNumber = 0;
+
         public int healthLevel = 10;
         public int maxHealth;
         public int currentHealth;
@@ -44,6 +49,11 @@ namespace GI {
         //Magic absorption
         //Dark absorption
 
+        protected virtual void Awake()
+        {
+            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        }
+
         protected virtual void Update()
         {
             HandlePoiseResetTimer();
@@ -54,10 +64,12 @@ namespace GI {
             totalPoiseDefence = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation = "Damage_01")
+        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation)
         {
             if (isDead) 
                 return;
+
+            characterAnimatorManager.EraseHandIKForWeapon();
 
             float totalPhysicalDamageAbsorption = 1 - 
                 (1 - physicalDamageAbsorptionHead / 100) * 

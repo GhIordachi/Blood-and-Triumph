@@ -14,8 +14,9 @@ namespace GI {
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerManager = GetComponent<PlayerManager>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
@@ -70,7 +71,7 @@ namespace GI {
             return maxFocusPoints;
         }
 
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
             if (playerManager.isInvulnerable)
                 return;

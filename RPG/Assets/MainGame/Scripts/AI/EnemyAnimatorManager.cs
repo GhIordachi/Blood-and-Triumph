@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GI
 {
-    public class EnemyAnimatorManager : AnimatorManager
+    public class EnemyAnimatorManager : CharacterAnimatorManager
     {
         EnemyManager enemyManager;
         EnemyEffectsManager enemyEffectsManager;

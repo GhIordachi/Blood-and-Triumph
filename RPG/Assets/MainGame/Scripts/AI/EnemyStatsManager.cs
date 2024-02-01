@@ -11,8 +11,9 @@ namespace GI {
 
         public bool isBoss; 
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
@@ -78,7 +79,7 @@ namespace GI {
             enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
             if (isDead)
                 return;

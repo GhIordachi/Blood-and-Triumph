@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ResetAnimatorBool : StateMachineBehaviour
 {
+    public string isUsingRightHand = "isUsingRightHand";
+    public bool isUsingRightHandStatus = false;
+
+    public string isUsingLeftHand = "isUsingRightHand";
+    public bool isUsingLeftHandStatus = false;
+
     public string isInvulnerable = "isInvulnerable";
     public bool isInvulnerableStatus = false;
 
@@ -21,6 +27,8 @@ public class ResetAnimatorBool : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool(isUsingRightHand, isUsingRightHandStatus);
+        animator.SetBool(isUsingLeftHand, isUsingLeftHandStatus);
         animator.SetBool(isInvulnerable, isInvulnerableStatus);
         animator.SetBool(isInteractingBool, isInteractingStatus);
         animator.SetBool(isFiringSpellBool, isFiringSpellStatus);

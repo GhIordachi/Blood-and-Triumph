@@ -5,7 +5,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace GI
 {
-    public class PlayerAnimatorManager : AnimatorManager
+    public class PlayerAnimatorManager : CharacterAnimatorManager
     {
         InputHandler inputHandler;
         PlayerLocomotionManager playerLocomotionManager;

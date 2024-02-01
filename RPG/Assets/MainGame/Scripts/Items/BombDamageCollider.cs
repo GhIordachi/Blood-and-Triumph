@@ -33,8 +33,10 @@ namespace GI
 
                 if(character != null )
                 {
-                    //Check for friendly fire
-                    character.TakeDamage(0, explosionDamage);
+                    if(character.teamIDNumber != teamIDNumber)
+                    {
+                        character.TakeDamage(0, explosionDamage, currentDamageAnimation);
+                    }
                 }
 
                 Destroy(impactParticles, 5f);
@@ -52,7 +54,10 @@ namespace GI
 
                 if(character != null)
                 {
-                    character.TakeDamage(0, explosionSplashDamage);
+                    if (character.teamIDNumber != teamIDNumber)
+                    {
+                        character.TakeDamage(0, explosionSplashDamage, currentDamageAnimation);
+                    }
                 }
             }
         }

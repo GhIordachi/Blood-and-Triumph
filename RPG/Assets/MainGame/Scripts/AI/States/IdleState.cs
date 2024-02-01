@@ -22,14 +22,15 @@ namespace GI {
 
                 if (characterStats != null)
                 {
-                    //Check for team ID
-
-                    Vector3 targetDetection = characterStats.transform.position - transform.position;
-                    float viewableAngle = Vector3.Angle(targetDetection, transform.forward);
-
-                    if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                    if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
                     {
-                        enemyManager.currentTarget = characterStats;
+                        Vector3 targetDetection = characterStats.transform.position - transform.position;
+                        float viewableAngle = Vector3.Angle(targetDetection, transform.forward);
+
+                        if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                        {
+                            enemyManager.currentTarget = characterStats;
+                        }
                     }
                 }
             }

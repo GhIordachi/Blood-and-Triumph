@@ -69,7 +69,6 @@ namespace GI
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
         }
 
-        #region Movement
         Vector3 normalVector;
         Vector3 targetPosition;
 
@@ -199,6 +198,7 @@ namespace GI
                 if(inputHandler.moveAmount > 0)
                 {
                     playerAnimatorManager.PlayTargetAnimation("Rolling", true);
+                    playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
@@ -207,6 +207,7 @@ namespace GI
                 else
                 {
                     playerAnimatorManager.PlayTargetAnimation("StepBack", true);
+                    playerAnimatorManager.EraseHandIKForWeapon();
                     playerStatsManager.TakeStaminaDamage(backStepStaminaCost);
                 }
             }
@@ -250,6 +251,7 @@ namespace GI
                     {
                         Debug.Log("You were in the air for" + inAirTimer);
                         playerAnimatorManager.PlayTargetAnimation("Land", true);
+                        playerAnimatorManager.EraseHandIKForWeapon();
                         inAirTimer = 0;
                     }
                     else
@@ -273,6 +275,7 @@ namespace GI
                     if(playerManager.isInteracting == false)
                     {
                         playerAnimatorManager.PlayTargetAnimation("Falling", true);
+                        playerAnimatorManager.EraseHandIKForWeapon();
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -311,13 +314,12 @@ namespace GI
                     moveDirection += cameraObject.right * inputHandler.horizontal;
                     moveDirection.Normalize();
                     playerAnimatorManager.PlayTargetAnimation("Jump", true);
+                    playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
                 }
             }
         }
-
-        #endregion
     }
 }

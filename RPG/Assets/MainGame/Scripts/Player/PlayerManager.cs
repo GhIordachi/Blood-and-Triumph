@@ -19,8 +19,9 @@ namespace GI
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
@@ -42,6 +43,7 @@ namespace GI
             isUsingLeftHand = animator.GetBool("isUsingLeftHand");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
+            animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
             animator.SetBool("isBlocking", isBlocking);
             animator.SetBool("isInAir", isInAir);
             animator.SetBool("isDead", playerStatsManager.isDead);
@@ -55,8 +57,9 @@ namespace GI
             CheckForInteractableObject();
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             float delta = Time.fixedDeltaTime;
 
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
