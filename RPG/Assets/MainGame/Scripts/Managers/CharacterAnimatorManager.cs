@@ -100,13 +100,19 @@ namespace GI {
         {
             if (isTwoHandingWeapon)
             {
-                rightHandConstraint.data.target = rightHandTarget.transform;
-                rightHandConstraint.data.targetPositionWeight = 1; //Assign this from a weapon variable if you'd like
-                rightHandConstraint.data.targetRotationWeight = 1;
+                if(rightHandTarget != null)
+                {
+                    rightHandConstraint.data.target = rightHandTarget.transform;
+                    rightHandConstraint.data.targetPositionWeight = 1; //Assign this from a weapon variable if you'd like
+                    rightHandConstraint.data.targetRotationWeight = 1;
+                }
 
-                leftHandConstraint.data.target = leftHandTarget.transform;
-                leftHandConstraint.data.targetPositionWeight = 1;
-                leftHandConstraint.data.targetRotationWeight = 1;
+                if(leftHandTarget != null)
+                {
+                    leftHandConstraint.data.target = leftHandTarget.transform;
+                    leftHandConstraint.data.targetPositionWeight = 1;
+                    leftHandConstraint.data.targetRotationWeight = 1;
+                }
             }
             else
             {

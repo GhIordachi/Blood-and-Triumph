@@ -11,7 +11,8 @@ namespace GI
         SpellCaster,
         Unarmed,
         StraightSword,
-        Shield
+        Shield,
+        Bow
     }
 
     public class Enums : MonoBehaviour

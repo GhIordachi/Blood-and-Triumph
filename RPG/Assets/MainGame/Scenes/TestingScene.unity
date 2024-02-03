@@ -63068,7 +63068,7 @@ MonoBehaviour:
     type: 2}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
-  - {fileID: 11400000, guid: fcbc49563f707034cae0b8181f34da79, type: 2}
+  - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
   - {fileID: 11400000, guid: 4018e19f11774264bb89fd4d5306cc0b, type: 2}
   - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
   weaponsInLeftHandSlots:
