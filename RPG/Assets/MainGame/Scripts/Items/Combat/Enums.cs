@@ -12,7 +12,8 @@ namespace GI
         Unarmed,
         StraightSword,
         Shield,
-        Bow
+        Bow,
+        SmallShield
     }
 
     public enum AmmoType

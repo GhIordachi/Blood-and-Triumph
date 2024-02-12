@@ -72,7 +72,7 @@ namespace GI
         Vector3 normalVector;
         Vector3 targetPosition;
 
-        public void HandleRotation(float delta)
+        public void HandleRotation()
         {
             if (playerAnimatorManager.canRotate)
             {
@@ -98,7 +98,7 @@ namespace GI
                                 targetDirection = transform.forward;
 
                             Quaternion tr = Quaternion.LookRotation(targetDirection);
-                            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * delta);
+                            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
 
                             transform.rotation = targetRotation;
                         }
@@ -110,7 +110,7 @@ namespace GI
                             rotationDirection.Normalize();
 
                             Quaternion tr = Quaternion.LookRotation(rotationDirection);
-                            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * delta);
+                            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
                             transform.rotation = targetRotation;
                         }
 
@@ -132,7 +132,7 @@ namespace GI
                         float rs = rotationSpeed;
 
                         Quaternion tr = Quaternion.LookRotation(targetDir);
-                        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * delta);
+                        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * Time.deltaTime);
 
                         myTransform.rotation = targetRotation;
                     }
@@ -141,7 +141,7 @@ namespace GI
             
         }
 
-        public void HandleMovement(float delta)
+        public void HandleMovement()
         {
             if (inputHandler.rollFlag)
                 return;
@@ -190,7 +190,7 @@ namespace GI
             }
         }
 
-        public void HandleRollingAndSprinting(float delta)
+        public void HandleRollingAndSprinting()
         {
             if (playerAnimatorManager.animator.GetBool("isInteracting"))
                 return;
@@ -201,6 +201,8 @@ namespace GI
 
             if(inputHandler.rollFlag)
             {
+                inputHandler.rollFlag = false;
+
                 moveDirection = cameraObject.forward * inputHandler.vertical;
                 moveDirection += cameraObject.right * inputHandler.horizontal;
 
@@ -222,7 +224,7 @@ namespace GI
             }
         }
 
-        public void HandleFalling(float delta,Vector3 moveDirection)
+        public void HandleFalling(Vector3 moveDirection)
         {
             playerManager.isGrounded = false;
             RaycastHit hit;

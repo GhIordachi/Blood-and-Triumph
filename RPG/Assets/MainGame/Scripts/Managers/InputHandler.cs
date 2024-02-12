@@ -17,11 +17,13 @@ namespace GI
         public bool consume_Input;
         public bool y_Input;
 
-        public bool rb_Input;
+        public bool tap_rb_Input;
         public bool hold_rb_Input;
-        public bool rt_Input;
+        public bool tap_rt_Input;
+
         public bool block_Input;
-        public bool parry_Input;
+        public bool tap_lb_Input;
+        public bool tap_lt_Input;
 
         public bool jump_Input;
         public bool inventory_Input;
@@ -81,14 +83,14 @@ namespace GI
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-                inputActions.PlayerActions.RB.performed += i => rb_Input = true;
+                inputActions.PlayerActions.RB.performed += i => tap_rb_Input = true;
                 inputActions.PlayerActions.HoldRB.performed += i => hold_rb_Input = true;
                 inputActions.PlayerActions.HoldRB.canceled += i => hold_rb_Input = false;
-                inputActions.PlayerActions.HoldRB.canceled += i => fireFlag = true;
-                inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+                inputActions.PlayerActions.RT.performed += i => tap_rt_Input = true;
+                inputActions.PlayerActions.TapLB.performed += i => tap_lb_Input = true;
                 inputActions.PlayerActions.Block.performed += i => block_Input = true;
                 inputActions.PlayerActions.Block.canceled += i => block_Input = false;
-                inputActions.PlayerActions.Parry.performed += i => parry_Input = true;
+                inputActions.PlayerActions.Parry.performed += i => tap_lt_Input = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
@@ -112,25 +114,31 @@ namespace GI
             inputActions.Disable();
         }
 
-        public void TickInput(float delta)
+        public void TickInput()
         {
             if(playerStatsManager.isDead) 
                 return;
 
-            HandleMoveInput(delta);
-            HandleRollInput(delta);
-            HandleLBInput();
-            HandleCombatInput(delta);
+            HandleMoveInput();
+            HandleRollInput();
+
+            HandleHoldRBInput();
+            HandleHoldLBInput();
+
+            HandleTapLBInput();
+            HandleTapRBInput();
+            HandleTapRTInput();
+            HandleTapLTInput();
+
             HandleQuickSlotInput();
             HandleInventoryInput();
+
             HandleLockOnInput();
             HandleTwoHandInput();
             HandleUseConsumableInput();
-            HandleHoldRBInput();
-            HandleFireBowInput();
         }
 
-        private void HandleMoveInput(float delta)
+        private void HandleMoveInput()
         {
             if (playerManager.isHoldingArrow)
             {
@@ -150,11 +158,11 @@ namespace GI
             }
         }
 
-        private void HandleRollInput(float delta)
+        private void HandleRollInput()
         {
             if (b_Input)
             {
-                rollInputTimer += delta;
+                rollInputTimer += Time.deltaTime;
                 
                 if(playerStatsManager.currentStamina <= 0)
                 {
@@ -180,33 +188,78 @@ namespace GI
             }
         }
 
-        private void HandleCombatInput(float delta)
+        private void HandleTapRBInput()
         {            
-            //RB Input handles the Right hand weapon's light attack
-            if (rb_Input)
+            if (tap_rb_Input)
             {
-                playerCombatManager.HandleRBAction();
-            }
-            //RT Input handles the Right hand weapon's heavy attack
-            if (rt_Input)
-            {
-                playerCombatManager.HandleRTAction();
-            }
+                tap_rb_Input = false;
 
-            if (parry_Input)
-            {
-                if (twoHandFlag)
+                if (playerInventoryManager.rightWeapon.tap_RB_Action != null)
                 {
-                    //two handing weapon art
-                }
-                else
-                {
-                    playerCombatManager.HandleParryAction();
+                    playerManager.UpdateWhichHandCharacterIsUsing(true);
+                    playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                    playerInventoryManager.rightWeapon.tap_RB_Action.PerformAction(playerManager);
                 }
             }
         }
 
-        private void HandleLBInput()
+        private void HandleHoldRBInput()
+        {
+            if (hold_rb_Input)
+            {
+                if (playerInventoryManager.rightWeapon.hold_RB_Action != null)
+                {
+                    playerManager.UpdateWhichHandCharacterIsUsing(true);
+                    playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                    playerInventoryManager.rightWeapon.hold_RB_Action.PerformAction(playerManager);
+                }
+            }
+        }
+
+        private void HandleTapRTInput()
+        {
+            if (tap_rt_Input)
+            {
+                tap_rt_Input = false;
+
+                if (playerInventoryManager.rightWeapon.tap_RT_Action != null)
+                {
+                    playerManager.UpdateWhichHandCharacterIsUsing(true);
+                    playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                    playerInventoryManager.rightWeapon.tap_RT_Action.PerformAction(playerManager);
+                }
+            }
+        }
+
+        private void HandleTapLTInput()
+        {
+            if (tap_lt_Input)
+            {
+                tap_lt_Input = false;
+
+                if(playerManager.isTwoHandingWeapon)
+                {
+                    //It will be the right handed weapon
+                    if (playerInventoryManager.rightWeapon.tap_LT_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(true);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                        playerInventoryManager.rightWeapon.tap_LT_Action.PerformAction(playerManager);
+                    }
+                }
+                else
+                {
+                    if (playerInventoryManager.leftWeapon.tap_LT_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(false);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.leftWeapon;
+                        playerInventoryManager.leftWeapon.tap_LT_Action.PerformAction(playerManager);
+                    }
+                }
+            }
+        }
+
+        private void HandleHoldLBInput()
         {
             if(playerManager.isInAir ||
                 playerManager.isSprinting ||
@@ -217,8 +270,24 @@ namespace GI
             }
             if (block_Input)
             {
-                //Do a block
-                playerCombatManager.HandleBlockAction();
+                if (playerManager.isTwoHandingWeapon)
+                {
+                    if (playerInventoryManager.rightWeapon.hold_LB_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(true);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                        playerInventoryManager.rightWeapon.hold_LB_Action.PerformAction(playerManager);
+                    }
+                }
+                else
+                {
+                    if (playerInventoryManager.leftWeapon.hold_LB_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(false);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.leftWeapon;
+                        playerInventoryManager.leftWeapon.hold_LB_Action.PerformAction(playerManager);
+                    }
+                }
             }
             else if (block_Input == false)
             {
@@ -233,6 +302,33 @@ namespace GI
                 {
                     playerManager.isBlocking = false;
                     blockingCollider.DisableBlockingCollider();
+                }
+            }
+        }
+
+        private void HandleTapLBInput()
+        {
+            if (tap_lb_Input)
+            {
+                tap_lb_Input = false;
+
+                if (playerManager.isTwoHandingWeapon)
+                {
+                    if (playerInventoryManager.rightWeapon.tap_LB_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(true);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.rightWeapon;
+                        playerInventoryManager.rightWeapon.tap_LB_Action.PerformAction(playerManager);
+                    }
+                }
+                else
+                {
+                    if (playerInventoryManager.leftWeapon.tap_LB_Action != null)
+                    {
+                        playerManager.UpdateWhichHandCharacterIsUsing(false);
+                        playerInventoryManager.currentItemBeingUsed = playerInventoryManager.leftWeapon;
+                        playerInventoryManager.leftWeapon.tap_LB_Action.PerformAction(playerManager);
+                    }
                 }
             }
         }
@@ -330,34 +426,6 @@ namespace GI
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
                     playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
                     playerWeaponSlotManager.LoadTwoHandIKTargets(false);
-                }
-            }
-        }
-
-        private void HandleHoldRBInput()
-        {
-            if(hold_rb_Input)
-            {
-                if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Bow)
-                {
-                    playerCombatManager.HandleHoldRBAction();
-                }
-                else
-                {
-                    hold_rb_Input = false;
-                    playerCombatManager.AttemptBackStabOrRiposte();
-                }
-            }
-        }
-
-        private void HandleFireBowInput()
-        {
-            if(fireFlag)
-            {
-                if(playerManager.isHoldingArrow)
-                {
-                    fireFlag = false;
-                    playerCombatManager.FireArrowAction();
                 }
             }
         }

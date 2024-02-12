@@ -158,5 +158,10 @@ namespace GI {
                 totalPoiseDefence = armorPoiseBonus;
             }
         }
+
+        public void DrainStaminaBasedOnAttackType()
+        {
+
+        }
     }
 }

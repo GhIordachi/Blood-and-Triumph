@@ -102,17 +102,5 @@ namespace GI
             damageCollider.teamIDNumber = playerStatsManager.teamIDNumber;
             LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);            
         }
-
-        public void DrainStaminaLightAttack()
-        {
-            Debug.Log("Light Attack Multiplier: " + attackingWeapon.lightAttackMultiplier);
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
-        }
-
-        public void DrainStaminaHeavyAttack()
-        {
-            Debug.Log("Heavy Attack Multiplier: " + attackingWeapon.heavyAttackMultiplier);
-            playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
-        }
     }
 }

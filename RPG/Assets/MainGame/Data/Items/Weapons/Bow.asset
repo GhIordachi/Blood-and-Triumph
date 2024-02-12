@@ -29,3 +29,11 @@ MonoBehaviour:
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
+  tap_RB_Action: {fileID: 11400000, guid: 7b680a504ddc7d048a7e9f9f55db25ca, type: 2}
+  hold_RB_Action: {fileID: 11400000, guid: 3c8f880a5fa68624da75ebaa06391502, type: 2}
+  tap_LB_Action: {fileID: 0}
+  hold_LB_Action: {fileID: 11400000, guid: 197b4f5fff875cf4988213339b691b42, type: 2}
+  tap_RT_Action: {fileID: 0}
+  hold_RT_Action: {fileID: 0}
+  tap_LT_Action: {fileID: 0}
+  hold_LT_Action: {fileID: 0}

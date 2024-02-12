@@ -7,13 +7,18 @@ namespace GI
 {
     public class PlayerManager : CharacterManager
     { 
-        InputHandler inputHandler;
         Animator animator;
-        CameraHandler cameraHandler;
-        PlayerLocomotionManager playerLocomotion;
-        PlayerStatsManager playerStatsManager;
-        PlayerEffectsManager playerEffectsManager;
-        PlayerAnimatorManager playerAnimatorManager;
+        public CameraHandler cameraHandler;
+
+        public InputHandler inputHandler;
+        public PlayerLocomotionManager playerLocomotion;
+        public PlayerStatsManager playerStatsManager;
+        public PlayerWeaponSlotManager playerWeaponSlotManager;
+        public PlayerCombatManager playerCombatManager;
+        public PlayerInventoryManager playerInventoryManager;
+        public PlayerEffectsManager playerEffectsManager;
+        public PlayerAnimatorManager playerAnimatorManager;
+        public PlayerEquipmentManager playerEquipmentManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -28,19 +33,19 @@ namespace GI
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             animator = GetComponent<Animator>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
         }
 
         void Update()
         {
-            float delta = Time.deltaTime;
-
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
-            isUsingRightHand = animator.GetBool("isUsingRightHand");
-            isUsingLeftHand = animator.GetBool("isUsingLeftHand");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
             isHoldingArrow = animator.GetBool("isHoldingArrow");
@@ -50,8 +55,8 @@ namespace GI
             animator.SetBool("isDead", playerStatsManager.isDead);
             playerAnimatorManager.canRotate = animator.GetBool("canRotate");
 
-            inputHandler.TickInput(delta);            
-            playerLocomotion.HandleRollingAndSprinting(delta);         
+            inputHandler.TickInput();            
+            playerLocomotion.HandleRollingAndSprinting();         
             playerLocomotion.HandleJumping();
             playerStatsManager.RegenerateStamina();
 
@@ -61,26 +66,20 @@ namespace GI
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            float delta = Time.fixedDeltaTime;
 
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleRotation(delta);
+            playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
+            playerLocomotion.HandleMovement();
+            playerLocomotion.HandleRotation();
             playerEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()
         {
-            inputHandler.rollFlag = false;            
-            inputHandler.rb_Input = false;
-            inputHandler.rt_Input = false;
-            inputHandler.parry_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.t_Input = false;
-            inputHandler.jump_Input = false;
             inputHandler.inventory_Input = false;
 
             if (cameraHandler != null)
