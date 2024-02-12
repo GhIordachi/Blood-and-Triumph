@@ -215,19 +215,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
+  targetTransformWhileAiming: {fileID: 0}
   cameraTransform: {fileID: 4850775067310712535}
   cameraPivotTransform: {fileID: 4349894693765571286}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4097
   environmentLayer:
     serializedVersion: 2
-    m_Bits: 2048
-  lookSpeed: 0.05
-  followSpeed: 0.1
-  pivotSpeed: 0.03
-  minimumPivot: -35
-  maximumPivot: 35
+    m_Bits: 1
+  leftAndRightLookSpeed: 400
+  leftAndRightAimingLookSpeed: 40
+  followSpeed: 1
+  upAndDownLookSpeed: 400
+  upAndDownAimingLookSpeed: 40
+  minimumLookUpAngle: -35
+  maximumLookUpAngle: 35
   cameraSphereRadius: 0.2
   cameraCollisionOffSet: 0.2
   minimumCollisionOffSet: 0.2

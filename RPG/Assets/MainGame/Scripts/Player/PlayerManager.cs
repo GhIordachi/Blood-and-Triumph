@@ -43,6 +43,7 @@ namespace GI
             isUsingLeftHand = animator.GetBool("isUsingLeftHand");
             isInvulnerable = animator.GetBool("isInvulnerable");
             isFiringSpell = animator.GetBool("isFiringSpell");
+            isHoldingArrow = animator.GetBool("isHoldingArrow");
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
             animator.SetBool("isBlocking", isBlocking);
             animator.SetBool("isInAir", isInAir);
@@ -82,12 +83,10 @@ namespace GI
             inputHandler.jump_Input = false;
             inputHandler.inventory_Input = false;
 
-            float delta = Time.fixedDeltaTime;
-
             if (cameraHandler != null)
             {
-                cameraHandler.FollowTarget(delta);
-                cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
+                cameraHandler.FollowTarget();
+                cameraHandler.HandleCameraRotation();
             }
 
             if (isInAir)

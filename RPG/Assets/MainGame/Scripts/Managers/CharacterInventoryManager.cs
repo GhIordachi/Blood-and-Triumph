@@ -13,6 +13,7 @@ namespace GI
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
         public ConsumableItem currentConsumable;
+        public RangedAmmoItem currentAmmo;
 
         [Header("Current Equipment")]
         public HelmetEquipment currentHelmetEquipment;

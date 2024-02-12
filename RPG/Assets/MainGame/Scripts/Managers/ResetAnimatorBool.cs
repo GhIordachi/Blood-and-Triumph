@@ -25,6 +25,9 @@ public class ResetAnimatorBool : StateMachineBehaviour
     public string canRotateBool = "canRotate";
     public bool canRotateStatus = true;
 
+    public string isMirroredBool = "isMirrored";
+    public bool isMirroredStatus = false;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(isUsingRightHand, isUsingRightHandStatus);
@@ -34,6 +37,7 @@ public class ResetAnimatorBool : StateMachineBehaviour
         animator.SetBool(isFiringSpellBool, isFiringSpellStatus);
         animator.SetBool(isRotatingWithRootMotion, isRotatingWithRootMotionStatus);
         animator.SetBool(canRotateBool, canRotateStatus);
+        animator.SetBool(isMirroredBool, isMirroredStatus);
     }
 
 }

@@ -16,11 +16,13 @@ namespace GI
         public bool t_Input;
         public bool consume_Input;
         public bool y_Input;
+
         public bool rb_Input;
+        public bool hold_rb_Input;
         public bool rt_Input;
         public bool block_Input;
         public bool parry_Input;
-        public bool critical_Attack_Input;
+
         public bool jump_Input;
         public bool inventory_Input;
         public bool lockOn_Input;
@@ -37,6 +39,7 @@ namespace GI
         public bool sprintFlag;
         public bool comboFlag;
         public bool lockOnFlag;
+        public bool fireFlag;
         public bool inventoryFlag;
         public float rollInputTimer;
 
@@ -52,7 +55,7 @@ namespace GI
         PlayerWeaponSlotManager playerWeaponSlotManager;
         CameraHandler cameraHandler;
         PlayerAnimatorManager playerAnimatorManager;
-        UIManager uiManager;
+        public UIManager uiManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -79,6 +82,9 @@ namespace GI
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 inputActions.PlayerActions.RB.performed += i => rb_Input = true;
+                inputActions.PlayerActions.HoldRB.performed += i => hold_rb_Input = true;
+                inputActions.PlayerActions.HoldRB.canceled += i => hold_rb_Input = false;
+                inputActions.PlayerActions.HoldRB.canceled += i => fireFlag = true;
                 inputActions.PlayerActions.RT.performed += i => rt_Input = true;
                 inputActions.PlayerActions.Block.performed += i => block_Input = true;
                 inputActions.PlayerActions.Block.canceled += i => block_Input = false;
@@ -95,7 +101,6 @@ namespace GI
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => lockOnLeft_Input = true;
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => lockOnRight_Input = true;
                 inputActions.PlayerActions.Y.performed += i => y_Input = true;
-                inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
 
             }
 
@@ -114,23 +119,35 @@ namespace GI
 
             HandleMoveInput(delta);
             HandleRollInput(delta);
+            HandleLBInput();
             HandleCombatInput(delta);
             HandleQuickSlotInput();
             HandleInventoryInput();
             HandleLockOnInput();
             HandleTwoHandInput();
-            HandleCriticalAttackInput();
             HandleUseConsumableInput();
+            HandleHoldRBInput();
+            HandleFireBowInput();
         }
 
         private void HandleMoveInput(float delta)
         {
-            horizontal = movementInput.x;
-            vertical = movementInput.y;
-            moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
-            mouseX = cameraInput.x;
-            mouseY = cameraInput.y;
-
+            if (playerManager.isHoldingArrow)
+            {
+                horizontal = movementInput.x;
+                vertical = movementInput.y;
+                moveAmount = Mathf.Clamp01((Mathf.Abs(horizontal) + Mathf.Abs(vertical)) / 2);
+                mouseX = cameraInput.x;
+                mouseY = cameraInput.y;
+            }
+            else
+            {
+                horizontal = movementInput.x;
+                vertical = movementInput.y;
+                moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+                mouseX = cameraInput.x;
+                mouseY = cameraInput.y;
+            }
         }
 
         private void HandleRollInput(float delta)
@@ -173,7 +190,7 @@ namespace GI
             //RT Input handles the Right hand weapon's heavy attack
             if (rt_Input)
             {
-                playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
+                playerCombatManager.HandleRTAction();
             }
 
             if (parry_Input)
@@ -187,18 +204,34 @@ namespace GI
                     playerCombatManager.HandleParryAction();
                 }
             }
+        }
 
+        private void HandleLBInput()
+        {
+            if(playerManager.isInAir ||
+                playerManager.isSprinting ||
+                playerManager.isFiringSpell)
+            {
+                block_Input = false;
+                return;
+            }
             if (block_Input)
             {
                 //Do a block
                 playerCombatManager.HandleBlockAction();
             }
-            else
+            else if (block_Input == false)
             {
-                playerManager.isBlocking = false;
-
-                if(blockingCollider.blockingCollider.enabled)
+                if(playerManager.isAiming)
                 {
+                    playerManager.isAiming = false;
+                    uiManager.crossHair.SetActive(false);
+                    cameraHandler.ResetAimCameraRotations();
+                }
+
+                if (blockingCollider.blockingCollider.enabled)
+                {
+                    playerManager.isBlocking = false;
                     blockingCollider.DisableBlockingCollider();
                 }
             }
@@ -301,12 +334,31 @@ namespace GI
             }
         }
 
-        private void HandleCriticalAttackInput()
+        private void HandleHoldRBInput()
         {
-            if(critical_Attack_Input)
+            if(hold_rb_Input)
             {
-                critical_Attack_Input = false;
-                playerCombatManager.AttemptBackStabOrRiposte();
+                if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Bow)
+                {
+                    playerCombatManager.HandleHoldRBAction();
+                }
+                else
+                {
+                    hold_rb_Input = false;
+                    playerCombatManager.AttemptBackStabOrRiposte();
+                }
+            }
+        }
+
+        private void HandleFireBowInput()
+        {
+            if(fireFlag)
+            {
+                if(playerManager.isHoldingArrow)
+                {
+                    fireFlag = false;
+                    playerCombatManager.FireArrowAction();
+                }
             }
         }
 

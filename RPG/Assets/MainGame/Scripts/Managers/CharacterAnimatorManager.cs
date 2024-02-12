@@ -24,11 +24,12 @@ namespace GI {
             rigBuilder = GetComponent<RigBuilder>();
         }
 
-        public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false)
+        public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false, bool mirrorAnim = false)
         {
             animator.applyRootMotion = isInteracting;
             animator.SetBool("canRotate", canRotate);
             animator.SetBool("isInteracting", isInteracting);
+            animator.SetBool("isMirrored", mirrorAnim);
             animator.CrossFade(targetAnim, 0.2f);
         }
 

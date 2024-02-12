@@ -198,6 +198,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Hold RB"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""afe0bf0a-896d-42d0-a918-b79a74100e4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""RT"",
                     ""type"": ""Button"",
                     ""id"": ""442a70ae-4aae-4a4a-89d6-e7192083b7b5"",
@@ -210,15 +219,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Parry"",
                     ""type"": ""Button"",
                     ""id"": ""08c9e9a9-353d-4354-b043-6adc336495bc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Critical Attack"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""6b968342-d12b-44c7-976b-3eea0d09e6b1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -381,17 +381,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dc7b9212-3214-4eac-8de5-6687fe7c793f"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Hold(duration=0.2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Critical Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""2cea2b4f-e4cd-40c2-bb2c-9d652e925fdc"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
@@ -420,6 +409,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cbe423e-5ca2-4d44-9156-d075f3608553"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hold RB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -571,9 +571,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Roll = m_PlayerActions.FindAction("Roll", throwIfNotFound: true);
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
+        m_PlayerActions_HoldRB = m_PlayerActions.FindAction("Hold RB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
         m_PlayerActions_Parry = m_PlayerActions.FindAction("Parry", throwIfNotFound: true);
-        m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("Critical Attack", throwIfNotFound: true);
         m_PlayerActions_PickUpItem = m_PlayerActions.FindAction("Pick Up Item", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
@@ -720,9 +720,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Roll;
     private readonly InputAction m_PlayerActions_LockOn;
     private readonly InputAction m_PlayerActions_RB;
+    private readonly InputAction m_PlayerActions_HoldRB;
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_Parry;
-    private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_PickUpItem;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Inventory;
@@ -736,9 +736,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_PlayerActions_Roll;
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
+        public InputAction @HoldRB => m_Wrapper.m_PlayerActions_HoldRB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @Parry => m_Wrapper.m_PlayerActions_Parry;
-        public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @PickUpItem => m_Wrapper.m_PlayerActions_PickUpItem;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
@@ -763,15 +763,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started += instance.OnRB;
             @RB.performed += instance.OnRB;
             @RB.canceled += instance.OnRB;
+            @HoldRB.started += instance.OnHoldRB;
+            @HoldRB.performed += instance.OnHoldRB;
+            @HoldRB.canceled += instance.OnHoldRB;
             @RT.started += instance.OnRT;
             @RT.performed += instance.OnRT;
             @RT.canceled += instance.OnRT;
             @Parry.started += instance.OnParry;
             @Parry.performed += instance.OnParry;
             @Parry.canceled += instance.OnParry;
-            @CriticalAttack.started += instance.OnCriticalAttack;
-            @CriticalAttack.performed += instance.OnCriticalAttack;
-            @CriticalAttack.canceled += instance.OnCriticalAttack;
             @PickUpItem.started += instance.OnPickUpItem;
             @PickUpItem.performed += instance.OnPickUpItem;
             @PickUpItem.canceled += instance.OnPickUpItem;
@@ -803,15 +803,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started -= instance.OnRB;
             @RB.performed -= instance.OnRB;
             @RB.canceled -= instance.OnRB;
+            @HoldRB.started -= instance.OnHoldRB;
+            @HoldRB.performed -= instance.OnHoldRB;
+            @HoldRB.canceled -= instance.OnHoldRB;
             @RT.started -= instance.OnRT;
             @RT.performed -= instance.OnRT;
             @RT.canceled -= instance.OnRT;
             @Parry.started -= instance.OnParry;
             @Parry.performed -= instance.OnParry;
             @Parry.canceled -= instance.OnParry;
-            @CriticalAttack.started -= instance.OnCriticalAttack;
-            @CriticalAttack.performed -= instance.OnCriticalAttack;
-            @CriticalAttack.canceled -= instance.OnCriticalAttack;
             @PickUpItem.started -= instance.OnPickUpItem;
             @PickUpItem.performed -= instance.OnPickUpItem;
             @PickUpItem.canceled -= instance.OnPickUpItem;
@@ -929,9 +929,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
+        void OnHoldRB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
-        void OnCriticalAttack(InputAction.CallbackContext context);
         void OnPickUpItem(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);

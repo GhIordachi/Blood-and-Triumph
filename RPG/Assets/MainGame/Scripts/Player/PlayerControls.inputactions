@@ -176,6 +176,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Hold RB",
+                    "type": "PassThrough",
+                    "id": "afe0bf0a-896d-42d0-a918-b79a74100e4a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "RT",
                     "type": "Button",
                     "id": "442a70ae-4aae-4a4a-89d6-e7192083b7b5",
@@ -188,15 +197,6 @@
                     "name": "Parry",
                     "type": "Button",
                     "id": "08c9e9a9-353d-4354-b043-6adc336495bc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Critical Attack",
-                    "type": "PassThrough",
-                    "id": "6b968342-d12b-44c7-976b-3eea0d09e6b1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -359,17 +359,6 @@
                 },
                 {
                     "name": "",
-                    "id": "dc7b9212-3214-4eac-8de5-6687fe7c793f",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Hold(duration=0.2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Critical Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2cea2b4f-e4cd-40c2-bb2c-9d652e925fdc",
                     "path": "<Keyboard>/z",
                     "interactions": "",
@@ -398,6 +387,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Consume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cbe423e-5ca2-4d44-9156-d075f3608553",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold RB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

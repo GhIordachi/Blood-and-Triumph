@@ -9,10 +9,12 @@ namespace GI
         InputHandler inputHandler;
         PlayerManager playerManager;
 
-        public Transform targetTransform;
+        public Transform targetTransform; //The transform the camera follows (The player)
+        public Transform targetTransformWhileAiming; //The transform the camera follows while aiming
         public Transform cameraTransform;
+        public Camera cameraObject;
         public Transform cameraPivotTransform;
-        private Transform myTransform;
+
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
         public LayerMask environmentLayer;
@@ -20,16 +22,20 @@ namespace GI
 
         public static CameraHandler singleton;
 
-        public float lookSpeed = 0.1f;
-        public float followSpeed = 0.1f;
-        public float pivotSpeed = 0.03f;
+        public float leftAndRightLookSpeed = 500f;
+        public float leftAndRightAimingLookSpeed = 40f;
+        public float followSpeed = 1f;
+        public float upAndDownLookSpeed = 400f;
+        public float upAndDownAimingLookSpeed = 40f;
 
         private float targetPosition;
         private float defaultPosition;
-        private float lookAngle;
-        private float pivotAngle;
-        public float minimumPivot = -35;
-        public float maximumPivot = 35;
+
+        private float leftAndRightAngle;
+        private float upAndDownAngle;
+
+        public float minimumLookUpAngle = -35;
+        public float maximumLookUpAngle = 35;
 
         public float cameraSphereRadius = 0.2f;
         public float cameraCollisionOffSet = 0.2f;
@@ -47,13 +53,11 @@ namespace GI
 
         private void Awake()
         {
-            singleton = this;
-            myTransform = transform;
             defaultPosition = cameraTransform.localPosition.z;
-            //ignoreLayers = ~(1 << 8 | 1 << 9 |  1 << 10);
             targetTransform = FindObjectOfType<PlayerManager>().transform;
             inputHandler = FindObjectOfType<InputHandler>();
             playerManager = FindObjectOfType<PlayerManager>();
+            cameraObject = GetComponentInChildren<Camera>();
         }
 
         private void Start()
@@ -61,57 +65,108 @@ namespace GI
             environmentLayer = LayerMask.NameToLayer("Environment");
         }
 
-        public void FollowTarget(float delta)
+        //Follow the Player
+        public void FollowTarget()
         {
-            Vector3 targetPosition = Vector3.SmoothDamp
-                (myTransform.position,targetTransform.position, ref cameraFollowVelocity,delta / followSpeed);
-            myTransform.position = targetPosition;
-
-            HandleCameraCollisions(delta);
-        }
-
-        public void HandleCameraRotation(float delta,float mouseXInput,float mouseYInput)
-        {
-            if(inputHandler.lockOnFlag == false && currentLockOnTarget == null)
+            if (playerManager.isAiming)
             {
-                lookAngle += mouseXInput * lookSpeed * delta;
-                pivotAngle -= mouseYInput * pivotSpeed * delta;
-                pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot, maximumPivot);
-
-                Vector3 rotation = Vector3.zero;
-                rotation.y = lookAngle;
-                Quaternion targetRotation = Quaternion.Euler(rotation);
-                myTransform.rotation = targetRotation;
-
-                rotation = Vector3.zero;
-                rotation.x = pivotAngle;
-
-                targetRotation = Quaternion.Euler(rotation);
-                cameraPivotTransform.localRotation = targetRotation;
+                Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransformWhileAiming.position, ref cameraFollowVelocity, Time.deltaTime * followSpeed);
+                transform.position = targetPosition;
             }
             else
             {
-                //float velocity = 0f;
-
-                Vector3 dir = currentLockOnTarget.transform.position - transform.position;
-                dir.Normalize();
-                dir.y = 0;
-
-                Quaternion targetRotation = Quaternion.LookRotation(dir);
-                transform.rotation = targetRotation;
-
-                dir = currentLockOnTarget.transform.position - cameraPivotTransform.position; 
-                dir.Normalize();
-
-                targetRotation = Quaternion.LookRotation(dir);
-                Vector3 eulerAngle = targetRotation.eulerAngles;
-                eulerAngle.y = 0;
-                cameraPivotTransform.localEulerAngles = eulerAngle;
+                Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransform.position, ref cameraFollowVelocity, Time.deltaTime * followSpeed);
+                transform.position = targetPosition;
             }
-            
+
+            HandleCameraCollisions();
         }
 
-        private void HandleCameraCollisions(float delta)
+        //Rotate the Camera
+        public void HandleCameraRotation()
+        {
+            if(inputHandler.lockOnFlag && currentLockOnTarget != null)
+            {
+                HandleLockedCameraRotation();
+            }
+            else if (playerManager.isAiming)
+            {
+                HandleAimedCameraRotation();
+            }
+            else
+            {
+                HandleStandardCameraRotation();
+            }
+        }
+
+        public void HandleStandardCameraRotation()
+        {
+            leftAndRightAngle += inputHandler.mouseX * leftAndRightLookSpeed * Time.deltaTime;
+            upAndDownAngle -= inputHandler.mouseY * upAndDownLookSpeed * Time.deltaTime;
+            upAndDownAngle = Mathf.Clamp(upAndDownAngle, minimumLookUpAngle, maximumLookUpAngle);
+
+            Vector3 rotation = Vector3.zero;
+            rotation.y = leftAndRightAngle;
+            Quaternion targetRotation = Quaternion.Euler(rotation);
+            transform.rotation = targetRotation;
+
+            rotation = Vector3.zero;
+            rotation.x = upAndDownAngle;
+
+            targetRotation = Quaternion.Euler(rotation);
+            cameraPivotTransform.localRotation = targetRotation;
+        }
+
+        private void HandleLockedCameraRotation()
+        {
+            Vector3 dir = currentLockOnTarget.transform.position - transform.position;
+            dir.Normalize();
+            dir.y = 0;
+
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
+            transform.rotation = targetRotation;
+
+            dir = currentLockOnTarget.transform.position - cameraPivotTransform.position;
+            dir.Normalize();
+
+            targetRotation = Quaternion.LookRotation(dir);
+            Vector3 eulerAngle = targetRotation.eulerAngles;
+            eulerAngle.y = 0;
+            cameraPivotTransform.localEulerAngles = eulerAngle;
+        }
+
+        private void HandleAimedCameraRotation()
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+            cameraPivotTransform.rotation = Quaternion.Euler(0,0,0);
+
+            Quaternion targetRotationX;
+            Quaternion targetRotationY;
+
+            Vector3 cameraRotationX = Vector3.zero;
+            Vector3 cameraRotationY = Vector3.zero;
+
+            leftAndRightAngle += (inputHandler.mouseX * leftAndRightAimingLookSpeed) * Time.deltaTime;
+            upAndDownAngle -= (inputHandler.mouseY * upAndDownAimingLookSpeed) * Time.deltaTime;
+
+            cameraRotationY.y = leftAndRightAngle;
+            targetRotationY = Quaternion.Euler(cameraRotationY);
+            targetRotationY = Quaternion.Slerp(transform.rotation, targetRotationY, 1);
+            transform.localRotation = targetRotationY;
+
+            cameraRotationX.x = upAndDownAngle;
+            targetRotationX = Quaternion.Euler(cameraRotationX);
+            targetRotationX = Quaternion.Slerp(cameraTransform.localRotation, targetRotationX, 1);
+            cameraTransform.localRotation = targetRotationX;
+        }
+
+        public void ResetAimCameraRotations()
+        {
+            cameraTransform.localRotation = Quaternion.Euler(0,0,0);
+        }
+
+        //Handle Collisions
+        private void HandleCameraCollisions()
         {
             targetPosition = defaultPosition;
             RaycastHit hit;
@@ -130,10 +185,11 @@ namespace GI
                 targetPosition = -minimumCollisionOffSet;
             }
 
-            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, Time.deltaTime / 0.2f);
             cameraTransform.localPosition = cameraTransformPosition;
         }
 
+        //Handle Lock On
         public void HandleLockOn()
         {
             float shortestDistance = Mathf.Infinity;

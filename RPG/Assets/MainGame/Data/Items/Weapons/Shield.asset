@@ -17,7 +17,7 @@ MonoBehaviour:
   modelPrefab: {fileID: 1385898743171034099, guid: 210cc8e056a8bcc418304328cecef9b4,
     type: 3}
   isUnarmed: 0
-  weaponController: {fileID: 0}
+  weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 5
   physicalDamage: 0
