@@ -8,8 +8,9 @@ namespace GI
     public class PlayerManager : CharacterManager
     { 
         Animator animator;
-        public CameraHandler cameraHandler;
 
+        public CameraHandler cameraHandler;
+        public UIManager UIManager;
         public InputHandler inputHandler;
         public PlayerLocomotionManager playerLocomotion;
         public PlayerStatsManager playerStatsManager;
@@ -28,6 +29,7 @@ namespace GI
         {
             base.Awake();
             cameraHandler = FindObjectOfType<CameraHandler>();
+            UIManager = FindObjectOfType<UIManager>();
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();

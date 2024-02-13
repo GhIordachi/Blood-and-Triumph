@@ -28,12 +28,6 @@ namespace GI {
             }
         }
 
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHealth = healthLevel * 10;
-            return maxHealth;
-        }
-
         public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
             if (isDead)

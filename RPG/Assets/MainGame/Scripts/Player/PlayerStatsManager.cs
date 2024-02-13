@@ -53,24 +53,6 @@ namespace GI {
             }
         }
 
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHealth = healthLevel * 10;
-            return maxHealth;
-        }
-
-        private float SetMaxStaminaFromStaminaLevel()
-        {
-            maxStamina = staminaLevel * 10;
-            return maxStamina;
-        }
-
-        private float SetMaxFocusPointsFromFocusLevel()
-        {
-            maxFocusPoints = focusLevel * 10;
-            return maxFocusPoints;
-        }
-
         public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
             if (playerManager.isInvulnerable)
@@ -165,7 +147,7 @@ namespace GI {
 
         public void AddSouls(int souls)
         {
-            soulCount = soulCount + souls;
+            currentSoulCount = currentSoulCount + souls;
         }
     }
 }
