@@ -5,95 +5,88 @@ using UnityEngine;
 namespace GI {
     public class EquipmentWindowUI : MonoBehaviour
     {
-        public bool rightHandSlot01Selected;
-        public bool rightHandSlot02Selected;
-        public bool rightHandSlot03Selected;
-        public bool rightHandSlot04Selected;
-        public bool leftHandSlot01Selected;
-        public bool leftHandSlot02Selected;
-        public bool leftHandSlot03Selected;
-        public bool leftHandSlot04Selected;
-
-        public HandEquipmentSlotUI[] handEquipmentSlotUI;
+        public WeaponEquipmentSlotUI[] weaponEquipmentSlotUI;
+        public HeadEquipmentSlotUI headEquipmentSlotUI;
+        public BodyEquipmentSlotUI bodyEquipmentSlotUI;
+        public LegEquipmentSlotUI legEquipmentSlotUI;
+        public HandEquipmentSlotUI handEquipmentSlotUI;
 
         public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventory)
         {
-            for (int i = 0; i < handEquipmentSlotUI.Length; i++)
+            for (int i = 0; i < weaponEquipmentSlotUI.Length; i++)
             {
-                if (handEquipmentSlotUI[i].rightHandSlot01)
+                if (weaponEquipmentSlotUI[i].rightHandSlot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[0]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[0]);
                 }
-                else if (handEquipmentSlotUI[i].rightHandSlot02)
+                else if (weaponEquipmentSlotUI[i].rightHandSlot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
                 }
-                else if (handEquipmentSlotUI[i].rightHandSlot03)
+                else if (weaponEquipmentSlotUI[i].rightHandSlot03)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[2]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[2]);
                 }
-                else if (handEquipmentSlotUI[i].rightHandSlot04)
+                else if (weaponEquipmentSlotUI[i].rightHandSlot04)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[3]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[3]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot01)
+                else if (weaponEquipmentSlotUI[i].leftHandSlot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot02)
+                else if (weaponEquipmentSlotUI[i].leftHandSlot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot03)
+                else if (weaponEquipmentSlotUI[i].leftHandSlot03)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[2]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[2]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot04)
+                else if (weaponEquipmentSlotUI[i].leftHandSlot04)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[3]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[3]);
                 }
             }
         }
 
-        public void SelectRightHandSlot01()
+        public void LoadArmorOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {
-            rightHandSlot01Selected = true;
-        }
+            if(playerInventoryManager.currentHelmetEquipment != null)
+            {
+                headEquipmentSlotUI.AddItem(playerInventoryManager.currentHelmetEquipment);
+            }
+            else
+            {
+                headEquipmentSlotUI.ClearItem();
+            }
 
-        public void SelectRightHandSlot02()
-        {
-            rightHandSlot02Selected = true;
-        }
+            if (playerInventoryManager.currentBodyEquipment != null)
+            {
+                bodyEquipmentSlotUI.AddItem(playerInventoryManager.currentBodyEquipment);
+            }
+            else
+            {
+                bodyEquipmentSlotUI.ClearItem();
+            }
 
-        public void SelectRightHandSlot03()
-        {
-            rightHandSlot03Selected = true;
-        }
+            if (playerInventoryManager.currentLegEquipment != null)
+            {
+                legEquipmentSlotUI.AddItem(playerInventoryManager.currentLegEquipment);
+            }
+            else
+            {
+                legEquipmentSlotUI.ClearItem();
+            }
 
-        public void SelectRightHandSlot04()
-        {
-            rightHandSlot01Selected = true;
+            if (playerInventoryManager.currentHandEquipment != null)
+            {
+                handEquipmentSlotUI.AddItem(playerInventoryManager.currentHandEquipment);
+            }
+            else
+            {
+                handEquipmentSlotUI.ClearItem();
+            }
         }
-
-        public void SelectLeftHandSlot01()
-        {
-            leftHandSlot01Selected = true;
-        }
-
-        public void SelectLeftHandSlot02()
-        {
-            leftHandSlot02Selected = true;
-        }
-
-        public void SelectLeftHandSlot03()
-        {
-            leftHandSlot03Selected = true;
-        }
-
-        public void SelectLeftHandSlot04()
-        {
-            leftHandSlot04Selected = true;
-        }
-
     }
 }

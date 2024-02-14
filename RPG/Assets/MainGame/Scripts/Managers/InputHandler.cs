@@ -329,7 +329,11 @@ namespace GI
         }
 
         private void HandleInventoryInput()
-        {            
+        {
+            if (inventoryFlag)
+            {
+                player.UIManager.UpdateUI();
+            }
             if (inventory_Input)
             {
                 inventoryFlag = !inventoryFlag;

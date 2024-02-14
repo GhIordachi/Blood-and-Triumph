@@ -20,7 +20,7 @@ namespace GI
 
         [Header("Current Equipment")]
         public HelmetEquipment currentHelmetEquipment;
-        public TorsoEquipment currentTorsoEquipment;
+        public BodyEquipment currentBodyEquipment;
         public LegEquipment currentLegEquipment;
         public HandEquipment currentHandEquipment;
 

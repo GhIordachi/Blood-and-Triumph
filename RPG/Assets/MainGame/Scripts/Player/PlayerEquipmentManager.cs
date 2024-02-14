@@ -62,7 +62,7 @@ namespace GI
             EquipAllEquipmentModelsOnStart();
         }
 
-        private void EquipAllEquipmentModelsOnStart()
+        public void EquipAllEquipmentModelsOnStart()
         {
             //Helmet Equipment
             if (helmetModelChanger != null)
@@ -87,13 +87,13 @@ namespace GI
                 torsoModelChanger.UnEquipAllTorsoModels();
                 upperLeftArmModelChanger.UnEquipAllArmModels();
                 upperRightArmModelChanger.UnEquipAllArmModels();
-                if(player.playerInventoryManager.currentTorsoEquipment != null)
+                if(player.playerInventoryManager.currentBodyEquipment != null)
                 {
-                    torsoModelChanger.EquipTorsoModelByName(player.playerInventoryManager.currentTorsoEquipment.torsoModelName);
-                    upperLeftArmModelChanger.EquipArmModelByName(player.playerInventoryManager.currentTorsoEquipment.upperLeftArmModelName);
-                    upperRightArmModelChanger.EquipArmModelByName(player.playerInventoryManager.currentTorsoEquipment.upperRightArmModelName);
-                    player.playerStatsManager.physicalDamageAbsorptionBody = player.playerInventoryManager.currentTorsoEquipment.physicalDefense;
-                    player.playerStatsManager.fireDamageAbsorptionBody = player.playerInventoryManager.currentTorsoEquipment.fireDefense;
+                    torsoModelChanger.EquipTorsoModelByName(player.playerInventoryManager.currentBodyEquipment.torsoModelName);
+                    upperLeftArmModelChanger.EquipArmModelByName(player.playerInventoryManager.currentBodyEquipment.upperLeftArmModelName);
+                    upperRightArmModelChanger.EquipArmModelByName(player.playerInventoryManager.currentBodyEquipment.upperRightArmModelName);
+                    player.playerStatsManager.physicalDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.physicalDefense;
+                    player.playerStatsManager.fireDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.fireDefense;
                 }
                 else
                 {

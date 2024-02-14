@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GI
 {
     [CreateAssetMenu(menuName = "Items/Equipment/Torso Equipment")]
-    public class TorsoEquipment : EquipmentItem
+    public class BodyEquipment : EquipmentItem
     {
         public string torsoModelName;
         public string upperLeftArmModelName;

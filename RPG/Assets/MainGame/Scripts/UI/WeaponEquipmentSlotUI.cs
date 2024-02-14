@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace GI {
-    public class HandEquipmentSlotUI : MonoBehaviour
+    public class WeaponEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
         public Image icon;
