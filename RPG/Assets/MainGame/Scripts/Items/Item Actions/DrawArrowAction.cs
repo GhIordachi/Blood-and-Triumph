@@ -16,7 +16,7 @@ namespace GI
                 return;
 
             //Animate Player
-            player.playerAnimatorManager.animator.SetBool("isHoldingArrow", true);
+            player.animator.SetBool("isHoldingArrow", true);
             player.playerAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01", true);
             //Instantiate Arrow
             GameObject loadedArrow = Instantiate(player.playerInventoryManager.currentAmmo.loadedItemModel, player.playerWeaponSlotManager.leftHandSlot.transform);

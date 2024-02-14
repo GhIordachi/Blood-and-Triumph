@@ -5,11 +5,11 @@ using UnityEngine;
 namespace GI {
     public class PlayerStatsManager : CharacterStatsManager
     {
-        PlayerManager playerManager;
+        PlayerManager player;
+
         public HealthBar healthBar;
-        StaminaBar staminaBar;
-        FocusPointBar focusPointBar;
-        PlayerAnimatorManager playerAnimatorManager;
+        public StaminaBar staminaBar;
+        public FocusPointBar focusPointBar;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
@@ -17,10 +17,9 @@ namespace GI {
         protected override void Awake()
         {
             base.Awake();
-            playerManager = GetComponent<PlayerManager>();
+            player = GetComponent<PlayerManager>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
-            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         }
 
         void Start()
@@ -47,7 +46,7 @@ namespace GI {
             {
                 poiseResetTimer = poiseResetTimer - Time.deltaTime;
             }
-            else if (poiseResetTimer <= 0 && !playerManager.isInteracting) 
+            else if (poiseResetTimer <= 0 && !player.isInteracting) 
             {
                 totalPoiseDefence = armorPoiseBonus;
             }
@@ -55,27 +54,27 @@ namespace GI {
 
         public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
         {
-            if (playerManager.isInvulnerable)
+            if (player.isInvulnerable)
                 return;
 
-            if(isDead) 
+            if(player.isDead) 
                 return;
 
             base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
             healthBar.SetCurrentHealth(currentHealth);
-            playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            player.playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
-                playerAnimatorManager.PlayTargetAnimation("Death_01", true);
+                player.isDead = true;
+                player.playerAnimatorManager.PlayTargetAnimation("Death_01", true);
             }
         }
 
         public override void TakePoisonDamage(int damage)
         {
-            if (isDead)
+            if (player.isDead)
                 return;
 
             base.TakePoisonDamage(damage);
@@ -84,14 +83,14 @@ namespace GI {
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
-                playerAnimatorManager.PlayTargetAnimation("Death_01", true);
+                player.isDead = true;
+                player.playerAnimatorManager.PlayTargetAnimation("Death_01", true);
             }
         }
 
         public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            if (isDead)
+            if (player.isDead)
                 return;
 
             base.TakeDamageNoAnimation(physicalDamage, fireDamage);
@@ -106,7 +105,7 @@ namespace GI {
 
         public void RegenerateStamina()
         {
-            if(playerManager.isInteracting)
+            if(player.isInteracting)
             {
                 staminaRegenTimer = 0;
             }

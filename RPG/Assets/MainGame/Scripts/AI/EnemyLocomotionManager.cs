@@ -6,8 +6,7 @@ using UnityEngine.AI;
 namespace GI {
     public class EnemyLocomotionManager : MonoBehaviour
     {
-        EnemyManager enemyManager;
-        EnemyAnimatorManager enemyAnimatorManager;
+        EnemyManager enemy;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -16,8 +15,7 @@ namespace GI {
 
         private void Awake()
         {
-            enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();            
+            enemy = GetComponent<EnemyManager>();           
         }
 
         private void Start()

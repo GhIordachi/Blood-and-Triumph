@@ -9,8 +9,7 @@ namespace GI
         public string bossName;
 
         UIBossHealthBar bossHealthBar;
-        EnemyStatsManager enemyStats;
-        EnemyAnimatorManager enemyAnimatorManager;
+        EnemyManager enemy;
         BossCombatStanceState bossCombatStanceState;
 
         [Header("Second Phase FX")]
@@ -19,15 +18,14 @@ namespace GI
         private void Awake()
         {
             bossHealthBar = FindAnyObjectByType<UIBossHealthBar>();
-            enemyStats = GetComponent<EnemyStatsManager>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemy = GetComponent<EnemyManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 
         private void Start()
         {
             bossHealthBar.SetBossName(bossName);
-            bossHealthBar.SetBossMaxHealth(enemyStats.maxHealth);
+            bossHealthBar.SetBossMaxHealth(enemy.enemyStatsManager.maxHealth);
         }
 
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)
@@ -44,9 +42,9 @@ namespace GI
         public void ShiftToSecondPhase()
         {
             //Play an animation /w an event that triggers particle fx/weapon fx
-            enemyAnimatorManager.animator.SetBool("isInvulnerable", true);
-            enemyAnimatorManager.animator.SetBool("isPhaseShifting", true);
-            enemyAnimatorManager.PlayTargetAnimation("Phase Shift", true);
+            enemy.animator.SetBool("isInvulnerable", true);
+            enemy.animator.SetBool("isPhaseShifting", true);
+            enemy.enemyAnimatorManager.PlayTargetAnimation("Phase Shift", true);
             //switch attack actions
             bossCombatStanceState.hasPhaseShifted = true;
         }

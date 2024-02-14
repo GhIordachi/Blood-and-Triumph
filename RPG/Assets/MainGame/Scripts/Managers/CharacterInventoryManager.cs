@@ -27,8 +27,8 @@ namespace GI
         public WeaponItem[] weaponsInRightHandSlots = new WeaponItem[3];
         public WeaponItem[] weaponsInLeftHandSlots = new WeaponItem[3];
 
-        public int currentRightWeaponIndex = -1;
-        public int currentLeftWeaponIndex = -1;
+        public int currentRightWeaponIndex = 0;
+        public int currentLeftWeaponIndex = 0;
 
         private void Awake()
         {

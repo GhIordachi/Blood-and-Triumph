@@ -8,13 +8,13 @@ namespace GI {
         public PursueTargetState pursueTargetState;
         public LayerMask detectionLayer;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemy)
         {
             //Look for a potential target
             //Switch to the pursue target stateif target is found
             //if not return this state
             #region Handle Enemy Target Detection
-            Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, enemy.detectionRadius, detectionLayer);
 
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -22,14 +22,14 @@ namespace GI {
 
                 if (characterStats != null)
                 {
-                    if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
+                    if (characterStats.teamIDNumber != enemy.enemyStatsManager.teamIDNumber)
                     {
                         Vector3 targetDetection = characterStats.transform.position - transform.position;
                         float viewableAngle = Vector3.Angle(targetDetection, transform.forward);
 
-                        if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                        if (viewableAngle > enemy.minimumDetectionAngle && viewableAngle < enemy.maximumDetectionAngle)
                         {
-                            enemyManager.currentTarget = characterStats;
+                            enemy.currentTarget = characterStats;
                         }
                     }
                 }
@@ -37,7 +37,7 @@ namespace GI {
             #endregion
 
             #region Handle Switching To Next State
-            if (enemyManager.currentTarget != null)
+            if (enemy.currentTarget != null)
             {
                 return pursueTargetState;
             }

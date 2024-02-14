@@ -6,7 +6,7 @@ namespace GI
 {
     public class CharacterEffectsManager : MonoBehaviour
     {
-        CharacterStatsManager characterStatsManager;
+        CharacterManager character;
 
         [Header("Current Range FX")]
         public GameObject currentRangeFX;
@@ -32,7 +32,7 @@ namespace GI
 
         protected virtual void Awake()
         {
-            characterStatsManager = GetComponent<CharacterStatsManager>();
+            character = GetComponent<CharacterManager>();
         }
 
         public virtual void PlayWeaponFX(bool isLeft)
@@ -60,7 +60,7 @@ namespace GI
 
         public virtual void HandleAllBuildUpEffects()
         {
-            if(characterStatsManager.isDead) 
+            if(character.isDead) 
                 return;
 
             HandlePoisonBuildUp();
@@ -87,7 +87,7 @@ namespace GI
                 }
                 else
                 {
-                    currentPoisonParticleFX = Instantiate(defaultPoisonParticleFX, characterStatsManager.transform);
+                    currentPoisonParticleFX = Instantiate(defaultPoisonParticleFX, character.transform);
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace GI
 
                     if(timer >= poisonTimer)
                     {
-                        characterStatsManager.TakePoisonDamage(poisonDamage);
+                        character.characterStatsManager.TakePoisonDamage(poisonDamage);
                         timer = 0;
                     }
                     poisonAmount = poisonAmount - 1 * Time.deltaTime;

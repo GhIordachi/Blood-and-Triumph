@@ -21,7 +21,7 @@ namespace GI
 
             //Reset the players holding arrow flag
             player.playerAnimatorManager.PlayTargetAnimation("Bow_TH_Fire_01", true);
-            player.playerAnimatorManager.animator.SetBool("isHoldingArrow", false);
+            player.animator.SetBool("isHoldingArrow", false);
 
             //Create and fire the live arrow
             GameObject liveArrow = Instantiate(player.playerInventoryManager.currentAmmo.liveAmmoModel, arrowInstantiationLocation.transform.position, player.cameraHandler.cameraPivotTransform.rotation);

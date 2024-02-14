@@ -12,7 +12,7 @@ namespace GI
             if (player.isAiming)
                 return;
 
-            player.inputHandler.uiManager.crossHair.SetActive(true);
+            player.UIManager.crossHair.SetActive(true);
             player.isAiming = true;
         }
     }

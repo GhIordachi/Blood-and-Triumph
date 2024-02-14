@@ -7,17 +7,14 @@ namespace GI
 {
     public class PlayerAnimatorManager : CharacterAnimatorManager
     {
-        InputHandler inputHandler;
-        PlayerLocomotionManager playerLocomotionManager;
+        PlayerManager player;
         int vertical;
         int horizontal;
 
         protected override void Awake()
         {
             base.Awake();
-            inputHandler = GetComponent<InputHandler>();
-            animator = GetComponentInChildren<Animator>();
-            playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+            player = GetComponent<PlayerManager>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
         }
@@ -80,35 +77,35 @@ namespace GI
                 h = horizontalMovement;
             }
 
-            animator.SetFloat(vertical,v,0.1f,Time.fixedDeltaTime);
-            animator.SetFloat(horizontal,h,0.1f,Time.fixedDeltaTime);
+            player.animator.SetFloat(vertical,v,0.1f,Time.fixedDeltaTime);
+            player.animator.SetFloat(horizontal,h,0.1f,Time.fixedDeltaTime);
         }       
 
         public void DisableCollision()
         {
-            playerLocomotionManager.characterCollider.enabled = false;
-            playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
+            player.playerLocomotionManager.characterCollider.enabled = false;
+            player.playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
         }
 
         public void EnableCollision()
         {
-            playerLocomotionManager.characterCollider.enabled = true;
-            playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
+            player.playerLocomotionManager.characterCollider.enabled = true;
+            player.playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
         }
 
         private void OnAnimatorMove()
         {
-            if(characterManager.isInteracting == false)
+            if(character.isInteracting == false)
             {
                 return;
             }
 
             float delta = Time.deltaTime;
-            playerLocomotionManager.rigidbody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
+            player.playerLocomotionManager.rigidbody.drag = 0;
+            Vector3 deltaPosition = player.animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            playerLocomotionManager.rigidbody.velocity = velocity;
+            player.playerLocomotionManager.rigidbody.velocity = velocity;
         }
     }
 }

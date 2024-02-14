@@ -6,10 +6,11 @@ using UnityEngine.AI;
 namespace GI {
     public class EnemyManager : CharacterManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
-        EnemyAnimatorManager enemyAnimatorManager;
-        EnemyStatsManager enemyStatsManager;
-        EnemyEffectsManager enemyEffectsManager;
+        public EnemyBossManager enemyBossManager;
+        public EnemyLocomotionManager enemyLocomotionManager;
+        public EnemyAnimatorManager enemyAnimatorManager;
+        public EnemyStatsManager enemyStatsManager;
+        public EnemyEffectsManager enemyEffectsManager;
 
         public State currentState;
         public CharacterStatsManager currentTarget;
@@ -36,6 +37,7 @@ namespace GI {
         {
             base.Awake();
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+            enemyBossManager = GetComponent<EnemyBossManager>();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyEffectsManager = GetComponent<EnemyEffectsManager>();
@@ -54,13 +56,13 @@ namespace GI {
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isRotatingWithRootMotion = enemyAnimatorManager.animator.GetBool("isRotatingWithRootMotion");
-            isInteracting = enemyAnimatorManager.animator.GetBool("isInteracting");
-            isInvulnerable = enemyAnimatorManager.animator.GetBool("isInvulnerable");
-            isPhaseShifting = enemyAnimatorManager.animator.GetBool("isPhaseShifting");
-            canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
-            canRotate = enemyAnimatorManager.animator.GetBool("canRotate");
-            enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+            isRotatingWithRootMotion = animator.GetBool("isRotatingWithRootMotion");
+            isInteracting = animator.GetBool("isInteracting");
+            isInvulnerable = animator.GetBool("isInvulnerable");
+            isPhaseShifting = animator.GetBool("isPhaseShifting");
+            canDoCombo = animator.GetBool("canDoCombo");
+            canRotate = animator.GetBool("canRotate");
+            animator.SetBool("isDead", isDead);
         }
 
         protected override void FixedUpdate()
@@ -79,7 +81,7 @@ namespace GI {
         {
             if (currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimatorManager);
+                State nextState = currentState.Tick(this);
 
                 if (nextState != null)
                 {

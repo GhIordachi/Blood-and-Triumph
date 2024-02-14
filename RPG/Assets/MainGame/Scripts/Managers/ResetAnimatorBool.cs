@@ -33,8 +33,11 @@ namespace GI {
         {
             CharacterManager character = animator.GetComponent<CharacterManager>();
 
-            character.isUsingLeftHand = false;
-            character.isUsingRightHand = false;
+            if(character != null)
+            {
+                character.isUsingLeftHand = false;
+                character.isUsingRightHand = false;
+            }
 
             animator.SetBool(isInvulnerable, isInvulnerableStatus);
             animator.SetBool(isInteractingBool, isInteractingStatus);

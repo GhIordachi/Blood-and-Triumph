@@ -9,6 +9,7 @@ namespace GI {
         UIManager uIManager;
         public Image icon;
         WeaponItem weapon;
+        public WeaponItem replaceWeapon;
 
         public bool rightHandSlot01;
         public bool rightHandSlot02;
@@ -26,10 +27,20 @@ namespace GI {
 
         public void AddItem(WeaponItem newWeapon)
         {
-            weapon = newWeapon;
-            icon.sprite = weapon.itemIcon;
-            icon.enabled = true;
-            gameObject.SetActive(true);
+            if(newWeapon != null)
+            {
+                weapon = newWeapon;
+                icon.sprite = weapon.itemIcon;
+                icon.enabled = true;
+                gameObject.SetActive(true);
+            }
+            else
+            {
+                weapon = replaceWeapon;
+                icon.sprite = null;
+                icon.enabled = false;
+                gameObject.SetActive(true);
+            }
         }
 
         public void ClearItem()
@@ -37,7 +48,6 @@ namespace GI {
             weapon = null;
             icon.sprite = null;
             icon.enabled = false;
-            gameObject.SetActive(false);
         }
 
         public void SelectThisSlot()

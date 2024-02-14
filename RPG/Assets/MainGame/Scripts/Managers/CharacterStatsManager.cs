@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GI {
     public class CharacterStatsManager : MonoBehaviour
     {
-        CharacterAnimatorManager characterAnimatorManager;
+        CharacterManager character;
 
         [Header("Team I.D")]
         public int teamIDNumber = 0;
@@ -42,8 +42,6 @@ namespace GI {
         public float totalPoiseResetTime = 15;
         public float poiseResetTimer = 0;
 
-        public bool isDead;
-
         [Header("Armor Absorptions")]
         public float physicalDamageAbsorptionHead;
         public float physicalDamageAbsorptionBody;
@@ -61,7 +59,7 @@ namespace GI {
 
         protected virtual void Awake()
         {
-            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+            character = GetComponent<CharacterManager>();
         }
 
         protected virtual void Update()
@@ -76,10 +74,10 @@ namespace GI {
 
         public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation)
         {
-            if (isDead) 
+            if (character.isDead) 
                 return;
 
-            characterAnimatorManager.EraseHandIKForWeapon();
+            character.characterAnimatorManager.EraseHandIKForWeapon();
 
             float totalPhysicalDamageAbsorption = 1 - 
                 (1 - physicalDamageAbsorptionHead / 100) * 
@@ -108,13 +106,13 @@ namespace GI {
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
         public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
         {
-            if (isDead)
+            if (character.isDead)
                 return;
 
             float totalPhysicalDamageAbsorption = 1 -
@@ -142,7 +140,7 @@ namespace GI {
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
@@ -153,7 +151,7 @@ namespace GI {
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
 
