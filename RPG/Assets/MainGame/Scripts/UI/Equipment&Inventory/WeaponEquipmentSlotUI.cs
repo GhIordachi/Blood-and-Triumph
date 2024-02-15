@@ -6,10 +6,9 @@ using UnityEngine.UI;
 namespace GI {
     public class WeaponEquipmentSlotUI : MonoBehaviour
     {
-        UIManager uIManager;
+        UIManager uiManager;
         public Image icon;
         WeaponItem weapon;
-        public WeaponItem replaceWeapon;
 
         public bool rightHandSlot01;
         public bool rightHandSlot02;
@@ -22,7 +21,7 @@ namespace GI {
 
         private void Awake()
         {
-            uIManager = FindObjectOfType<UIManager>();
+            uiManager = FindObjectOfType<UIManager>();
         }
 
         public void AddItem(WeaponItem newWeapon)
@@ -36,7 +35,6 @@ namespace GI {
             }
             else
             {
-                weapon = replaceWeapon;
                 icon.sprite = null;
                 icon.enabled = false;
                 gameObject.SetActive(true);
@@ -52,38 +50,42 @@ namespace GI {
 
         public void SelectThisSlot()
         {
+            uiManager.ResetAllSelectedSlots();
+
             if (rightHandSlot01)
             {
-                uIManager.rightHandSlot01Selected = true;
+                uiManager.rightHandSlot01Selected = true;
             }
             else if (rightHandSlot02)
             {
-                uIManager.rightHandSlot02Selected = true;
+                uiManager.rightHandSlot02Selected = true;
             }
             else if (rightHandSlot03)
             {
-                uIManager.rightHandSlot03Selected = true;
+                uiManager.rightHandSlot03Selected = true;
             }
             else if (rightHandSlot04)
             {
-                uIManager.rightHandSlot04Selected = true;
+                uiManager.rightHandSlot04Selected = true;
             }
             else if (leftHandSlot01)
             {
-                uIManager.leftHandSlot01Selected= true;
+                uiManager.leftHandSlot01Selected= true;
             }
             else if (leftHandSlot02)
             {
-                uIManager.leftHandSlot02Selected = true;
+                uiManager.leftHandSlot02Selected = true;
             }
             else if (leftHandSlot03)
             {
-                uIManager.leftHandSlot03Selected = true;
+                uiManager.leftHandSlot03Selected = true;
             }
             else if (leftHandSlot04)
             {
-                uIManager.leftHandSlot04Selected = true;
+                uiManager.leftHandSlot04Selected = true;
             }
+
+            uiManager.itemStatsWindowUI.UpdateWeaponItemStats(weapon);
         }
     }
 }

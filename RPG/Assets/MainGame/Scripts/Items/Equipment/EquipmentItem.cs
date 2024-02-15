@@ -9,5 +9,9 @@ namespace GI
         [Header("Defense Bonus")]
         public float physicalDefense;
         public float fireDefense;
+        public float magicalDefense;
+
+        [Header("Resistances")]
+        public float poisonResistance;
     }
 }

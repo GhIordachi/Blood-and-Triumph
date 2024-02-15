@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 namespace GI
 {
-    public class LegEquipmentSlotUI : MonoBehaviour
+    public class BodyEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
         public Image icon;
-        LegEquipment item;
+        BodyEquipment item;
 
         private void Awake()
         {
             uIManager = FindObjectOfType<UIManager>();
         }
 
-        public void AddItem(LegEquipment legEquipment)
+        public void AddItem(BodyEquipment bodyEquipment)
         {
-            if (legEquipment != null)
+            if (bodyEquipment != null)
             {
-                item = legEquipment;
+                item = bodyEquipment;
                 icon.sprite = item.itemIcon;
                 icon.enabled = true;
                 gameObject.SetActive(true);
@@ -40,7 +40,8 @@ namespace GI
 
         public void SelectThisSlot()
         {
-            uIManager.legEquipmentSlotSelected = true;
+            uIManager.bodyEquipmentSlotSelected = true;
+            uIManager.itemStatsWindowUI.UpdateArmorItemStats(item);
         }
     }
 }

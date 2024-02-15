@@ -25,7 +25,7 @@ MonoBehaviour:
   criticalDamageMultiplier: 4
   poiseBreak: 25
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
+  physicalDamageAbsorption: 15
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2

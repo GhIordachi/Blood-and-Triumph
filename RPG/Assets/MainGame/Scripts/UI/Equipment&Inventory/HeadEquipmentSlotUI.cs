@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 namespace GI
 {
-    public class HandEquipmentSlotUI : MonoBehaviour
+    public class HeadEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
         public Image icon;
-        HandEquipment item;
+        HelmetEquipment item;
 
         private void Awake()
         {
             uIManager = FindObjectOfType<UIManager>();
         }
 
-        public void AddItem(HandEquipment handEquipment)
+        public void AddItem(HelmetEquipment helmetEquipment)
         {
-            if (handEquipment != null)
+            if (helmetEquipment != null)
             {
-                item = handEquipment;
+                item = helmetEquipment;
                 icon.sprite = item.itemIcon;
                 icon.enabled = true;
                 gameObject.SetActive(true);
@@ -40,7 +40,8 @@ namespace GI
 
         public void SelectThisSlot()
         {
-            uIManager.handEquipmentSlotSelected = true;
+            uIManager.headEquipmentSlotSelected = true;
+            uIManager.itemStatsWindowUI.UpdateArmorItemStats(item);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace GI {
     public class UIManager : MonoBehaviour
     {
         public PlayerManager player;
+        public ItemStatsWindowUI itemStatsWindowUI;
         public EquipmentWindowUI equipmentWindowUI;
         public QuickSlotsUI quickSlotsUI;
 
@@ -19,6 +20,7 @@ namespace GI {
         public GameObject selectWindow;
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+        public GameObject itemStatsWindow;
         public GameObject levelUpWindow;
 
         [Header("Equipment Window Slot Selected")]
@@ -74,6 +76,7 @@ namespace GI {
         private void Start()
         {
             equipmentWindowUI.LoadWeaponOnEquipmentScreen(player.playerInventoryManager);
+            equipmentWindowUI.LoadArmorOnEquipmentScreen(player.playerInventoryManager);
 
             if(player.playerInventoryManager.currentSpell !=null)
             {
@@ -91,11 +94,11 @@ namespace GI {
         public void UpdateUI()
         {
             //Weapon Inventory Slots
-            for (int i = 0;i < weaponInventorySlots.Length;i++)
+            for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
-                if(i < player.playerInventoryManager.weaponsInventory.Count)
+                if (i < player.playerInventoryManager.weaponsInventory.Count)
                 {
-                    if(weaponInventorySlots.Length < player.playerInventoryManager.weaponsInventory.Count)
+                    if (weaponInventorySlots.Length < player.playerInventoryManager.weaponsInventory.Count)
                     {
                         Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
@@ -107,6 +110,8 @@ namespace GI {
                     weaponInventorySlots[i].ClearInventorySlot();
                 }
             }
+        
+            
 
             //Head Equipment Inventory Slots
 
@@ -200,6 +205,7 @@ namespace GI {
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            itemStatsWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()
