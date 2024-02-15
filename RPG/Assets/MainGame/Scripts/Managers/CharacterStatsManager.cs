@@ -72,7 +72,7 @@ namespace GI {
             totalPoiseDefence = armorPoiseBonus;
         }
 
-        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation)
+        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
             if (character.isDead) 
                 return;
@@ -98,6 +98,11 @@ namespace GI {
             Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
 
             float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
+
+            if (enemyCharacterDamagingMe.isPerformingFullyChargedAttack)
+            {
+                finalDamage = finalDamage * 1.5f;
+            }
 
             currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 

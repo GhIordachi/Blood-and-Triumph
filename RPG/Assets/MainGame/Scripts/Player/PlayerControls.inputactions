@@ -194,6 +194,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Hold RT",
+                    "type": "PassThrough",
+                    "id": "8c85a253-86d5-4b9b-ad94-79410460697a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Parry",
                     "type": "Button",
                     "id": "08c9e9a9-353d-4354-b043-6adc336495bc",
@@ -217,7 +226,7 @@
                     "id": "11cd5889-fdb3-4d21-b54c-3293a3dcce65",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 },
                 {
@@ -304,7 +313,7 @@
                     "name": "",
                     "id": "7d3c8b87-581f-4ff6-a5f8-50c42e88a108",
                     "path": "<Keyboard>/r",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RT",
@@ -418,6 +427,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TapLB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45c46b43-4343-4153-b515-99223050da04",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold RT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

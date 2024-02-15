@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 namespace GI {
@@ -71,12 +72,12 @@ namespace GI {
             enemy.enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
         }
 
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
+        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
         {
             if (enemy.isDead)
                 return;
 
-            base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
+            base.TakeDamage(physicalDamage, fireDamage, damageAnimation, enemyCharacterDamagingMe);
 
             if(!isBoss)
             {

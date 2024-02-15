@@ -95,7 +95,7 @@ namespace GI
                     }
                     else
                     {
-                        enemyStats.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation);
+                        enemyStats.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }
@@ -129,7 +129,7 @@ namespace GI
 
                 if (enemyStats != null)
                 {
-                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), Mathf.RoundToInt(fireDamageAfterBlock), "Block Guard");
+                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), Mathf.RoundToInt(fireDamageAfterBlock), "Block Guard", characterManager);
                     shieldHasBeenHit = true;
                 }
             }

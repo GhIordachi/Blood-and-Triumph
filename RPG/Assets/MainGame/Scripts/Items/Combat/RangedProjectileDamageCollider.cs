@@ -58,7 +58,7 @@ namespace GI
                     }
                     else
                     {
-                        enemyStats.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation);
+                        enemyStats.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation, characterManager);
                     }
                 }
             }
