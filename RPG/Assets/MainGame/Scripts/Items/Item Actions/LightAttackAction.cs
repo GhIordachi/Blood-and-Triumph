@@ -36,6 +36,8 @@ namespace GI
 
                 HandleLightAttack(player);
             }
+
+            player.playerCombatManager.currentAttackType = AttackType.light;
         }
 
         void HandleLightAttack(PlayerManager player)

@@ -20,6 +20,10 @@ namespace GI
         [Header("Damage")]
         public int physicalDamage;
         public int fireDamage;
+
+        [Header("Damage Modifiers")]
+        public float lightAttackDamageModifier;
+        public float heavyAttackDamageModifier;
         public int criticalDamageMultiplier = 4;
 
         [Header("Poise")]
@@ -30,9 +34,9 @@ namespace GI
         public float physicalDamageAbsorption;
 
         [Header("Stamina Costs")]
-        public int baseStamina;
-        public float lightAttackMultiplier;
-        public float heavyAttackMultiplier;
+        public int baseStaminaCost;
+        public float lightAttackStaminaMultiplier;
+        public float heavyAttackStaminaMultiplier;
 
         [Header("Item Actions")]
         public ItemAction oh_tap_RB_Action;
@@ -53,5 +57,8 @@ namespace GI
         public ItemAction th_hold_RT_Action;
         public ItemAction th_tap_LT_Action;
         public ItemAction th_hold_LT_Action;
+
+        [Header("Sound FX")]
+        public AudioClip[] weaponWhooshes;
     }
 }

@@ -36,6 +36,8 @@ namespace GI
 
                 HandleHeavyAttack(player);
             }
+
+            player.playerCombatManager.currentAttackType = AttackType.heavy;
         }
 
         void HandleHeavyAttack(PlayerManager player)

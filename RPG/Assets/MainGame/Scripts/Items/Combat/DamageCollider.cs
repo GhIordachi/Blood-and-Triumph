@@ -89,14 +89,8 @@ namespace GI
                     ChooseWhichDirectionDamageCameFrom(directionHitFrom);
                     enemyEffects.PlayBloodSplatterFX(contactPoint);
 
-                    if (enemyStats.totalPoiseDefence > poiseBreak)
-                    {
-                        enemyStats.TakeDamageNoAnimation(physicalDamage, fireDamage);
-                    }
-                    else
-                    {
-                        enemyStats.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation, characterManager);
-                    }
+                    //Deals damage
+                    DealDamage(enemyStats);
                 }
             }
 
@@ -132,6 +126,45 @@ namespace GI
                     enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), Mathf.RoundToInt(fireDamageAfterBlock), "Block Guard", characterManager);
                     shieldHasBeenHit = true;
                 }
+            }
+        }
+
+        protected virtual void DealDamage(CharacterStatsManager enemyStats)
+        {
+            float finalPhysicalDamage = physicalDamage;
+            //If we are using the right weapon, we compare the right weapon modifiers
+            if(characterManager.isUsingRightHand)
+            {
+                if (characterManager.characterCombatManager.currentAttackType == AttackType.light)
+                {
+                    finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.rightWeapon.lightAttackDamageModifier;
+                }
+                else if (characterManager.characterCombatManager.currentAttackType == AttackType.heavy)
+                {
+                    finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.rightWeapon.heavyAttackDamageModifier;
+                }
+            }
+            //otherwise we compare the left weapon modifiers
+            else if(characterManager.isUsingLeftHand)
+            {
+                if (characterManager.characterCombatManager.currentAttackType == AttackType.light)
+                {
+                    finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.leftWeapon.lightAttackDamageModifier;
+                }
+                else if (characterManager.characterCombatManager.currentAttackType == AttackType.heavy)
+                {
+                    finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.leftWeapon.heavyAttackDamageModifier;
+                }
+            }
+
+            //Deal modified damage
+            if (enemyStats.totalPoiseDefence > poiseBreak)
+            {
+                enemyStats.TakeDamageNoAnimation(Mathf.RoundToInt(finalPhysicalDamage), fireDamage);
+            }
+            else
+            {
+                enemyStats.TakeDamage(Mathf.RoundToInt(finalPhysicalDamage), fireDamage, currentDamageAnimation, characterManager);
             }
         }
 

@@ -144,7 +144,7 @@ namespace GI
                 speed = sprintSpeed;
                 player.isSprinting = true;
                 moveDirection *= speed;
-                player.playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
+                player.playerStatsManager.DeductStamina(sprintStaminaCost);
             }
             else
             {
@@ -196,13 +196,13 @@ namespace GI
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     player.transform.rotation = rollRotation;
-                    player.playerStatsManager.TakeStaminaDamage(rollStaminaCost);
+                    player.playerStatsManager.DeductStamina(rollStaminaCost);
                 }
                 else
                 {
                     player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
                     player.playerAnimatorManager.EraseHandIKForWeapon();
-                    player.playerStatsManager.TakeStaminaDamage(backStepStaminaCost);
+                    player.playerStatsManager.DeductStamina(backStepStaminaCost);
                 }
             }
         }
@@ -302,11 +302,12 @@ namespace GI
 
             if (player.inputHandler.jump_Input)
             {
-                if(player.inputHandler.moveAmount > 0)
+                player.inputHandler.jump_Input = false;
+
+                if (player.inputHandler.moveAmount > 0)
                 {
                     moveDirection = player.cameraHandler.cameraObject.transform.forward * player.inputHandler.vertical;
                     moveDirection += player.cameraHandler.cameraObject.transform.right * player.inputHandler.horizontal;
-                    moveDirection.Normalize();
                     player.playerAnimatorManager.PlayTargetAnimation("Jump", true);
                     player.playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;

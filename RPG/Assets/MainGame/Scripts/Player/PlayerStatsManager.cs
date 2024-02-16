@@ -97,10 +97,10 @@ namespace GI {
             healthBar.SetCurrentHealth(currentHealth);
         }
 
-        public void TakeStaminaDamage(int damage)
+        public override void DeductStamina(float staminaToDeduct)
         {
-            currentStamina = currentStamina - damage;
-            staminaBar.SetCurrentStamina(currentStamina);
+            base.DeductStamina(staminaToDeduct);
+            staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
         }
 
         public void RegenerateStamina()

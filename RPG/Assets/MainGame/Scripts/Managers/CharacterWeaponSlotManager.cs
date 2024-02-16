@@ -154,6 +154,8 @@ namespace GI
 
         public virtual void OpenDamageCollider()
         {
+            character.characterSoundFXManager.PlayRandomWeaponWhoosh();
+
             if (character.isUsingRightHand)
             {
                 rightHandDamageCollider.EnableDamageCollider();

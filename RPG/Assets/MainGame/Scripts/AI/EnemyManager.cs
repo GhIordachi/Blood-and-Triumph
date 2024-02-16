@@ -11,6 +11,7 @@ namespace GI {
         public EnemyAnimatorManager enemyAnimatorManager;
         public EnemyStatsManager enemyStatsManager;
         public EnemyEffectsManager enemyEffectsManager;
+        public EnemyInventoryManager enemyInventoryManager;
 
         public State currentState;
         public CharacterStatsManager currentTarget;
@@ -41,6 +42,7 @@ namespace GI {
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyEffectsManager = GetComponent<EnemyEffectsManager>();
+            enemyInventoryManager = GetComponent<EnemyInventoryManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;

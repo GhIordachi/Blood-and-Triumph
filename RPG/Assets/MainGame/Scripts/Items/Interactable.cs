@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GI {
     public class Interactable : MonoBehaviour
     {
-        public float radius = 0.4f;
+        public float radius = 0.5f;
         public string interactableText;
 
         private void OnDrawGizmosSelected()

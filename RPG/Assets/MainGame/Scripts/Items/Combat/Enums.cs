@@ -22,6 +22,12 @@ namespace GI
         Bolt
     }
 
+    public enum AttackType
+    {
+        light,
+        heavy
+    }
+
     public class Enums : MonoBehaviour
     {
         

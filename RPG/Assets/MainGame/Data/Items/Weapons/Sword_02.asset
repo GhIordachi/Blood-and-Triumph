@@ -22,15 +22,17 @@ MonoBehaviour:
   weaponType: 4
   physicalDamage: 30
   fireDamage: 0
+  lightAttackDamageModifier: 1
+  heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
   poiseBreak: 25
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 22
-  baseStamina: 20
-  lightAttackMultiplier: 1
-  heavyAttackMultiplier: 2
+  baseStaminaCost: 25
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 2
   oh_tap_RB_Action: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
-  oh_hold_RB_Action: {fileID: 0}
+  oh_hold_RB_Action: {fileID: 11400000, guid: dc5192f9102187a40828984e2c8e423d, type: 2}
   oh_tap_LB_Action: {fileID: 0}
   oh_hold_LB_Action: {fileID: 0}
   oh_tap_RT_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
@@ -45,3 +47,7 @@ MonoBehaviour:
   th_hold_RT_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
   th_tap_LT_Action: {fileID: 0}
   th_hold_LT_Action: {fileID: 0}
+  weaponWhooshes:
+  - {fileID: 8300000, guid: e89c1cfc1a5bb5d4d9e9a67ac19af82b, type: 3}
+  - {fileID: 8300000, guid: 92ab81cfa5de22340b79e76148d22484, type: 3}
+  - {fileID: 8300000, guid: 858eae54e9f7be94fb8fdcd0b3dd456a, type: 3}

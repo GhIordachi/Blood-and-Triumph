@@ -44,12 +44,15 @@ namespace GI {
 
         private void AttackTarget(EnemyManager enemy)
         {
-            enemy.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
-            enemy.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
-            enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-            enemy.enemyAnimatorManager.PlayWeaponTrailFX();
-            enemy.currentRecoveryTime = currentAttack.recoveryTime;
-            hasPerformedAttack = true;
+            if (enemy.enemyInventoryManager.rightWeapon.oh_tap_RB_Action != null)
+            {
+                enemy.UpdateWhichHandCharacterIsUsing(true);
+                enemy.enemyInventoryManager.currentItemBeingUsed = enemy.enemyInventoryManager.rightWeapon;
+                enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+                enemy.enemyAnimatorManager.PlayWeaponTrailFX();
+                enemy.currentRecoveryTime = currentAttack.recoveryTime;
+                hasPerformedAttack = true;
+            }
         }
 
         private void AttackTargetWithCombo(EnemyManager enemy)

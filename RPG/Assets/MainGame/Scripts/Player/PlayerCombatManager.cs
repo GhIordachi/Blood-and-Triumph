@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GI {
-    public class PlayerCombatManager : MonoBehaviour
+    public class PlayerCombatManager : CharacterCombatManager
     {
-        PlayerManager player;       
+        PlayerManager player;
 
         [Header("Attack Animations")]
         public string oh_light_attack_01 = "OH_Light_Attack_01";
@@ -104,6 +104,36 @@ namespace GI {
 
                     player.playerAnimatorManager.PlayTargetAnimation("Riposte", true);
                     enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Riposted", true);
+                }
+            }
+        }
+
+        public override void DrainStaminaBasedOnAttack()
+        {
+            if (player.isUsingRightHand)
+            {
+                if(currentAttackType == AttackType.light)
+                {
+                    player.playerStatsManager.DeductStamina
+                        (player.playerInventoryManager.rightWeapon.baseStaminaCost * player.playerInventoryManager.rightWeapon.lightAttackStaminaMultiplier);
+                }
+                else if (currentAttackType == AttackType.heavy)
+                {
+                    player.playerStatsManager.DeductStamina
+                        (player.playerInventoryManager.rightWeapon.baseStaminaCost * player.playerInventoryManager.rightWeapon.heavyAttackStaminaMultiplier);
+                }
+            }
+            else if (player.isUsingLeftHand)
+            {
+                if (currentAttackType == AttackType.light)
+                {
+                    player.playerStatsManager.DeductStamina
+                        (player.playerInventoryManager.leftWeapon.baseStaminaCost * player.playerInventoryManager.leftWeapon.lightAttackStaminaMultiplier);
+                }
+                else if (currentAttackType == AttackType.heavy)
+                {
+                    player.playerStatsManager.DeductStamina
+                        (player.playerInventoryManager.leftWeapon.baseStaminaCost * player.playerInventoryManager.leftWeapon.heavyAttackStaminaMultiplier);
                 }
             }
         }

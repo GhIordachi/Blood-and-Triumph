@@ -113,6 +113,8 @@ namespace GI {
                 currentHealth = 0;
                 character.isDead = true;
             }
+
+            character.characterSoundFXManager.PlayRandomDamageSoundFX();
         }
 
         public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
@@ -172,9 +174,9 @@ namespace GI {
             }
         }
 
-        public void DrainStaminaBasedOnAttackType()
+        public virtual void DeductStamina(float staminaToDeduct)
         {
-
+            currentStamina = currentStamina -staminaToDeduct;
         }
 
         public int SetMaxHealthFromHealthLevel()
