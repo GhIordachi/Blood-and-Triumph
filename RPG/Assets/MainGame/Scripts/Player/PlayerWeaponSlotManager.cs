@@ -24,7 +24,7 @@ namespace GI
                     leftHandSlot.LoadWeaponItem(weaponItem);
                     LoadLeftWeaponDamageCollider();
                     player.UIManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                    player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    //player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace GI
                     leftHandSlot.LoadWeaponItem(weaponItem);
                     LoadLeftWeaponDamageCollider();
                     player.UIManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                    player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    //player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {

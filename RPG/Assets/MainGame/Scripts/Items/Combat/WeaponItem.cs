@@ -12,7 +12,7 @@ namespace GI
 
         [Header("Animator Replacer")]
         public AnimatorOverrideController weaponController;
-        public string offHandIdleAnimation = "Left_Arm_Idle_01";
+        //public string offHandIdleAnimation = " ";
 
         [Header("Weapon Type")]
         public WeaponType weaponType;
@@ -22,16 +22,21 @@ namespace GI
         public int fireDamage;
 
         [Header("Damage Modifiers")]
-        public float lightAttackDamageModifier;
-        public float heavyAttackDamageModifier;
+        public float lightAttackDamageModifier = 1;
+        public float heavyAttackDamageModifier = 2;
         public int criticalDamageMultiplier = 4;
+        public float guardBreakModifier = 1;
 
         [Header("Poise")]
         public float poiseBreak;
         public float offensivePoiseBonus;
 
         [Header("Absorption")]
-        public float physicalDamageAbsorption;
+        public float physicalBlockingDamageAbsorption;
+        public float fireBlockingDamageAbsorption;
+
+        [Header("Stability")]
+        public int stability = 67;
 
         [Header("Stamina Costs")]
         public int baseStaminaCost;

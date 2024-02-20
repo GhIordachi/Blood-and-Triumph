@@ -34,6 +34,11 @@ namespace GI {
         public bool isPhaseShifting;
         public float comboLikelyHood;
 
+        [Header("A.I Target Information")]
+        public float distanceFromTarget;
+        public Vector3 targetsDirection;
+        public float viewableAngle;
+
         protected override void Awake()
         {
             base.Awake();
@@ -65,6 +70,13 @@ namespace GI {
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             animator.SetBool("isDead", isDead);
+
+            if(currentTarget != null)
+            {
+                distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
+                targetsDirection = currentTarget.transform.position - transform.position;
+                viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
+            }
         }
 
         protected override void FixedUpdate()

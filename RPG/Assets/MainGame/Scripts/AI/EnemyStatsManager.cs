@@ -16,7 +16,9 @@ namespace GI {
             base.Awake();
             enemy = GetComponent<EnemyManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
+            maxStamina = SetMaxStaminaFromStaminaLevel();
             currentHealth = maxHealth;
+            currentStamina = maxStamina;
         }
 
         void Start()

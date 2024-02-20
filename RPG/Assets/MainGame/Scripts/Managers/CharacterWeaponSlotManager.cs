@@ -65,7 +65,7 @@ namespace GI
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponItem(weaponItem);
                     LoadLeftWeaponDamageCollider();
-                    character.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    //character.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {
@@ -96,7 +96,7 @@ namespace GI
                     leftHandSlot.currentWeapon = weaponItem;
                     leftHandSlot.LoadWeaponItem(weaponItem);
                     LoadLeftWeaponDamageCollider();
-                    character.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                    //character.characterAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
                 }
                 else
                 {

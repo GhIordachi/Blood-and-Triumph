@@ -38,8 +38,6 @@ namespace GI
         public string nakedLeftLeg;
         public string nakedRightLeg;
 
-        public BlockingCollider blockingCollider;
-
         private void Awake()
         {
             player = GetComponent<PlayerManager>();
@@ -152,24 +150,6 @@ namespace GI
                     player.playerStatsManager.physicalDamageAbsorptionHands = 0;
                 }
             }
-        }
-
-        public void OpenBlockingCollider()
-        {
-            if(player.inputHandler.twoHandFlag)
-            {
-                blockingCollider.SetColliderDamageAbsorption(player.playerInventoryManager.rightWeapon);
-            }
-            else
-            {
-                blockingCollider.SetColliderDamageAbsorption(player.playerInventoryManager.leftWeapon);
-            }
-            blockingCollider.EnableBlockingCollider();
-        }
-
-        public void CloseBlockingCollider()
-        {
-            blockingCollider.DisableBlockingCollider();
         }
     }
 }

@@ -35,8 +35,9 @@ namespace GI {
         LayerMask backStabLayer = 1 << 15;
         LayerMask riposteLayer = 1 << 16;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             player = GetComponent<PlayerManager>();
         }     
 
@@ -136,6 +137,12 @@ namespace GI {
                         (player.playerInventoryManager.leftWeapon.baseStaminaCost * player.playerInventoryManager.leftWeapon.heavyAttackStaminaMultiplier);
                 }
             }
+        }
+
+        public override void AttemptBlock(DamageCollider attackingWeapon, float physicalDamage, float fireDamage, string blockAnimation)
+        {
+            base.AttemptBlock(attackingWeapon, physicalDamage, fireDamage, blockAnimation);
+            player.playerStatsManager.staminaBar.SetCurrentStamina(Mathf.RoundToInt(player.playerStatsManager.currentStamina));
         }
     }
 }

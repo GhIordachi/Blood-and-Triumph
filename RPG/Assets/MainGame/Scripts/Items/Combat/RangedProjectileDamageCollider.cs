@@ -19,7 +19,6 @@ namespace GI
                 CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
                 CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
                 CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
-                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
                 if (enemyManager != null)
                 {
@@ -27,7 +26,7 @@ namespace GI
                         return;
 
                     CheckForParry(enemyManager);
-                    CheckForBlock(enemyManager, shield, enemyStats);
+                    CheckForBlock(enemyManager);
 
                 }
 

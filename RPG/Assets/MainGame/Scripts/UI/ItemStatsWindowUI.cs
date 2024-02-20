@@ -51,7 +51,7 @@ namespace GI
                 }
 
                 physicalDamageText.text = weapon.physicalDamage.ToString();
-                physicalAbsorptionText.text = weapon.physicalDamageAbsorption.ToString();
+                physicalAbsorptionText.text = weapon.physicalBlockingDamageAbsorption.ToString();
                 //Magic damage
                 //magic absorption + trebuie adaugat si la arme si equipment
 

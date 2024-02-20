@@ -18,12 +18,12 @@ namespace GI {
             float distanceFromTarget = Vector3.Distance(enemy.currentTarget.transform.position, enemy.transform.position);
             RotateTowardsTargetWhilstAttacking(enemy);
 
-            if(distanceFromTarget > enemy.maximumAggroRadius)
+            if (distanceFromTarget > enemy.maximumAggroRadius)
             {
                 return pursueTargetState;
             }
 
-            if(willDoComboNextAttack && enemy.canDoCombo)
+            if (willDoComboNextAttack && enemy.canDoCombo)
             {
                 AttackTargetWithCombo(enemy);
             }
@@ -34,7 +34,7 @@ namespace GI {
                 RollForComboChance(enemy);
             }
 
-            if(willDoComboNextAttack && hasPerformedAttack)
+            if (willDoComboNextAttack && hasPerformedAttack)
             {
                 return this;
             }
@@ -44,21 +44,19 @@ namespace GI {
 
         private void AttackTarget(EnemyManager enemy)
         {
-            if (enemy.enemyInventoryManager.rightWeapon.oh_tap_RB_Action != null)
-            {
-                enemy.UpdateWhichHandCharacterIsUsing(true);
-                enemy.enemyInventoryManager.currentItemBeingUsed = enemy.enemyInventoryManager.rightWeapon;
-                enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                enemy.enemyAnimatorManager.PlayWeaponTrailFX();
-                enemy.currentRecoveryTime = currentAttack.recoveryTime;
-                hasPerformedAttack = true;
-            }
+            enemy.isUsingRightHand = currentAttack.isRightHandedAction;
+            enemy.isUsingLeftHand = !currentAttack.isRightHandedAction;
+            enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemy.enemyAnimatorManager.PlayWeaponTrailFX();
+            enemy.currentRecoveryTime = currentAttack.recoveryTime;
+            hasPerformedAttack = true;
         }
+    
 
         private void AttackTargetWithCombo(EnemyManager enemy)
         {
-            enemy.animator.SetBool("isUsingRightHand", currentAttack.isRightHandedAction);
-            enemy.animator.SetBool("isUsingLeftHand", !currentAttack.isRightHandedAction);
+            enemy.isUsingRightHand = currentAttack.isRightHandedAction;
+            enemy.isUsingLeftHand = !currentAttack.isRightHandedAction;
             willDoComboNextAttack = false;
             enemy.enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
             enemy.enemyAnimatorManager.PlayWeaponTrailFX();

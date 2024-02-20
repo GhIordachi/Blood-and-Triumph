@@ -12,6 +12,7 @@ namespace GI {
         public FocusPointBar focusPointBar;
 
         public float staminaRegenerationAmount = 1;
+        public float staminaRegenerationAmountWhilstBlocking = 0.1f;
         public float staminaRegenTimer = 0;
 
         protected override void Awake()
@@ -112,10 +113,19 @@ namespace GI {
             else
             {
                 staminaRegenTimer += Time.deltaTime;
+
                 if (currentStamina < maxStamina && staminaRegenTimer > 1f)
                 {
-                    currentStamina += staminaRegenerationAmount * Time.deltaTime;
-                    staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    if(player.isBlocking)
+                    {
+                        currentStamina += staminaRegenerationAmountWhilstBlocking * Time.deltaTime;
+                        staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    }
+                    else
+                    {
+                        currentStamina += staminaRegenerationAmount * Time.deltaTime;
+                        staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                    }
                 }
             }
         }

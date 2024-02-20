@@ -15,8 +15,8 @@ namespace GI
             if (player.isBlocking)
                 return;
 
-            player.playerAnimatorManager.PlayTargetAnimation("Block", false, true);
-            player.playerEquipmentManager.OpenBlockingCollider();
+            player.playerCombatManager.SetBlockingAbsorptionsFromBlockingWeapon();
+
             player.isBlocking = true;
         }
     }

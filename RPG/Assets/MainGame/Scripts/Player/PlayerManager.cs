@@ -26,9 +26,6 @@ namespace GI
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerEquipmentManager playerEquipmentManager;
 
-        [Header("Colliders")]
-        public BlockingCollider blockingCollider;
-
         [Header("Interactables")]
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -44,7 +41,6 @@ namespace GI
             animator = GetComponent<Animator>();
 
             backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
-            blockingCollider = GetComponentInChildren<BlockingCollider>();
 
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
@@ -54,7 +50,6 @@ namespace GI
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
-            blockingCollider = GetComponentInChildren<BlockingCollider>();
         }
 
         void Update()
