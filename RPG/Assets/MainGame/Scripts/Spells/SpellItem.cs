@@ -23,24 +23,20 @@ namespace GI
         [TextArea]
         public string spellDescription;
 
-        public virtual void AttemptToCastSpell
-            (PlayerAnimatorManager animatorHandler,
-            PlayerStatsManager playerStats, 
-            PlayerWeaponSlotManager weaponSlotManager, 
-            bool isLeftHanded)
+        public virtual void AttemptToCastSpell(CharacterManager character)
         {
             Debug.Log("You attempt to cast a spell");
         }
 
-        public virtual void SuccessfullyCastSpell
-            (PlayerAnimatorManager animatorHandler, 
-            PlayerStatsManager playerStats, 
-            CameraHandler cameraHandler, 
-            PlayerWeaponSlotManager weaponSlotManager,
-            bool isLeftHanded)
+        public virtual void SuccessfullyCastSpell(CharacterManager character)
         {
             Debug.Log("You successfully cast a spell!");
-            playerStats.DeductFocusPoints(focusPointCost);
+            PlayerManager player = character as PlayerManager;
+
+            if(player != null)
+            {
+                player.playerStatsManager.DeductFocusPoints(focusPointCost);
+            }
         }
     }
 }

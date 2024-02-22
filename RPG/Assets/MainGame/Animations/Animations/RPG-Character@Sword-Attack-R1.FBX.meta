@@ -60,8 +60,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.088451095
+        functionName: CanRotate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2258696
+        functionName: StopRotation
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.27887318
         functionName: OpenDamageCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.31921825
+        functionName: EnableCanBeParried
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -81,6 +102,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.47363746
+        functionName: DisableCanBeParried
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.590407
         functionName: EnableCombo
         data: 
@@ -90,20 +118,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.96721965
         functionName: DisableCombo
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.088451095
-        functionName: CanRotate
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.2258696
-        functionName: StopRotation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

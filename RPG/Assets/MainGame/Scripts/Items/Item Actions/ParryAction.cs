@@ -7,25 +7,25 @@ namespace GI
     [CreateAssetMenu(menuName = "Item Actions/Parry Action")]
     public class ParryAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            if (player.isInteracting)
+            if (character.isInteracting)
                 return;
 
-            player.playerAnimatorManager.EraseHandIKForWeapon();
+            character.characterAnimatorManager.EraseHandIKForWeapon();
 
-            WeaponItem parryingWeapon = player.playerInventoryManager.currentItemBeingUsed as WeaponItem;
+            WeaponItem parryingWeapon = character.characterInventoryManager.currentItemBeingUsed as WeaponItem;
 
             //Check if parrying weapon is a fast parry weapon or a medium parry weapon
             if(parryingWeapon.weaponType == WeaponType.SmallShield)
             {
                 //Fast parry Anim
-                player.playerAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                character.characterAnimatorManager.PlayTargetAnimation("Parry_01", true);
             }
             else if (parryingWeapon.weaponType == WeaponType.Shield)
             {
                 //Normal parry Anim
-                player.playerAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                character.characterAnimatorManager.PlayTargetAnimation("Parry_01", true);
             }
         }
     }

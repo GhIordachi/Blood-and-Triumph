@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace GI
 {
-    public class PursueTargetState : State
+    public class PursueTargetStateHumanoid : State
     {
-        public CombatStanceState combatStanceState;
-        public RotateTowardsTargetState rotateTowardsTargetState;
+        public CombatStanceStateHumanoid combatStanceStateHumanoid;
+
+        private void Awake()
+        {
+            combatStanceStateHumanoid = GetComponent<CombatStanceStateHumanoid>();
+        }
+
         public override State Tick(EnemyManager enemy)
         {
             HandleRotateTowardsTarget(enemy);
@@ -18,7 +22,7 @@ namespace GI
 
             if (enemy.isPerformingAction)
             {
-                enemy.animator.SetFloat("Vertical", 0, 0.1f,Time.deltaTime);
+                enemy.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 return this;
             }
 
@@ -27,9 +31,9 @@ namespace GI
                 enemy.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
 
-            if(enemy.distanceFromTarget <= enemy.maximumAggroRadius)
+            if (enemy.distanceFromTarget <= enemy.maximumAggroRadius)
             {
-                return combatStanceState;
+                return combatStanceStateHumanoid;
             }
             else
             {

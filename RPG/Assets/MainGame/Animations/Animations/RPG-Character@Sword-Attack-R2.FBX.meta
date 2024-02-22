@@ -759,8 +759,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5028338
-        functionName: CloseDamageCollider
+      - time: 0.08375
+        functionName: CanRotate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2863858
+        functionName: StopRotation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -768,6 +775,34 @@ ModelImporter:
         messageOptions: 0
       - time: 0.33009487
         functionName: OpenDamageCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.34801397
+        functionName: EnableCanBeParried
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.38915506
+        functionName: DrainStaminaBasedOnAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5028338
+        functionName: CloseDamageCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.50482553
+        functionName: DisableCanBeParried
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -782,27 +817,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.9249667
         functionName: DisableCombo
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.38915506
-        functionName: DrainStaminaBasedOnAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.08375
-        functionName: CanRotate
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.2863858
-        functionName: StopRotation
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

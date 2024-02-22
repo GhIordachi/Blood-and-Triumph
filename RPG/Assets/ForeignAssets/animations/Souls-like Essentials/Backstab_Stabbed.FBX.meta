@@ -65,7 +65,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.2454076
-        functionName: TakeCriticalDamageAnimationEvent
+        functionName: ApplyPendingDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

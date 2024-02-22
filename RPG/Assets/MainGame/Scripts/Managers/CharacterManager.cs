@@ -17,9 +17,8 @@ namespace GI {
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
 
-        [Header("Combat Colliders")]
-        public CriticalDamageCollider backStabCollider;
-        public CriticalDamageCollider riposteCollider;
+        [Header("Ray Casts")]
+        public Transform criticalAttackRayCastStartPoint;
 
         [Header("Interaction")]
         public bool isInteracting;
@@ -40,6 +39,11 @@ namespace GI {
         public bool isAiming;
         public bool isTwoHandingWeapon;
         public bool isPerformingFullyChargedAttack;
+        public bool isAttacking;
+        public bool isBeingBackStabbed;
+        public bool isBeingRiposted;
+        public bool isPerformingBackStab;
+        public bool isPerformingRiposte;
 
         [Header("Movement Flags")]
         public bool isRotatingWithRootMotion;

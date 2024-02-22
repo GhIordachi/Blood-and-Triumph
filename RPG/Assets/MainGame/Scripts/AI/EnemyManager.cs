@@ -14,7 +14,7 @@ namespace GI {
         public EnemyInventoryManager enemyInventoryManager;
 
         public State currentState;
-        public CharacterStatsManager currentTarget;
+        public CharacterManager currentTarget;
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidBody;
 
@@ -33,6 +33,20 @@ namespace GI {
         public bool allowAIToPerformCombos;
         public bool isPhaseShifting;
         public float comboLikelyHood;
+        public AICombatStyle combatStyle;
+
+        //These settings only affect A.I with advanced states
+        [Header("Advanced A.I Settings")]
+        public bool allowAIToPerformBlock;
+        public int blockLikelyHood = 50;   //Number 0-100. 100 will generate a block every time, 0 will generate a block 0% of the time.
+        public bool allowAIToPerformDodge;
+        public int dodgeLikelyHood = 50;
+        public bool allowAIToPerformParry;
+        public int parryLikelyHood = 50;
+
+        [Header("A.I Archery Settings")]
+        public float minimumTimeToAimAtTarget = 3;
+        public float maximumTimeToAimAtTarget = 6;
 
         [Header("A.I Target Information")]
         public float distanceFromTarget;
@@ -66,10 +80,13 @@ namespace GI {
             isRotatingWithRootMotion = animator.GetBool("isRotatingWithRootMotion");
             isInteracting = animator.GetBool("isInteracting");
             isInvulnerable = animator.GetBool("isInvulnerable");
+            isHoldingArrow = animator.GetBool("isHoldingArrow");
             isPhaseShifting = animator.GetBool("isPhaseShifting");
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             animator.SetBool("isDead", isDead);
+            animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
+            animator.SetBool("isBlocking", isBlocking);
 
             if(currentTarget != null)
             {

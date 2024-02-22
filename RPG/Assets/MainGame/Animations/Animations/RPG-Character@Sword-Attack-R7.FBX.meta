@@ -810,6 +810,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.42199692
+        functionName: EnableCanBeParried
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.5066834
         functionName: DrainStaminaBasedOnAttack
         data: 
@@ -819,6 +826,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.6186653
         functionName: CloseDamageCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6314401
+        functionName: DisableCanBeParried
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

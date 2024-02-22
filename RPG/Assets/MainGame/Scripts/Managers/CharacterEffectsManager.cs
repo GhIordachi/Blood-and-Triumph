@@ -8,8 +8,8 @@ namespace GI
     {
         CharacterManager character;
 
-        [Header("Current Range FX")]
-        public GameObject currentRangeFX;
+        [Header("Current FX")]
+        public GameObject instantiatedFXModel;
 
         [Header("Damage FX")]
         public GameObject bloodSplatterFX;
@@ -113,6 +113,34 @@ namespace GI
                     poisonAmount = defaultPoisonAmount;
                     Destroy(currentPoisonParticleFX);
                 }
+            }
+        }
+
+        public virtual void InteruptEffect()
+        {
+            //Can be used to destroy effects models (Drinking potions, arrows etc.)
+            if(instantiatedFXModel != null)
+            {
+                Destroy(instantiatedFXModel);
+            }
+
+            //Firesthe character's bow and removes the arrow
+            if(character.isHoldingArrow)
+            {
+                character.animator.SetBool("isHoldingArrow", false);
+                Animator rangedWeaponAnimator = character.characterWeaponSlotManager.rightHandSlot.curentWeaponModel.GetComponentInChildren<Animator>();
+
+                if(rangedWeaponAnimator != null)
+                {
+                    rangedWeaponAnimator.SetBool("isDrawn", false);
+                    rangedWeaponAnimator.Play("Bow_TH_Fire_01");
+                }
+            }
+
+            //Removes player from aiming state
+            if (character.isAiming)
+            {
+                character.animator.SetBool("isAiming", false);
             }
         }
     }

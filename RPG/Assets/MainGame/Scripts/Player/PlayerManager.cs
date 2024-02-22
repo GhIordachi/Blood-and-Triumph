@@ -40,8 +40,6 @@ namespace GI
             inputHandler = GetComponent<InputHandler>();
             animator = GetComponent<Animator>();
 
-            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
-
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();

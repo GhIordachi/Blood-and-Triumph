@@ -7,29 +7,29 @@ namespace GI
     [CreateAssetMenu(menuName = "Item Actions/Draw Arrow Action")]
     public class DrawArrowAction : ItemAction
     {
-        public override void PerformAction(PlayerManager player)
+        public override void PerformAction(CharacterManager character)
         {
-            if (player.isInteracting)
+            if (character.isInteracting)
                 return;
 
-            if (player.isHoldingArrow)
+            if (character.isHoldingArrow)
                 return;
 
             //Animate Player
-            player.animator.SetBool("isHoldingArrow", true);
-            player.playerAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01", true);
+            character.animator.SetBool("isHoldingArrow", true);
+            character.characterAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01", true);
             //Instantiate Arrow
-            GameObject loadedArrow = Instantiate(player.playerInventoryManager.currentAmmo.loadedItemModel, player.playerWeaponSlotManager.leftHandSlot.transform);
+            GameObject loadedArrow = Instantiate(character.characterInventoryManager.currentAmmo.loadedItemModel, character.characterWeaponSlotManager.leftHandSlot.transform);
 
             //Animate Bow
-            player.StartCoroutine(PlayBowAnimation(player));
-            player.playerEffectsManager.currentRangeFX = loadedArrow;
+            character.StartCoroutine(PlayBowAnimation(character));
+            character.characterEffectsManager.instantiatedFXModel = loadedArrow;
         }
 
-        private IEnumerator PlayBowAnimation(PlayerManager player)
+        private IEnumerator PlayBowAnimation(CharacterManager character)
         {
             yield return new WaitForSeconds(1f);
-            Animator bowAnimator = player.playerWeaponSlotManager.rightHandSlot.GetComponentInChildren<Animator>();
+            Animator bowAnimator = character.characterWeaponSlotManager.rightHandSlot.GetComponentInChildren<Animator>();
             bowAnimator.SetBool("isDrawn", true);
             bowAnimator.Play("Bow_TH_Draw_01");
         }

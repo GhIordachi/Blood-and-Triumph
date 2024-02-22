@@ -18,14 +18,14 @@ TagManager:
   - 
   - 
   - TempCast
-  - Walkable
-  - Controller
+  - 
+  - 
   - Environment
   - Character
   - Character Collision Blocker
   - Player
-  - BackStab
-  - Riposte
+  - Damageable Character
+  - Damage Collider
   - 
   - 
   - 

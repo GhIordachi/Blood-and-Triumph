@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6975778754334110485}
   - component: {fileID: 1874283943788726187}
   - component: {fileID: 5882141414815183415}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,8 +215,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06151691, y: 1.2619144, z: 0.8608698}
-  m_Center: {x: 0.0000013120022, y: 0.7190501, z: -0.00394603}
+  m_Size: {x: 0.06151691, y: 1.2619144, z: 0.25542423}
+  m_Center: {x: 0.0000013649354, y: 0.7190501, z: -0.0044673737}
 --- !u!114 &5882141414815183415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
   poiseBreak: 0
   offensivePoiseBonus: 0
-  currentWeaponDamage: 25
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0
+  guardBreakModifier: 1
 --- !u!1001 &9008443298715258588
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,8 +46,6 @@ namespace GI
         public bool inventoryFlag;
         public float rollInputTimer;
 
-        public Transform criticalAttackRayCastStartPoint;
-
         PlayerControls inputActions;
         PlayerManager player;
 

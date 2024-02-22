@@ -28,6 +28,19 @@ namespace GI
         heavy
     }
 
+    public enum AICombatStyle
+    {
+        swordAndShield,
+        archer
+    }
+
+    public enum AIAttackActionType
+    {
+        meleeAttackAction,
+        magicAttackAction,
+        rangedAttackAction
+    }
+
     public class Enums : MonoBehaviour
     {
         

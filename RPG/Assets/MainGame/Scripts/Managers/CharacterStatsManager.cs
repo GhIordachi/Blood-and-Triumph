@@ -247,5 +247,15 @@ namespace GI {
             maxFocusPoints = focusLevel * 10;
             return maxFocusPoints;
         }
+
+        public virtual void HealCharacter(int healAmount)
+        {
+            currentHealth = currentHealth + healAmount;
+
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+        }
     }
 }

@@ -37,6 +37,13 @@ namespace GI {
             {
                 character.isUsingLeftHand = false;
                 character.isUsingRightHand = false;
+                character.isAttacking = false;
+                character.isBeingBackStabbed = false;
+                character.isBeingRiposted = false;
+                character.isPerformingBackStab = false;
+                character.isPerformingRiposte = false;
+                character.canBeParried = false;
+                character.canBeRiposted = false;
             }
 
             animator.SetBool(isInvulnerable, isInvulnerableStatus);
