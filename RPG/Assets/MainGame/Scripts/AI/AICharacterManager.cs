@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;   
 
 namespace GI {
-    public class EnemyManager : CharacterManager
+    public class AICharacterManager : CharacterManager
     {
-        public EnemyBossManager enemyBossManager;
-        public EnemyLocomotionManager enemyLocomotionManager;
-        public EnemyAnimatorManager enemyAnimatorManager;
-        public EnemyStatsManager enemyStatsManager;
-        public EnemyEffectsManager enemyEffectsManager;
-        public EnemyInventoryManager enemyInventoryManager;
+        public AICharacterBossManager aiCharacterBossManager;
+        public AICharacterLocomotionManager aiCharacterLocomotionManager;
+        public AICharacterAnimatorManager aiCharacterAnimatorManager;
+        public AICharacterStatsManager aiCharacterStatsManager;
+        public AICharacterEffectsManager aiCharacterEffectsManager;
+        public AICharacterInventoryManager aiCharacterInventoryManager;
 
         public State currentState;
         public CharacterManager currentTarget;
         public NavMeshAgent navMeshAgent;
-        public Rigidbody enemyRigidBody;
+        public Rigidbody aiCharacterRigidBody;
 
         public bool isPerformingAction;
         public float rotationSpeed = 15;
@@ -28,6 +28,7 @@ namespace GI {
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
         public float currentRecoveryTime = 0;
+        public float stoppingDistance = 1.2f; //How close we get to our target before stopping infront of them
 
         [Header("AI Combat Settings")]
         public bool allowAIToPerformCombos;
@@ -45,8 +46,16 @@ namespace GI {
         public int parryLikelyHood = 50;
 
         [Header("A.I Archery Settings")]
+        public bool isStationaryArcher;
         public float minimumTimeToAimAtTarget = 3;
         public float maximumTimeToAimAtTarget = 6;
+
+        [Header("A.I Companion Settings")]
+        public float maxDistanceFromCompanion;  //Max distance we can go from our companion
+        public float minDistanceFromCompanion;  //Min distance we have to be from our companion
+        public float returnDistanceFromCompanion = 2f;  //How close we get to our companion when we return to them
+        public float distanceFromCompanion;     
+        public CharacterManager companion;
 
         [Header("A.I Target Information")]
         public float distanceFromTarget;
@@ -56,20 +65,20 @@ namespace GI {
         protected override void Awake()
         {
             base.Awake();
-            enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyBossManager = GetComponent<EnemyBossManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
-            enemyStatsManager = GetComponent<EnemyStatsManager>();
-            enemyEffectsManager = GetComponent<EnemyEffectsManager>();
-            enemyInventoryManager = GetComponent<EnemyInventoryManager>();
-            enemyRigidBody = GetComponent<Rigidbody>();
+            aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
+            aiCharacterBossManager = GetComponent<AICharacterBossManager>();
+            aiCharacterAnimatorManager = GetComponent<AICharacterAnimatorManager>();
+            aiCharacterStatsManager = GetComponent<AICharacterStatsManager>();
+            aiCharacterEffectsManager = GetComponent<AICharacterEffectsManager>();
+            aiCharacterInventoryManager = GetComponent<AICharacterInventoryManager>();
+            aiCharacterRigidBody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
         }
 
         private void Start()
         {
-            enemyRigidBody.isKinematic = false;
+            aiCharacterRigidBody.isKinematic = false;
         }
 
         private void Update()
@@ -94,12 +103,17 @@ namespace GI {
                 targetsDirection = currentTarget.transform.position - transform.position;
                 viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
             }
+
+            if(companion != null)
+            {
+                distanceFromCompanion = Vector3.Distance(companion.transform.position, transform.position);
+            }
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            enemyEffectsManager.HandleAllBuildUpEffects();
+            aiCharacterEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()

@@ -10,7 +10,7 @@ namespace GI {
         public LayerMask detectionLayer;
         public LayerMask layersToIgnoreForLineOfSight;
 
-        public override State Tick(EnemyManager aiCharacter)
+        public override State Tick(AICharacterManager aiCharacter)
         {
             //Searches for a potential target within the detection radius
             Collider[] colliders = Physics.OverlapSphere(transform.position, aiCharacter.detectionRadius, detectionLayer);
@@ -22,7 +22,7 @@ namespace GI {
                 //if a potential target is found, that is not on the same team as the A.I we proceed to the next step
                 if (targetCharacter != null)
                 {
-                    if (targetCharacter.characterStatsManager.teamIDNumber != aiCharacter.enemyStatsManager.teamIDNumber)
+                    if (targetCharacter.characterStatsManager.teamIDNumber != aiCharacter.aiCharacterStatsManager.teamIDNumber)
                     {
                         Vector3 targetDetection = targetCharacter.transform.position - transform.position;
                         float viewableAngle = Vector3.Angle(targetDetection, transform.forward);

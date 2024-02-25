@@ -33,7 +33,7 @@ namespace GI
             attackState = GetComponent<AttackStateHumanoid>();
         }
 
-        public override State Tick(EnemyManager enemy)
+        public override State Tick(AICharacterManager enemy)
         {
             if(enemy.combatStyle == AICombatStyle.swordAndShield)
             {
@@ -49,11 +49,8 @@ namespace GI
             }
         }
 
-        private State ProcessSwordAndShieldCombatStyle(EnemyManager enemy)
+        private State ProcessSwordAndShieldCombatStyle(AICharacterManager enemy)
         {
-            enemy.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
-            enemy.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-
             //If the A.I is falling or is performing some sort of action Stop all movement
             if(!enemy.isGrounded || enemy.isInteracting)
             {
@@ -73,7 +70,7 @@ namespace GI
             {
                 randomDestinationSet = true;
                 //Decide Circling Action
-                DecideCirclingAction(enemy.enemyAnimatorManager);
+                DecideCirclingAction(enemy.aiCharacterAnimatorManager);
             }
 
             if (enemy.allowAIToPerformParry)
@@ -131,14 +128,13 @@ namespace GI
                 GetNewAttack(enemy);
             }
 
+            HandleMovement(enemy);
+
             return this;
         }
 
-        private State ProcessArcherCombatStyle(EnemyManager enemy) 
+        private State ProcessArcherCombatStyle(AICharacterManager enemy) 
         {
-            enemy.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
-            enemy.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-
             //If the A.I is falling or is performing some sort of action Stop all movement
             if (!enemy.isGrounded || enemy.isInteracting)
             {
@@ -159,7 +155,7 @@ namespace GI
             {
                 randomDestinationSet = true;
                 //Decide Circling Action
-                DecideCirclingAction(enemy.enemyAnimatorManager);
+                DecideCirclingAction(enemy.aiCharacterAnimatorManager);
             }
 
             if (enemy.allowAIToPerformDodge)
@@ -186,45 +182,40 @@ namespace GI
                 return attackState;
             }
 
+            if(enemy.isStationaryArcher)
+            {
+                enemy.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                enemy.animator.SetFloat("Horizontal", 0, 0.2f, Time.deltaTime);
+            }
+            else
+            {
+                HandleMovement(enemy);
+            }
+
             return this;
         }
 
-        protected void HandleRotateTowardsTarget(EnemyManager enemy)
+        protected void HandleRotateTowardsTarget(AICharacterManager enemy)
         {
-            //Rotate manually
-            if (enemy.isPerformingAction)
+            Vector3 direction = enemy.currentTarget.transform.position - transform.position;
+            direction.y = 0;
+            direction.Normalize();
+
+            if (direction == Vector3.zero)
             {
-                Vector3 direction = enemy.currentTarget.transform.position - transform.position;
-                direction.y = 0;
-                direction.Normalize();
-
-                if (direction == Vector3.zero)
-                {
-                    direction = transform.forward;
-                }
-
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                enemy.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemy.rotationSpeed / Time.deltaTime);
+                direction = transform.forward;
             }
-            //Rotate with pathfinding (navmesh)
-            else
-            {
-                Vector3 relativeDirection = transform.InverseTransformDirection(enemy.navMeshAgent.desiredVelocity);
-                Vector3 targetVelocity = enemy.enemyRigidBody.velocity;
 
-                enemy.navMeshAgent.enabled = true;
-                enemy.navMeshAgent.SetDestination(enemy.currentTarget.transform.position);
-                enemy.enemyRigidBody.velocity = targetVelocity;
-                enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, enemy.navMeshAgent.transform.rotation, enemy.rotationSpeed / Time.deltaTime);
-            }
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            enemy.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemy.rotationSpeed / Time.deltaTime);
         }
 
-        protected void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
+        protected void DecideCirclingAction(AICharacterAnimatorManager enemyAnimatorManager)
         {
             WalkAroundTarget(enemyAnimatorManager);
         }
 
-        protected void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
+        protected void WalkAroundTarget(AICharacterAnimatorManager enemyAnimatorManager)
         {
             verticalMovementValue = 0.5f;
 
@@ -240,7 +231,7 @@ namespace GI
             }
         }
 
-        protected virtual void GetNewAttack(EnemyManager enemy)
+        protected virtual void GetNewAttack(AICharacterManager enemy)
         {
 
             int maxScore = 0;
@@ -288,7 +279,7 @@ namespace GI
         }
 
         //A.I Rolls
-        private void RollForBlockChance(EnemyManager enemy)
+        private void RollForBlockChance(AICharacterManager enemy)
         {
             int blockChance = Random.Range(0, 100);
 
@@ -302,7 +293,7 @@ namespace GI
             }
         }
 
-        private void RollForDodgeChance(EnemyManager enemy)
+        private void RollForDodgeChance(AICharacterManager enemy)
         {
             int dodgeChance = Random.Range(0, 100);
 
@@ -316,7 +307,7 @@ namespace GI
             }
         }
 
-        private void RollForParryChance(EnemyManager enemy)
+        private void RollForParryChance(AICharacterManager enemy)
         {
             int parryChance = Random.Range(0, 100);
 
@@ -331,7 +322,7 @@ namespace GI
         }
 
         //A.I Actions
-        private void BlockUsingOffHand(EnemyManager enemy)
+        private void BlockUsingOffHand(AICharacterManager enemy)
         {
             if(enemy.isBlocking == false)
             {
@@ -344,7 +335,7 @@ namespace GI
             }
         }
 
-        private void DodgeAttacks(EnemyManager enemy)
+        private void DodgeAttacks(AICharacterManager enemy)
         {
             if (!hasPerformedDodge)
             {
@@ -370,13 +361,13 @@ namespace GI
                     {
                         hasPerformedDodge = true;
                         enemy.transform.rotation = targetDodgeDirection;
-                        enemy.enemyAnimatorManager.PlayTargetAnimation("Rolling", true);
+                        enemy.aiCharacterAnimatorManager.PlayTargetAnimation("Rolling", true);
                     }
                 }
             }
         }
 
-        private void DrawArrow(EnemyManager enemy)
+        private void DrawArrow(AICharacterManager enemy)
         {
             if(!enemy.isTwoHandingWeapon)
             {
@@ -391,13 +382,13 @@ namespace GI
             }
         }
 
-        private void AimAtTargetBeforeFiring(EnemyManager enemy)
+        private void AimAtTargetBeforeFiring(AICharacterManager enemy)
         {
             float timeUntilAmmoIsShotAtTarget = Random.Range(enemy.minimumTimeToAimAtTarget, enemy.maximumTimeToAimAtTarget);
             enemy.currentRecoveryTime = timeUntilAmmoIsShotAtTarget;
         }
 
-        private void ParryCurrentTarget(EnemyManager enemy)
+        private void ParryCurrentTarget(AICharacterManager enemy)
         {
             if(enemy.currentTarget.canBeParried)
             {
@@ -405,12 +396,12 @@ namespace GI
                 {
                     hasPerformedParry = true;
                     enemy.isParrying = true;
-                    enemy.enemyAnimatorManager.PlayTargetAnimation("Parry_01", true);
+                    enemy.aiCharacterAnimatorManager.PlayTargetAnimation("Parry_01", true);
                 }
             }
         }
 
-        private void CheckForRiposte(EnemyManager enemy)
+        private void CheckForRiposte(AICharacterManager enemy)
         {
             if(enemy.isInteracting)
             {
@@ -429,10 +420,24 @@ namespace GI
                 enemy.isBlocking = false;
 
                 if(!enemy.isInteracting && !enemy.currentTarget.isBeingRiposted && !enemy.currentTarget.isBeingBackStabbed){
-                    enemy.enemyRigidBody.velocity = Vector3.zero;
+                    enemy.aiCharacterRigidBody.velocity = Vector3.zero;
                     enemy.animator.SetFloat("Vertical", 0);
                     enemy.characterCombatManager.AttemptBackStabOrRiposte();
                 }
+            }
+        }
+
+        private void HandleMovement(AICharacterManager enemy)
+        {
+            if(enemy.distanceFromTarget <= enemy.stoppingDistance)
+            {
+                enemy.animator.SetFloat("Vertical", 0, 0.2f, Time.deltaTime);
+                enemy.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
+            }
+            else
+            {
+                enemy.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
+                enemy.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
             }
         }
 

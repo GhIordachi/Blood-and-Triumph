@@ -7,14 +7,14 @@ namespace GI
     public class CombatStanceState : State
     {
         public AttackState attackState;
-        public EnemyAttackAction[] enemyAttacks;
+        public AICharacterAttackAction[] enemyAttacks;
         public PursueTargetState pursueTargetState;
 
         protected bool randomDestinationSet = false;
         protected float verticalMovementValue = 0;
         protected float horizontalMovementValue = 0;
 
-        public override State Tick(EnemyManager enemy)
+        public override State Tick(AICharacterManager enemy)
         {            
             enemy.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
             enemy.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
@@ -35,7 +35,7 @@ namespace GI
             {
                 randomDestinationSet = true;
                 //Decide Circling Action
-                DecideCirclingAction(enemy.enemyAnimatorManager);
+                DecideCirclingAction(enemy.aiCharacterAnimatorManager);
             }
 
             HandleRotateTowardsTarget(enemy);
@@ -52,7 +52,7 @@ namespace GI
 
             return this;
         }
-        protected void HandleRotateTowardsTarget(EnemyManager enemy)
+        protected void HandleRotateTowardsTarget(AICharacterManager enemy)
         {
             //Rotate manually
             if (enemy.isPerformingAction)
@@ -73,21 +73,21 @@ namespace GI
             else
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemy.navMeshAgent.desiredVelocity);
-                Vector3 targetVelocity = enemy.enemyRigidBody.velocity;
+                Vector3 targetVelocity = enemy.aiCharacterRigidBody.velocity;
 
                 enemy.navMeshAgent.enabled = true;
                 enemy.navMeshAgent.SetDestination(enemy.currentTarget.transform.position);
-                enemy.enemyRigidBody.velocity = targetVelocity;
+                enemy.aiCharacterRigidBody.velocity = targetVelocity;
                 enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, enemy.navMeshAgent.transform.rotation, enemy.rotationSpeed / Time.deltaTime);
             }
         }
 
-        protected void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
+        protected void DecideCirclingAction(AICharacterAnimatorManager enemyAnimatorManager)
         {
             WalkAroundTarget(enemyAnimatorManager);
         }
 
-        protected void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
+        protected void WalkAroundTarget(AICharacterAnimatorManager enemyAnimatorManager)
         {
             verticalMovementValue = 0.5f;
 
@@ -103,14 +103,14 @@ namespace GI
             }
         }
 
-        protected virtual void GetNewAttack(EnemyManager enemy)
+        protected virtual void GetNewAttack(AICharacterManager enemy)
         {
 
             int maxScore = 0;
 
             for (int i = 0; i < enemyAttacks.Length; i++)
             {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+                AICharacterAttackAction enemyAttackAction = enemyAttacks[i];
 
                 if (enemy.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
                     && enemy.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
@@ -128,7 +128,7 @@ namespace GI
 
             for (int i = 0; i < enemyAttacks.Length; i++)
             {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+                AICharacterAttackAction enemyAttackAction = enemyAttacks[i];
 
                 if (enemy.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
                     && enemy.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)

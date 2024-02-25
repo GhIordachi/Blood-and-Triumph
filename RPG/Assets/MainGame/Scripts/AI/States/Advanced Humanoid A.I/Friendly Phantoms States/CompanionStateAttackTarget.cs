@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace GI
 {
-    public class AttackStateHumanoid : State
+    public class CompanionStateAttackTarget : State
     {
-        public CombatStanceStateHumanoid combatStanceState;
-        public PursueTargetStateHumanoid pursueTargetState;
-        public RotateTowardsTargetStateHumanoid rotateTowardsTargetState;
+        CompanionStateCombatStance combatStanceState;
+        CompanionStatePursueTarget pursueTargetState;
+        CompanionStateRotateTowardsTarget rotateTowardsTargetState;
         public ItemBasedAttackAction currentAttack;
 
         bool willDoComboNextAttack = false;
@@ -16,20 +16,20 @@ namespace GI
 
         private void Awake()
         {
-            rotateTowardsTargetState = GetComponent<RotateTowardsTargetStateHumanoid>();
-            combatStanceState = GetComponent<CombatStanceStateHumanoid>();
-            pursueTargetState = GetComponent <PursueTargetStateHumanoid>();
+            rotateTowardsTargetState = GetComponent<CompanionStateRotateTowardsTarget>();
+            combatStanceState = GetComponent<CompanionStateCombatStance>();
+            pursueTargetState = GetComponent<CompanionStatePursueTarget>();
         }
 
-        public override State Tick(AICharacterManager enemy)
+        public override State Tick(AICharacterManager aiCharacter)
         {
-            if(enemy.combatStyle == AICombatStyle.swordAndShield)
+            if (aiCharacter.combatStyle == AICombatStyle.swordAndShield)
             {
-                return ProcessSwordAndShieldCombatStyle(enemy);
+                return ProcessSwordAndShieldCombatStyle(aiCharacter);
             }
-            else if (enemy.combatStyle == AICombatStyle.archer)
+            else if (aiCharacter.combatStyle == AICombatStyle.archer)
             {
-                return ProcessArcherCombatStyle(enemy);
+                return ProcessArcherCombatStyle(aiCharacter);
             }
             else
             {
@@ -73,13 +73,13 @@ namespace GI
             if (enemy.isInteracting)
                 return this;
 
-            if(!enemy.isHoldingArrow)
+            if (!enemy.isHoldingArrow)
             {
                 ResetStateFlags();
                 return combatStanceState;
             }
 
-            if(enemy.currentTarget.isDead)
+            if (enemy.currentTarget.isDead)
             {
                 ResetStateFlags();
                 enemy.currentTarget = null;
@@ -156,7 +156,7 @@ namespace GI
 
         private void FireAmmo(AICharacterManager enemy)
         {
-            if(enemy.isHoldingArrow)
+            if (enemy.isHoldingArrow)
             {
                 hasPerformedAttack = true;
                 enemy.characterInventoryManager.currentItemBeingUsed = enemy.characterInventoryManager.rightWeapon;

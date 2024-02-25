@@ -13,7 +13,54 @@ namespace GI
             combatStanceStateHumanoid = GetComponent<CombatStanceStateHumanoid>();
         }
 
-        public override State Tick(EnemyManager enemy)
+        public override State Tick(AICharacterManager enemy)
+        {
+            if(enemy.combatStyle == AICombatStyle.swordAndShield)
+            {
+                return ProcessSwordAndShieldPursueStyle(enemy);
+            }
+            else if (enemy.combatStyle == AICombatStyle.archer)
+            {
+                return ProcessArcherPursueStyle(enemy);
+            }
+            else
+            {
+                return this;
+            }
+        }
+
+        private State ProcessArcherPursueStyle(AICharacterManager enemy)
+        {
+            HandleRotateTowardsTarget(enemy);
+
+            if (enemy.isInteracting)
+                return this;
+
+            if (enemy.isPerformingAction)
+            {
+                enemy.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                return this;
+            }
+
+            if (enemy.distanceFromTarget > enemy.maximumAggroRadius)
+            {
+                if(!enemy.isStationaryArcher)
+                {
+                    enemy.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                }
+            }
+
+            if (enemy.distanceFromTarget <= enemy.maximumAggroRadius)
+            {
+                return combatStanceStateHumanoid;
+            }
+            else
+            {
+                return this;
+            }
+        }
+
+        private State ProcessSwordAndShieldPursueStyle(AICharacterManager enemy)
         {
             HandleRotateTowardsTarget(enemy);
 
@@ -41,7 +88,7 @@ namespace GI
             }
         }
 
-        private void HandleRotateTowardsTarget(EnemyManager enemy)
+        private void HandleRotateTowardsTarget(AICharacterManager enemy)
         {
             //Rotate manually
             if (enemy.isPerformingAction)
@@ -62,11 +109,11 @@ namespace GI
             else
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemy.navMeshAgent.desiredVelocity);
-                Vector3 targetVelocity = enemy.enemyRigidBody.velocity;
+                Vector3 targetVelocity = enemy.aiCharacterRigidBody.velocity;
 
                 enemy.navMeshAgent.enabled = true;
                 enemy.navMeshAgent.SetDestination(enemy.currentTarget.transform.position);
-                enemy.enemyRigidBody.velocity = targetVelocity;
+                enemy.aiCharacterRigidBody.velocity = targetVelocity;
                 enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, enemy.navMeshAgent.transform.rotation, enemy.rotationSpeed / Time.deltaTime);
             }
         }

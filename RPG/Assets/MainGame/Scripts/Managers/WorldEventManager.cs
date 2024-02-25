@@ -9,7 +9,7 @@ namespace GI
         //Fog Wall
         public List<FogWall> fogWalls;
         public UIBossHealthBar bossHealthBar;
-        public EnemyBossManager enemyBossManager;
+        public AICharacterBossManager enemyBossManager;
 
         public bool bossFightIsActive; //Is currently fighting boss
         public bool bossHasBeenAwakened; //Woke the boss/watched cutscene but died during fight

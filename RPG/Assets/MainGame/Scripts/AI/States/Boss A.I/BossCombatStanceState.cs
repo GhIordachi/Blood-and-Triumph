@@ -8,9 +8,9 @@ namespace GI
     {
         [Header("Second Phase Attacks")]
         public bool hasPhaseShifted;
-        public EnemyAttackAction[] secondPhaseAttacks;
+        public AICharacterAttackAction[] secondPhaseAttacks;
 
-        protected override void GetNewAttack(EnemyManager enemy)
+        protected override void GetNewAttack(AICharacterManager enemy)
         {
             if(hasPhaseShifted)
             {
@@ -23,7 +23,7 @@ namespace GI
 
                 for (int i = 0; i < secondPhaseAttacks.Length; i++)
                 {
-                    EnemyAttackAction enemyAttackAction = secondPhaseAttacks[i];
+                    AICharacterAttackAction enemyAttackAction = secondPhaseAttacks[i];
 
                     if (distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
                         && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
@@ -41,7 +41,7 @@ namespace GI
 
                 for (int i = 0; i < secondPhaseAttacks.Length; i++)
                 {
-                    EnemyAttackAction enemyAttackAction = secondPhaseAttacks[i];
+                    AICharacterAttackAction enemyAttackAction = secondPhaseAttacks[i];
 
                     if (distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
                         && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)

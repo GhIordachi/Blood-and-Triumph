@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GI
 {
-    public class EnemyCombatManager : CharacterCombatManager
+    public class AICharacterCombatManager : CharacterCombatManager
     {
         protected override void Awake()
         {

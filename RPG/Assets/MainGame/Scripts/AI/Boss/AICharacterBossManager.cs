@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace GI
 {
-    public class EnemyBossManager : MonoBehaviour
+    public class AICharacterBossManager : MonoBehaviour
     {
         public string bossName;
 
         UIBossHealthBar bossHealthBar;
-        EnemyManager enemy;
+        AICharacterManager enemy;
         BossCombatStanceState bossCombatStanceState;
 
         [Header("Second Phase FX")]
@@ -18,14 +18,14 @@ namespace GI
         private void Awake()
         {
             bossHealthBar = FindAnyObjectByType<UIBossHealthBar>();
-            enemy = GetComponent<EnemyManager>();
+            enemy = GetComponent<AICharacterManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 
         private void Start()
         {
             bossHealthBar.SetBossName(bossName);
-            bossHealthBar.SetBossMaxHealth(enemy.enemyStatsManager.maxHealth);
+            bossHealthBar.SetBossMaxHealth(enemy.aiCharacterStatsManager.maxHealth);
         }
 
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)
@@ -44,7 +44,7 @@ namespace GI
             //Play an animation /w an event that triggers particle fx/weapon fx
             enemy.animator.SetBool("isInvulnerable", true);
             enemy.animator.SetBool("isPhaseShifting", true);
-            enemy.enemyAnimatorManager.PlayTargetAnimation("Phase Shift", true);
+            enemy.aiCharacterAnimatorManager.PlayTargetAnimation("Phase Shift", true);
             //switch attack actions
             bossCombatStanceState.hasPhaseShifted = true;
         }

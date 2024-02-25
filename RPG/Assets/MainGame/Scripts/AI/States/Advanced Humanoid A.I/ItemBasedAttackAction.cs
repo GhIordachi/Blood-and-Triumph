@@ -25,7 +25,7 @@ namespace GI
         public float minimumDistanceNeededToAttack = 0;
         public float maximumDistanceNeededToAttack = 3;
 
-        public void PerformAttackAction(EnemyManager enemy)
+        public void PerformAttackAction(AICharacterManager enemy)
         {
             if(isRightHandedAction)
             {
@@ -40,7 +40,7 @@ namespace GI
         }
 
         //Decide which hand performs the action
-        private void PerformRightHandItemActionBasedOnAttackType(EnemyManager enemy)
+        private void PerformRightHandItemActionBasedOnAttackType(AICharacterManager enemy)
         {
             if(actionAttackType == AIAttackActionType.meleeAttackAction)
             {
@@ -52,7 +52,7 @@ namespace GI
             }
         }
 
-        private void PerformLeftHandItemActionBasedOnAttackType(EnemyManager enemy)
+        private void PerformLeftHandItemActionBasedOnAttackType(AICharacterManager enemy)
         {
             if (actionAttackType == AIAttackActionType.meleeAttackAction)
             {
@@ -65,7 +65,7 @@ namespace GI
         }
 
         //Right Hand Actions
-        private void PerformRightHandedMeleeAction(EnemyManager enemy)
+        private void PerformRightHandedMeleeAction(AICharacterManager enemy)
         {
             if(enemy.isTwoHandingWeapon)
             {

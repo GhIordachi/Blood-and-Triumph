@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GI
 {
-    public class EnemyEffectsManager : CharacterEffectsManager
+    public class AICharacterInventoryManager : CharacterInventoryManager
     {
         
     }

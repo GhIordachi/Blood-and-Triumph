@@ -46,6 +46,14 @@ namespace GI
         public bool inventoryFlag;
         public float rollInputTimer;
 
+        public bool input_Has_Been_Qued;
+        public float current_Qued_Input_Timer;
+        public float default_Qued_Input_Timer;
+        public bool qued_RB_Input;
+        public bool qued_LB_Input;
+        public bool qued_RT_Input;
+        public bool qued_LT_Input;
+
         PlayerControls inputActions;
         PlayerManager player;
 
@@ -68,15 +76,16 @@ namespace GI
 
                 inputActions.PlayerActions.HoldRB.performed += i => hold_rb_Input = true;
                 inputActions.PlayerActions.HoldRB.canceled += i => hold_rb_Input = false;
+                inputActions.PlayerActions.HoldRB.canceled += i => tap_rb_Input = true;
 
                 inputActions.PlayerActions.HoldRT.performed += i => hold_rt_Input = true;
                 inputActions.PlayerActions.HoldRT.canceled += i => hold_rt_Input = false;
 
                 inputActions.PlayerActions.RT.performed += i => tap_rt_Input = true;
                 inputActions.PlayerActions.TapLB.performed += i => tap_lb_Input = true;
-                inputActions.PlayerActions.Block.performed += i => block_Input = true;
-                inputActions.PlayerActions.Block.canceled += i => block_Input = false;
-                inputActions.PlayerActions.Parry.performed += i => tap_lt_Input = true;
+                inputActions.PlayerActions.HoldLB.performed += i => block_Input = true;
+                inputActions.PlayerActions.HoldLB.canceled += i => block_Input = false;
+                inputActions.PlayerActions.LT.performed += i => tap_lt_Input = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
@@ -90,6 +99,10 @@ namespace GI
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => lockOnRight_Input = true;
                 inputActions.PlayerActions.Y.performed += i => y_Input = true;
 
+                inputActions.PlayerActions.QuedRB.performed += i => QeuInput(ref qued_RB_Input);
+                inputActions.PlayerActions.QuedRT.performed += i => QeuInput(ref qued_RT_Input);
+                inputActions.PlayerActions.QuedLB.performed += i => QeuInput(ref qued_LB_Input);
+                inputActions.PlayerActions.QuedLT.performed += i => QeuInput(ref qued_LT_Input);
             }
 
             inputActions.Enable();
@@ -123,6 +136,7 @@ namespace GI
             HandleLockOnInput();
             HandleTwoHandInput();
             HandleUseConsumableInput();
+            HandleQuedInput();
         }
 
         private void HandleMoveInput()
@@ -181,11 +195,22 @@ namespace GI
             {
                 tap_rb_Input = false;
 
-                if (player.playerInventoryManager.rightWeapon.oh_tap_RB_Action != null)
+                player.UpdateWhichHandCharacterIsUsing(true);
+                player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.rightWeapon;
+
+                if (player.isTwoHandingWeapon)
                 {
-                    player.UpdateWhichHandCharacterIsUsing(true);
-                    player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.rightWeapon;
-                    player.playerInventoryManager.rightWeapon.oh_tap_RB_Action.PerformAction(player);
+                    if (player.playerInventoryManager.rightWeapon.th_tap_RB_Action != null)
+                    {
+                        player.playerInventoryManager.rightWeapon.th_tap_RB_Action.PerformAction(player);
+                    }
+                }
+                else
+                {
+                    if (player.playerInventoryManager.rightWeapon.oh_tap_RB_Action != null)
+                    {
+                        player.playerInventoryManager.rightWeapon.oh_tap_RB_Action.PerformAction(player);
+                    }
                 }
             }
         }
@@ -194,11 +219,22 @@ namespace GI
         {
             if (hold_rb_Input)
             {
-                if (player.playerInventoryManager.rightWeapon.oh_hold_RB_Action != null)
+                player.UpdateWhichHandCharacterIsUsing(true);
+                player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.rightWeapon;
+
+                if(player.isTwoHandingWeapon)
                 {
-                    player.UpdateWhichHandCharacterIsUsing(true);
-                    player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.rightWeapon;
-                    player.playerInventoryManager.rightWeapon.oh_hold_RB_Action.PerformAction(player);
+                    if (player.playerInventoryManager.rightWeapon.th_hold_RB_Action != null)
+                    {
+                        player.playerInventoryManager.rightWeapon.th_hold_RB_Action.PerformAction(player);
+                    }
+                }
+                else
+                {
+                    if (player.playerInventoryManager.rightWeapon.oh_hold_RB_Action != null)
+                    {
+                        player.playerInventoryManager.rightWeapon.oh_hold_RB_Action.PerformAction(player);
+                    }
                 }
             }
         }
@@ -453,6 +489,61 @@ namespace GI
             {
                 consume_Input = false;
                 player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player.playerAnimatorManager, player.playerWeaponSlotManager, player.playerEffectsManager);
+            }
+        }
+
+        private void QeuInput(ref bool quedInput)
+        {
+            //Disable all other qued inputs
+            qued_LB_Input = false;
+            qued_RB_Input = false;
+            qued_LT_Input = false;
+            qued_RT_Input = false;
+
+            //Enable the referenced input by reference
+            //If we are interacting, we can que an input
+            if(player.isInteracting)
+            {
+                quedInput = true;
+                current_Qued_Input_Timer = default_Qued_Input_Timer;
+                input_Has_Been_Qued = true;
+            }
+        }
+
+        private void HandleQuedInput()
+        {
+            if(input_Has_Been_Qued)
+            {
+                if(current_Qued_Input_Timer > 0)
+                {
+                    current_Qued_Input_Timer = current_Qued_Input_Timer - Time.deltaTime;
+                    ProcessQuedInput();
+                }
+                else
+                {
+                    input_Has_Been_Qued = false;
+                    current_Qued_Input_Timer = 0;
+                }
+            }
+        }
+
+        private void ProcessQuedInput()
+        {
+            if (qued_RB_Input)
+            {
+                tap_rb_Input = true;
+            }
+            if (qued_RT_Input)
+            {
+                tap_rt_Input = true;
+            }
+            if (qued_LB_Input)
+            {
+                tap_lb_Input = true;
+            }
+            if (qued_LT_Input)
+            {
+                tap_lt_Input = true;
             }
         }
     }

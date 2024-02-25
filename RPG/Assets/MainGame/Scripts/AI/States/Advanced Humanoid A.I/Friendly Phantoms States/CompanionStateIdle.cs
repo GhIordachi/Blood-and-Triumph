@@ -4,20 +4,29 @@ using UnityEngine;
 
 namespace GI
 {
-    public class IdleStateHumanoid : State
+    public class CompanionStateIdle : State
     {
-        public PursueTargetStateHumanoid pursueTargetStateHumanoid;
+        CompanionStatePursueTarget companionStatePursueTarget;
+        CompanionStateFollowHost followHostState;
 
         public LayerMask detectionLayer;
         public LayerMask layersThatBlockLineOfSight;
 
         private void Awake()
         {
-            pursueTargetStateHumanoid = GetComponent<PursueTargetStateHumanoid>();
+            followHostState = GetComponent<CompanionStateFollowHost>();
+            companionStatePursueTarget = GetComponent<CompanionStatePursueTarget>();
         }
 
         public override State Tick(AICharacterManager aiCharacter)
         {
+            aiCharacter.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+
+            if(aiCharacter.distanceFromCompanion > aiCharacter.maxDistanceFromCompanion)
+            {
+                return followHostState;
+            }
+
             //Searches for a potential target within the detection radius
             Collider[] colliders = Physics.OverlapSphere(transform.position, aiCharacter.detectionRadius, detectionLayer);
 
@@ -52,12 +61,14 @@ namespace GI
 
             if (aiCharacter.currentTarget != null)
             {
-                return pursueTargetStateHumanoid;
+                return companionStatePursueTarget;
             }
             else
             {
                 return this;
             }
+
+            return this;
         }
     }
 }

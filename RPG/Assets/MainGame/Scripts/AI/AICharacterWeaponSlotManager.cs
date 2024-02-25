@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GI
 {
-    public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
+    public class AICharacterWeaponSlotManager : CharacterWeaponSlotManager
     {
         public override void GrantWeaponAttackingPoiseBonus()
         {

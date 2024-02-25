@@ -30,8 +30,8 @@ namespace GI
                 //Create and fire the live arrow
                 GameObject liveArrow = Instantiate(character.characterInventoryManager.currentAmmo.liveAmmoModel, 
                     arrowInstantiationLocation.transform.position, player.cameraHandler.cameraPivotTransform.rotation);
-                Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
-                RangedProjectileDamageCollider damageCollider = liveArrow.GetComponentInChildren<RangedProjectileDamageCollider>();
+                Rigidbody rigidbody = liveArrow.GetComponent<Rigidbody>();
+                RangedProjectileDamageCollider damageCollider = liveArrow.GetComponent<RangedProjectileDamageCollider>();
 
                 if (character.isAiming)
                 {
@@ -76,12 +76,12 @@ namespace GI
             //... as an A.I character
             else
             {
-                EnemyManager enemy = character as EnemyManager;
+                AICharacterManager enemy = character as AICharacterManager;
                 //Create and fire the live arrow
                 GameObject liveArrow = Instantiate(character.characterInventoryManager.currentAmmo.liveAmmoModel,
                     arrowInstantiationLocation.transform.position, Quaternion.identity);
-                Rigidbody rigidbody = liveArrow.GetComponentInChildren<Rigidbody>();
-                RangedProjectileDamageCollider damageCollider = liveArrow.GetComponentInChildren<RangedProjectileDamageCollider>();
+                Rigidbody rigidbody = liveArrow.GetComponent<Rigidbody>();
+                RangedProjectileDamageCollider damageCollider = liveArrow.GetComponent<RangedProjectileDamageCollider>();
 
                 //Give ammo velocity
                 if (enemy.currentTarget != null)

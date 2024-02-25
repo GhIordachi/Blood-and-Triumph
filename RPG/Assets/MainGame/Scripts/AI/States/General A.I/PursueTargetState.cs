@@ -9,7 +9,7 @@ namespace GI
     {
         public CombatStanceState combatStanceState;
 
-        public override State Tick(EnemyManager enemy)
+        public override State Tick(AICharacterManager enemy)
         {
             HandleRotateTowardsTarget(enemy);
 
@@ -37,7 +37,7 @@ namespace GI
             }
         }
 
-        private void HandleRotateTowardsTarget(EnemyManager enemy)
+        private void HandleRotateTowardsTarget(AICharacterManager enemy)
         {
             //Rotate manually
             if (enemy.isPerformingAction)
@@ -58,11 +58,11 @@ namespace GI
             else
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemy.navMeshAgent.desiredVelocity);
-                Vector3 targetVelocity = enemy.enemyRigidBody.velocity;
+                Vector3 targetVelocity = enemy.aiCharacterRigidBody.velocity;
 
                 enemy.navMeshAgent.enabled = true;
                 enemy.navMeshAgent.SetDestination(enemy.currentTarget.transform.position);
-                enemy.enemyRigidBody.velocity = targetVelocity;
+                enemy.aiCharacterRigidBody.velocity = targetVelocity;
                 enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, enemy.navMeshAgent.transform.rotation, enemy.rotationSpeed / Time.deltaTime);
             }
         }

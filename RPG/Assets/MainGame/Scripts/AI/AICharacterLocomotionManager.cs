@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace GI {
-    public class EnemyLocomotionManager : MonoBehaviour
+    public class AICharacterLocomotionManager : MonoBehaviour
     {
-        EnemyManager enemy;
+        AICharacterManager aiCharacter;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -15,7 +15,7 @@ namespace GI {
 
         private void Awake()
         {
-            enemy = GetComponent<EnemyManager>();           
+            aiCharacter = GetComponent<AICharacterManager>();           
         }
 
         private void Start()

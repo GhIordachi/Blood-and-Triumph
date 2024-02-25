@@ -32,7 +32,7 @@ namespace GI
         protected bool hasBeenParried;
         protected string currentDamageAnimation;
 
-        private List<CharacterManager> charactersDamagedDuringThisCalculation = new List<CharacterManager>();
+        protected List<CharacterManager> charactersDamagedDuringThisCalculation = new List<CharacterManager>();
 
         protected virtual void Awake()
         {
@@ -65,10 +65,12 @@ namespace GI
 
                 CharacterManager enemyManager = collision.GetComponentInParent<CharacterManager>();
 
-                if(enemyManager != null)
+                if (enemyManager != null)
                 {
+                    AICharacterManager aiCharacter = enemyManager as AICharacterManager;
+
                     if (charactersDamagedDuringThisCalculation.Contains(enemyManager))
-                        return; 
+                        return;
 
                     charactersDamagedDuringThisCalculation.Add(enemyManager);
 
@@ -78,18 +80,13 @@ namespace GI
                     CheckForParry(enemyManager);
                     CheckForBlock(enemyManager);
 
-                }
-
-
-                if(enemyManager.characterStatsManager != null )
-                {
                     if (enemyManager.characterStatsManager.teamIDNumber == teamIDNumber)
                         return;
 
                     if (hasBeenParried)
                         return;
 
-                    if (shieldHasBeenHit) 
+                    if (shieldHasBeenHit)
                         return;
 
                     enemyManager.characterStatsManager.poiseResetTimer = enemyManager.characterStatsManager.totalPoiseResetTime;
@@ -104,11 +101,17 @@ namespace GI
 
                     //Deals damage
                     DealDamage(enemyManager.characterStatsManager);
+
+                    if (aiCharacter != null)
+                    {
+                        //If the target is A.I, the A.I receives a new target, the person dealind damage to it
+                        aiCharacter.currentTarget = characterManager;
+                    }
                 }
             }
-
-            if(collision.tag == "Illusionary Wall")
+            if (collision.tag == "Illusionary Wall")
             {
+                Debug.Log("am dat");
                 IllusionaryWall illusionaryWall = collision.GetComponent<IllusionaryWall>();
 
                 illusionaryWall.wallHasBeenHit = true;
