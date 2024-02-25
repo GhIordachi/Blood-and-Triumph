@@ -6,12 +6,52 @@ using UnityEngine.UI;
 namespace GI {
     public class WeaponPickUp : Interactable
     {
+        //This is a unique ID for this item spawn in the game world, each item you place in your world should have it's own Unique ID
+        [Header("Item Information")]
+        [SerializeField] int itemPickUpID;
+        [SerializeField] bool hasBeenLooted;
+
+        [Header("Item")]
         public WeaponItem weapon;
+
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
+            //If the save data does not contain this item, we must have never looted it, so we add it to the list and list it as not looted
+            if (!WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.ContainsKey(itemPickUpID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Add(itemPickUpID, false);
+            }
+
+            hasBeenLooted = WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld[itemPickUpID];
+
+            if (hasBeenLooted)
+            {
+                gameObject.SetActive(false);
+            }
+        }
 
         public override void Interact(PlayerManager playerManager)
         {
             base.Interact(playerManager);
 
+            // Notify the character data this item has been looted from the world, so it does not spawn again
+            if (WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.ContainsKey(itemPickUpID))
+            {
+                WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Remove(itemPickUpID);
+            }
+
+            WorldSaveGameManager.instance.currentCharacterSaveData.itemsInWorld.Add(itemPickUpID, true);
+
+            hasBeenLooted = true;
+
+            // Places the item in the players Inventory
             PickUpItem(playerManager);
         }
 

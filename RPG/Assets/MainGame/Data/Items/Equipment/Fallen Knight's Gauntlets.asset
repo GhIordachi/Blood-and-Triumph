@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Fallen Knight's Gauntlets
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
+  itemName: Fallen Knight's Gauntlets
+  itemID: 1007
   physicalDefense: 5
   fireDefense: 0
+  magicalDefense: 0
+  poisonResistance: 0
   leftHandModelName: Chr_HandLeft_Male_08
   rightHandModelName: Chr_HandRight_Male_08
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_12

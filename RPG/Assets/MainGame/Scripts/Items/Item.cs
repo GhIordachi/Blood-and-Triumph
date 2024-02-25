@@ -9,5 +9,6 @@ namespace GI
         [Header("Item Information")]
         public Sprite itemIcon;
         public string itemName;
+        public int itemID;
     }
 }

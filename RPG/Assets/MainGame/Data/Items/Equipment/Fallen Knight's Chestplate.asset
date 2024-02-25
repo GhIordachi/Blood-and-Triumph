@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Fallen Knight's Chestplate
+  itemID: 1008
   physicalDefense: 10
   fireDefense: 0
+  magicalDefense: 0
+  poisonResistance: 0
   torsoModelName: Male_Torso_10
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_07
   upperRightArmModelName: Chr_ArmUpperRight_Male_07

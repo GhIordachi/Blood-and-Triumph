@@ -8,6 +8,16 @@ namespace GI {
         public float radius = 0.5f;
         public string interactableText;
 
+        protected virtual void Awake()
+        {
+            
+        }
+
+        protected virtual void Start()
+        {
+
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;

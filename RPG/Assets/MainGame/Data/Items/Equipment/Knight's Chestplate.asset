@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Knight's Chestplate
+  itemID: 1004
   physicalDefense: 15
   fireDefense: 0
+  magicalDefense: 0
+  poisonResistance: 0
   torsoModelName: Male_Torso_05
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_09
   upperRightArmModelName: Chr_ArmUpperRight_Male_09

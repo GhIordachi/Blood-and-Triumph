@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Fallen Knight's Helmet
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Fallen Knight'sHelmet
+  itemName: Fallen Knight's Helmet
+  itemID: 1006
   physicalDefense: 5
+  fireDefense: 0
+  magicalDefense: 0
+  poisonResistance: 0
   helmetModelName: Male_Helmet_09

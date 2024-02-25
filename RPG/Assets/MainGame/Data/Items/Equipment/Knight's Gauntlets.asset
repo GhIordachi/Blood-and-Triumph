@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Knight's Gauntlets
+  itemID: 1003
   physicalDefense: 6.5
   fireDefense: 0
+  magicalDefense: 0
+  poisonResistance: 0
   leftHandModelName: Chr_HandLeft_Male_04
   rightHandModelName: Chr_HandRight_Male_04
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_18

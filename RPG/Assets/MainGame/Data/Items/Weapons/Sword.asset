@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 6b402942c0780484991601504e32aec0, type: 3}
   itemName: Sword
+  itemID: 1
   modelPrefab: {fileID: 1476875266471580296, guid: b7548169b7206d1488351a84eb551e5d,
     type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 216a2e20863b48d4283c18ad8eb64635, type: 2}
-  offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 4
   physicalDamage: 25
   fireDamage: 0
   lightAttackDamageModifier: 1
   heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 1
   poiseBreak: 25
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 15
+  physicalBlockingDamageAbsorption: 0
+  fireBlockingDamageAbsorption: 0
+  stability: 67
   baseStaminaCost: 20
   lightAttackStaminaMultiplier: 1
   heavyAttackStaminaMultiplier: 2
