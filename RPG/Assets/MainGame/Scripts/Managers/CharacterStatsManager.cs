@@ -61,6 +61,16 @@ namespace GI {
         public float blockingFireDamageAbsorption;
         public float blockingStabilityRating;
 
+        //Any damage dealt by this player is modified bythese amounts
+        [Header("Damage Type Modifiers")]
+        public float physicalDamagePercentageModifier = 100;
+        public float fireDamagePercentageModifier = 100;
+
+        //Incoming damage after armor calculation is modified by this values
+        [Header("Damage Absorptions Modifier")]
+        public float physicalAbsorptionPercentageModifier = 0;
+        public float fireAbsorptionPercentageModifier = 0;
+
         //Lightning absorption
         //Magic absorption
         //Dark absorption
@@ -85,6 +95,10 @@ namespace GI {
             if (character.isDead) 
                 return;
 
+            //before calculating damage defense, we check the attacking character damage modifiers
+            physicalDamage = Mathf.RoundToInt(physicalDamage * (enemyCharacterDamagingMe.characterStatsManager.physicalDamagePercentageModifier / 100));
+            fireDamage = Mathf.RoundToInt(fireDamage * (enemyCharacterDamagingMe.characterStatsManager.fireDamagePercentageModifier / 100));
+
             character.characterAnimatorManager.EraseHandIKForWeapon();
 
             float totalPhysicalDamageAbsorption = 1 - 
@@ -103,7 +117,8 @@ namespace GI {
 
             fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
 
-            Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
+            physicalDamage = physicalDamage - Mathf.RoundToInt(physicalDamage * (physicalAbsorptionPercentageModifier / 100));
+            fireDamage = fireDamage - Mathf.RoundToInt(fireDamage * (fireAbsorptionPercentageModifier / 100));
 
             float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
 
@@ -129,6 +144,9 @@ namespace GI {
         {
             if (character.isDead)
                 return;
+
+            physicalDamage = Mathf.RoundToInt(physicalDamage * (enemyCharacterDamagingMe.characterStatsManager.physicalDamagePercentageModifier / 100));
+            fireDamage = Mathf.RoundToInt(fireDamage * (enemyCharacterDamagingMe.characterStatsManager.fireDamagePercentageModifier / 100));
 
             character.characterAnimatorManager.EraseHandIKForWeapon();
 

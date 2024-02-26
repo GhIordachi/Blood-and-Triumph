@@ -16430,6 +16430,10 @@ MonoBehaviour:
   currentBodyEquipment: {fileID: 0}
   currentLegEquipment: {fileID: 0}
   currentHandEquipment: {fileID: 0}
+  ringSlot01: {fileID: 0}
+  ringSlot02: {fileID: 0}
+  ringSlot03: {fileID: 0}
+  ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 6a26e886abfb0f64aabc12fd54af93be, type: 2}
   - {fileID: 0}
@@ -19758,6 +19762,11 @@ PrefabInstance:
       propertyPath: companion
       value: 
       objectReference: {fileID: 8898425417497262548}
+    - target: {fileID: 6194135305291983054, guid: 78aab8c8ee6738940b162adc741a4aa3,
+        type: 3}
+      propertyPath: canDoCombo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7759234601353270068, guid: 78aab8c8ee6738940b162adc741a4aa3,
         type: 3}
       propertyPath: m_Name
@@ -31994,7 +32003,7 @@ MonoBehaviour:
   isDead: 0
   canBeRiposted: 0
   canBeParried: 0
-  canDoCombo: 0
+  canDoCombo: 1
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
@@ -32038,7 +32047,7 @@ MonoBehaviour:
   isPhaseShifting: 0
   comboLikelyHood: 100
   combatStyle: 0
-  allowAIToPerformBlock: 1
+  allowAIToPerformBlock: 0
   blockLikelyHood: 33
   allowAIToPerformDodge: 0
   dodgeLikelyHood: 50
@@ -40481,6 +40490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c94c320fa7eee4d9ef08e8aebffbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticCharacterEffects: []
   instantiatedFXModel: {fileID: 0}
   bloodSplatterFX: {fileID: 1407402442211574, guid: 5d31a5b9b348544439d8079453188ecc,
     type: 3}
@@ -46860,6 +46870,10 @@ MonoBehaviour:
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
   blockingStabilityRating: 0
+  physicalDamagePercentageModifier: 100
+  fireDamagePercentageModifier: 100
+  physicalAbsorptionPercentageModifier: 50
+  fireAbsorptionPercentageModifier: 0
   aiCharacterHealthBar: {fileID: 5809973871330854518}
   isBoss: 0
 --- !u!224 &7315389659874634150
@@ -55535,6 +55549,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3418846675523578496, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
+      propertyPath: ringSlot01
+      value: 
+      objectReference: {fileID: 11400000, guid: e2154093a76be944e9a4c944b243bffe,
+        type: 2}
+    - target: {fileID: 3418846675523578496, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: ringSlot02
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b2dbb7d6749079419d234f03aba4c88,
+        type: 2}
+    - target: {fileID: 3418846675523578496, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
       propertyPath: currentBodyEquipment
       value: 
       objectReference: {fileID: 0}
@@ -55554,6 +55580,23 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3749906747676225892, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: staticCharacterEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749906747676225892, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: staticCharacterEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 91d2995125655504dab2bca1b0f6515d,
+        type: 2}
+    - target: {fileID: 3749906747676225892, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: staticCharacterEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bb39ce06c348a214f94d8aeb4026e96a,
+        type: 2}
     - target: {fileID: 6056843201230718310, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}
       propertyPath: healthBar
@@ -55568,6 +55611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: characterName
       value: Petroc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056843201230718310, guid: 9894f532cf0217c40b9e3c2901bdb981,
+        type: 3}
+      propertyPath: physicalDamagePercentageModifier
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6881417263352848713, guid: 9894f532cf0217c40b9e3c2901bdb981,
         type: 3}

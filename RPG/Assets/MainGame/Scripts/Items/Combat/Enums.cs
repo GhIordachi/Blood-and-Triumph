@@ -41,6 +41,12 @@ namespace GI
         rangedAttackAction
     }
 
+    public enum DamageType
+    {
+        Physical,
+        Fire
+    }
+
     public class Enums : MonoBehaviour
     {
         
