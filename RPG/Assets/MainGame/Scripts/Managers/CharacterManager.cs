@@ -5,6 +5,7 @@ using UnityEngine;
 namespace GI {
     public class CharacterManager : MonoBehaviour
     {
+        public CharacterController characterController;
         public Animator animator;
         public CharacterAnimatorManager characterAnimatorManager;
         public CharacterWeaponSlotManager characterWeaponSlotManager;
@@ -49,7 +50,6 @@ namespace GI {
         public bool isRotatingWithRootMotion;
         public bool canRotate;
         public bool isSprinting;
-        public bool isInAir;
         public bool isGrounded;
 
         [Header("Spells")]
@@ -61,6 +61,7 @@ namespace GI {
 
         protected virtual void Awake()
         {
+            characterController = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
             characterWeaponSlotManager = GetComponent<CharacterWeaponSlotManager>();
@@ -71,9 +72,19 @@ namespace GI {
             characterCombatManager = GetComponent<CharacterCombatManager>();
         }
 
+        protected virtual void Start()
+        {
+            
+        }
+
         protected virtual void FixedUpdate()
         {
             characterAnimatorManager.CheckHandIKWeight(characterWeaponSlotManager.rightHandIKTarget, characterWeaponSlotManager.leftHandIKTarget, isTwoHandingWeapon);
+        }
+
+        protected virtual void Update()
+        {
+            characterEffectsManager.ProcessAllTimedEffects();
         }
 
         public virtual void UpdateWhichHandCharacterIsUsing(bool usingRightHand)

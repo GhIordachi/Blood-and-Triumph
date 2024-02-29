@@ -145,6 +145,8 @@ namespace GI
             playerManager.playerStatsManager.currentSoulCount = playerManager.playerStatsManager.currentSoulCount - soulsRequiredToLevelUp;
             playerManager.UIManager.soulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
 
+            playerManager.playerStatsManager.CalculateAndSetMaxEquipLoad();
+
             gameObject.SetActive(false);
         }
 

@@ -47,6 +47,25 @@ namespace GI
         Fire
     }
 
+    public enum BuffClass
+    {
+        Physical,
+        Fire
+    }
+
+    public enum EffectParticleType
+    {
+        poison
+    }
+
+    public enum EncumbranceLevel
+    {
+        Light,  
+        Medium,
+        Heavy,
+        Overloaded
+    }
+
     public class Enums : MonoBehaviour
     {
         

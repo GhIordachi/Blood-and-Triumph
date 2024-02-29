@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1267200172660499019}
   - component: {fileID: 5942989687115475698}
   - component: {fileID: 3028324300392044441}
+  - component: {fileID: 5276553442017708490}
   m_Layer: 0
   m_Name: FX_Poison_Purple
   m_TagString: Untagged
@@ -4746,3 +4747,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5276553442017708490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67701847793684926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa9463a77ff8d447a4070bc9ad4a4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectType: 0

@@ -83,29 +83,20 @@ namespace GI
 
         public void DisableCollision()
         {
-            player.playerLocomotionManager.characterCollider.enabled = false;
-            player.playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
+            player.characterController.enabled = false;
         }
 
         public void EnableCollision()
         {
-            player.playerLocomotionManager.characterCollider.enabled = true;
-            player.playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
+            player.characterController.enabled = true;
         }
 
-        private void OnAnimatorMove()
+        public virtual void SuccessfullyUseCurrentConsumable()
         {
-            if(character.isInteracting == false)
+            if (character.characterInventoryManager.currentConsumable != null)
             {
-                return;
+                character.characterInventoryManager.currentConsumable.SuccessfullyConsumeItem(player);
             }
-
-            float delta = Time.deltaTime;
-            player.playerLocomotionManager.rigidbody.drag = 0;
-            Vector3 deltaPosition = player.animator.deltaPosition;
-            deltaPosition.y = 0;
-            Vector3 velocity = deltaPosition / delta;
-            player.playerLocomotionManager.rigidbody.velocity = velocity;
         }
     }
 }

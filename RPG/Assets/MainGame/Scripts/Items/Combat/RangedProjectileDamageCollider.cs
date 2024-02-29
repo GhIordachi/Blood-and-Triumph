@@ -45,22 +45,19 @@ namespace GI
                     return;
 
                 enemyManager.characterStatsManager.poiseResetTimer = enemyManager.characterStatsManager.totalPoiseResetTime;
-                enemyManager.characterStatsManager.totalPoiseDefence = enemyManager.characterStatsManager.totalPoiseDefence - poiseBreak;
+                enemyManager.characterStatsManager.totalPoiseDefence = enemyManager.characterStatsManager.totalPoiseDefence - poiseDamage;
 
                 //Detects where the collider is hit by the weapon
-                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-                float directionHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
-                ChooseWhichDirectionDamageCameFrom(directionHitFrom);
-                enemyManager.characterEffectsManager.PlayBloodSplatterFX(contactPoint);
+                contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                angleHitFrom = (Vector3.SignedAngle(characterManager.transform.forward, enemyManager.transform.forward, Vector3.up));
 
-                if (enemyManager.characterStatsManager.totalPoiseDefence > poiseBreak)
-                {
-                    enemyManager.characterStatsManager.TakeDamageNoAnimation(physicalDamage, fireDamage);
-                }
-                else
-                {
-                    enemyManager.characterStatsManager.TakeDamage(physicalDamage, fireDamage, currentDamageAnimation, characterManager);
-                }
+                TakeDamageEffect takeDamageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+                takeDamageEffect.physicalDamage = physicalDamage;
+                takeDamageEffect.fireDamage = fireDamage;
+                takeDamageEffect.poiseDamage = poiseDamage;
+                takeDamageEffect.contactPoint = contactPoint;
+                takeDamageEffect.angleHitFrom = angleHitFrom;
+                enemyManager.characterEffectsManager.ProcessEffectInstantly(takeDamageEffect);
             }
 
             if (collision.gameObject.tag == "Illusionary Wall")

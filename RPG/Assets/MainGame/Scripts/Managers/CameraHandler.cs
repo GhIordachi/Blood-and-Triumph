@@ -24,7 +24,8 @@ namespace GI
 
         public float leftAndRightLookSpeed = 500f;
         public float leftAndRightAimingLookSpeed = 40f;
-        public float followSpeed = 1f;
+        public float groundedFollowSpeed = 1f;
+        public float arialFollowSpeed = 1f; //The lower this value, the faster it will follow the player
         public float upAndDownLookSpeed = 400f;
         public float upAndDownAimingLookSpeed = 40f;
 
@@ -70,13 +71,21 @@ namespace GI
         {
             if (playerManager.isAiming)
             {
-                Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransformWhileAiming.position, ref cameraFollowVelocity, Time.deltaTime * followSpeed);
+                Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransformWhileAiming.position, ref cameraFollowVelocity, groundedFollowSpeed * Time.deltaTime);
                 transform.position = targetPosition;
             }
             else
             {
-                Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransform.position, ref cameraFollowVelocity, Time.deltaTime * followSpeed);
-                transform.position = targetPosition;
+                if(playerManager.isGrounded)
+                {
+                    Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransform.position, ref cameraFollowVelocity, groundedFollowSpeed * Time.deltaTime);
+                    transform.position = targetPosition;
+                }
+                else
+                {
+                    Vector3 targetPosition = Vector3.SmoothDamp(transform.position, targetTransform.position, ref cameraFollowVelocity, arialFollowSpeed * Time.deltaTime);
+                    transform.position = targetPosition;
+                }
             }
 
             HandleCameraCollisions();

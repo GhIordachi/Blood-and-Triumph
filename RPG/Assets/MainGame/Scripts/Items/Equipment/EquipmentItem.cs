@@ -11,6 +11,9 @@ namespace GI
         public float fireDefense;
         public float magicalDefense;
 
+        [Header("Weight")]
+        public float weight;
+
         [Header("Resistances")]
         public float poisonResistance;
     }

@@ -15,6 +15,8 @@ namespace GI {
         public float staminaRegenerationAmountWhilstBlocking = 0.1f;
         public float staminaRegenTimer = 0;
 
+        private float sprintingTimer = 0;
+
         protected override void Awake()
         {
             base.Awake();
@@ -23,8 +25,9 @@ namespace GI {
             focusPointBar = FindObjectOfType<FocusPointBar>();
         }
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
@@ -50,26 +53,6 @@ namespace GI {
             else if (poiseResetTimer <= 0 && !player.isInteracting) 
             {
                 totalPoiseDefence = armorPoiseBonus;
-            }
-        }
-
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
-        {
-            if (player.isInvulnerable)
-                return;
-
-            if(player.isDead) 
-                return;
-
-            base.TakeDamage(physicalDamage, fireDamage, damageAnimation, enemyCharacterDamagingMe);
-            healthBar.SetCurrentHealth(currentHealth);
-            player.playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                player.isDead = true;
-                player.playerAnimatorManager.PlayTargetAnimation("Death_01", true);
             }
         }
 
@@ -104,9 +87,31 @@ namespace GI {
             staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
         }
 
+        public void DeductSprintingStamina(float deductedStamina)
+        {
+            if(player.isSprinting)
+            {
+                sprintingTimer = sprintingTimer + Time.deltaTime;
+
+                if(sprintingTimer > 0.1f)
+                {
+                    // Reset timer
+                    sprintingTimer = 0;
+                    // Deduct Stamina
+                    currentStamina = currentStamina - deductedStamina;
+                    staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                }
+            }
+            else
+            {
+                sprintingTimer = 0;
+            }
+        }
+
         public void RegenerateStamina()
         {
-            if(player.isInteracting)
+            // Do not regenerate stamina while you are performing action or are sprinting
+            if(player.isInteracting || player.isSprinting)
             {
                 staminaRegenTimer = 0;
             }

@@ -39,7 +39,6 @@ namespace GI
 
         public bool rollFlag;
         public bool twoHandFlag;
-        public bool sprintFlag;
         public bool comboFlag;
         public bool lockOnFlag;
         public bool fireFlag;
@@ -141,7 +140,7 @@ namespace GI
 
         private void HandleMoveInput()
         {
-            if (player.isHoldingArrow)
+            if (player.isHoldingArrow || player.playerStatsManager.encumbraceLevel == EncumbranceLevel.Overloaded)
             {
                 horizontal = movementInput.x;
                 vertical = movementInput.y;
@@ -168,17 +167,17 @@ namespace GI
                 if(player.playerStatsManager.currentStamina <= 0)
                 {
                     b_Input = false;
-                    sprintFlag = false;
+                    player.isSprinting = false;
                 }
 
                 if(moveAmount > 0.5f && player.playerStatsManager.currentStamina > 0)
                 {
-                    sprintFlag = true;
+                    player.isSprinting = true;
                 }
             }
             else
             {
-                sprintFlag = false;
+                player.isSprinting = false;
 
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
@@ -311,7 +310,7 @@ namespace GI
 
         private void HandleHoldLBInput()
         {
-            if(player.isInAir ||
+            if(!player.isGrounded ||
                 player.isSprinting ||
                 player.isFiringSpell)
             {
@@ -488,7 +487,7 @@ namespace GI
             if(consume_Input)
             {
                 consume_Input = false;
-                player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player.playerAnimatorManager, player.playerWeaponSlotManager, player.playerEffectsManager);
+                player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player);
             }
         }
 

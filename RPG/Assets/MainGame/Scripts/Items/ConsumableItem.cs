@@ -17,17 +17,26 @@ namespace GI
         public string consumeAnimation;
         public bool isInteracting;
 
-        public virtual void AttemptToConsumeItem
-            (PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public virtual void AttemptToConsumeItem(PlayerManager player)
         {
             if(currentItemAmount > 0)
             {
-                playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
+                player.playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation("No", true);
+                player.playerAnimatorManager.PlayTargetAnimation("No", true);
             }
+        }
+
+        public virtual void SuccessfullyConsumeItem(PlayerManager player)
+        {
+            currentItemAmount = currentItemAmount - 1;
+        }
+
+        public virtual bool CanIUseThisItem(PlayerManager player)
+        {
+            return true;
         }
     }
 }

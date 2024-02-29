@@ -6,13 +6,11 @@ namespace GI
 {
     public class PoisonSurface : MonoBehaviour
     {
-        public float poisonBuildUpAmount = 7;
-
-        public List<CharacterEffectsManager> charactersInsidePoisonSurface;
+        public List<CharacterManager> charactersInsidePoisonSurface;
 
         private void OnTriggerEnter(Collider other)
         {
-            CharacterEffectsManager character = other.GetComponent<CharacterEffectsManager>();
+            CharacterManager character = other.GetComponent<CharacterManager>();
 
             if(character != null)
             {
@@ -22,7 +20,7 @@ namespace GI
 
         private void OnTriggerExit(Collider other)
         {
-            CharacterEffectsManager character = other.GetComponent<CharacterEffectsManager>();
+            CharacterManager character = other.GetComponent<CharacterManager>();
 
             if (character != null)
             {
@@ -32,12 +30,20 @@ namespace GI
 
         private void OnTriggerStay(Collider other)
         {
-            foreach(CharacterEffectsManager character in charactersInsidePoisonSurface)
+            foreach(CharacterManager character in charactersInsidePoisonSurface)
             {
-                if (character.isPoisoned)
+                if (character.characterStatsManager.isPoisoned)
                     return;
 
-                character.poisonBuildup = character.poisonBuildup + poisonBuildUpAmount * Time.deltaTime;
+                PoisonBuildUpEffect poisonBuildUp = Instantiate(WorldCharacterEffectsManager.instance.poisonBuildUpEffect);
+
+                foreach (var effect in character.characterEffectsManager.timedEffects)
+                {
+                    if (effect.effectID == poisonBuildUp.effectID)
+                        return;
+                }
+
+                character.characterEffectsManager.timedEffects.Add(poisonBuildUp);
             }
         }
     }

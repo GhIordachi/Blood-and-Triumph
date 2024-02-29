@@ -18,6 +18,7 @@ MonoBehaviour:
   physicalDefense: 15
   fireDefense: 0
   magicalDefense: 0
+  weight: 7
   poisonResistance: 0
   torsoModelName: Male_Torso_05
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_09

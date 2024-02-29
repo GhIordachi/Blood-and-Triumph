@@ -74,5 +74,17 @@ namespace GI
                 }
             }
         }
+
+        public virtual void PlaySoundFX(AudioClip soundFX)
+        {
+            audioSource.PlayOneShot(soundFX);
+        }
+
+        public virtual void PlayRandomSoundFXFromArray(AudioClip[] soundArray)
+        {
+            int index = Random.Range(0, soundArray.Length);
+
+            PlaySoundFX(soundArray[index]);
+        }
     }
 }

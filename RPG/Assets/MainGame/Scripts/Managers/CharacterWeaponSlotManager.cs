@@ -122,8 +122,8 @@ namespace GI
                 leftHandDamageCollider.characterManager = character;
                 leftHandDamageCollider.teamIDNumber = character.characterStatsManager.teamIDNumber;
 
-                leftHandDamageCollider.poiseBreak = character.characterInventoryManager.leftWeapon.poiseBreak;
-                character.characterEffectsManager.leftWeaponFX = leftHandSlot.curentWeaponModel.GetComponentInChildren<WeaponFX>();
+                leftHandDamageCollider.poiseDamage = character.characterInventoryManager.leftWeapon.poiseBreak;
+                character.characterEffectsManager.leftWeaponManager = leftHandSlot.curentWeaponModel.GetComponentInChildren<WeaponManager>();
             }
         }
 
@@ -139,8 +139,8 @@ namespace GI
                 rightHandDamageCollider.characterManager = character;
                 rightHandDamageCollider.teamIDNumber = character.characterStatsManager.teamIDNumber;
 
-                rightHandDamageCollider.poiseBreak = character.characterInventoryManager.rightWeapon.poiseBreak;
-                character.characterEffectsManager.rightWeaponFX = rightHandSlot.curentWeaponModel.GetComponentInChildren<WeaponFX>();
+                rightHandDamageCollider.poiseDamage = character.characterInventoryManager.rightWeapon.poiseBreak;
+                character.characterEffectsManager.rightWeaponManager = rightHandSlot.curentWeaponModel.GetComponentInChildren<WeaponManager>();
             }
         }
 

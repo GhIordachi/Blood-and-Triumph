@@ -76,13 +76,17 @@ namespace GI {
             navMeshAgent.enabled = false;
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             aiCharacterRigidBody.isKinematic = false;
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             HandleRecoveryTimer();
             HandleStateMachine();
 
@@ -113,7 +117,6 @@ namespace GI {
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            aiCharacterEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()

@@ -7,16 +7,41 @@ namespace GI
 {
     public class UIEnemyHealthBar : MonoBehaviour
     {
-        Slider slider;
+        public Slider slider;
         float timeUntilBarIsHidden = 0;
+        UIYellowBar yellowBar;
+        [SerializeField] float yellowBarTimer = 2;
+        [SerializeField] Text damageText;
+        [SerializeField] int currentDamageTaken;
 
         private void Awake()
         {
             slider = GetComponentInChildren<Slider>();
+            yellowBar = GetComponentInChildren<UIYellowBar>();
+        }
+
+        private void OnDisable()
+        {
+            currentDamageTaken = 0;
         }
 
         public void SetHealth(int health)
         {
+            if (yellowBar != null)
+            {
+                yellowBar.gameObject.SetActive(true); //Triggers the OnEnable function
+
+                yellowBar.timer = yellowBarTimer;  //Every time we hit, we reset the timer
+
+                if (health > slider.value)
+                {
+                    yellowBar.slider.value = health;
+                }
+            }
+
+            currentDamageTaken = currentDamageTaken + Mathf.RoundToInt(slider.value - health);
+            damageText.text = currentDamageTaken.ToString();
+
             slider.value = health;
             timeUntilBarIsHidden = 3;
         }
@@ -25,10 +50,16 @@ namespace GI
         {
             slider.maxValue = maxHealth;
             slider.value = maxHealth;
+
+            if(yellowBar != null)
+            {
+                yellowBar.SetMaxStat(maxHealth);
+            }
         }
 
         private void Update()
         {
+            transform.LookAt(transform.position + Camera.main.transform.forward);
             timeUntilBarIsHidden = timeUntilBarIsHidden - Time.deltaTime;
 
             if(slider != null)

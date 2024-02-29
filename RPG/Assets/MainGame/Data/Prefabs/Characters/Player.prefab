@@ -26762,7 +26762,6 @@ GameObject:
   - component: {fileID: 3418846675523578496}
   - component: {fileID: 6120686796431269061}
   - component: {fileID: 6056843201230718310}
-  - component: {fileID: 5896593307244500244}
   - component: {fileID: 3619941251060911543}
   - component: {fileID: 1127101467167168901}
   - component: {fileID: 5103503518491549041}
@@ -26770,6 +26769,7 @@ GameObject:
   - component: {fileID: 4559108114672074701}
   - component: {fileID: 1628193392551996282}
   - component: {fileID: 163692079996769734}
+  - component: {fileID: 5896593307244500244}
   m_Layer: 12
   m_Name: Player
   m_TagString: Character
@@ -26915,6 +26915,13 @@ MonoBehaviour:
   fireFlag: 0
   inventoryFlag: 0
   rollInputTimer: 0
+  input_Has_Been_Qued: 0
+  current_Qued_Input_Timer: 0
+  default_Qued_Input_Timer: 0.3
+  qued_RB_Input: 0
+  qued_LB_Input: 0
+  qued_RT_Input: 0
+  qued_LT_Input: 0
 --- !u!114 &201660842867108342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26990,22 +26997,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: eebb70e546d97e34da5e854300aceead, type: 2}
-  rightWeapon: {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
   leftWeapon: {fileID: 0}
-  currentConsumable: {fileID: 11400000, guid: 038e0f702014fd540bb8da56c74d1960, type: 2}
+  currentConsumable: {fileID: 11400000, guid: 4e2b00fec3361a2469841ee0a4a3d706, type: 2}
   currentAmmo: {fileID: 11400000, guid: a7bbf8e733f980143a0a934dafeaca04, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: a00582caf573c014a83fbd3cfefe1459,
     type: 2}
-  currentBodyEquipment: {fileID: 11400000, guid: df73e334997f485498ab1b92251f61b1,
-    type: 2}
+  currentBodyEquipment: {fileID: 0}
   currentLegEquipment: {fileID: 11400000, guid: b654fe153cadcff4cbf06a1128325a12,
     type: 2}
   currentHandEquipment: {fileID: 11400000, guid: 1cf20dc01058b5340a0b6066ed15f3d1,
     type: 2}
+  ringSlot01: {fileID: 11400000, guid: e2154093a76be944e9a4c944b243bffe, type: 2}
+  ringSlot02: {fileID: 11400000, guid: 3b2dbb7d6749079419d234f03aba4c88, type: 2}
+  ringSlot03: {fileID: 0}
+  ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
+  - {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
   - {fileID: 11400000, guid: 4018e19f11774264bb89fd4d5306cc0b, type: 2}
-  - {fileID: 11400000, guid: 6a26e886abfb0f64aabc12fd54af93be, type: 2}
+  - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
   - {fileID: 0}
   weaponsInLeftHandSlots:
   - {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145, type: 2}
@@ -27063,6 +27073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465b2b285ae878047b28a9b51879cf88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: Petroc
   teamIDNumber: 0
   maxHealth: 0
   currentHealth: 0
@@ -27072,7 +27083,7 @@ MonoBehaviour:
   currentFocusPoints: 0
   currentSoulCount: 8500
   souldAwardedOnDeath: 50
-  playerLevel: 1
+  playerLevel: 17
   healthLevel: 10
   staminaLevel: 10
   focusLevel: 10
@@ -27094,29 +27105,23 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
+  poisonResistance: 0
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
   blockingStabilityRating: 0
+  physicalDamagePercentageModifier: 100
+  fireDamagePercentageModifier: 100
+  physicalAbsorptionPercentageModifier: 0
+  fireAbsorptionPercentageModifier: 0
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   focusPointBar: {fileID: 0}
   staminaRegenerationAmount: 20
   staminaRegenerationAmountWhilstBlocking: 0.1
   staminaRegenTimer: 0
---- !u!114 &5896593307244500244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3518764288112849341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c7f2d6bc71b9b40b26431251e72187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandConstraint: {fileID: 5320817238532460104}
-  rightHandConstraint: {fileID: 6034437065770727432}
 --- !u!114 &3619941251060911543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27155,6 +27160,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   criticalAttackRange: 0.7
+  previousPoiseDamageTaken: 0
   currentAttackType: 0
   oh_light_attack_01: OH_Light_Attack_01
   oh_light_attack_02: OH_Light_Attack_02
@@ -27210,21 +27216,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7360fc793695d40419fa4d366ea650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticCharacterEffects:
+  - {fileID: 11400000, guid: 91d2995125655504dab2bca1b0f6515d, type: 2}
+  - {fileID: 11400000, guid: bb39ce06c348a214f94d8aeb4026e96a, type: 2}
+  timedEffects: []
+  effectTickTimer: 0
+  timedEffectParticles: []
   instantiatedFXModel: {fileID: 0}
   bloodSplatterFX: {fileID: 1407402442211574, guid: 5d31a5b9b348544439d8079453188ecc,
     type: 3}
-  rightWeaponFX: {fileID: 0}
-  leftWeaponFX: {fileID: 0}
-  defaultPoisonParticleFX: {fileID: 67701847793684926, guid: ff7c710f0655c3f4aaeedf5c8d348b63,
-    type: 3}
-  currentPoisonParticleFX: {fileID: 0}
+  rightWeaponManager: {fileID: 0}
+  leftWeaponManager: {fileID: 0}
+  rightWeaponBuffEffect: {fileID: 0}
   buildUpTransform: {fileID: 8740795437660957664}
-  isPoisoned: 0
-  poisonBuildup: 0
-  poisonAmount: 100
-  defaultPoisonAmount: 100
-  poisonTimer: 2
-  poisonDamage: 10
+  poisonBuildUpBar: {fileID: 0}
+  poisonAmountBar: {fileID: 0}
   currentParticleFX: {fileID: 0}
   amountToBeHealed: 0
 --- !u!114 &4559108114672074701
@@ -27355,6 +27361,56 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ab16e18c2c1392742a2bf7e87f60f3fd, type: 3}
   - {fileID: 8300000, guid: c0dfead58c78c154db4afa8441a34f5c, type: 3}
   - {fileID: 8300000, guid: a726e50fd1b8e5d4d9224d6415722fe9, type: 3}
+--- !u!114 &5896593307244500244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518764288112849341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c7f2d6bc71b9b40b26431251e72187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandConstraint: {fileID: 5320817238532460104}
+  rightHandConstraint: {fileID: 6034437065770727432}
+  Damage_Forward_Medium_01: Damage_Forward_01
+  Damage_Forward_Medium_02: Damage_Forward_01
+  Damage_Backward_Medium_01: Damage_Back_01
+  Damage_Backward_Medium_02: Damage_Back_01
+  Damage_Left_Medium_01: Damage_Left_01
+  Damage_Left_Medium_02: Damage_Left_01
+  Damage_Right_Medium_01: Damage_Right_01
+  Damage_Right_Medium_02: Damage_Right_01
+  Damage_Forward_Heavy_01: Damage_Forward_01
+  Damage_Forward_Heavy_02: Damage_Forward_01
+  Damage_Backward_Heavy_01: Damage_Back_01
+  Damage_Backward_Heavy_02: Damage_Back_01
+  Damage_Left_Heavy_01: Damage_Left_01
+  Damage_Left_Heavy_02: Damage_Left_01
+  Damage_Right_Heavy_01: Damage_Right_01
+  Damage_Right_Heavy_02: Damage_Right_01
+  Damage_Colossal_Forward_01: Damage_Forward_01
+  Damage_Colossal_Forward_02: Damage_Forward_01
+  Damage_Colossal_Backward_01: Damage_Back_01
+  Damage_Colossal_Backward_02: Damage_Back_01
+  Damage_Colossal_Left_01: Damage_Left_01
+  Damage_Colossal_Left_02: Damage_Left_01
+  Damage_Colossal_Right_01: Damage_Right_01
+  Damage_Colossal_Right_02: Damage_Right_01
+  Damage_Animations_Medium_Forward: []
+  Damage_Animations_Medium_Backward: []
+  Damage_Animations_Medium_Left: []
+  Damage_Animations_Medium_Right: []
+  Damage_Animations_Heavy_Forward: []
+  Damage_Animations_Heavy_Backward: []
+  Damage_Animations_Heavy_Left: []
+  Damage_Animations_Heavy_Right: []
+  Damage_Animations_Colossal_Forward: []
+  Damage_Animations_Colossal_Backward: []
+  Damage_Animations_Colossal_Left: []
+  Damage_Animations_Colossal_Right: []
 --- !u!1 &3530779700120274171
 GameObject:
   m_ObjectHideFlags: 0
@@ -66039,9 +66095,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 6
-  m_Height: 32
+  m_Height: 28
   m_Direction: 0
-  m_Center: {x: -14, y: -2, z: 0}
+  m_Center: {x: -16, y: 0, z: 0}
 --- !u!1 &8831245054303019253
 GameObject:
   m_ObjectHideFlags: 0
@@ -67649,7 +67705,7 @@ GameObject:
   - component: {fileID: 8831245054303518889}
   - component: {fileID: 2312894410077897119}
   - component: {fileID: 2790301313718106738}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67953,9 +68009,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 6
-  m_Height: 38
+  m_Height: 28
   m_Direction: 0
-  m_Center: {x: 12, y: 2, z: 0}
+  m_Center: {x: 16, y: 0, z: 0}
 --- !u!1 &8834221743310134580
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace GI 
 {
-    [CreateAssetMenu(menuName = "Item/Weapon Item")]
     public class WeaponItem : Item
     {
         public GameObject modelPrefab;
@@ -65,5 +64,6 @@ namespace GI
 
         [Header("Sound FX")]
         public AudioClip[] weaponWhooshes;
+        public AudioClip[] blockingNoises;
     }
 }

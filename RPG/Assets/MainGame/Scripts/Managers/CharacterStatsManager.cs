@@ -38,6 +38,11 @@ namespace GI {
         public int intelligenceLevel = 10;
         public int faithLevel = 10;
 
+        [Header("Equipment Load")]
+        public float currentEquipLoad = 0;
+        public float maxEquipLoad = 0;
+        public EncumbranceLevel encumbraceLevel;
+
         [Header("Poise")]
         public float totalPoiseDefence; //The total poise during damage calculation
         public float offensivePoiseBonus; //The poise you Gain during an attack with a weapon
@@ -56,6 +61,9 @@ namespace GI {
         public float fireDamageAbsorptionLegs;
         public float fireDamageAbsorptionHands;
 
+        [Header("Resistances")]
+        public float poisonResistance;
+
         [Header("Blocking Absorptions")]
         public float blockingPhysicalDamageAbsorption;
         public float blockingFireDamageAbsorption;
@@ -71,6 +79,11 @@ namespace GI {
         public float physicalAbsorptionPercentageModifier = 0;
         public float fireAbsorptionPercentageModifier = 0;
 
+        [Header("Poison")]
+        public bool isPoisoned;
+        public float poisonBuildup = 0; //The build up over time that poisons the player after reaching 100
+        public float poisonAmount = 100; //The amount of poison the player has to process before becoming unpoisoned
+
         //Lightning absorption
         //Magic absorption
         //Dark absorption
@@ -78,6 +91,7 @@ namespace GI {
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
+            CalculateAndSetMaxEquipLoad();
         }
 
         protected virtual void Update()
@@ -85,108 +99,9 @@ namespace GI {
             HandlePoiseResetTimer();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             totalPoiseDefence = armorPoiseBonus;
-        }
-
-        public virtual void TakeDamage(int physicalDamage,int fireDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
-        {
-            if (character.isDead) 
-                return;
-
-            //before calculating damage defense, we check the attacking character damage modifiers
-            physicalDamage = Mathf.RoundToInt(physicalDamage * (enemyCharacterDamagingMe.characterStatsManager.physicalDamagePercentageModifier / 100));
-            fireDamage = Mathf.RoundToInt(fireDamage * (enemyCharacterDamagingMe.characterStatsManager.fireDamagePercentageModifier / 100));
-
-            character.characterAnimatorManager.EraseHandIKForWeapon();
-
-            float totalPhysicalDamageAbsorption = 1 - 
-                (1 - physicalDamageAbsorptionHead / 100) * 
-                (1 - physicalDamageAbsorptionBody / 100) *
-                (1 - physicalDamageAbsorptionHands / 100) *
-                (1 - physicalDamageAbsorptionLegs / 100);
-
-            physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
-
-            float totalFireDamageAbsorption = 1 -
-                (1 - fireDamageAbsorptionHead / 100) *
-                (1 - fireDamageAbsorptionBody / 100) *
-                (1 - fireDamageAbsorptionHands / 100) *
-                (1 - fireDamageAbsorptionLegs / 100);
-
-            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
-
-            physicalDamage = physicalDamage - Mathf.RoundToInt(physicalDamage * (physicalAbsorptionPercentageModifier / 100));
-            fireDamage = fireDamage - Mathf.RoundToInt(fireDamage * (fireAbsorptionPercentageModifier / 100));
-
-            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
-
-            if (enemyCharacterDamagingMe.isPerformingFullyChargedAttack)
-            {
-                finalDamage = finalDamage * 1.5f;
-            }
-
-            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
-
-            Debug.Log("Total damage dealt is " + finalDamage);
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                character.isDead = true;
-            }
-
-            character.characterSoundFXManager.PlayRandomDamageSoundFX();
-        }
-
-        public virtual void TakeDamageAfterBlock(int physicalDamage, int fireDamage, CharacterManager enemyCharacterDamagingMe)
-        {
-            if (character.isDead)
-                return;
-
-            physicalDamage = Mathf.RoundToInt(physicalDamage * (enemyCharacterDamagingMe.characterStatsManager.physicalDamagePercentageModifier / 100));
-            fireDamage = Mathf.RoundToInt(fireDamage * (enemyCharacterDamagingMe.characterStatsManager.fireDamagePercentageModifier / 100));
-
-            character.characterAnimatorManager.EraseHandIKForWeapon();
-
-            float totalPhysicalDamageAbsorption = 1 -
-                (1 - physicalDamageAbsorptionHead / 100) *
-                (1 - physicalDamageAbsorptionBody / 100) *
-                (1 - physicalDamageAbsorptionHands / 100) *
-                (1 - physicalDamageAbsorptionLegs / 100);
-
-            physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
-
-            float totalFireDamageAbsorption = 1 -
-                (1 - fireDamageAbsorptionHead / 100) *
-                (1 - fireDamageAbsorptionBody / 100) *
-                (1 - fireDamageAbsorptionHands / 100) *
-                (1 - fireDamageAbsorptionLegs / 100);
-
-            fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
-
-            Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
-
-            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
-
-            if (enemyCharacterDamagingMe.isPerformingFullyChargedAttack)
-            {
-                finalDamage = finalDamage * 1.5f;
-            }
-
-            currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
-
-            Debug.Log("Total damage dealt is " + finalDamage);
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                character.isDead = true;
-            }
-
-            //Play blocking sound
-            //character.characterSoundFXManager.PlayRandomDamageSoundFX();
         }
 
         public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
@@ -267,6 +182,49 @@ namespace GI {
         {
             maxFocusPoints = focusLevel * 10;
             return maxFocusPoints;
+        }
+
+        public void CalculateAndSetMaxEquipLoad()
+        {
+            float totalEquipLoad = 40;
+            
+            for(int i = 0; i < staminaLevel; i++)
+            {
+                if(i < 25)
+                {
+                    totalEquipLoad = totalEquipLoad + 1.2f;
+                }
+                if(i >= 25 && i <= 50)
+                {
+                    totalEquipLoad = totalEquipLoad + 1.4f;
+                }
+                if(i > 50)
+                {
+                    totalEquipLoad = totalEquipLoad + 1f;
+                }
+            }
+
+            maxEquipLoad = totalEquipLoad;
+        }
+
+        public void CalculateAndSetCurrentEquipLoad(float equipLoad)
+        {
+            currentEquipLoad = equipLoad;
+
+            encumbraceLevel = EncumbranceLevel.Light;
+
+            if (currentEquipLoad > (maxEquipLoad * 0.3f))
+            {
+                encumbraceLevel = EncumbranceLevel.Medium;
+            }
+            if (currentEquipLoad > (maxEquipLoad * 0.7f))
+            {
+                encumbraceLevel = EncumbranceLevel.Heavy;
+            }
+            if (currentEquipLoad > maxEquipLoad)
+            {
+                encumbraceLevel = EncumbranceLevel.Overloaded;
+            }
         }
 
         public virtual void HealCharacter(int healAmount)

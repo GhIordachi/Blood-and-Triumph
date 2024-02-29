@@ -44,6 +44,9 @@ namespace GI {
                 character.isPerformingRiposte = false;
                 character.canBeParried = false;
                 character.canBeRiposted = false;
+
+                // After the damage animation ends, reset our previous poise damage to 0
+                character.characterCombatManager.previousPoiseDamageTaken = 0;
             }
 
             animator.SetBool(isInvulnerable, isInvulnerableStatus);

@@ -18,5 +18,6 @@ MonoBehaviour:
   physicalDefense: 7
   fireDefense: 0
   magicalDefense: 0
-  poisonResistance: 0
+  weight: 3
+  poisonResistance: 0.5
   helmetModelName: Male_Helmet_13

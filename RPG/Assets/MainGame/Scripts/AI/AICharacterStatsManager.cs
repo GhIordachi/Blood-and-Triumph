@@ -21,8 +21,9 @@ namespace GI {
             currentStamina = maxStamina;
         }
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             if (!isBoss)
             {
                 aiCharacterHealthBar.SetMaxHealth(maxHealth);
@@ -72,29 +73,6 @@ namespace GI {
         public void BreakGuard()
         {
             aiCharacter.aiCharacterAnimatorManager.PlayTargetAnimation("Break Guard", true);
-        }
-
-        public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation, CharacterManager enemyCharacterDamagingMe)
-        {
-            if (aiCharacter.isDead)
-                return;
-
-            base.TakeDamage(physicalDamage, fireDamage, damageAnimation, enemyCharacterDamagingMe);
-
-            if(!isBoss)
-            {
-                aiCharacterHealthBar.SetHealth(currentHealth);
-            }
-            else if(isBoss && aiCharacter.aiCharacterBossManager != null)
-            {
-                aiCharacter.aiCharacterBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
-            }
-            aiCharacter.aiCharacterAnimatorManager.PlayTargetAnimation(damageAnimation, true);
-
-            if(currentHealth <= 0)
-            {
-                HandleDeath();
-            }
         }
 
         private void HandleDeath()

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
+  m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Sword_02
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 5ff5b9c3a8f55364291bf590ac7dcdbf, type: 3}
@@ -27,7 +27,7 @@ MonoBehaviour:
   criticalDamageMultiplier: 4
   guardBreakModifier: 1
   poiseBreak: 25
-  offensivePoiseBonus: 0
+  offensivePoiseBonus: 10
   physicalBlockingDamageAbsorption: 0
   fireBlockingDamageAbsorption: 0
   stability: 67
@@ -46,7 +46,7 @@ MonoBehaviour:
   th_hold_RB_Action: {fileID: 0}
   th_tap_LB_Action: {fileID: 0}
   th_hold_LB_Action: {fileID: 0}
-  th_tap_RT_Action: {fileID: 0}
+  th_tap_RT_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
   th_hold_RT_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
   th_tap_LT_Action: {fileID: 0}
   th_hold_LT_Action: {fileID: 0}
@@ -54,3 +54,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e89c1cfc1a5bb5d4d9e9a67ac19af82b, type: 3}
   - {fileID: 8300000, guid: 92ab81cfa5de22340b79e76148d22484, type: 3}
   - {fileID: 8300000, guid: 858eae54e9f7be94fb8fdcd0b3dd456a, type: 3}
+  blockingNoises:
+  - {fileID: 8300000, guid: 083744b5eb24f2e42a6b9bbcc826dcf8, type: 3}
+  canBeBuffed: 1

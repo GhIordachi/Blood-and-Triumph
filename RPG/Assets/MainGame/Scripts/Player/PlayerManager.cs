@@ -52,8 +52,15 @@ namespace GI
             WorldSaveGameManager.instance.player = this;
         }
 
-        void Update()
+        protected override void Start()
         {
+            base.Start();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
             isInteracting = animator.GetBool("isInteracting");
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
@@ -63,7 +70,6 @@ namespace GI
             isPerformingFullyChargedAttack = animator.GetBool("isPerformingFullyChargedAttack");
             animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
             animator.SetBool("isBlocking", isBlocking);
-            animator.SetBool("isInAir", isInAir);
             animator.SetBool("isDead", isDead);
 
             inputHandler.TickInput();            
@@ -71,17 +77,15 @@ namespace GI
             playerLocomotionManager.HandleJumping();
             playerStatsManager.RegenerateStamina();
 
+            playerLocomotionManager.HandleGroundMovement();
+            playerLocomotionManager.HandleRotation();
+
             CheckForInteractableObject();
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            playerLocomotionManager.HandleFalling(playerLocomotionManager.moveDirection);
-            playerLocomotionManager.HandleMovement();
-            playerLocomotionManager.HandleRotation();
-            playerEffectsManager.HandleAllBuildUpEffects();
         }
 
         private void LateUpdate()
@@ -97,11 +101,6 @@ namespace GI
             {
                 cameraHandler.FollowTarget();
                 cameraHandler.HandleCameraRotation();
-            }
-
-            if (isInAir)
-            {
-                playerLocomotionManager.inAirTimer = playerLocomotionManager.inAirTimer + Time.deltaTime;
             }
         }
 
@@ -145,7 +144,7 @@ namespace GI
 
         public void OpenChestInteraction(Transform playerStandingHereWhenOpeningChest)
         {
-            playerLocomotionManager.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
+            playerLocomotionManager.GetComponent<Rigidbody>().velocity = Vector3.zero; //Stops the player from ice skating
             transform.position = playerStandingHereWhenOpeningChest.transform.position;
             //Change the animation to an open chest animation
             playerAnimatorManager.PlayTargetAnimation("Pick Up Item", true);
@@ -153,7 +152,7 @@ namespace GI
 
         public void PassThroughFogWallInteraction(Transform fogWallEntrance)
         {
-            playerLocomotionManager.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
+            playerLocomotionManager.GetComponent<Rigidbody>().velocity = Vector3.zero; //Stops the player from ice skating
 
             Vector3 rotationDirection = fogWallEntrance.transform.forward;
             Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
@@ -252,7 +251,7 @@ namespace GI
                 playerInventoryManager.currentHandEquipment = handEquipment as HandEquipment;
             }
 
-            playerEquipmentManager.EquipAllEquipmentModelsOnStart();
+            playerEquipmentManager.EquipAllArmor();
         }
 
     }

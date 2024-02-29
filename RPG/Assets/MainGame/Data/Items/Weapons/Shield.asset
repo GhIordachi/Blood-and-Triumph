@@ -50,4 +50,7 @@ MonoBehaviour:
   th_hold_RT_Action: {fileID: 0}
   th_tap_LT_Action: {fileID: 0}
   th_hold_LT_Action: {fileID: 0}
-  weaponWhooshes: []
+  weaponWhooshes:
+  - {fileID: 0}
+  blockingNoises:
+  - {fileID: 8300000, guid: c4792e98b71a9ea4da73ec668a9f03bb, type: 3}

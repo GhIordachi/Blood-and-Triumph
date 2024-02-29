@@ -12,7 +12,7 @@ namespace GI
 
         bool hasCollided = false;
 
-        CharacterStatsManager spellTarget;
+        CharacterManager spellTarget;
 
         Vector3 impactNormal; //Used to rotate the impact particles
 
@@ -28,14 +28,25 @@ namespace GI
             }
         }
 
+        protected override void Awake()
+        {
+            base.Awake();            
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             if(!hasCollided)
             {
-                spellTarget = other.transform.GetComponent<CharacterStatsManager>();
-                if(spellTarget != null && spellTarget.teamIDNumber != teamIDNumber)
+                spellTarget = other.transform.GetComponent<CharacterManager>();
+                if(spellTarget != null && spellTarget.characterStatsManager.teamIDNumber != teamIDNumber)
                 {
-                    spellTarget.TakeDamage(0, fireDamage, currentDamageAnimation, characterManager);
+                    TakeDamageEffect takeDamageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+                    takeDamageEffect.physicalDamage = physicalDamage;
+                    takeDamageEffect.fireDamage = fireDamage;
+                    takeDamageEffect.poiseDamage = poiseDamage;
+                    takeDamageEffect.contactPoint = contactPoint;
+                    takeDamageEffect.angleHitFrom = angleHitFrom;
+                    spellTarget.characterEffectsManager.ProcessEffectInstantly(takeDamageEffect);
                 }
 
                 hasCollided = true;

@@ -65,7 +65,7 @@ namespace GI {
             playerLocomotion = playerManager.GetComponent<PlayerLocomotionManager>();
             animatorHandler = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
 
-            playerLocomotion.rigidbody.velocity = Vector3.zero; // Stops the player from moving whilst picking up the item
+            playerLocomotion.GetComponent<Rigidbody>().velocity = Vector3.zero; // Stops the player from moving whilst picking up the item
             animatorHandler.PlayTargetAnimation("Pick Up Item", true); // Plays the animation of looting the item
             playerInventory.weaponsInventory.Add(weapon);
             playerManager.itemInteractableGameObject.GetComponentInChildren<Text>().text = weapon.itemName;
