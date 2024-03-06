@@ -109,6 +109,9 @@ namespace GI
         {
             RaycastHit hit;
 
+            if (cameraHandler == null)
+                return;
+
             if(Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
             {
                 if(hit.collider.tag == "Interactable")

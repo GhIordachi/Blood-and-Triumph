@@ -44,6 +44,7 @@ namespace GI {
                 character.isPerformingRiposte = false;
                 character.canBeParried = false;
                 character.canBeRiposted = false;
+                character.canRoll = true;
 
                 // After the damage animation ends, reset our previous poise damage to 0
                 character.characterCombatManager.previousPoiseDamageTaken = 0;

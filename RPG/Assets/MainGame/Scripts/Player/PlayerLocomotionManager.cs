@@ -37,6 +37,9 @@ namespace GI
 
         public void HandleRotation()
         {
+            if (player.cameraHandler == null)
+                return;
+
             if (player.canRotate)
             {
                 if (player.isAiming)
@@ -106,6 +109,9 @@ namespace GI
 
         public void HandleGroundMovement()
         {
+            if (player.cameraHandler == null)
+                return;
+
             if (player.inputHandler.rollFlag)
                 return;
 
@@ -149,9 +155,6 @@ namespace GI
 
         public void HandleRollingAndSprinting()
         {
-            if (player.animator.GetBool("isInteracting"))
-                return;
-
             //Check if we have stamina, if we do not, return.
             if (player.playerStatsManager.currentStamina <= 0)
                 return;
@@ -159,6 +162,9 @@ namespace GI
             if(player.inputHandler.rollFlag)
             {
                 player.inputHandler.rollFlag = false;
+
+                if (!player.canRoll)
+                    return;
 
                 moveDirection = player.cameraHandler.cameraObject.transform.forward * player.inputHandler.vertical;
                 moveDirection += player.cameraHandler.cameraObject.transform.right * player.inputHandler.horizontal;

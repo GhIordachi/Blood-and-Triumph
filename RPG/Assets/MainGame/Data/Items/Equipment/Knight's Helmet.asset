@@ -21,3 +21,6 @@ MonoBehaviour:
   weight: 3
   poisonResistance: 0.5
   helmetModelName: Male_Helmet_13
+  hideHair: 1
+  hideEyebrows: 1
+  hideBeard: 1

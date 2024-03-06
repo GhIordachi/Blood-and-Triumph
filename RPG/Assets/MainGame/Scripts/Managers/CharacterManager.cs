@@ -31,6 +31,7 @@ namespace GI {
         public bool canBeRiposted;
         public bool canBeParried;
         public bool canDoCombo;
+        public bool canRoll = true;
         public bool isParrying;
         public bool isBlocking;
         public bool isInvulnerable;

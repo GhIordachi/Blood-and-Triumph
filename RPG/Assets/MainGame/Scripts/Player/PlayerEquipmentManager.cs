@@ -25,6 +25,11 @@ namespace GI
         LeftHandModelChanger leftHandModelChanger;
         RightHandModelChanger rightHandModelChanger;
 
+        [Header("Facial Features")]
+        public GameObject[] hairs;
+        public GameObject[] eyebrows;
+        public GameObject[] beards;
+
         [Header("Default Naked Models")]
         public GameObject nakedHeadModel;
         public string nakedTorsoModel;
@@ -72,6 +77,30 @@ namespace GI
                 
                 if(player.playerInventoryManager.currentHelmetEquipment != null)
                 {
+                    if(player.playerInventoryManager.currentHelmetEquipment.hideHair)
+                    {
+                        foreach (var feature in hairs)
+                        {
+                            feature.SetActive(false);
+                        }
+                    }
+
+                    if (player.playerInventoryManager.currentHelmetEquipment.hideEyebrows)
+                    {
+                        foreach (var feature in eyebrows)
+                        {
+                            feature.SetActive(false);
+                        }
+                    }
+
+                    if (player.playerInventoryManager.currentHelmetEquipment.hideBeard)
+                    {
+                        foreach (var feature in beards)
+                        {
+                            feature.SetActive(false);
+                        }
+                    }
+
                     nakedHeadModel.SetActive(false);
                     helmetModelChanger.EquipHelmetModelByName(player.playerInventoryManager.currentHelmetEquipment.helmetModelName);
                     player.playerStatsManager.physicalDamageAbsorptionHead = player.playerInventoryManager.currentHelmetEquipment.physicalDefense;
@@ -83,6 +112,21 @@ namespace GI
                 {
                     nakedHeadModel.SetActive(true);
                     player.playerStatsManager.physicalDamageAbsorptionHead = 0;
+
+                    foreach (var feature in hairs)
+                    {
+                        feature.SetActive(true);
+                    }
+
+                    foreach (var feature in eyebrows)
+                    {
+                        feature.SetActive(true);
+                    }
+
+                    foreach (var feature in beards)
+                    {
+                        feature.SetActive(true);
+                    }
                 }
             }
             //Torso Equipment

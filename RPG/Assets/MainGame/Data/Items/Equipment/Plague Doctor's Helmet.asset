@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
-  m_Name: Fallen Knight's Helmet
+  m_Name: Plague Doctor's Helmet
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Fallen Knight's Helmet
-  itemID: 1006
-  physicalDefense: 5
-  fireDefense: 0
-  magicalDefense: 0
+  itemName: Plague Doctor's Helmet
+  itemID: 1009
+  physicalDefense: 3
+  fireDefense: 3
+  magicalDefense: 3
   weight: 1
-  poisonResistance: 0
-  helmetModelName: Male_Helmet_09
-  hideHair: 1
+  poisonResistance: 5
+  helmetModelName: Male_Helmet_01
+  hideHair: 0
   hideEyebrows: 1
   hideBeard: 1
