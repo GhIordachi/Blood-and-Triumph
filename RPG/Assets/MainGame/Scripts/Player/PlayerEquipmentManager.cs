@@ -26,9 +26,17 @@ namespace GI
         RightHandModelChanger rightHandModelChanger;
 
         [Header("Facial Features")]
-        public GameObject[] hairs;
-        public GameObject[] eyebrows;
-        public GameObject[] beards;
+        EyebrowSelector eyebrowSelector;
+        HairSelector hairSelector;
+        BeardSelector beardSelector;
+        ColorFacialFeatures colorFacialFeatures;
+        public GameObject hair;
+        public GameObject eyebrows;
+        public GameObject beard;
+        public int hairID = -1;
+        public int eyebrowID = -1;
+        public int beardID = -1;
+        public Color hairColor;
 
         [Header("Default Naked Models")]
         public GameObject nakedHeadModel;
@@ -58,6 +66,11 @@ namespace GI
             lowerLeftArmModelChanger = GetComponentInChildren<LowerLeftArmModelChanger>();
             leftHandModelChanger = GetComponentInChildren<LeftHandModelChanger>();
             rightHandModelChanger = GetComponentInChildren<RightHandModelChanger>();
+
+            hairSelector = GetComponentInChildren<HairSelector>();
+            eyebrowSelector = GetComponentInChildren<EyebrowSelector>();
+            beardSelector = GetComponentInChildren<BeardSelector>();
+            colorFacialFeatures = GetComponentInChildren<ColorFacialFeatures>();
         }
 
         private void Start()
@@ -70,35 +83,35 @@ namespace GI
             float poisonResistance = 0;
             float totalEquipmentLoad = 0;
 
+            //Initialises Facial Features
+            hairSelector.GetHairByID(hairID);
+            eyebrowSelector.GetEyebrowByID(eyebrowID);
+            beardSelector.GetBeardByID(beardID);
+            colorFacialFeatures.SetHairColor();
+
             //Helmet Equipment
             if (helmetModelChanger != null)
             {                
-                helmetModelChanger.UnEquipAllHelmetModels();       
+                helmetModelChanger.UnEquipAllHelmetModels();
                 
                 if(player.playerInventoryManager.currentHelmetEquipment != null)
                 {
                     if(player.playerInventoryManager.currentHelmetEquipment.hideHair)
                     {
-                        foreach (var feature in hairs)
-                        {
-                            feature.SetActive(false);
-                        }
+                        if(hair != null)
+                           hair.SetActive(false);
                     }
 
                     if (player.playerInventoryManager.currentHelmetEquipment.hideEyebrows)
                     {
-                        foreach (var feature in eyebrows)
-                        {
-                            feature.SetActive(false);
-                        }
+                        if (eyebrows != null)
+                            eyebrows.SetActive(false);
                     }
 
                     if (player.playerInventoryManager.currentHelmetEquipment.hideBeard)
                     {
-                        foreach (var feature in beards)
-                        {
-                            feature.SetActive(false);
-                        }
+                        if (beard != null)
+                            beard.SetActive(false);
                     }
 
                     nakedHeadModel.SetActive(false);
@@ -109,24 +122,16 @@ namespace GI
                     totalEquipmentLoad += player.playerInventoryManager.currentHelmetEquipment.weight;
                 }
                 else
-                {
+                {                    
                     nakedHeadModel.SetActive(true);
                     player.playerStatsManager.physicalDamageAbsorptionHead = 0;
 
-                    foreach (var feature in hairs)
-                    {
-                        feature.SetActive(true);
-                    }
-
-                    foreach (var feature in eyebrows)
-                    {
-                        feature.SetActive(true);
-                    }
-
-                    foreach (var feature in beards)
-                    {
-                        feature.SetActive(true);
-                    }
+                    if (hair != null)
+                        hair.SetActive(true);
+                    if (eyebrows != null)
+                        eyebrows.SetActive(true);
+                    if (beard != null)
+                        beard.SetActive(true);
                 }
             }
             //Torso Equipment

@@ -11,6 +11,8 @@ namespace GI
 
         public int characterLevel;
 
+        public int currentScene;
+
         [Header("Equipment")]
         public int characterRightHandWeaponID;
         public int characterLeftHandWeaponID;
@@ -19,6 +21,12 @@ namespace GI
         public int currentChestGearItemID;
         public int currentLegGearItemID;
         public int currentHandGearItemID;
+
+        [Header("Facial Features")]
+        public int currentHairID = -1;
+        public int currentEyebrowID = -1;
+        public int currentBeardID = -1;
+        public Color currentHairColor;
 
         [Header("World Coordinates")]
         public float xPosition;

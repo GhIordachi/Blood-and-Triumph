@@ -7,6 +7,8 @@ namespace GI
 {
     public class SelectHairColor : MonoBehaviour
     {
+        PlayerManager player;
+
         [Header("Color Values")]
         public float redAmount;
         public float greenAmount;
@@ -21,6 +23,11 @@ namespace GI
 
         //We grab the material from the skin mesh renderer, and change the color properties of the material
         public List<SkinnedMeshRenderer> rendererList = new List<SkinnedMeshRenderer>();
+
+        private void Awake()
+        {
+            player = FindObjectOfType<PlayerManager>();
+        }
 
         public void UpdateSliders()
         {
@@ -37,6 +44,11 @@ namespace GI
             for(int i = 0; i < rendererList.Count; i++)
             {
                 rendererList[i].material.SetColor("_Color_Hair", currentHairColor);
+            }
+
+            if(player != null)
+            {
+                player.playerEquipmentManager.hairColor = currentHairColor;
             }
         }
     }

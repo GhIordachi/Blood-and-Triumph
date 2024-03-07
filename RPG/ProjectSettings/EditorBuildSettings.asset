@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/MainGame/Scenes/TestingScene.unity
     guid: 1059d1a9a3ef3994e959aac50142c1af
   - enabled: 1
-    path: Assets/MainGame/Scenes/StartingVillage.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/MainGame/Scenes/Character Creation Scene.unity
+    guid: afd91f6a3da93b847a4b7adac6b50806
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 704cbc381f8d6a2489f26d3823a664c9,
       type: 2}

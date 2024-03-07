@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 namespace GI
@@ -168,8 +171,11 @@ namespace GI
 
         public void SaveCharacterDataToCurrentSaveData(ref CharacterSaveData currentCharacterSaveData)
         {
+            Scene currentScene = SceneManager.GetActiveScene();
+
             currentCharacterSaveData.characterName = playerStatsManager.characterName;
             currentCharacterSaveData.characterLevel = playerStatsManager.playerLevel;
+            currentCharacterSaveData.currentScene = currentScene.buildIndex;
 
             currentCharacterSaveData.xPosition = transform.position.x;
             currentCharacterSaveData.yPosition = transform.position.y;
@@ -178,7 +184,24 @@ namespace GI
             currentCharacterSaveData.characterRightHandWeaponID = playerInventoryManager.rightWeapon.itemID;
             currentCharacterSaveData.characterLeftHandWeaponID = playerInventoryManager.leftWeapon.itemID;
             
-            if(playerInventoryManager.currentHelmetEquipment != null)
+            if(playerEquipmentManager.hair != null)
+            {
+                currentCharacterSaveData.currentHairID = playerEquipmentManager.hairID;
+            }
+
+            if (playerEquipmentManager.eyebrows != null)
+            {
+                currentCharacterSaveData.currentEyebrowID = playerEquipmentManager.eyebrowID;
+            }
+
+            if (playerEquipmentManager.beard != null)
+            {
+                currentCharacterSaveData.currentBeardID = playerEquipmentManager.beardID;
+            }
+
+            currentCharacterSaveData.currentHairColor = playerEquipmentManager.hairColor;
+
+            if (playerInventoryManager.currentHelmetEquipment != null)
             {
                 currentCharacterSaveData.currentHeadGearItemID = playerInventoryManager.currentHelmetEquipment.itemID;
             }
@@ -220,6 +243,12 @@ namespace GI
             //Asign the position saved in the file
             transform.position = new Vector3(currentCharacterSaveData.xPosition, currentCharacterSaveData.yPosition, currentCharacterSaveData.zPosition);
 
+            //Facial Features
+            playerEquipmentManager.hairID = currentCharacterSaveData.currentHairID;
+            playerEquipmentManager.eyebrowID = currentCharacterSaveData.currentEyebrowID;
+            playerEquipmentManager.beardID = currentCharacterSaveData.currentBeardID;
+            playerEquipmentManager.hairColor = currentCharacterSaveData.currentHairColor;
+
             //Equipment
             playerInventoryManager.rightWeapon = WorldItemDataBase.Instance.GetWeaponItemByID(currentCharacterSaveData.characterRightHandWeaponID);
             playerInventoryManager.leftWeapon = WorldItemDataBase.Instance.GetWeaponItemByID(currentCharacterSaveData.characterLeftHandWeaponID);
@@ -256,6 +285,5 @@ namespace GI
 
             playerEquipmentManager.EquipAllArmor();
         }
-
     }
 }
