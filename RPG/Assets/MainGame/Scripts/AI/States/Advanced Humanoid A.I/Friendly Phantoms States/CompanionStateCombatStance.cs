@@ -386,7 +386,7 @@ namespace GI
             {
                 hasAmmoLoaded = true;
                 aiCharacter.characterInventoryManager.currentItemBeingUsed = aiCharacter.characterInventoryManager.rightWeapon;
-                aiCharacter.characterInventoryManager.rightWeapon.th_hold_RB_Action.PerformAction(aiCharacter);
+                aiCharacter.characterInventoryManager.rightWeapon.th_hold_Left_Click.PerformAction(aiCharacter);
             }
         }
 

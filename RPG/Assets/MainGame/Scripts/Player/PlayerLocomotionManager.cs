@@ -166,6 +166,9 @@ namespace GI
                 if (!player.canRoll)
                     return;
 
+                if (player.playerStatsManager.currentStamina <= rollStaminaCost)
+                    return;
+
                 moveDirection = player.cameraHandler.cameraObject.transform.forward * player.inputHandler.vertical;
                 moveDirection += player.cameraHandler.cameraObject.transform.right * player.inputHandler.horizontal;
 
@@ -197,6 +200,8 @@ namespace GI
                 }
                 else
                 {
+                    if (player.playerStatsManager.currentStamina <= backStepStaminaCost)
+                        return;
                     switch (player.playerStatsManager.encumbraceLevel)
                     {
                         case EncumbranceLevel.Light:

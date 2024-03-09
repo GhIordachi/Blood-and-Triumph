@@ -34,18 +34,19 @@ MonoBehaviour:
   baseStaminaCost: 0
   lightAttackStaminaMultiplier: 0
   heavyAttackStaminaMultiplier: 0
-  oh_tap_RB_Action: {fileID: 0}
-  oh_hold_RB_Action: {fileID: 0}
-  oh_tap_LB_Action: {fileID: 0}
-  oh_hold_LB_Action: {fileID: 11400000, guid: 66a2a7285443f3a4fac4990355bd3cf9, type: 2}
+  oh_tap_Left_Click: {fileID: 0}
+  oh_hold_Left_Click: {fileID: 0}
+  oh_tap_Right_Click: {fileID: 11400000, guid: fed838d884e04db42afc03df095d3a0d, type: 2}
+  oh_hold_Right_Click: {fileID: 11400000, guid: 66a2a7285443f3a4fac4990355bd3cf9,
+    type: 2}
   oh_tap_RT_Action: {fileID: 0}
   oh_hold_RT_Action: {fileID: 0}
   oh_tap_LT_Action: {fileID: 0}
   oh_hold_LT_Action: {fileID: 0}
-  th_tap_RB_Action: {fileID: 0}
-  th_hold_RB_Action: {fileID: 0}
-  th_tap_LB_Action: {fileID: 0}
-  th_hold_LB_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 0}
+  th_hold_Left_Click: {fileID: 0}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
   th_tap_RT_Action: {fileID: 0}
   th_hold_RT_Action: {fileID: 0}
   th_tap_LT_Action: {fileID: 0}

@@ -43,22 +43,22 @@ namespace GI
         public float heavyAttackStaminaMultiplier;
 
         [Header("Item Actions")]
-        public ItemAction oh_tap_RB_Action;
-        public ItemAction oh_hold_RB_Action;
-        public ItemAction oh_tap_LB_Action;
-        public ItemAction oh_hold_LB_Action;
-        public ItemAction oh_tap_RT_Action;
-        public ItemAction oh_hold_RT_Action;
+        public ItemAction oh_tap_Left_Click;
+        public ItemAction oh_hold_Left_Click;
+        public ItemAction oh_tap_Right_Click;
+        public ItemAction oh_hold_Right_Click;
+        public ItemAction oh_tap_R_Action;
+        public ItemAction oh_hold_R_Action;
         public ItemAction oh_tap_LT_Action;
         public ItemAction oh_hold_LT_Action;
 
         [Header("Two Handed Item Actions")]
-        public ItemAction th_tap_RB_Action;
-        public ItemAction th_hold_RB_Action;
-        public ItemAction th_tap_LB_Action;
-        public ItemAction th_hold_LB_Action;
-        public ItemAction th_tap_RT_Action;
-        public ItemAction th_hold_RT_Action;
+        public ItemAction th_tap_Left_Click;
+        public ItemAction th_hold_Left_Click;
+        public ItemAction th_tap_Right_Click;
+        public ItemAction th_hold_Right_Click;
+        public ItemAction th_tap_R_Action;
+        public ItemAction th_hold_R_Action;
         public ItemAction th_tap_LT_Action;
         public ItemAction th_hold_LT_Action;
 

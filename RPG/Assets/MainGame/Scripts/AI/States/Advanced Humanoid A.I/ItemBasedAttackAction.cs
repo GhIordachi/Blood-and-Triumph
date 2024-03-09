@@ -71,22 +71,22 @@ namespace GI
             {
                 if(attackType == AttackType.light)
                 {
-                    enemy.characterInventoryManager.rightWeapon.th_tap_RB_Action.PerformAction(enemy);
+                    enemy.characterInventoryManager.rightWeapon.th_tap_Left_Click.PerformAction(enemy);
                 }
                 else if (attackType == AttackType.heavy)
                 {
-                    enemy.characterInventoryManager.rightWeapon.th_tap_RT_Action.PerformAction(enemy);
+                    enemy.characterInventoryManager.rightWeapon.th_tap_R_Action.PerformAction(enemy);
                 }
             }
             else
             {
                 if (attackType == AttackType.light)
                 {
-                    enemy.characterInventoryManager.rightWeapon.oh_tap_RB_Action.PerformAction(enemy);
+                    enemy.characterInventoryManager.rightWeapon.oh_tap_Left_Click.PerformAction(enemy);
                 }
                 else if (attackType == AttackType.heavy)
                 {
-                    enemy.characterInventoryManager.rightWeapon.oh_tap_RT_Action.PerformAction(enemy);
+                    enemy.characterInventoryManager.rightWeapon.oh_tap_R_Action.PerformAction(enemy);
                 }
             }
         }

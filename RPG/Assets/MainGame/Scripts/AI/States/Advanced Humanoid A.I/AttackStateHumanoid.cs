@@ -160,7 +160,7 @@ namespace GI
             {
                 hasPerformedAttack = true;
                 enemy.characterInventoryManager.currentItemBeingUsed = enemy.characterInventoryManager.rightWeapon;
-                enemy.characterInventoryManager.rightWeapon.th_tap_RB_Action.PerformAction(enemy);
+                enemy.characterInventoryManager.rightWeapon.th_tap_Left_Click.PerformAction(enemy);
             }
         }
 

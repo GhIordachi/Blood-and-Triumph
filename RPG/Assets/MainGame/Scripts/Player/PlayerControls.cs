@@ -171,12 +171,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""b506e2f1-f8d4-4d83-9d64-2d3ddf5c61b7"",
             ""actions"": [
                 {
-                    ""name"": ""Roll"",
+                    ""name"": ""Shift"",
                     ""type"": ""Button"",
                     ""id"": ""7db54841-a4e2-4296-9238-e7d48400d92d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""SlowTap"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -189,7 +189,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RB"",
+                    ""name"": ""Left Click"",
                     ""type"": ""Button"",
                     ""id"": ""8f91ddb1-cd16-470b-966f-d85962e480fc"",
                     ""expectedControlType"": ""Button"",
@@ -198,7 +198,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Qued RB"",
+                    ""name"": ""Queued Left Click"",
                     ""type"": ""Button"",
                     ""id"": ""5b5fa55b-a7e7-470e-bb65-9fd85b24775e"",
                     ""expectedControlType"": ""Button"",
@@ -207,7 +207,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hold RB"",
+                    ""name"": ""Hold Left Click"",
                     ""type"": ""PassThrough"",
                     ""id"": ""afe0bf0a-896d-42d0-a918-b79a74100e4a"",
                     ""expectedControlType"": ""Button"",
@@ -216,7 +216,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RT"",
+                    ""name"": ""R"",
                     ""type"": ""Button"",
                     ""id"": ""442a70ae-4aae-4a4a-89d6-e7192083b7b5"",
                     ""expectedControlType"": ""Button"",
@@ -225,7 +225,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Qued RT"",
+                    ""name"": ""Queued R"",
                     ""type"": ""Button"",
                     ""id"": ""1f7eacbd-af2d-487c-a89f-0c108dd386dd"",
                     ""expectedControlType"": ""Button"",
@@ -234,7 +234,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hold RT"",
+                    ""name"": ""Hold R"",
                     ""type"": ""PassThrough"",
                     ""id"": ""8c85a253-86d5-4b9b-ad94-79410460697a"",
                     ""expectedControlType"": ""Button"",
@@ -243,7 +243,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LT"",
+                    ""name"": ""Q"",
                     ""type"": ""Button"",
                     ""id"": ""08c9e9a9-353d-4354-b043-6adc336495bc"",
                     ""expectedControlType"": ""Button"",
@@ -252,7 +252,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Qued LT"",
+                    ""name"": ""Queued Q"",
                     ""type"": ""Button"",
                     ""id"": ""34148b9b-894a-4bbf-b435-2b6cdef2293a"",
                     ""expectedControlType"": ""Button"",
@@ -297,7 +297,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hold LB"",
+                    ""name"": ""Hold Right Click"",
                     ""type"": ""Button"",
                     ""id"": ""4c976616-7a4a-4f39-bdc2-6f4e5c8a6ec7"",
                     ""expectedControlType"": ""Button"",
@@ -315,7 +315,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TapLB"",
+                    ""name"": ""Right Click"",
                     ""type"": ""Button"",
                     ""id"": ""ae97755a-a29b-42a2-9680-a5eb01989ed8"",
                     ""expectedControlType"": ""Button"",
@@ -324,7 +324,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Qued LB"",
+                    ""name"": ""Queued Right Click"",
                     ""type"": ""Button"",
                     ""id"": ""6493441b-9021-4d59-9776-5ec8b8b8d1a4"",
                     ""expectedControlType"": ""Button"",
@@ -338,10 +338,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b715fb26-3c08-4a91-a6f9-045c39ff1700"",
                     ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""Shift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -352,18 +352,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""Shift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""dea6a8ea-6a99-4fec-b9bd-272ccc6a519e"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RB"",
+                    ""action"": ""Left Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -374,7 +374,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RT"",
+                    ""action"": ""R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -436,22 +436,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2cea2b4f-e4cd-40c2-bb2c-9d652e925fdc"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LT"",
+                    ""action"": ""Q"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""524cef78-d6e2-46f7-9349-a6298dcac34d"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hold LB"",
+                    ""action"": ""Hold Right Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -469,22 +469,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8cbe423e-5ca2-4d44-9156-d075f3608553"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Hold"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold(duration=0.3)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hold RB"",
+                    ""action"": ""Hold Left Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""b31c7755-aaac-406f-b163-65db09880639"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TapLB"",
+                    ""action"": ""Right Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -492,21 +492,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""45c46b43-4343-4153-b515-99223050da04"",
                     ""path"": ""<Keyboard>/r"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.3)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hold RT"",
+                    ""action"": ""Hold R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""04d1d316-39d3-4807-bf54-f974abb012db"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Qued RB"",
+                    ""action"": ""Queued Left Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -517,29 +517,29 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Qued RT"",
+                    ""action"": ""Queued R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""f1e1eeb1-5701-4de9-8dfb-cf8bf1ca4d73"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Qued LT"",
+                    ""action"": ""Queued Q"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""6a7ab283-d004-4165-8e5a-90c61302241b"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Qued LB"",
+                    ""action"": ""Queued Right Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -550,7 +550,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""a19be225-cf00-41af-b8bb-4886d1498f16"",
             ""actions"": [
                 {
-                    ""name"": ""D-Pad Right"",
+                    ""name"": ""Right Arrow"",
                     ""type"": ""Button"",
                     ""id"": ""402d9061-f4d5-46ee-b54f-b5951f670a7b"",
                     ""expectedControlType"": ""Button"",
@@ -559,7 +559,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""D-Pad Left"",
+                    ""name"": ""Left Arrow"",
                     ""type"": ""Button"",
                     ""id"": ""f89d9b1d-29f3-4b5b-a74b-7f2821e9f310"",
                     ""expectedControlType"": ""Button"",
@@ -568,7 +568,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""D-Pad Down"",
+                    ""name"": ""Down Arrow"",
                     ""type"": ""Button"",
                     ""id"": ""325bd074-51c8-4e09-8e1c-4b17ebb08f54"",
                     ""expectedControlType"": ""Button"",
@@ -577,7 +577,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""D-Pad Up"",
+                    ""name"": ""Up Arrow"",
                     ""type"": ""Button"",
                     ""id"": ""81ac53c3-7a85-4691-bf52-76228975a964"",
                     ""expectedControlType"": ""Button"",
@@ -594,7 +594,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Up"",
+                    ""action"": ""Up Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -605,7 +605,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Up"",
+                    ""action"": ""Up Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -616,7 +616,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Down"",
+                    ""action"": ""Down Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -627,7 +627,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Down"",
+                    ""action"": ""Down Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -638,7 +638,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Left"",
+                    ""action"": ""Left Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -649,7 +649,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Left"",
+                    ""action"": ""Left Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -660,7 +660,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Right"",
+                    ""action"": ""Right Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -671,7 +671,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad Right"",
+                    ""action"": ""Right Arrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -688,30 +688,30 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMovement_LockOnTargetRight = m_PlayerMovement.FindAction("Lock On Target Right", throwIfNotFound: true);
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
-        m_PlayerActions_Roll = m_PlayerActions.FindAction("Roll", throwIfNotFound: true);
+        m_PlayerActions_Shift = m_PlayerActions.FindAction("Shift", throwIfNotFound: true);
         m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
-        m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
-        m_PlayerActions_QuedRB = m_PlayerActions.FindAction("Qued RB", throwIfNotFound: true);
-        m_PlayerActions_HoldRB = m_PlayerActions.FindAction("Hold RB", throwIfNotFound: true);
-        m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
-        m_PlayerActions_QuedRT = m_PlayerActions.FindAction("Qued RT", throwIfNotFound: true);
-        m_PlayerActions_HoldRT = m_PlayerActions.FindAction("Hold RT", throwIfNotFound: true);
-        m_PlayerActions_LT = m_PlayerActions.FindAction("LT", throwIfNotFound: true);
-        m_PlayerActions_QuedLT = m_PlayerActions.FindAction("Qued LT", throwIfNotFound: true);
+        m_PlayerActions_LeftClick = m_PlayerActions.FindAction("Left Click", throwIfNotFound: true);
+        m_PlayerActions_QueuedLeftClick = m_PlayerActions.FindAction("Queued Left Click", throwIfNotFound: true);
+        m_PlayerActions_HoldLeftClick = m_PlayerActions.FindAction("Hold Left Click", throwIfNotFound: true);
+        m_PlayerActions_R = m_PlayerActions.FindAction("R", throwIfNotFound: true);
+        m_PlayerActions_QueuedR = m_PlayerActions.FindAction("Queued R", throwIfNotFound: true);
+        m_PlayerActions_HoldR = m_PlayerActions.FindAction("Hold R", throwIfNotFound: true);
+        m_PlayerActions_Q = m_PlayerActions.FindAction("Q", throwIfNotFound: true);
+        m_PlayerActions_QueuedQ = m_PlayerActions.FindAction("Queued Q", throwIfNotFound: true);
         m_PlayerActions_PickUpItem = m_PlayerActions.FindAction("Pick Up Item", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
-        m_PlayerActions_HoldLB = m_PlayerActions.FindAction("Hold LB", throwIfNotFound: true);
+        m_PlayerActions_HoldRightClick = m_PlayerActions.FindAction("Hold Right Click", throwIfNotFound: true);
         m_PlayerActions_Consume = m_PlayerActions.FindAction("Consume", throwIfNotFound: true);
-        m_PlayerActions_TapLB = m_PlayerActions.FindAction("TapLB", throwIfNotFound: true);
-        m_PlayerActions_QuedLB = m_PlayerActions.FindAction("Qued LB", throwIfNotFound: true);
+        m_PlayerActions_RightClick = m_PlayerActions.FindAction("Right Click", throwIfNotFound: true);
+        m_PlayerActions_QueuedRightClick = m_PlayerActions.FindAction("Queued Right Click", throwIfNotFound: true);
         // Player Quick Slots
         m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
-        m_PlayerQuickSlots_DPadRight = m_PlayerQuickSlots.FindAction("D-Pad Right", throwIfNotFound: true);
-        m_PlayerQuickSlots_DPadLeft = m_PlayerQuickSlots.FindAction("D-Pad Left", throwIfNotFound: true);
-        m_PlayerQuickSlots_DPadDown = m_PlayerQuickSlots.FindAction("D-Pad Down", throwIfNotFound: true);
-        m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
+        m_PlayerQuickSlots_RightArrow = m_PlayerQuickSlots.FindAction("Right Arrow", throwIfNotFound: true);
+        m_PlayerQuickSlots_LeftArrow = m_PlayerQuickSlots.FindAction("Left Arrow", throwIfNotFound: true);
+        m_PlayerQuickSlots_DownArrow = m_PlayerQuickSlots.FindAction("Down Arrow", throwIfNotFound: true);
+        m_PlayerQuickSlots_UpArrow = m_PlayerQuickSlots.FindAction("Up Arrow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -843,46 +843,46 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Player Actions
     private readonly InputActionMap m_PlayerActions;
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
-    private readonly InputAction m_PlayerActions_Roll;
+    private readonly InputAction m_PlayerActions_Shift;
     private readonly InputAction m_PlayerActions_LockOn;
-    private readonly InputAction m_PlayerActions_RB;
-    private readonly InputAction m_PlayerActions_QuedRB;
-    private readonly InputAction m_PlayerActions_HoldRB;
-    private readonly InputAction m_PlayerActions_RT;
-    private readonly InputAction m_PlayerActions_QuedRT;
-    private readonly InputAction m_PlayerActions_HoldRT;
-    private readonly InputAction m_PlayerActions_LT;
-    private readonly InputAction m_PlayerActions_QuedLT;
+    private readonly InputAction m_PlayerActions_LeftClick;
+    private readonly InputAction m_PlayerActions_QueuedLeftClick;
+    private readonly InputAction m_PlayerActions_HoldLeftClick;
+    private readonly InputAction m_PlayerActions_R;
+    private readonly InputAction m_PlayerActions_QueuedR;
+    private readonly InputAction m_PlayerActions_HoldR;
+    private readonly InputAction m_PlayerActions_Q;
+    private readonly InputAction m_PlayerActions_QueuedQ;
     private readonly InputAction m_PlayerActions_PickUpItem;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Inventory;
     private readonly InputAction m_PlayerActions_Y;
-    private readonly InputAction m_PlayerActions_HoldLB;
+    private readonly InputAction m_PlayerActions_HoldRightClick;
     private readonly InputAction m_PlayerActions_Consume;
-    private readonly InputAction m_PlayerActions_TapLB;
-    private readonly InputAction m_PlayerActions_QuedLB;
+    private readonly InputAction m_PlayerActions_RightClick;
+    private readonly InputAction m_PlayerActions_QueuedRightClick;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Roll => m_Wrapper.m_PlayerActions_Roll;
+        public InputAction @Shift => m_Wrapper.m_PlayerActions_Shift;
         public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
-        public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
-        public InputAction @QuedRB => m_Wrapper.m_PlayerActions_QuedRB;
-        public InputAction @HoldRB => m_Wrapper.m_PlayerActions_HoldRB;
-        public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
-        public InputAction @QuedRT => m_Wrapper.m_PlayerActions_QuedRT;
-        public InputAction @HoldRT => m_Wrapper.m_PlayerActions_HoldRT;
-        public InputAction @LT => m_Wrapper.m_PlayerActions_LT;
-        public InputAction @QuedLT => m_Wrapper.m_PlayerActions_QuedLT;
+        public InputAction @LeftClick => m_Wrapper.m_PlayerActions_LeftClick;
+        public InputAction @QueuedLeftClick => m_Wrapper.m_PlayerActions_QueuedLeftClick;
+        public InputAction @HoldLeftClick => m_Wrapper.m_PlayerActions_HoldLeftClick;
+        public InputAction @R => m_Wrapper.m_PlayerActions_R;
+        public InputAction @QueuedR => m_Wrapper.m_PlayerActions_QueuedR;
+        public InputAction @HoldR => m_Wrapper.m_PlayerActions_HoldR;
+        public InputAction @Q => m_Wrapper.m_PlayerActions_Q;
+        public InputAction @QueuedQ => m_Wrapper.m_PlayerActions_QueuedQ;
         public InputAction @PickUpItem => m_Wrapper.m_PlayerActions_PickUpItem;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
-        public InputAction @HoldLB => m_Wrapper.m_PlayerActions_HoldLB;
+        public InputAction @HoldRightClick => m_Wrapper.m_PlayerActions_HoldRightClick;
         public InputAction @Consume => m_Wrapper.m_PlayerActions_Consume;
-        public InputAction @TapLB => m_Wrapper.m_PlayerActions_TapLB;
-        public InputAction @QuedLB => m_Wrapper.m_PlayerActions_QuedLB;
+        public InputAction @RightClick => m_Wrapper.m_PlayerActions_RightClick;
+        public InputAction @QueuedRightClick => m_Wrapper.m_PlayerActions_QueuedRightClick;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -892,36 +892,36 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
+            @Shift.started += instance.OnShift;
+            @Shift.performed += instance.OnShift;
+            @Shift.canceled += instance.OnShift;
             @LockOn.started += instance.OnLockOn;
             @LockOn.performed += instance.OnLockOn;
             @LockOn.canceled += instance.OnLockOn;
-            @RB.started += instance.OnRB;
-            @RB.performed += instance.OnRB;
-            @RB.canceled += instance.OnRB;
-            @QuedRB.started += instance.OnQuedRB;
-            @QuedRB.performed += instance.OnQuedRB;
-            @QuedRB.canceled += instance.OnQuedRB;
-            @HoldRB.started += instance.OnHoldRB;
-            @HoldRB.performed += instance.OnHoldRB;
-            @HoldRB.canceled += instance.OnHoldRB;
-            @RT.started += instance.OnRT;
-            @RT.performed += instance.OnRT;
-            @RT.canceled += instance.OnRT;
-            @QuedRT.started += instance.OnQuedRT;
-            @QuedRT.performed += instance.OnQuedRT;
-            @QuedRT.canceled += instance.OnQuedRT;
-            @HoldRT.started += instance.OnHoldRT;
-            @HoldRT.performed += instance.OnHoldRT;
-            @HoldRT.canceled += instance.OnHoldRT;
-            @LT.started += instance.OnLT;
-            @LT.performed += instance.OnLT;
-            @LT.canceled += instance.OnLT;
-            @QuedLT.started += instance.OnQuedLT;
-            @QuedLT.performed += instance.OnQuedLT;
-            @QuedLT.canceled += instance.OnQuedLT;
+            @LeftClick.started += instance.OnLeftClick;
+            @LeftClick.performed += instance.OnLeftClick;
+            @LeftClick.canceled += instance.OnLeftClick;
+            @QueuedLeftClick.started += instance.OnQueuedLeftClick;
+            @QueuedLeftClick.performed += instance.OnQueuedLeftClick;
+            @QueuedLeftClick.canceled += instance.OnQueuedLeftClick;
+            @HoldLeftClick.started += instance.OnHoldLeftClick;
+            @HoldLeftClick.performed += instance.OnHoldLeftClick;
+            @HoldLeftClick.canceled += instance.OnHoldLeftClick;
+            @R.started += instance.OnR;
+            @R.performed += instance.OnR;
+            @R.canceled += instance.OnR;
+            @QueuedR.started += instance.OnQueuedR;
+            @QueuedR.performed += instance.OnQueuedR;
+            @QueuedR.canceled += instance.OnQueuedR;
+            @HoldR.started += instance.OnHoldR;
+            @HoldR.performed += instance.OnHoldR;
+            @HoldR.canceled += instance.OnHoldR;
+            @Q.started += instance.OnQ;
+            @Q.performed += instance.OnQ;
+            @Q.canceled += instance.OnQ;
+            @QueuedQ.started += instance.OnQueuedQ;
+            @QueuedQ.performed += instance.OnQueuedQ;
+            @QueuedQ.canceled += instance.OnQueuedQ;
             @PickUpItem.started += instance.OnPickUpItem;
             @PickUpItem.performed += instance.OnPickUpItem;
             @PickUpItem.canceled += instance.OnPickUpItem;
@@ -934,52 +934,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Y.started += instance.OnY;
             @Y.performed += instance.OnY;
             @Y.canceled += instance.OnY;
-            @HoldLB.started += instance.OnHoldLB;
-            @HoldLB.performed += instance.OnHoldLB;
-            @HoldLB.canceled += instance.OnHoldLB;
+            @HoldRightClick.started += instance.OnHoldRightClick;
+            @HoldRightClick.performed += instance.OnHoldRightClick;
+            @HoldRightClick.canceled += instance.OnHoldRightClick;
             @Consume.started += instance.OnConsume;
             @Consume.performed += instance.OnConsume;
             @Consume.canceled += instance.OnConsume;
-            @TapLB.started += instance.OnTapLB;
-            @TapLB.performed += instance.OnTapLB;
-            @TapLB.canceled += instance.OnTapLB;
-            @QuedLB.started += instance.OnQuedLB;
-            @QuedLB.performed += instance.OnQuedLB;
-            @QuedLB.canceled += instance.OnQuedLB;
+            @RightClick.started += instance.OnRightClick;
+            @RightClick.performed += instance.OnRightClick;
+            @RightClick.canceled += instance.OnRightClick;
+            @QueuedRightClick.started += instance.OnQueuedRightClick;
+            @QueuedRightClick.performed += instance.OnQueuedRightClick;
+            @QueuedRightClick.canceled += instance.OnQueuedRightClick;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
         {
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
+            @Shift.started -= instance.OnShift;
+            @Shift.performed -= instance.OnShift;
+            @Shift.canceled -= instance.OnShift;
             @LockOn.started -= instance.OnLockOn;
             @LockOn.performed -= instance.OnLockOn;
             @LockOn.canceled -= instance.OnLockOn;
-            @RB.started -= instance.OnRB;
-            @RB.performed -= instance.OnRB;
-            @RB.canceled -= instance.OnRB;
-            @QuedRB.started -= instance.OnQuedRB;
-            @QuedRB.performed -= instance.OnQuedRB;
-            @QuedRB.canceled -= instance.OnQuedRB;
-            @HoldRB.started -= instance.OnHoldRB;
-            @HoldRB.performed -= instance.OnHoldRB;
-            @HoldRB.canceled -= instance.OnHoldRB;
-            @RT.started -= instance.OnRT;
-            @RT.performed -= instance.OnRT;
-            @RT.canceled -= instance.OnRT;
-            @QuedRT.started -= instance.OnQuedRT;
-            @QuedRT.performed -= instance.OnQuedRT;
-            @QuedRT.canceled -= instance.OnQuedRT;
-            @HoldRT.started -= instance.OnHoldRT;
-            @HoldRT.performed -= instance.OnHoldRT;
-            @HoldRT.canceled -= instance.OnHoldRT;
-            @LT.started -= instance.OnLT;
-            @LT.performed -= instance.OnLT;
-            @LT.canceled -= instance.OnLT;
-            @QuedLT.started -= instance.OnQuedLT;
-            @QuedLT.performed -= instance.OnQuedLT;
-            @QuedLT.canceled -= instance.OnQuedLT;
+            @LeftClick.started -= instance.OnLeftClick;
+            @LeftClick.performed -= instance.OnLeftClick;
+            @LeftClick.canceled -= instance.OnLeftClick;
+            @QueuedLeftClick.started -= instance.OnQueuedLeftClick;
+            @QueuedLeftClick.performed -= instance.OnQueuedLeftClick;
+            @QueuedLeftClick.canceled -= instance.OnQueuedLeftClick;
+            @HoldLeftClick.started -= instance.OnHoldLeftClick;
+            @HoldLeftClick.performed -= instance.OnHoldLeftClick;
+            @HoldLeftClick.canceled -= instance.OnHoldLeftClick;
+            @R.started -= instance.OnR;
+            @R.performed -= instance.OnR;
+            @R.canceled -= instance.OnR;
+            @QueuedR.started -= instance.OnQueuedR;
+            @QueuedR.performed -= instance.OnQueuedR;
+            @QueuedR.canceled -= instance.OnQueuedR;
+            @HoldR.started -= instance.OnHoldR;
+            @HoldR.performed -= instance.OnHoldR;
+            @HoldR.canceled -= instance.OnHoldR;
+            @Q.started -= instance.OnQ;
+            @Q.performed -= instance.OnQ;
+            @Q.canceled -= instance.OnQ;
+            @QueuedQ.started -= instance.OnQueuedQ;
+            @QueuedQ.performed -= instance.OnQueuedQ;
+            @QueuedQ.canceled -= instance.OnQueuedQ;
             @PickUpItem.started -= instance.OnPickUpItem;
             @PickUpItem.performed -= instance.OnPickUpItem;
             @PickUpItem.canceled -= instance.OnPickUpItem;
@@ -992,18 +992,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Y.started -= instance.OnY;
             @Y.performed -= instance.OnY;
             @Y.canceled -= instance.OnY;
-            @HoldLB.started -= instance.OnHoldLB;
-            @HoldLB.performed -= instance.OnHoldLB;
-            @HoldLB.canceled -= instance.OnHoldLB;
+            @HoldRightClick.started -= instance.OnHoldRightClick;
+            @HoldRightClick.performed -= instance.OnHoldRightClick;
+            @HoldRightClick.canceled -= instance.OnHoldRightClick;
             @Consume.started -= instance.OnConsume;
             @Consume.performed -= instance.OnConsume;
             @Consume.canceled -= instance.OnConsume;
-            @TapLB.started -= instance.OnTapLB;
-            @TapLB.performed -= instance.OnTapLB;
-            @TapLB.canceled -= instance.OnTapLB;
-            @QuedLB.started -= instance.OnQuedLB;
-            @QuedLB.performed -= instance.OnQuedLB;
-            @QuedLB.canceled -= instance.OnQuedLB;
+            @RightClick.started -= instance.OnRightClick;
+            @RightClick.performed -= instance.OnRightClick;
+            @RightClick.canceled -= instance.OnRightClick;
+            @QueuedRightClick.started -= instance.OnQueuedRightClick;
+            @QueuedRightClick.performed -= instance.OnQueuedRightClick;
+            @QueuedRightClick.canceled -= instance.OnQueuedRightClick;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -1025,18 +1025,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Player Quick Slots
     private readonly InputActionMap m_PlayerQuickSlots;
     private List<IPlayerQuickSlotsActions> m_PlayerQuickSlotsActionsCallbackInterfaces = new List<IPlayerQuickSlotsActions>();
-    private readonly InputAction m_PlayerQuickSlots_DPadRight;
-    private readonly InputAction m_PlayerQuickSlots_DPadLeft;
-    private readonly InputAction m_PlayerQuickSlots_DPadDown;
-    private readonly InputAction m_PlayerQuickSlots_DPadUp;
+    private readonly InputAction m_PlayerQuickSlots_RightArrow;
+    private readonly InputAction m_PlayerQuickSlots_LeftArrow;
+    private readonly InputAction m_PlayerQuickSlots_DownArrow;
+    private readonly InputAction m_PlayerQuickSlots_UpArrow;
     public struct PlayerQuickSlotsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerQuickSlotsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @DPadRight => m_Wrapper.m_PlayerQuickSlots_DPadRight;
-        public InputAction @DPadLeft => m_Wrapper.m_PlayerQuickSlots_DPadLeft;
-        public InputAction @DPadDown => m_Wrapper.m_PlayerQuickSlots_DPadDown;
-        public InputAction @DPadUp => m_Wrapper.m_PlayerQuickSlots_DPadUp;
+        public InputAction @RightArrow => m_Wrapper.m_PlayerQuickSlots_RightArrow;
+        public InputAction @LeftArrow => m_Wrapper.m_PlayerQuickSlots_LeftArrow;
+        public InputAction @DownArrow => m_Wrapper.m_PlayerQuickSlots_DownArrow;
+        public InputAction @UpArrow => m_Wrapper.m_PlayerQuickSlots_UpArrow;
         public InputActionMap Get() { return m_Wrapper.m_PlayerQuickSlots; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1046,34 +1046,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerQuickSlotsActionsCallbackInterfaces.Add(instance);
-            @DPadRight.started += instance.OnDPadRight;
-            @DPadRight.performed += instance.OnDPadRight;
-            @DPadRight.canceled += instance.OnDPadRight;
-            @DPadLeft.started += instance.OnDPadLeft;
-            @DPadLeft.performed += instance.OnDPadLeft;
-            @DPadLeft.canceled += instance.OnDPadLeft;
-            @DPadDown.started += instance.OnDPadDown;
-            @DPadDown.performed += instance.OnDPadDown;
-            @DPadDown.canceled += instance.OnDPadDown;
-            @DPadUp.started += instance.OnDPadUp;
-            @DPadUp.performed += instance.OnDPadUp;
-            @DPadUp.canceled += instance.OnDPadUp;
+            @RightArrow.started += instance.OnRightArrow;
+            @RightArrow.performed += instance.OnRightArrow;
+            @RightArrow.canceled += instance.OnRightArrow;
+            @LeftArrow.started += instance.OnLeftArrow;
+            @LeftArrow.performed += instance.OnLeftArrow;
+            @LeftArrow.canceled += instance.OnLeftArrow;
+            @DownArrow.started += instance.OnDownArrow;
+            @DownArrow.performed += instance.OnDownArrow;
+            @DownArrow.canceled += instance.OnDownArrow;
+            @UpArrow.started += instance.OnUpArrow;
+            @UpArrow.performed += instance.OnUpArrow;
+            @UpArrow.canceled += instance.OnUpArrow;
         }
 
         private void UnregisterCallbacks(IPlayerQuickSlotsActions instance)
         {
-            @DPadRight.started -= instance.OnDPadRight;
-            @DPadRight.performed -= instance.OnDPadRight;
-            @DPadRight.canceled -= instance.OnDPadRight;
-            @DPadLeft.started -= instance.OnDPadLeft;
-            @DPadLeft.performed -= instance.OnDPadLeft;
-            @DPadLeft.canceled -= instance.OnDPadLeft;
-            @DPadDown.started -= instance.OnDPadDown;
-            @DPadDown.performed -= instance.OnDPadDown;
-            @DPadDown.canceled -= instance.OnDPadDown;
-            @DPadUp.started -= instance.OnDPadUp;
-            @DPadUp.performed -= instance.OnDPadUp;
-            @DPadUp.canceled -= instance.OnDPadUp;
+            @RightArrow.started -= instance.OnRightArrow;
+            @RightArrow.performed -= instance.OnRightArrow;
+            @RightArrow.canceled -= instance.OnRightArrow;
+            @LeftArrow.started -= instance.OnLeftArrow;
+            @LeftArrow.performed -= instance.OnLeftArrow;
+            @LeftArrow.canceled -= instance.OnLeftArrow;
+            @DownArrow.started -= instance.OnDownArrow;
+            @DownArrow.performed -= instance.OnDownArrow;
+            @DownArrow.canceled -= instance.OnDownArrow;
+            @UpArrow.started -= instance.OnUpArrow;
+            @UpArrow.performed -= instance.OnUpArrow;
+            @UpArrow.canceled -= instance.OnUpArrow;
         }
 
         public void RemoveCallbacks(IPlayerQuickSlotsActions instance)
@@ -1100,30 +1100,30 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActionsActions
     {
-        void OnRoll(InputAction.CallbackContext context);
+        void OnShift(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
-        void OnRB(InputAction.CallbackContext context);
-        void OnQuedRB(InputAction.CallbackContext context);
-        void OnHoldRB(InputAction.CallbackContext context);
-        void OnRT(InputAction.CallbackContext context);
-        void OnQuedRT(InputAction.CallbackContext context);
-        void OnHoldRT(InputAction.CallbackContext context);
-        void OnLT(InputAction.CallbackContext context);
-        void OnQuedLT(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnQueuedLeftClick(InputAction.CallbackContext context);
+        void OnHoldLeftClick(InputAction.CallbackContext context);
+        void OnR(InputAction.CallbackContext context);
+        void OnQueuedR(InputAction.CallbackContext context);
+        void OnHoldR(InputAction.CallbackContext context);
+        void OnQ(InputAction.CallbackContext context);
+        void OnQueuedQ(InputAction.CallbackContext context);
         void OnPickUpItem(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnY(InputAction.CallbackContext context);
-        void OnHoldLB(InputAction.CallbackContext context);
+        void OnHoldRightClick(InputAction.CallbackContext context);
         void OnConsume(InputAction.CallbackContext context);
-        void OnTapLB(InputAction.CallbackContext context);
-        void OnQuedLB(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
+        void OnQueuedRightClick(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {
-        void OnDPadRight(InputAction.CallbackContext context);
-        void OnDPadLeft(InputAction.CallbackContext context);
-        void OnDPadDown(InputAction.CallbackContext context);
-        void OnDPadUp(InputAction.CallbackContext context);
+        void OnRightArrow(InputAction.CallbackContext context);
+        void OnLeftArrow(InputAction.CallbackContext context);
+        void OnDownArrow(InputAction.CallbackContext context);
+        void OnUpArrow(InputAction.CallbackContext context);
     }
 }

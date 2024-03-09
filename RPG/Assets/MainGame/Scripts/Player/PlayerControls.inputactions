@@ -149,12 +149,12 @@
             "id": "b506e2f1-f8d4-4d83-9d64-2d3ddf5c61b7",
             "actions": [
                 {
-                    "name": "Roll",
+                    "name": "Shift",
                     "type": "Button",
                     "id": "7db54841-a4e2-4296-9238-e7d48400d92d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -167,7 +167,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RB",
+                    "name": "Left Click",
                     "type": "Button",
                     "id": "8f91ddb1-cd16-470b-966f-d85962e480fc",
                     "expectedControlType": "Button",
@@ -176,7 +176,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Qued RB",
+                    "name": "Queued Left Click",
                     "type": "Button",
                     "id": "5b5fa55b-a7e7-470e-bb65-9fd85b24775e",
                     "expectedControlType": "Button",
@@ -185,7 +185,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold RB",
+                    "name": "Hold Left Click",
                     "type": "PassThrough",
                     "id": "afe0bf0a-896d-42d0-a918-b79a74100e4a",
                     "expectedControlType": "Button",
@@ -194,7 +194,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RT",
+                    "name": "R",
                     "type": "Button",
                     "id": "442a70ae-4aae-4a4a-89d6-e7192083b7b5",
                     "expectedControlType": "Button",
@@ -203,7 +203,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Qued RT",
+                    "name": "Queued R",
                     "type": "Button",
                     "id": "1f7eacbd-af2d-487c-a89f-0c108dd386dd",
                     "expectedControlType": "Button",
@@ -212,7 +212,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold RT",
+                    "name": "Hold R",
                     "type": "PassThrough",
                     "id": "8c85a253-86d5-4b9b-ad94-79410460697a",
                     "expectedControlType": "Button",
@@ -221,7 +221,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LT",
+                    "name": "Q",
                     "type": "Button",
                     "id": "08c9e9a9-353d-4354-b043-6adc336495bc",
                     "expectedControlType": "Button",
@@ -230,7 +230,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Qued LT",
+                    "name": "Queued Q",
                     "type": "Button",
                     "id": "34148b9b-894a-4bbf-b435-2b6cdef2293a",
                     "expectedControlType": "Button",
@@ -275,7 +275,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold LB",
+                    "name": "Hold Right Click",
                     "type": "Button",
                     "id": "4c976616-7a4a-4f39-bdc2-6f4e5c8a6ec7",
                     "expectedControlType": "Button",
@@ -293,7 +293,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TapLB",
+                    "name": "Right Click",
                     "type": "Button",
                     "id": "ae97755a-a29b-42a2-9680-a5eb01989ed8",
                     "expectedControlType": "Button",
@@ -302,7 +302,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Qued LB",
+                    "name": "Queued Right Click",
                     "type": "Button",
                     "id": "6493441b-9021-4d59-9776-5ec8b8b8d1a4",
                     "expectedControlType": "Button",
@@ -316,10 +316,10 @@
                     "name": "",
                     "id": "b715fb26-3c08-4a91-a6f9-045c39ff1700",
                     "path": "<Keyboard>/leftShift",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Shift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -330,18 +330,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Shift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "dea6a8ea-6a99-4fec-b9bd-272ccc6a519e",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "Left Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -352,7 +352,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "RT",
+                    "action": "R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -414,22 +414,22 @@
                 {
                     "name": "",
                     "id": "2cea2b4f-e4cd-40c2-bb2c-9d652e925fdc",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LT",
+                    "action": "Q",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "524cef78-d6e2-46f7-9349-a6298dcac34d",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hold LB",
+                    "action": "Hold Right Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -447,22 +447,22 @@
                 {
                     "name": "",
                     "id": "8cbe423e-5ca2-4d44-9156-d075f3608553",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Hold",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold(duration=0.3)",
                     "processors": "",
                     "groups": "",
-                    "action": "Hold RB",
+                    "action": "Hold Left Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "b31c7755-aaac-406f-b163-65db09880639",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "TapLB",
+                    "action": "Right Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -470,21 +470,21 @@
                     "name": "",
                     "id": "45c46b43-4343-4153-b515-99223050da04",
                     "path": "<Keyboard>/r",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.3)",
                     "processors": "",
                     "groups": "",
-                    "action": "Hold RT",
+                    "action": "Hold R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "04d1d316-39d3-4807-bf54-f974abb012db",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Qued RB",
+                    "action": "Queued Left Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -495,29 +495,29 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Qued RT",
+                    "action": "Queued R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "f1e1eeb1-5701-4de9-8dfb-cf8bf1ca4d73",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Qued LT",
+                    "action": "Queued Q",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "6a7ab283-d004-4165-8e5a-90c61302241b",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Qued LB",
+                    "action": "Queued Right Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -528,7 +528,7 @@
             "id": "a19be225-cf00-41af-b8bb-4886d1498f16",
             "actions": [
                 {
-                    "name": "D-Pad Right",
+                    "name": "Right Arrow",
                     "type": "Button",
                     "id": "402d9061-f4d5-46ee-b54f-b5951f670a7b",
                     "expectedControlType": "Button",
@@ -537,7 +537,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "D-Pad Left",
+                    "name": "Left Arrow",
                     "type": "Button",
                     "id": "f89d9b1d-29f3-4b5b-a74b-7f2821e9f310",
                     "expectedControlType": "Button",
@@ -546,7 +546,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "D-Pad Down",
+                    "name": "Down Arrow",
                     "type": "Button",
                     "id": "325bd074-51c8-4e09-8e1c-4b17ebb08f54",
                     "expectedControlType": "Button",
@@ -555,7 +555,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "D-Pad Up",
+                    "name": "Up Arrow",
                     "type": "Button",
                     "id": "81ac53c3-7a85-4691-bf52-76228975a964",
                     "expectedControlType": "Button",
@@ -572,7 +572,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Up",
+                    "action": "Up Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -583,7 +583,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Up",
+                    "action": "Up Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -594,7 +594,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Down",
+                    "action": "Down Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -605,7 +605,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Down",
+                    "action": "Down Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -616,7 +616,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Left",
+                    "action": "Left Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -627,7 +627,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Left",
+                    "action": "Left Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -638,7 +638,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Right",
+                    "action": "Right Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -649,7 +649,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D-Pad Right",
+                    "action": "Right Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
