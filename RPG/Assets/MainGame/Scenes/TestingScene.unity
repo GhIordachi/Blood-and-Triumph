@@ -410,7 +410,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetTransformWhileAiming
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8639446892515458195}
     - target: {fileID: 1573933628731202106, guid: 0e95af032117dc8488859e7fd6a6a330,
         type: 3}
       propertyPath: leftAndRightAimingLookSpeed
@@ -43807,7 +43807,7 @@ MonoBehaviour:
   ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
-  - {fileID: 11400000, guid: 4018e19f11774264bb89fd4d5306cc0b, type: 2}
+  - {fileID: 11400000, guid: 6a26e886abfb0f64aabc12fd54af93be, type: 2}
   - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
   - {fileID: 0}
   weaponsInLeftHandSlots:
@@ -83377,7 +83377,7 @@ MonoBehaviour:
   moveAmount: 0
   mouseX: 0
   mouseY: 0
-  b_Input: 0
+  shift_Input: 0
   t_Input: 0
   consume_Input: 0
   y_Input: 0
@@ -83387,7 +83387,7 @@ MonoBehaviour:
   hold_R_Input: 0
   hold_Right_Click_Input: 0
   tap_Right_Click_Input: 0
-  tap_lt_Input: 0
+  tap_Q_Input: 0
   jump_Input: 0
   inventory_Input: 0
   lockOn_Input: 0
@@ -83395,8 +83395,8 @@ MonoBehaviour:
   lockOnLeft_Input: 0
   d_Pad_Up: 0
   d_Pad_Down: 0
-  d_Pad_Left: 0
-  d_Pad_Right: 0
+  left_Arrow_Input: 0
+  right_Arrow_Input: 0
   rollFlag: 0
   twoHandFlag: 0
   comboFlag: 0
@@ -83410,7 +83410,7 @@ MonoBehaviour:
   queued_Left_Click_Input: 0
   queued_Right_Click_Input: 0
   queued_R_Input: 0
-  qued_LT_Input: 0
+  queued_Q_Input: 0
 --- !u!4 &7188447905160435157
 Transform:
   m_ObjectHideFlags: 0

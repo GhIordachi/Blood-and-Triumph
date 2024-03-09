@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
+  m_Name: Sword_01
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 6b402942c0780484991601504e32aec0, type: 3}
+  itemName: Sword
+  itemID: 1
+  modelPrefab: {fileID: 7144552971360921659, guid: 716c1d4d7e36f5346a11d8e743447b16,
+    type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 216a2e20863b48d4283c18ad8eb64635, type: 2}
+  weaponType: 4
+  physicalDamage: 25
+  fireDamage: 0
+  lightAttackDamageModifier: 1
+  heavyAttackDamageModifier: 2
+  criticalDamageMultiplier: 4
+  guardBreakModifier: 1
+  poiseBreak: 25
+  offensivePoiseBonus: 0
+  physicalBlockingDamageAbsorption: 0
+  fireBlockingDamageAbsorption: 0
+  stability: 67
+  baseStaminaCost: 20
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 2
+  oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  oh_hold_Left_Click: {fileID: 11400000, guid: dc5192f9102187a40828984e2c8e423d, type: 2}
+  oh_tap_Right_Click: {fileID: 0}
+  oh_hold_Right_Click: {fileID: 0}
+  oh_tap_R_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
+  oh_hold_R_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
+  oh_tap_Q_Action: {fileID: 0}
+  oh_hold_Q_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  th_hold_Left_Click: {fileID: 11400000, guid: dc5192f9102187a40828984e2c8e423d, type: 2}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
+  th_tap_R_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
+  th_hold_R_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
+  th_tap_Q_Action: {fileID: 0}
+  th_hold_Q_Action: {fileID: 0}
+  weaponWhooshes:
+  - {fileID: 8300000, guid: e89c1cfc1a5bb5d4d9e9a67ac19af82b, type: 3}
+  - {fileID: 8300000, guid: 92ab81cfa5de22340b79e76148d22484, type: 3}
+  - {fileID: 8300000, guid: 858eae54e9f7be94fb8fdcd0b3dd456a, type: 3}
+  blockingNoises: []

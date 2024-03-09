@@ -183,13 +183,14 @@ namespace GI
             else
             {
                 player.isSprinting = false;
-
-                if (rollInputTimer > 0 && rollInputTimer < 0.5f)
+                if (player.playerStatsManager.currentStamina > 0)
                 {
-                    rollFlag = true;
+                    if (rollInputTimer > 0 && rollInputTimer < 0.5f)
+                    {
+                        rollFlag = true;
+                    }
                 }
-
-                rollInputTimer = 0;
+                rollInputTimer = 0;                
             }
         }
 
@@ -306,20 +307,20 @@ namespace GI
                 if(player.isTwoHandingWeapon)
                 {
                     //It will be the right handed weapon
-                    if (player.playerInventoryManager.rightWeapon.oh_tap_LT_Action != null)
+                    if (player.playerInventoryManager.rightWeapon.oh_tap_Q_Action != null)
                     {
                         player.UpdateWhichHandCharacterIsUsing(true);
                         player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.rightWeapon;
-                        player.playerInventoryManager.rightWeapon.oh_tap_LT_Action.PerformAction(player);
+                        player.playerInventoryManager.rightWeapon.oh_tap_Q_Action.PerformAction(player);
                     }
                 }
                 else
                 {
-                    if (player.playerInventoryManager.leftWeapon.oh_tap_LT_Action != null)
+                    if (player.playerInventoryManager.leftWeapon.oh_tap_Q_Action != null)
                     {
                         player.UpdateWhichHandCharacterIsUsing(false);
                         player.playerInventoryManager.currentItemBeingUsed = player.playerInventoryManager.leftWeapon;
-                        player.playerInventoryManager.leftWeapon.oh_tap_LT_Action.PerformAction(player);
+                        player.playerInventoryManager.leftWeapon.oh_tap_Q_Action.PerformAction(player);
                     }
                 }
             }

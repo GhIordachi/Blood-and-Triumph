@@ -49,8 +49,8 @@ namespace GI
         public ItemAction oh_hold_Right_Click;
         public ItemAction oh_tap_R_Action;
         public ItemAction oh_hold_R_Action;
-        public ItemAction oh_tap_LT_Action;
-        public ItemAction oh_hold_LT_Action;
+        public ItemAction oh_tap_Q_Action;
+        public ItemAction oh_hold_Q_Action;
 
         [Header("Two Handed Item Actions")]
         public ItemAction th_tap_Left_Click;
@@ -59,8 +59,8 @@ namespace GI
         public ItemAction th_hold_Right_Click;
         public ItemAction th_tap_R_Action;
         public ItemAction th_hold_R_Action;
-        public ItemAction th_tap_LT_Action;
-        public ItemAction th_hold_LT_Action;
+        public ItemAction th_tap_Q_Action;
+        public ItemAction th_hold_Q_Action;
 
         [Header("Sound FX")]
         public AudioClip[] weaponWhooshes;
