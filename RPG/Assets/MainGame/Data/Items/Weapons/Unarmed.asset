@@ -14,18 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Unarmed
+  itemID: 0
   modelPrefab: {fileID: 5906368666681195516, guid: 5dc28e3d61c61f84292f8e5552596ade,
     type: 3}
   isUnarmed: 1
   weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
-  offHandIdleAnimation: Left Arm Empty
   weaponType: 3
   physicalDamage: 0
   fireDamage: 0
+  lightAttackDamageModifier: 1
+  heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
+  guardBreakModifier: 1
   poiseBreak: 0
   offensivePoiseBonus: 0
-  physicalDamageAbsorption: 0
-  baseStamina: 0
-  lightAttackMultiplier: 0
-  heavyAttackMultiplier: 0
+  physicalBlockingDamageAbsorption: 0
+  fireBlockingDamageAbsorption: 0
+  stability: 67
+  baseStaminaCost: 0
+  lightAttackStaminaMultiplier: 0
+  heavyAttackStaminaMultiplier: 0
+  oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  oh_hold_Left_Click: {fileID: 0}
+  oh_tap_Right_Click: {fileID: 0}
+  oh_hold_Right_Click: {fileID: 0}
+  oh_tap_R_Action: {fileID: 0}
+  oh_hold_R_Action: {fileID: 0}
+  oh_tap_Q_Action: {fileID: 0}
+  oh_hold_Q_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 0}
+  th_hold_Left_Click: {fileID: 0}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
+  th_tap_R_Action: {fileID: 0}
+  th_hold_R_Action: {fileID: 0}
+  th_tap_Q_Action: {fileID: 0}
+  th_hold_Q_Action: {fileID: 0}
+  weaponWhooshes: []
+  blockingNoises: []
