@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4699903842540145077}
   - component: {fileID: 4652381579809337748}
-  - component: {fileID: 6925015340273680205}
-  m_Layer: 0
+  - component: {fileID: 1373741188735010710}
+  m_Layer: 16
   m_Name: Damage Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43262127148816558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8986817414598061765}
+  m_Father: {fileID: 8377246143405356578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4652381579809337748
 BoxCollider:
@@ -52,9 +52,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6925015340273680205
+  m_Size: {x: 1.2438664, y: 1.2438664, z: 1.2438664}
+  m_Center: {x: 0.121933304, y: 0, z: 0}
+--- !u!114 &1373741188735010710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,14 +63,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 43262127148816558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bee00121f63db48a9e93382032a719, type: 3}
+  m_Script: {fileID: 11500000, guid: 5208b1f234c77db4c81a16da6dcc7ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 0
-  poiseBreak: 0
+  teamIDNumber: 0
+  poiseDamage: 0
   offensivePoiseBonus: 0
-  currentWeaponDamage: 25
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0
+  guardBreakModifier: 1
+  physicalBuffDamage: 0
+  fireBuffDamage: 0
+  poiseBuffDamage: 0
 --- !u!1 &5906368666681195516
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +109,38 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4699903842540145077}
+  - {fileID: 8377246143405356578}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9119876615823209651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8377246143405356578}
+  m_Layer: 0
+  m_Name: Weapon Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8377246143405356578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119876615823209651}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 4699903842540145077}
+  m_Father: {fileID: 8986817414598061765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

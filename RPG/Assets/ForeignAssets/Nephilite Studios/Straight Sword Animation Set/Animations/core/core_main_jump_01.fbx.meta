@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -6779096789665623169
-    second: core_main_jump_01
+    second: Jump
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: core_main_jump_01
+      name: Jump
       takeName: core_main_jump_01
       internalID: 0
       firstFrame: 0

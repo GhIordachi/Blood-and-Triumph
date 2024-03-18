@@ -716,7 +716,7 @@ ModelImporter:
     second: RPG-Character-Mesh001
   - first:
       74: 7400000
-    second: Sword-Attack-R7
+    second: OH_Light_Attack_02
   - first:
       95: 9500000
     second: //RootNode
@@ -765,7 +765,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword-Attack-R7
+      name: OH_Light_Attack_02
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0

@@ -61,23 +61,31 @@ namespace GI {
         public float fireDamageAbsorptionLegs;
         public float fireDamageAbsorptionHands;
 
+        public float magicDamageAbsorptionHead;
+        public float magicDamageAbsorptionBody;
+        public float magicDamageAbsorptionLegs;
+        public float magicDamageAbsorptionHands;
+
         [Header("Resistances")]
         public float poisonResistance;
 
         [Header("Blocking Absorptions")]
         public float blockingPhysicalDamageAbsorption;
         public float blockingFireDamageAbsorption;
+        public float blockingMagicDamageAbsorption;
         public float blockingStabilityRating;
 
         //Any damage dealt by this player is modified bythese amounts
         [Header("Damage Type Modifiers")]
         public float physicalDamagePercentageModifier = 100;
         public float fireDamagePercentageModifier = 100;
+        public float magicDamagePercentageModifier = 100;
 
         //Incoming damage after armor calculation is modified by this values
         [Header("Damage Absorptions Modifier")]
         public float physicalAbsorptionPercentageModifier = 0;
         public float fireAbsorptionPercentageModifier = 0;
+        public float magicAbsorptionPercentageModifier = 0;
 
         [Header("Poison")]
         public bool isPoisoned;
@@ -104,7 +112,7 @@ namespace GI {
             totalPoiseDefence = armorPoiseBonus;
         }
 
-        public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
+        public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage, int magicDamage)
         {
             if (character.isDead)
                 return;
@@ -125,9 +133,17 @@ namespace GI {
 
             fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
 
+            float totalMagicDamageAbsorption = 1 -
+                (1 - magicDamageAbsorptionHead / 100) *
+                (1 - magicDamageAbsorptionBody / 100) *
+                (1 - magicDamageAbsorptionHands / 100) *
+                (1 - magicDamageAbsorptionLegs / 100);
+
+            magicDamage = Mathf.RoundToInt(magicDamage - (magicDamage * totalMagicDamageAbsorption));
+
             Debug.Log("Total damage absorption is " + totalPhysicalDamageAbsorption + "%");
 
-            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
+            float finalDamage = physicalDamage + fireDamage + magicDamage; // + magicDamage etc.
 
             currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 

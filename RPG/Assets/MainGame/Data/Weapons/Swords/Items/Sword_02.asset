@@ -22,6 +22,7 @@ MonoBehaviour:
   weaponType: 4
   physicalDamage: 30
   fireDamage: 0
+  magicDamage: 0
   lightAttackDamageModifier: 1
   heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
@@ -30,6 +31,7 @@ MonoBehaviour:
   offensivePoiseBonus: 10
   physicalBlockingDamageAbsorption: 0
   fireBlockingDamageAbsorption: 0
+  magicBlockingDamageAbsorption: 0
   stability: 67
   baseStaminaCost: 25
   lightAttackStaminaMultiplier: 1

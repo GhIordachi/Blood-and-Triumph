@@ -118,6 +118,7 @@ namespace GI
                     helmetModelChanger.EquipHelmetModelByName(player.playerInventoryManager.currentHelmetEquipment.helmetModelName);
                     player.playerStatsManager.physicalDamageAbsorptionHead = player.playerInventoryManager.currentHelmetEquipment.physicalDefense;
                     player.playerStatsManager.fireDamageAbsorptionHead = player.playerInventoryManager.currentHelmetEquipment.fireDefense;
+                    player.playerStatsManager.magicDamageAbsorptionHead = player.playerInventoryManager.currentHelmetEquipment.magicDefense;
                     poisonResistance += player.playerInventoryManager.currentHelmetEquipment.poisonResistance;
                     totalEquipmentLoad += player.playerInventoryManager.currentHelmetEquipment.weight;
                 }
@@ -125,6 +126,8 @@ namespace GI
                 {                    
                     nakedHeadModel.SetActive(true);
                     player.playerStatsManager.physicalDamageAbsorptionHead = 0;
+                    player.playerStatsManager.fireDamageAbsorptionHead = 0;
+                    player.playerStatsManager.magicDamageAbsorptionHead = 0;
 
                     if (hair != null)
                         hair.SetActive(true);
@@ -148,6 +151,7 @@ namespace GI
                     upperRightArmModelChanger.EquipArmModelByName(player.playerInventoryManager.currentBodyEquipment.upperRightArmModelName);
                     player.playerStatsManager.physicalDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.physicalDefense;
                     player.playerStatsManager.fireDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.fireDefense;
+                    player.playerStatsManager.magicDamageAbsorptionBody = player.playerInventoryManager.currentBodyEquipment.magicDefense;
                     poisonResistance += player.playerInventoryManager.currentBodyEquipment.poisonResistance;
                     totalEquipmentLoad += player.playerInventoryManager.currentBodyEquipment.weight;
                 }
@@ -173,6 +177,7 @@ namespace GI
                     rightLegModelChanger.EquipLegModelByName(player.playerInventoryManager.currentLegEquipment.rightLegName);
                     player.playerStatsManager.physicalDamageAbsorptionLegs = player.playerInventoryManager.currentLegEquipment.physicalDefense;
                     player.playerStatsManager.fireDamageAbsorptionLegs = player.playerInventoryManager.currentLegEquipment.fireDefense;
+                    player.playerStatsManager.magicDamageAbsorptionLegs = player.playerInventoryManager.currentLegEquipment.magicDefense;
                     poisonResistance += player.playerInventoryManager.currentLegEquipment.poisonResistance;
                     totalEquipmentLoad += player.playerInventoryManager.currentLegEquipment.weight;
                 }
@@ -200,6 +205,7 @@ namespace GI
                     rightHandModelChanger.EquipArmModelByName(player.playerInventoryManager.currentHandEquipment.rightHandModelName);
                     player.playerStatsManager.physicalDamageAbsorptionHands = player.playerInventoryManager.currentHandEquipment.physicalDefense;
                     player.playerStatsManager.fireDamageAbsorptionHands = player.playerInventoryManager.currentHandEquipment.fireDefense;
+                    player.playerStatsManager.magicDamageAbsorptionHands = player.playerInventoryManager.currentHandEquipment.magicDefense;
                     poisonResistance += player.playerInventoryManager.currentHandEquipment.poisonResistance;
                     totalEquipmentLoad += player.playerInventoryManager.currentHandEquipment.weight;
                 }

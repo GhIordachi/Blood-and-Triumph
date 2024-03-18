@@ -93,7 +93,7 @@ namespace GI
                 }
 
                 armorPhysicalAbsorptionText.text = armor.physicalDefense.ToString();
-                armorMagicalAbsorptionText.text = armor.magicalDefense.ToString();
+                armorMagicalAbsorptionText.text = armor.magicDefense.ToString();
                 armorPoisonResistanceText.text = armor.poisonResistance.ToString();
                 //Magic armor etc.
                 //magic absorption + trebuie adaugat si la arme si equipment

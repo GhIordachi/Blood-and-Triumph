@@ -50,7 +50,8 @@ namespace GI
     public enum BuffClass
     {
         Physical,
-        Fire
+        Fire,
+        Magic
     }
 
     public enum EffectParticleType

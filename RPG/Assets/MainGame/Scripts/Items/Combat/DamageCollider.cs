@@ -22,8 +22,6 @@ namespace GI
         public int physicalDamage;
         public int fireDamage;
         public int magicDamage;
-        public int lightningDamage;
-        public int darkDamage;
 
         [Header("Guard Break Modifier")]
         public float guardBreakModifier = 1;
@@ -47,7 +45,7 @@ namespace GI
 
         public void EnableDamageCollider()
         {
-            damageCollider.enabled = true;
+            damageCollider.enabled = true;            
         }
 
         public void DisableDamageCollider()
@@ -140,6 +138,7 @@ namespace GI
                 TakeBlockedDamageEffect takeBlockedDamage = Instantiate(WorldCharacterEffectsManager.instance.takeBlockedDamageEffect);
                 takeBlockedDamage.physicalDamage = physicalDamage;
                 takeBlockedDamage.fireDamage = fireDamage;
+                takeBlockedDamage.magicDamage = magicDamage;
                 takeBlockedDamage.poiseDamage = poiseDamage;
                 takeBlockedDamage.staminaDamage = poiseDamage;
 
@@ -151,6 +150,7 @@ namespace GI
         {
             float finalPhysicalDamage = physicalDamage;
             float finalFireDamage = fireDamage;
+            float finalMagicDamage = magicDamage;
             //If we are using the right weapon, we compare the right weapon modifiers
             if(characterManager.isUsingRightHand)
             {
@@ -158,11 +158,13 @@ namespace GI
                 {
                     finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.rightWeapon.lightAttackDamageModifier;
                     finalFireDamage = fireDamage * characterManager.characterInventoryManager.rightWeapon.lightAttackDamageModifier;
+                    finalMagicDamage = magicDamage * characterManager.characterInventoryManager.rightWeapon.lightAttackDamageModifier;
                 }
                 else if (characterManager.characterCombatManager.currentAttackType == AttackType.heavy)
                 {
                     finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.rightWeapon.heavyAttackDamageModifier;
                     finalFireDamage = fireDamage * characterManager.characterInventoryManager.rightWeapon.heavyAttackDamageModifier;
+                    finalMagicDamage = magicDamage * characterManager.characterInventoryManager.rightWeapon.heavyAttackDamageModifier;
                 }
             }
             //otherwise we compare the left weapon modifiers
@@ -172,17 +174,20 @@ namespace GI
                 {
                     finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.leftWeapon.lightAttackDamageModifier;
                     finalFireDamage = fireDamage * characterManager.characterInventoryManager.leftWeapon.lightAttackDamageModifier;
+                    finalMagicDamage = magicDamage * characterManager.characterInventoryManager.leftWeapon.lightAttackDamageModifier;
                 }
                 else if (characterManager.characterCombatManager.currentAttackType == AttackType.heavy)
                 {
                     finalPhysicalDamage = physicalDamage * characterManager.characterInventoryManager.leftWeapon.heavyAttackDamageModifier;
                     finalFireDamage = fireDamage * characterManager.characterInventoryManager.leftWeapon.heavyAttackDamageModifier;
+                    finalMagicDamage = magicDamage * characterManager.characterInventoryManager.leftWeapon.heavyAttackDamageModifier;
                 }
             }
 
             TakeDamageEffect takeDamageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
             takeDamageEffect.physicalDamage = finalPhysicalDamage;
             takeDamageEffect.fireDamage = finalFireDamage;
+            takeDamageEffect.magicDamage = finalMagicDamage;
             takeDamageEffect.poiseDamage = poiseDamage;
             takeDamageEffect.contactPoint = contactPoint;
             takeDamageEffect.angleHitFrom = angleHitFrom;

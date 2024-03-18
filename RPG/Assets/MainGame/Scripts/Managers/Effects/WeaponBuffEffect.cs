@@ -40,10 +40,12 @@ namespace GI
                 weaponManager.audioSource.clip = buffAmbientSound;
                 weaponManager.audioSource.volume = ambientSoundVolume;
 
-                float baseWeaponDamage = weaponManager.damageCollider.physicalDamage + weaponManager.damageCollider.fireDamage;
+                float baseWeaponDamage = weaponManager.damageCollider.physicalDamage + weaponManager.damageCollider.fireDamage +
+                    weaponManager.damageCollider.magicDamage;
 
                 float physicalBuffDamage = 0;
                 float fireBuffDamage = 0;
+                float magicBuffDamage = 0;
                 float poiseBuffDamage = 0;
 
                 if(buffPoiseDamage)
@@ -59,11 +61,14 @@ namespace GI
                     case BuffClass.Fire:
                         fireBuffDamage = baseWeaponDamage * (buffBaseDamagePercentageMultiplier / 100);
                         break;
+                    case BuffClass.Magic:
+                        magicBuffDamage = baseWeaponDamage * (buffBaseDamagePercentageMultiplier / 100);
+                        break;
                     default: 
                         break;
                 }
 
-                weaponManager.BuffWeapon(buffClass, physicalBuffDamage, fireBuffDamage, poiseBuffDamage);
+                weaponManager.BuffWeapon(buffClass, physicalBuffDamage, fireBuffDamage, magicBuffDamage, poiseBuffDamage);
             }
 
             if(buffHasStarted)

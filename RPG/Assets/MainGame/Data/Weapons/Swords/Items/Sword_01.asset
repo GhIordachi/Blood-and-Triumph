@@ -20,8 +20,9 @@ MonoBehaviour:
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: 216a2e20863b48d4283c18ad8eb64635, type: 2}
   weaponType: 4
-  physicalDamage: 25
+  physicalDamage: 15
   fireDamage: 0
+  magicDamage: 10
   lightAttackDamageModifier: 1
   heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
@@ -30,6 +31,7 @@ MonoBehaviour:
   offensivePoiseBonus: 0
   physicalBlockingDamageAbsorption: 0
   fireBlockingDamageAbsorption: 0
+  magicBlockingDamageAbsorption: 0
   stability: 67
   baseStaminaCost: 20
   lightAttackStaminaMultiplier: 1

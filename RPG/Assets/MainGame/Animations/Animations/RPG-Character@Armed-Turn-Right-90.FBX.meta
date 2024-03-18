@@ -701,7 +701,7 @@ ModelImporter:
     second: Staff
   - first:
       74: 7400000
-    second: Armed-Turn-Right-90
+    second: Turn-Right
   - first:
       95: 9500000
     second: //RootNode
@@ -760,7 +760,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armed-Turn-Right-90
+      name: Turn-Right
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0

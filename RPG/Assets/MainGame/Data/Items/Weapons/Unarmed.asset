@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
+  m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
   isUnarmed: 1
   weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
   weaponType: 3
-  physicalDamage: 0
+  physicalDamage: 5
   fireDamage: 0
   lightAttackDamageModifier: 1
   heavyAttackDamageModifier: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
   physicalBlockingDamageAbsorption: 0
   fireBlockingDamageAbsorption: 0
   stability: 67
-  baseStaminaCost: 0
+  baseStaminaCost: 5
   lightAttackStaminaMultiplier: 0
   heavyAttackStaminaMultiplier: 0
   oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
@@ -52,3 +52,4 @@ MonoBehaviour:
   th_hold_Q_Action: {fileID: 0}
   weaponWhooshes: []
   blockingNoises: []
+  canBeBuffed: 1

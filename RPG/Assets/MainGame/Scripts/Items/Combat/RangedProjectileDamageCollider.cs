@@ -54,6 +54,7 @@ namespace GI
                 TakeDamageEffect takeDamageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
                 takeDamageEffect.physicalDamage = physicalDamage;
                 takeDamageEffect.fireDamage = fireDamage;
+                takeDamageEffect.magicDamage = magicDamage;
                 takeDamageEffect.poiseDamage = poiseDamage;
                 takeDamageEffect.contactPoint = contactPoint;
                 takeDamageEffect.angleHitFrom = angleHitFrom;

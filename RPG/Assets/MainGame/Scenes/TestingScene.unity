@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f698746d149d2164895256323a047a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unarmedWeapon: {fileID: 11400000, guid: 69a9109f986e9474c9b5571ae1e1c3b8, type: 2}
+  unarmedWeapon: {fileID: 11400000, guid: a20bd4d35fd1d3e458c8f11d6750aa2f, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}
@@ -18549,6 +18549,12 @@ PrefabInstance:
       propertyPath: aiCharacterHealthBar
       value: 
       objectReference: {fileID: 161460627}
+    - target: {fileID: 7230515191666605735, guid: 78aab8c8ee6738940b162adc741a4aa3,
+        type: 3}
+      propertyPath: unarmedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: a20bd4d35fd1d3e458c8f11d6750aa2f,
+        type: 2}
     - target: {fileID: 7759234601353270068, guid: 78aab8c8ee6738940b162adc741a4aa3,
         type: 3}
       propertyPath: m_Name
@@ -51880,7 +51886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef57113d0dcae4428640df8647b9c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unarmedWeapon: {fileID: 11400000, guid: 69a9109f986e9474c9b5571ae1e1c3b8, type: 2}
+  unarmedWeapon: {fileID: 11400000, guid: a20bd4d35fd1d3e458c8f11d6750aa2f, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}
@@ -61992,6 +61998,12 @@ PrefabInstance:
       propertyPath: currentState
       value: 
       objectReference: {fileID: 886725024}
+    - target: {fileID: 3983086138686543824, guid: 8688a17475d376c4699aa013fcf5256f,
+        type: 3}
+      propertyPath: unarmedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: a20bd4d35fd1d3e458c8f11d6750aa2f,
+        type: 2}
     - target: {fileID: 9174589377556805451, guid: 8688a17475d376c4699aa013fcf5256f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -92191,7 +92203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f698746d149d2164895256323a047a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unarmedWeapon: {fileID: 11400000, guid: 69a9109f986e9474c9b5571ae1e1c3b8, type: 2}
+  unarmedWeapon: {fileID: 11400000, guid: a20bd4d35fd1d3e458c8f11d6750aa2f, type: 2}
   leftHandSlot: {fileID: 0}
   rightHandSlot: {fileID: 0}
   backSlot: {fileID: 0}

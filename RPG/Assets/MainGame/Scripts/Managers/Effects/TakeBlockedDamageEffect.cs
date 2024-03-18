@@ -14,6 +14,7 @@ namespace GI
         [Header("Damage type")]
         public float physicalDamage = 0;
         public float fireDamage = 0;
+        public float magicDamage = 0;
         public float staminaDamage = 0;
         public float poiseDamage = 0;
 
@@ -63,6 +64,7 @@ namespace GI
             {
                 physicalDamage = Mathf.RoundToInt(physicalDamage * (characterCausingDamage.characterStatsManager.physicalDamagePercentageModifier / 100));
                 fireDamage = Mathf.RoundToInt(fireDamage * (characterCausingDamage.characterStatsManager.fireDamagePercentageModifier / 100));
+                magicDamage = Mathf.RoundToInt(magicDamage * (characterCausingDamage.characterStatsManager.magicDamagePercentageModifier / 100));
             }
 
             character.characterAnimatorManager.EraseHandIKForWeapon();
@@ -83,10 +85,19 @@ namespace GI
 
             fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
 
+            float totalMagicDamageAbsorption = 1 -
+                (1 - character.characterStatsManager.magicDamageAbsorptionHead / 100) *
+                (1 - character.characterStatsManager.magicDamageAbsorptionBody / 100) *
+                (1 - character.characterStatsManager.magicDamageAbsorptionHands / 100) *
+                (1 - character.characterStatsManager.magicDamageAbsorptionLegs / 100);
+
+            magicDamage = Mathf.RoundToInt(magicDamage - (magicDamage * totalMagicDamageAbsorption));
+
             physicalDamage = physicalDamage - Mathf.RoundToInt(physicalDamage * (character.characterStatsManager.physicalAbsorptionPercentageModifier / 100));
             fireDamage = fireDamage - Mathf.RoundToInt(fireDamage * (character.characterStatsManager.fireAbsorptionPercentageModifier / 100));
+            magicDamage = magicDamage - Mathf.RoundToInt(magicDamage * (character.characterStatsManager.magicAbsorptionPercentageModifier / 100));
 
-            float finalDamage = physicalDamage + fireDamage; // + magicDamage etc.
+            float finalDamage = physicalDamage + fireDamage + magicDamage; // + magicDamage etc.
 
             character.characterStatsManager.currentHealth = Mathf.RoundToInt(character.characterStatsManager.currentHealth - finalDamage);
 

@@ -30,12 +30,12 @@ namespace GI {
             }
         }
 
-        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
+        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage, int magicDamage)
         {
             if (aiCharacter.isDead)
                 return;
 
-            base.TakeDamageNoAnimation(physicalDamage,fireDamage);
+            base.TakeDamageNoAnimation(physicalDamage,fireDamage,magicDamage);
 
             if (!isBoss)
             {

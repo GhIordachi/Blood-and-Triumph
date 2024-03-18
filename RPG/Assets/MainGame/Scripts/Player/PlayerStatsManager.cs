@@ -72,12 +72,12 @@ namespace GI {
             }
         }
 
-        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
+        public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage, int magicDamage)
         {
             if (player.isDead)
                 return;
 
-            base.TakeDamageNoAnimation(physicalDamage, fireDamage);
+            base.TakeDamageNoAnimation(physicalDamage, fireDamage, magicDamage);
             healthBar.SetCurrentHealth(currentHealth);
         }
 

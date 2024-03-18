@@ -19,6 +19,7 @@ namespace GI
         [Header("Damage")]
         public int physicalDamage;
         public int fireDamage;
+        public int magicDamage;
 
         [Header("Damage Modifiers")]
         public float lightAttackDamageModifier = 1;
@@ -33,6 +34,7 @@ namespace GI
         [Header("Absorption")]
         public float physicalBlockingDamageAbsorption;
         public float fireBlockingDamageAbsorption;
+        public float magicBlockingDamageAbsorption;
 
         [Header("Stability")]
         public int stability = 67;

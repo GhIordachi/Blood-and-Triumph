@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 5727089098040894955
-    second: straight_sword_main_charged_attack_02_release_full
+    second: OH_Charging_Attack_Full_Release_02
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: straight_sword_main_charged_attack_02_release_full
+      name: OH_Charging_Attack_Full_Release_02
       takeName: straight_sword_main_charged_attack_02_release_full
       internalID: 0
       firstFrame: 0

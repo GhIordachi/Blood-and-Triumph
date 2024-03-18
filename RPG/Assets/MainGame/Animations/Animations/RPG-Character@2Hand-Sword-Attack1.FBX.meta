@@ -701,7 +701,7 @@ ModelImporter:
     second: 2Hand-Sword
   - first:
       74: 7400000
-    second: 2Hand-Sword-Attack1
+    second: TH_Light_Attack_01
   - first:
       95: 9500000
     second: //RootNode
@@ -750,7 +750,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2Hand-Sword-Attack1
+      name: TH_Light_Attack_01
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0

@@ -716,7 +716,7 @@ ModelImporter:
     second: Spear
   - first:
       74: 7400000
-    second: 2Hand-Sword-Attack6
+    second: TH_Heavy_Attack_02
   - first:
       95: 9500000
     second: //RootNode
@@ -765,7 +765,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2Hand-Sword-Attack6
+      name: TH_Heavy_Attack_02
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0

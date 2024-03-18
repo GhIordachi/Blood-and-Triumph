@@ -9,7 +9,7 @@ namespace GI
         [Header("Defense Bonus")]
         public float physicalDefense;
         public float fireDefense;
-        public float magicalDefense;
+        public float magicDefense;
 
         [Header("Weight")]
         public float weight;

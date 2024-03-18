@@ -380,7 +380,7 @@ ModelImporter:
     second: Unarmed-Cast-R-Attack2_loop
   - first:
       74: 7400004
-    second: Unarmed-Cast-R-Attack2_end
+    second: Cast-R-Attack2_end
   - first:
       95: 9500000
     second: //RootNode
@@ -424,7 +424,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Unarmed-Cast-R-Attack2_start
+      name: Cast-R-Attack2_start
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
@@ -460,7 +460,7 @@ ModelImporter:
       maskSource: {fileID: 101100000, guid: 3e4e408fdcc93ee468a1275b69104d63, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Unarmed-Cast-R-Attack2_loop
+      name: Cast-R-Attack2_loop
       takeName: Take 001
       internalID: 7400002
       firstFrame: 7
@@ -489,7 +489,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Unarmed-Cast-R-Attack2_end
+      name: Cast-R-Attack2_end
       takeName: Take 001
       internalID: 7400004
       firstFrame: 21

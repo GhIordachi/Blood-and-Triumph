@@ -118,6 +118,7 @@ namespace GI
 
                 leftHandDamageCollider.physicalDamage = character.characterInventoryManager.leftWeapon.physicalDamage;
                 leftHandDamageCollider.fireDamage = character.characterInventoryManager.leftWeapon.fireDamage;
+                leftHandDamageCollider.magicDamage = character.characterInventoryManager.leftWeapon.magicDamage;
 
                 leftHandDamageCollider.characterManager = character;
                 leftHandDamageCollider.teamIDNumber = character.characterStatsManager.teamIDNumber;
@@ -135,6 +136,7 @@ namespace GI
 
                 rightHandDamageCollider.physicalDamage = character.characterInventoryManager.rightWeapon.physicalDamage;
                 rightHandDamageCollider.fireDamage = character.characterInventoryManager.rightWeapon.fireDamage;
+                rightHandDamageCollider.magicDamage = character.characterInventoryManager.rightWeapon.magicDamage;
 
                 rightHandDamageCollider.characterManager = character;
                 rightHandDamageCollider.teamIDNumber = character.characterStatsManager.teamIDNumber;

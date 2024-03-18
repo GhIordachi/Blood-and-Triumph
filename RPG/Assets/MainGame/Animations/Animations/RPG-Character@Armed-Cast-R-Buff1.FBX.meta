@@ -752,7 +752,7 @@ ModelImporter:
     second: Armed-Cast-R-Buff1_loop
   - first:
       74: 7400004
-    second: Armed-Cast-R-Buff1_end
+    second: Phase Shift End
   - first:
       95: 9500000
     second: //RootNode
@@ -798,7 +798,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armed-Cast-R-Buff1_start
+      name: Phase Shift Start
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
@@ -834,7 +834,7 @@ ModelImporter:
       maskSource: {fileID: 101100000, guid: 4ebc95c8618479f4d8251c7dafa10029, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armed-Cast-R-Buff1_loop
+      name: Phase Shift Loop
       takeName: Take 001
       internalID: 7400002
       firstFrame: 12
@@ -863,7 +863,7 @@ ModelImporter:
       maskSource: {fileID: 101100000, guid: 4ebc95c8618479f4d8251c7dafa10029, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armed-Cast-R-Buff1_end
+      name: Phase Shift End
       takeName: Take 001
       internalID: 7400004
       firstFrame: 18

@@ -9,10 +9,12 @@ namespace GI
         [Header("Buff FX")]
         [SerializeField] GameObject physiscalBuffFX;
         [SerializeField] GameObject fireBuffFX;
+        [SerializeField] GameObject magicBuffFX;
 
         [Header("Trail FX")]
         [SerializeField] ParticleSystem defaultTrailFX;
         [SerializeField] ParticleSystem fireTrailFX;
+        [SerializeField] ParticleSystem magicTrailFX;
 
         private bool weaponIsBuffed;
         private BuffClass weaponBuffClass;
@@ -25,7 +27,7 @@ namespace GI
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        public void BuffWeapon(BuffClass buffClass, float physicalBuffDamage, float fireBuffDamage, float poiseBuffDamage)
+        public void BuffWeapon(BuffClass buffClass, float physicalBuffDamage, float fireBuffDamage,float magicBuffDamage, float poiseBuffDamage)
         {
             // Reset any active buff
             DebuffWeapon();
@@ -41,6 +43,9 @@ namespace GI
                 case BuffClass.Fire:
                     fireBuffFX.SetActive(true);
                     break;
+                case BuffClass.Magic:
+                    magicBuffFX.SetActive(true);
+                    break;
                 default: 
                     break;
 
@@ -48,6 +53,7 @@ namespace GI
 
             damageCollider.physicalBuffDamage = physicalBuffDamage;
             damageCollider.fireBuffDamage = fireBuffDamage;
+            damageCollider.magicBuffDamage = magicBuffDamage;
             damageCollider.poiseBuffDamage = poiseBuffDamage;
         }
 
@@ -60,6 +66,7 @@ namespace GI
 
             damageCollider.physicalBuffDamage = 0;
             damageCollider.fireBuffDamage = 0;
+            damageCollider.magicBuffDamage = 0;
             damageCollider.poiseBuffDamage = 0;
         }
 
@@ -80,6 +87,11 @@ namespace GI
                         if(fireTrailFX == null) 
                             return;
                         fireTrailFX.Play();
+                        break;
+                    case BuffClass.Magic:
+                        if (magicTrailFX == null)
+                            return;
+                        magicTrailFX.Play();
                         break;
                     default:
                         break;

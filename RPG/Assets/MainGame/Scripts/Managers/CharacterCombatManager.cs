@@ -177,7 +177,8 @@ namespace GI
                     character.characterAnimatorManager.PlayTargetAnimation("Back Stab", true);
 
                     float criticalDamage = (character.characterInventoryManager.rightWeapon.criticalDamageMultiplier *
-                        (character.characterInventoryManager.rightWeapon.physicalDamage + character.characterInventoryManager.rightWeapon.fireDamage));
+                        (character.characterInventoryManager.rightWeapon.physicalDamage + 
+                        character.characterInventoryManager.rightWeapon.fireDamage + character.characterInventoryManager.rightWeapon.magicDamage));
 
                     int roundedCriticalDamage = Mathf.RoundToInt(criticalDamage);
                     enemyCharacter.characterCombatManager.pendingCriticalDamage = roundedCriticalDamage;
@@ -202,7 +203,8 @@ namespace GI
                     character.characterAnimatorManager.PlayTargetAnimation("Riposte", true);
 
                     float criticalDamage = (character.characterInventoryManager.rightWeapon.criticalDamageMultiplier *
-                        (character.characterInventoryManager.rightWeapon.physicalDamage + character.characterInventoryManager.rightWeapon.fireDamage));
+                        (character.characterInventoryManager.rightWeapon.physicalDamage + 
+                        character.characterInventoryManager.rightWeapon.fireDamage + character.characterInventoryManager.rightWeapon.magicDamage));
 
                     int roundedCriticalDamage = Mathf.RoundToInt(criticalDamage);
                     enemyCharacter.characterCombatManager.pendingCriticalDamage = roundedCriticalDamage;
@@ -218,7 +220,7 @@ namespace GI
 
         public void ApplyPendingDamage()
         {
-            character.characterStatsManager.TakeDamageNoAnimation(pendingCriticalDamage, 0);
+            character.characterStatsManager.TakeDamageNoAnimation(pendingCriticalDamage, 0, 0);
         }
 
         public void EnableCanBeParried()

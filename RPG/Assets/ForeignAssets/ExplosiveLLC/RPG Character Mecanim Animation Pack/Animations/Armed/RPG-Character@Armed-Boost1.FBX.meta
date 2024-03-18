@@ -731,7 +731,7 @@ ModelImporter:
     second: WeaponL
   - first:
       74: 7400000
-    second: Armed-Boost1
+    second: Buff_Weapon_01
   - first:
       95: 9500000
     second: //RootNode
@@ -780,7 +780,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armed-Boost1
+      name: Buff_Weapon_01
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
