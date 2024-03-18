@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
-  m_Name: Unarmed
+  m_Name: Axe_01
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Unarmed
+  itemName: Axe_01
   itemID: 0
-  modelPrefab: {fileID: 5906368666681195516, guid: 5dc28e3d61c61f84292f8e5552596ade,
+  modelPrefab: {fileID: 5979949822925343848, guid: d8c26d3ba9e4ed548908d0fbb179ab8f,
     type: 3}
-  isUnarmed: 1
-  weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
-  weaponType: 3
-  physicalDamage: 5
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 12d6cf269e02b8442946cb53a6143498, type: 2}
+  weaponType: 9
+  canBeTwoHanded: 1
+  physicalDamage: 40
   fireDamage: 0
+  magicDamage: 0
   lightAttackDamageModifier: 1
   heavyAttackDamageModifier: 2
   criticalDamageMultiplier: 4
@@ -30,10 +32,11 @@ MonoBehaviour:
   offensivePoiseBonus: 0
   physicalBlockingDamageAbsorption: 0
   fireBlockingDamageAbsorption: 0
+  magicBlockingDamageAbsorption: 0
   stability: 67
-  baseStaminaCost: 5
-  lightAttackStaminaMultiplier: 0
-  heavyAttackStaminaMultiplier: 0
+  baseStaminaCost: 30
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 2
   oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
   oh_hold_Left_Click: {fileID: 0}
   oh_tap_Right_Click: {fileID: 0}
@@ -42,7 +45,7 @@ MonoBehaviour:
   oh_hold_R_Action: {fileID: 0}
   oh_tap_Q_Action: {fileID: 0}
   oh_hold_Q_Action: {fileID: 0}
-  th_tap_Left_Click: {fileID: 0}
+  th_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
   th_hold_Left_Click: {fileID: 0}
   th_tap_Right_Click: {fileID: 0}
   th_hold_Right_Click: {fileID: 0}

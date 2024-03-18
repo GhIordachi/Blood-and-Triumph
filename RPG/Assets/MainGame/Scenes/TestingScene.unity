@@ -486,6 +486,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e95af032117dc8488859e7fd6a6a330, type: 3}
+--- !u!1 &79035846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79035847}
+  m_Layer: 14
+  m_Name: Left Hand Override
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &79035847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79035846}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.9785287, y: 0.16965598, z: 0.11429314, w: 0.02521282}
+  m_LocalPosition: {x: -20.6, y: 4.3, z: 2.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7883640708972185670}
+  m_LocalEulerAnglesHint: {x: -5.056, y: 192.472, z: -160.881}
 --- !u!1 &83546903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3895,6 +3926,7 @@ Transform:
   - {fileID: 1272862250}
   - {fileID: 1596803799}
   - {fileID: 1010067265}
+  - {fileID: 1114444652}
   m_Father: {fileID: 2085943851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &848486293
@@ -3932,7 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5845b60d747ab4c4d95d70625139579c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentOverride: {fileID: 848486292}
+  parentOverride: {fileID: 1114444652}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0
@@ -4921,14 +4953,21 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
+  magicDamageAbsorptionHead: 0
+  magicDamageAbsorptionBody: 0
+  magicDamageAbsorptionLegs: 0
+  magicDamageAbsorptionHands: 0
   poisonResistance: 0
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
+  blockingMagicDamageAbsorption: 0
   blockingStabilityRating: 0
   physicalDamagePercentageModifier: 100
   fireDamagePercentageModifier: 100
+  magicDamagePercentageModifier: 100
   physicalAbsorptionPercentageModifier: 50
   fireAbsorptionPercentageModifier: 0
+  magicAbsorptionPercentageModifier: 0
   isPoisoned: 0
   poisonBuildup: 0
   poisonAmount: 100
@@ -5842,6 +5881,37 @@ Transform:
   - {fileID: 1602590236}
   m_Father: {fileID: 1224249183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1114444651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114444652}
+  m_Layer: 14
+  m_Name: Left Hand Override
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114444652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114444651}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.9785287, y: 0.16965598, z: 0.11429314, w: 0.02521282}
+  m_LocalPosition: {x: -20.6, y: 4.3, z: 2.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 848486292}
+  m_LocalEulerAnglesHint: {x: -5.056, y: 192.472, z: -160.881}
 --- !u!1 &1119395938
 GameObject:
   m_ObjectHideFlags: 0
@@ -43797,7 +43867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: eebb70e546d97e34da5e854300aceead, type: 2}
-  rightWeapon: {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 04b31c3fd2facf441aeece11e5ae5a7f, type: 2}
   leftWeapon: {fileID: 0}
   currentConsumable: {fileID: 11400000, guid: 4e2b00fec3361a2469841ee0a4a3d706, type: 2}
   currentAmmo: {fileID: 11400000, guid: a7bbf8e733f980143a0a934dafeaca04, type: 2}
@@ -43812,10 +43882,10 @@ MonoBehaviour:
   ringSlot03: {fileID: 0}
   ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
-  - {fileID: 11400000, guid: 6a26e886abfb0f64aabc12fd54af93be, type: 2}
-  - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 04b31c3fd2facf441aeece11e5ae5a7f, type: 2}
+  - {fileID: 11400000, guid: 357094e228d01d84294ba53a0f15a00e, type: 2}
+  - {fileID: 11400000, guid: 9797f47705364b6409f8539059be0f64, type: 2}
+  - {fileID: 11400000, guid: 690ed617ca0bd3a4298c5304e4ea6242, type: 2}
   weaponsInLeftHandSlots:
   - {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145, type: 2}
   - {fileID: 0}
@@ -43928,14 +43998,21 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
+  magicDamageAbsorptionHead: 0
+  magicDamageAbsorptionBody: 0
+  magicDamageAbsorptionLegs: 0
+  magicDamageAbsorptionHands: 0
   poisonResistance: 0
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
+  blockingMagicDamageAbsorption: 0
   blockingStabilityRating: 0
   physicalDamagePercentageModifier: 100
   fireDamagePercentageModifier: 100
+  magicDamagePercentageModifier: 100
   physicalAbsorptionPercentageModifier: 50
   fireAbsorptionPercentageModifier: 0
+  magicAbsorptionPercentageModifier: 0
   isPoisoned: 0
   poisonBuildup: 0
   poisonAmount: 100
@@ -74306,14 +74383,21 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
+  magicDamageAbsorptionHead: 0
+  magicDamageAbsorptionBody: 0
+  magicDamageAbsorptionLegs: 0
+  magicDamageAbsorptionHands: 0
   poisonResistance: 0
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
+  blockingMagicDamageAbsorption: 0
   blockingStabilityRating: 0
   physicalDamagePercentageModifier: 100
   fireDamagePercentageModifier: 100
+  magicDamagePercentageModifier: 100
   physicalAbsorptionPercentageModifier: 0
   fireAbsorptionPercentageModifier: 0
+  magicAbsorptionPercentageModifier: 0
   isPoisoned: 0
   poisonBuildup: 0
   poisonAmount: 100
@@ -94109,6 +94193,7 @@ Transform:
   - {fileID: 3647075257213314831}
   - {fileID: 4705868580533887163}
   - {fileID: 5063258038594405638}
+  - {fileID: 79035847}
   m_Father: {fileID: 9132217976045397355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7888092466567400057
@@ -101549,7 +101634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5845b60d747ab4c4d95d70625139579c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentOverride: {fileID: 7883640708972185670}
+  parentOverride: {fileID: 79035847}
   currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0

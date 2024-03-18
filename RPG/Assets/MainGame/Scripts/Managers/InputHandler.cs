@@ -489,7 +489,7 @@ namespace GI
                 y_Input = false;
                 twoHandFlag = !twoHandFlag;
 
-                if(twoHandFlag)
+                if(twoHandFlag && player.playerInventoryManager.rightWeapon.canBeTwoHanded == true)
                 {
                     player.isTwoHandingWeapon = true;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
