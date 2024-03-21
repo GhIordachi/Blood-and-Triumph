@@ -53,5 +53,10 @@ namespace GI
             uiManager.equipmentWindowUI.LoadArmorOnEquipmentScreen(uiManager.player.playerInventoryManager);
             uiManager.ResetAllSelectedSlots();
         }
+
+        public void ShowItemStats()
+        {
+            uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
+        }
     }
 }

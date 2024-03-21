@@ -98,6 +98,8 @@ namespace GI {
 
         public void UpdateUI()
         {
+            UpdateInventorySlots();
+            Debug.Log(weaponInventorySlots.Length);
             //Weapon Inventory Slots
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
@@ -112,12 +114,10 @@ namespace GI {
                 }
                 else
                 {
-                    weaponInventorySlots[i].ClearInventorySlot();
+                    weaponInventorySlots[i].ClearInventorySlot();                    
                 }
             }
         
-            
-
             //Head Equipment Inventory Slots
 
             for(int i = 0; i < headEquipmentInventorySlots.Length; i++)
@@ -126,7 +126,7 @@ namespace GI {
                 {
                     if(headEquipmentInventorySlots.Length < player.playerInventoryManager.headEquipmentInventory.Count)
                     {
-                        Instantiate(headEquipmentInventorySlotParent, headEquipmentInventorySlotParent);
+                        Instantiate(headEquipmentInventorySlotPrefab, headEquipmentInventorySlotParent);
                         headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
                     }
                     headEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.headEquipmentInventory[i]);
@@ -145,7 +145,7 @@ namespace GI {
                 {
                     if (bodyEquipmentInventorySlots.Length < player.playerInventoryManager.bodyEquipmentInventory.Count)
                     {
-                        Instantiate(bodyEquipmentInventorySlotParent, bodyEquipmentInventorySlotParent);
+                        Instantiate(bodyEquipmentInventorySlotPrefab, bodyEquipmentInventorySlotParent);
                         bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
                     }
                     bodyEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.bodyEquipmentInventory[i]);
@@ -164,7 +164,7 @@ namespace GI {
                 {
                     if (legEquipmentInventorySlots.Length < player.playerInventoryManager.legEquipmentInventory.Count)
                     {
-                        Instantiate(legEquipmentInventorySlotParent, legEquipmentInventorySlotParent);
+                        Instantiate(legEquipmentInventorySlotPrefab, legEquipmentInventorySlotParent);
                         legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
                     }
                     legEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.legEquipmentInventory[i]);
@@ -183,7 +183,7 @@ namespace GI {
                 {
                     if (handEquipmentInventorySlots.Length < player.playerInventoryManager.handEquipmentInventory.Count)
                     {
-                        Instantiate(handEquipmentInventorySlotParent, handEquipmentInventorySlotParent);
+                        Instantiate(handEquipmentInventorySlotPrefab, handEquipmentInventorySlotParent);
                         handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
                     }
                     handEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.handEquipmentInventory[i]);
@@ -193,6 +193,15 @@ namespace GI {
                     handEquipmentInventorySlots[i].ClearInventorySlot();
                 }
             }
+        }
+
+        public void UpdateInventorySlots()
+        {
+            weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+            bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
+            legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
+            handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
         }
 
         public void OpenSelectWindow()
@@ -210,7 +219,10 @@ namespace GI {
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            
             itemStatsWindow.SetActive(false);
+
+            levelUpWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

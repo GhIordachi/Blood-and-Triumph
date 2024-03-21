@@ -145,6 +145,9 @@ namespace GI
 
         private void HandleMoveInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (player.isHoldingArrow || player.playerStatsManager.encumbraceLevel == EncumbranceLevel.Overloaded)
             {
                 horizontal = movementInput.x;
@@ -165,6 +168,9 @@ namespace GI
 
         private void HandleShiftInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (shift_Input)
             {
                 rollInputTimer += Time.deltaTime;
@@ -196,7 +202,10 @@ namespace GI
 
         //Left Click Input Actions
         private void HandleTapLeftClickInput()
-        {            
+        {
+            if (inventoryFlag)
+                return;
+
             if (tap_Left_Click_Input)
             {
                 tap_Left_Click_Input = false;
@@ -222,6 +231,9 @@ namespace GI
 
         private void HandleHoldLeftClickInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (hold_Left_Click_Input)
             {
                 player.UpdateWhichHandCharacterIsUsing(true);
@@ -247,6 +259,9 @@ namespace GI
         //R Input Actions
         private void HandleTapRInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (tap_R_Input)
             {
                 tap_R_Input = false;
@@ -273,6 +288,9 @@ namespace GI
 
         private void HandleHoldRInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (hold_R_Input)
             {
                 player.animator.SetBool("isChargingAttack", hold_R_Input);
@@ -300,6 +318,9 @@ namespace GI
         //Q Input Actions
         private void HandleTapQInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (tap_Q_Input)
             {
                 tap_Q_Input = false;
@@ -329,7 +350,10 @@ namespace GI
         //Right Click Input Actions
         private void HandleHoldRightClickInput()
         {
-            if(!player.isGrounded ||
+            if (inventoryFlag)
+                return;
+
+            if (!player.isGrounded ||
                 player.isSprinting ||
                 player.isFiringSpell)
             {
@@ -375,6 +399,9 @@ namespace GI
 
         private void HandleTapRightClickInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (tap_Right_Click_Input)
             {
                 tap_Right_Click_Input = false;
@@ -402,7 +429,9 @@ namespace GI
 
 
         private void HandleQuickSlotInput()
-        {        
+        {
+            if (inventoryFlag)
+                return;
 
             if (right_Arrow_Input)
             {
@@ -426,6 +455,12 @@ namespace GI
 
                 if (inventoryFlag)
                 {
+                    if (player.UIManager.levelUpWindow.activeSelf == true)
+                    {
+                        player.UIManager.CloseAllInventoryWindows();
+                        inventoryFlag = !inventoryFlag;
+                        return;
+                    }
                     player.UIManager.OpenSelectWindow();
                     player.UIManager.UpdateUI();
                     player.UIManager.hudWindow.SetActive(false);
@@ -441,6 +476,9 @@ namespace GI
 
         private void HandleLockOnInput()
         {
+            if (inventoryFlag)
+                return;
+
             if (lockOn_Input && lockOnFlag == false)
             {
                 lockOn_Input = false;
@@ -484,7 +522,10 @@ namespace GI
 
         private void HandleTwoHandInput()
         {
-            if(y_Input)
+            if (inventoryFlag)
+                return;
+
+            if (y_Input)
             {
                 y_Input = false;
                 twoHandFlag = !twoHandFlag;
@@ -507,7 +548,10 @@ namespace GI
 
         private void HandleUseConsumableInput()
         {
-            if(consume_Input)
+            if (inventoryFlag)
+                return;
+
+            if (consume_Input)
             {
                 consume_Input = false;
                 player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player);
@@ -516,6 +560,9 @@ namespace GI
 
         private void QueueInput(ref bool quedInput)
         {
+            if (inventoryFlag)
+                return;
+
             //Disable all other qued inputs
             queued_Right_Click_Input = false;
             queued_Left_Click_Input = false;

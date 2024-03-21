@@ -35,9 +35,7 @@ namespace GI {
             }
             else
             {
-                icon.sprite = null;
-                icon.enabled = false;
-                gameObject.SetActive(true);
+                ClearItem();
             }
         }
 

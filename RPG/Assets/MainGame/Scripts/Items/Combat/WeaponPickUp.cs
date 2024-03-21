@@ -69,7 +69,8 @@ namespace GI {
             animatorHandler.PlayTargetAnimation("Pick Up Item", true); // Plays the animation of looting the item
             playerInventory.weaponsInventory.Add(weapon);
             playerManager.itemInteractableGameObject.GetComponentInChildren<Text>().text = weapon.itemName;
-            playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;
+            if(weapon.itemIcon != null)
+                playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;
             playerManager.itemInteractableGameObject.SetActive(true);
             Destroy(gameObject);
         }
