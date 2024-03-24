@@ -1,4 +1,3 @@
-using RPGCharacterAnims;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +5,19 @@ using UnityEngine.UI;
 
 namespace GI
 {
-    public class HeadEquipmentInventorySlot : MonoBehaviour
+    public class SpellItemInventorySlot : MonoBehaviour
     {
         UIManager uiManager;
 
         public Image icon;
-        HelmetEquipment item;
+        SpellItem item;
 
         private void Awake()
         {
             uiManager = GetComponentInParent<UIManager>();
         }
 
-        public void AddItem(HelmetEquipment newItem)
+        public void AddItem(SpellItem newItem)
         {
             item = newItem;
             icon.sprite = item.itemIcon;
@@ -36,28 +35,24 @@ namespace GI
 
         public void EquipThisItem()
         {
-            if (uiManager.headEquipmentSlotSelected)
+            if (uiManager.spellSlotSelected)
             {
-                if(uiManager.player.playerInventoryManager.currentHelmetEquipment !=  null)
-                {
-                    uiManager.player.playerInventoryManager.headEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHelmetEquipment);
-                }
-                uiManager.player.playerInventoryManager.currentHelmetEquipment = item;
-                uiManager.player.playerInventoryManager.headEquipmentInventory.Remove(item);
-                uiManager.player.playerEquipmentManager.EquipAllArmor();
+                uiManager.player.playerInventoryManager.spellInventory.Add(uiManager.player.playerInventoryManager.currentSpell);
+                uiManager.player.playerInventoryManager.currentSpell = item;
+                uiManager.player.playerInventoryManager.spellInventory.Remove(item);
             }
             else
             {
                 return;
             }
 
-            uiManager.equipmentWindowUI.LoadArmorOnEquipmentScreen(uiManager.player);
+            uiManager.equipmentWindowUI.LoadSpellOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
         }
 
         public void ShowItemStats()
         {
-            uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
+            //uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
         }
     }
 }

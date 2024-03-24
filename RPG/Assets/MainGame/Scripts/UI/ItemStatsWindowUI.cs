@@ -13,6 +13,7 @@ namespace GI
         [Header("Equipment Stats Windows")]
         public GameObject weaponStats;
         public GameObject armorStats;
+        public GameObject ringItemStats;
 
         [Header("Weapon Stats")]
         public Text physicalDamageText;
@@ -24,6 +25,9 @@ namespace GI
         public Text armorPhysicalAbsorptionText;
         public Text armorMagicalAbsorptionText;
         public Text armorPoisonResistanceText;
+
+        [Header("Ring Item Text")]
+        public Text ringItemDescription;
 
         public void UpdateWeaponItemStats(WeaponItem weapon)
         {
@@ -110,10 +114,49 @@ namespace GI
 
         }
 
+        public void UpdateRingItemStats(RingItem ring)
+        {
+            CloseAllStatWindows();
+
+            if(ring != null)
+            {
+                if (ring.itemName != null)
+                {
+                    itemNameText.text = ring.itemName;
+                }
+                else
+                {
+                    itemNameText.text = "";
+                }
+
+                if (ring.itemIcon != null)
+                {
+                    itemIconImage.gameObject.SetActive(true);
+                    itemIconImage.sprite = ring.itemIcon;
+                }
+                else
+                {
+                    itemIconImage.gameObject.SetActive(false);
+                    itemIconImage.sprite = null;
+                }
+
+                ringItemDescription.text = ring.itemEffectInformation.ToString();
+                ringItemStats.SetActive(true);
+            }
+            else
+            {
+                itemNameText.text = "";
+                itemIconImage.gameObject.SetActive(false);
+                itemIconImage.sprite = null;
+                ringItemStats.SetActive(false);
+            }
+        }
+
         private void CloseAllStatWindows()
         {
             weaponStats.SetActive(false);
             armorStats.SetActive(false);
+            ringItemStats.SetActive(false);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace GI
                 return;
             }
 
-            uiManager.equipmentWindowUI.LoadArmorOnEquipmentScreen(uiManager.player.playerInventoryManager);
+            uiManager.equipmentWindowUI.LoadArmorOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
         }
 

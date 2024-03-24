@@ -36,6 +36,13 @@ namespace GI {
         public bool bodyEquipmentSlotSelected;
         public bool legEquipmentSlotSelected;
         public bool handEquipmentSlotSelected;
+        public bool ringItemSlot01Selected;
+        public bool ringItemSlot02Selected;
+        public bool ringItemSlot03Selected;
+        public bool ringItemSlot04Selected;
+        public bool spellSlotSelected;
+        public bool consumableSlotSelected;
+        public bool ammoSlotSelected;
 
         [Header("Pop Ups")]
         BonfireLitPopUpUI bonfireLitPopUpUI;
@@ -65,6 +72,26 @@ namespace GI {
         public Transform handEquipmentInventorySlotParent;
         HandEquipmentInventorySlot[] handEquipmentInventorySlots;
 
+        [Header("Ring Items Inventory")]
+        public GameObject ringItemInventorySlotPrefab;
+        public Transform ringItemInventorySlotParent;
+        RingItemInventorySlot[] ringItemInventorySlots;
+
+        [Header("Spell Inventory")]
+        public GameObject spellInventorySlotPrefab;
+        public Transform spellInventorySlotParent;
+        SpellItemInventorySlot[] spellInventorySlots;
+
+        [Header("Consumable Inventory")]
+        public GameObject consumableInventorySlotPrefab;
+        public Transform consumableInventorySlotParent;
+        ConsumableInventorySlot[] consumableInventorySlots;
+
+        [Header("Ammo Inventory")]
+        public GameObject ammoInventorySlotPrefab;
+        public Transform ammoInventorySlotParent;
+        AmmoInventorySlot[] ammoInventorySlots;
+
         private void Awake()
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
@@ -74,14 +101,20 @@ namespace GI {
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
             legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
             handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+            ringItemInventorySlots = ringItemInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
+            spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+            consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+            ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
 
             bonfireLitPopUpUI = GetComponentInChildren<BonfireLitPopUpUI>();
         }
 
         private void Start()
         {
-            equipmentWindowUI.LoadWeaponOnEquipmentScreen(player.playerInventoryManager);
-            equipmentWindowUI.LoadArmorOnEquipmentScreen(player.playerInventoryManager);
+            equipmentWindowUI.LoadWeaponOnEquipmentScreen(player);
+            equipmentWindowUI.LoadArmorOnEquipmentScreen(player);
+            equipmentWindowUI.LoadRingItemOnEquipmentScreen(player);
+            //equipmentWindowUI.LoadSpellOnEquipmentScreen(player);
 
             if(player.playerInventoryManager.currentSpell !=null)
             {
@@ -99,7 +132,6 @@ namespace GI {
         public void UpdateUI()
         {
             UpdateInventorySlots();
-            Debug.Log(weaponInventorySlots.Length);
             //Weapon Inventory Slots
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
@@ -193,6 +225,85 @@ namespace GI {
                     handEquipmentInventorySlots[i].ClearInventorySlot();
                 }
             }
+
+            //Ring Item Inventory Slots
+
+            for (int i = 0; i < ringItemInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.ringItemInventory.Count)
+                {
+                    if (ringItemInventorySlots.Length < player.playerInventoryManager.ringItemInventory.Count)
+                    {
+                        Instantiate(ringItemInventorySlotPrefab, ringItemInventorySlotParent);
+                        ringItemInventorySlots = ringItemInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
+                    }
+                    ringItemInventorySlots[i].AddItem(player.playerInventoryManager.ringItemInventory[i]);
+                }
+                else
+                {
+                    ringItemInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            //Spell Inventory Slots
+
+            for (int i = 0; i < spellInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.spellInventory.Count)
+                {
+                    if (spellInventorySlots.Length < player.playerInventoryManager.spellInventory.Count)
+                    {
+                        Instantiate(spellInventorySlotPrefab, spellInventorySlotParent);
+                        spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+                    }
+                    spellInventorySlots[i].AddItem(player.playerInventoryManager.spellInventory[i]);
+                }
+                else
+                {
+                    spellInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            //Consumable Inventory Slots
+
+            for (int i = 0; i < consumableInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.consumableInventory.Count)
+                {
+                    if (consumableInventorySlots.Length < player.playerInventoryManager.consumableInventory.Count)
+                    {
+                        Instantiate(consumableInventorySlotPrefab, consumableInventorySlotParent);
+                        consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+                    }
+                    consumableInventorySlots[i].AddItem(player.playerInventoryManager.consumableInventory[i]);
+                }
+                else
+                {
+                    consumableInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            //Ammo Inventory Slots
+
+            for (int i = 0; i < ammoInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.ammoInventory.Count)
+                {
+                    if (ammoInventorySlots.Length < player.playerInventoryManager.ammoInventory.Count)
+                    {
+                        Instantiate(ammoInventorySlotPrefab, ammoInventorySlotParent);
+                        ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
+                    }
+                    if (player.playerInventoryManager != null)
+                    {
+                        ammoInventorySlots[i].AddItem(player.playerInventoryManager.ammoInventory[i]);
+                    }
+                }
+                else
+                {
+                    ammoInventorySlots[i].ClearInventorySlot();
+                }
+            }
         }
 
         public void UpdateInventorySlots()
@@ -202,6 +313,10 @@ namespace GI {
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
             legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
             handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+            ringItemInventorySlots = ringItemInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
+            spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+            consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+            ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
         }
 
         public void OpenSelectWindow()
@@ -240,6 +355,15 @@ namespace GI {
             bodyEquipmentSlotSelected = false;
             legEquipmentSlotSelected = false;
             handEquipmentSlotSelected = false;
+
+            ringItemSlot01Selected = false;
+            ringItemSlot02Selected = false;
+            ringItemSlot03Selected = false;
+            ringItemSlot04Selected = false;
+
+            spellSlotSelected = false;
+            consumableSlotSelected = false;
+            ammoSlotSelected = false;
         }
 
         public void ActivateBonfirePopUp()

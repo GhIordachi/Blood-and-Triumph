@@ -12,6 +12,10 @@ namespace GI
         public List<BodyEquipment> bodyEquipmentInventory;
         public List<LegEquipment> legEquipmentInventory;
         public List<HandEquipment> handEquipmentInventory;
+        public List<RingItem> ringItemInventory;
+        public List<SpellItem> spellInventory;
+        public List<ConsumableItem> consumableInventory;
+        public List<RangedAmmoItem> ammoInventory;
 
         public void ChangeRightWeapon()
         {

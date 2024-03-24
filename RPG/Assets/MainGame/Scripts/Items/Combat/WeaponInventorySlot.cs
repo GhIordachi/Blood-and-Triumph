@@ -92,7 +92,7 @@ namespace GI {
 
             uiManager.player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
 
-            uiManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(uiManager.player.playerInventoryManager);
+            uiManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
         }
 
