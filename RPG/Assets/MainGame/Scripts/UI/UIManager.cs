@@ -20,6 +20,14 @@ namespace GI {
         public GameObject selectWindow;
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+        public GameObject headEquipmentInventoryWindow;
+        public GameObject bodyEquipmentInventoryWindow;
+        public GameObject legEquipmentInventoryWindow;
+        public GameObject handEquipmentInventoryWindow;
+        public GameObject ringInventoryWindow;
+        public GameObject spellInventoryWindow;
+        public GameObject consumableInventoryWindow;
+        public GameObject ammoInventoryWindow;
         public GameObject itemStatsWindow;
         public GameObject levelUpWindow;
 
@@ -96,6 +104,7 @@ namespace GI {
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
             player = FindObjectOfType<PlayerManager>();
+
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
@@ -114,7 +123,9 @@ namespace GI {
             equipmentWindowUI.LoadWeaponOnEquipmentScreen(player);
             equipmentWindowUI.LoadArmorOnEquipmentScreen(player);
             equipmentWindowUI.LoadRingItemOnEquipmentScreen(player);
-            //equipmentWindowUI.LoadSpellOnEquipmentScreen(player);
+            equipmentWindowUI.LoadSpellOnEquipmentScreen(player);
+            equipmentWindowUI.LoadConsumableOnEquipmentScreen(player);
+            equipmentWindowUI.LoadAmmoOnEquipmentScreen(player);
 
             if(player.playerInventoryManager.currentSpell !=null)
             {
@@ -334,6 +345,14 @@ namespace GI {
             ResetAllSelectedSlots();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            headEquipmentInventoryWindow.SetActive(false);
+            bodyEquipmentInventoryWindow.SetActive(false);
+            legEquipmentInventoryWindow.SetActive(false);
+            handEquipmentInventoryWindow.SetActive(false);
+            ringInventoryWindow.SetActive(false);
+            spellInventoryWindow.SetActive(false);
+            consumableInventoryWindow.SetActive(false);
+            ammoInventoryWindow.SetActive(false);
             
             itemStatsWindow.SetActive(false);
 

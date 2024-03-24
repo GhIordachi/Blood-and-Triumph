@@ -38,25 +38,29 @@ namespace GI
         {
             if (uiManager.ringItemSlot01Selected)
             {
-                uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot01);
+                if (uiManager.player.playerInventoryManager.ringSlot01 != null)
+                    uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot01);
                 uiManager.player.playerInventoryManager.ringSlot01 = item;
                 uiManager.player.playerInventoryManager.ringItemInventory.Remove(item);
             }
             else if (uiManager.ringItemSlot02Selected)
             {
-                uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot02);
+                if (uiManager.player.playerInventoryManager.ringSlot02 != null)
+                    uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot02);
                 uiManager.player.playerInventoryManager.ringSlot02 = item;
                 uiManager.player.playerInventoryManager.ringItemInventory.Remove(item);
             }
             else if (uiManager.ringItemSlot03Selected)
             {
-                uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot03);
+                if (uiManager.player.playerInventoryManager.ringSlot03 != null)
+                    uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot03);
                 uiManager.player.playerInventoryManager.ringSlot03 = item;
                 uiManager.player.playerInventoryManager.ringItemInventory.Remove(item);
             }
             else if (uiManager.ringItemSlot04Selected)
             {
-                uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot04);
+                if (uiManager.player.playerInventoryManager.ringSlot04 != null)
+                    uiManager.player.playerInventoryManager.ringItemInventory.Add(uiManager.player.playerInventoryManager.ringSlot04);
                 uiManager.player.playerInventoryManager.ringSlot04 = item;
                 uiManager.player.playerInventoryManager.ringItemInventory.Remove(item);
             }

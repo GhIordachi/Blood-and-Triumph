@@ -37,7 +37,8 @@ namespace GI
         {
             if (uiManager.spellSlotSelected)
             {
-                uiManager.player.playerInventoryManager.spellInventory.Add(uiManager.player.playerInventoryManager.currentSpell);
+                if(uiManager.player.playerInventoryManager.currentSpell != null)
+                    uiManager.player.playerInventoryManager.spellInventory.Add(uiManager.player.playerInventoryManager.currentSpell);
                 uiManager.player.playerInventoryManager.currentSpell = item;
                 uiManager.player.playerInventoryManager.spellInventory.Remove(item);
             }
@@ -52,7 +53,7 @@ namespace GI
 
         public void ShowItemStats()
         {
-            //uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
+            uiManager.itemStatsWindowUI.UpdateSpellItemStats(item);
         }
     }
 }

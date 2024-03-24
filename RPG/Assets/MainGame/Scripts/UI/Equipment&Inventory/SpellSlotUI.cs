@@ -41,7 +41,7 @@ namespace GI
         public void SelectThisSlot()
         {
             uIManager.spellSlotSelected = true;
-            //uIManager.itemStatsWindowUI.UpdateArmorItemStats(item);
+            uIManager.itemStatsWindowUI.UpdateSpellItemStats(item);
         }
     }
 }

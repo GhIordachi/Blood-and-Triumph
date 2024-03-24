@@ -37,7 +37,8 @@ namespace GI
         {
             if (uiManager.consumableSlotSelected)
             {
-                uiManager.player.playerInventoryManager.consumableInventory.Add(uiManager.player.playerInventoryManager.currentConsumable);
+                if (uiManager.player.playerInventoryManager.currentConsumable != null)
+                    uiManager.player.playerInventoryManager.consumableInventory.Add(uiManager.player.playerInventoryManager.currentConsumable);
                 uiManager.player.playerInventoryManager.currentConsumable = item;
                 uiManager.player.playerInventoryManager.consumableInventory.Remove(item);
             }

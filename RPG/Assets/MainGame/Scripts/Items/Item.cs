@@ -10,5 +10,6 @@ namespace GI
         public Sprite itemIcon;
         public string itemName;
         public int itemID;
+        public int value;
     }
 }

@@ -37,7 +37,8 @@ namespace GI
         {
             if (uiManager.ammoSlotSelected)
             {
-                uiManager.player.playerInventoryManager.ammoInventory.Add(uiManager.player.playerInventoryManager.currentAmmo);
+                if (uiManager.player.playerInventoryManager.currentAmmo != null)
+                    uiManager.player.playerInventoryManager.ammoInventory.Add(uiManager.player.playerInventoryManager.currentAmmo);
                 uiManager.player.playerInventoryManager.currentAmmo = item;
                 uiManager.player.playerInventoryManager.ammoInventory.Remove(item);
             }

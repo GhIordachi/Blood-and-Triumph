@@ -6,7 +6,7 @@ using UnityEngine.TextCore.Text;
 namespace GI
 {
     public class PlayerInventoryManager : CharacterInventoryManager
-    {
+    {        
         public List<WeaponItem> weaponsInventory;
         public List<HelmetEquipment> headEquipmentInventory;
         public List<BodyEquipment> bodyEquipmentInventory;
@@ -15,7 +15,7 @@ namespace GI
         public List<RingItem> ringItemInventory;
         public List<SpellItem> spellInventory;
         public List<ConsumableItem> consumableInventory;
-        public List<RangedAmmoItem> ammoInventory;
+        public List<RangedAmmoItem> ammoInventory;       
 
         public void ChangeRightWeapon()
         {

@@ -8,6 +8,9 @@ namespace GI
     {
         protected CharacterManager character;
 
+        [Header("Character's Currency")]
+        public int currentGold;
+
         [Header("Current Item Being Used")]
         public Item currentItemBeingUsed;
 

@@ -14,6 +14,7 @@ namespace GI
         public GameObject weaponStats;
         public GameObject armorStats;
         public GameObject ringItemStats;
+        public GameObject spellItemStats;
 
         [Header("Weapon Stats")]
         public Text physicalDamageText;
@@ -28,6 +29,11 @@ namespace GI
 
         [Header("Ring Item Text")]
         public Text ringItemDescription;
+
+        [Header("Spell Item Stats")]
+        public Text spellItemType;
+        public Text spellItemFocusPointCost;
+        public Text spellItemTextBasedOnType;
 
         public void UpdateWeaponItemStats(WeaponItem weapon)
         {
@@ -152,11 +158,65 @@ namespace GI
             }
         }
 
+        public void UpdateSpellItemStats(SpellItem spell)
+        {
+            CloseAllStatWindows();
+
+            if (spell != null)
+            {
+                if (spell.itemName != null)
+                {
+                    itemNameText.text = spell.itemName;
+                }
+                else
+                {
+                    itemNameText.text = "";
+                }
+
+                if (spell.itemIcon != null)
+                {
+                    itemIconImage.gameObject.SetActive(true);
+                    itemIconImage.sprite = spell.itemIcon;
+                }
+                else
+                {
+                    itemIconImage.gameObject.SetActive(false);
+                    itemIconImage.sprite = null;
+                }
+
+                if (spell.isFaithSpell)
+                {
+                    HealingSpell faithSpell = spell as HealingSpell;
+                    spellItemType.text = "Faith Spell";
+                    spellItemTextBasedOnType.text = "Heal Amount " + faithSpell.healAmount.ToString();
+                }
+                if (spell.isMagicSpell)
+                {
+                    spellItemType.text = "Magic Spell";
+                }
+                if (spell.isPyroSpell)
+                {
+                    spellItemType.text = "Pyro Spell";
+                }
+
+                spellItemFocusPointCost.text = spell.focusPointCost.ToString();
+                spellItemStats.SetActive(true);
+            }
+            else
+            {
+                itemNameText.text = "";
+                itemIconImage.gameObject.SetActive(false);
+                itemIconImage.sprite = null;
+                spellItemStats.SetActive(false);
+            }
+        }
+
         private void CloseAllStatWindows()
         {
             weaponStats.SetActive(false);
             armorStats.SetActive(false);
             ringItemStats.SetActive(false);
+            spellItemStats.SetActive(false);
         }
     }
 }
