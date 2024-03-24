@@ -17,9 +17,12 @@ MonoBehaviour:
   itemID: 1008
   physicalDefense: 10
   fireDefense: 0
-  magicalDefense: 0
+  magicDefense: 0
   weight: 4
   poisonResistance: 0
   torsoModelName: Male_Torso_10
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_07
   upperRightArmModelName: Chr_ArmUpperRight_Male_07
+  backAttachmentModelName: 
+  shoulderRightAttachmentModelName: Chr_ShoulderAttachRight_04
+  shoulderLeftAttachmentModelName: Chr_ShoulderAttachLeft_04

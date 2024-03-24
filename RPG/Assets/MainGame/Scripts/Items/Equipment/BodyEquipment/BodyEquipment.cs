@@ -10,5 +10,8 @@ namespace GI
         public string torsoModelName;
         public string upperLeftArmModelName;
         public string upperRightArmModelName;
+        public string backAttachmentModelName;
+        public string shoulderRightAttachmentModelName;
+        public string shoulderLeftAttachmentModelName;
     }
 }

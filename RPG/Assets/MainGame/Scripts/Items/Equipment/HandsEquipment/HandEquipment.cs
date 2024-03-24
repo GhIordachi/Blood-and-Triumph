@@ -11,5 +11,7 @@ namespace GI
         public string rightHandModelName;
         public string lowerLeftArmModelName;
         public string lowerRightArmModelName;
+        public string leftElbowModelName;
+        public string rightElbowModelName;
     }
 }

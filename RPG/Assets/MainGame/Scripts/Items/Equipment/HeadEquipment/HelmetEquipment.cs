@@ -8,6 +8,7 @@ namespace GI
     public class HelmetEquipment : EquipmentItem
     {
         public string helmetModelName;
+        public string helmetAttachmentModelName;
 
         public bool hideHair;
         public bool hideEyebrows;

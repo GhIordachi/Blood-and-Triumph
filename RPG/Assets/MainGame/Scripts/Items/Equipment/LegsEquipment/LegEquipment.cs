@@ -10,7 +10,7 @@ namespace GI
         public string hipModelName;
         public string leftLegName;
         public string rightLegName;
-        //Left Knee Pad Name
-        //Right Knee Pad Name
+        public string leftKneePadName;
+        public string rightKneePadName;
     }
 }
