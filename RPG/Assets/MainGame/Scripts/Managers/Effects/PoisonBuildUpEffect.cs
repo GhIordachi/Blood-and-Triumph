@@ -20,7 +20,7 @@ namespace GI
             // Poison build up after we factor our player's resistances
             float finalPoisonBuildUp = 0;
 
-            if (character.characterStatsManager.poisonResistance > 0)
+            if (character.characterStatsManager.poisonResistance >= 0)
             {
                 if(character.characterStatsManager.poisonResistance >= 100)
                 {

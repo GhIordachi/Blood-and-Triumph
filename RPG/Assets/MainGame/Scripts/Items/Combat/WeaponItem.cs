@@ -16,6 +16,7 @@ namespace GI
         [Header("Weapon Type")]
         public WeaponType weaponType;
         public bool canBeTwoHanded = true;
+        public bool isWeaponRightHanded = true;
 
         [Header("Damage")]
         public int physicalDamage;

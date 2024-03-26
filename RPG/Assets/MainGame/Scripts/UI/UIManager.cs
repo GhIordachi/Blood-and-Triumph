@@ -31,6 +31,7 @@ namespace GI {
         public GameObject itemStatsWindow;
         public GameObject levelUpWindow;
         public GameObject vendorShopWindow;
+        public GameObject menuOptionsWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -128,7 +129,7 @@ namespace GI {
             equipmentWindowUI.LoadConsumableOnEquipmentScreen(player);
             equipmentWindowUI.LoadAmmoOnEquipmentScreen(player);
 
-            if(player.playerInventoryManager.currentSpell !=null)
+            if(player.playerInventoryManager.currentSpell != null)
             {
                 quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);
             }
@@ -359,6 +360,7 @@ namespace GI {
 
             levelUpWindow.SetActive(false);
             vendorShopWindow.SetActive(false);
+            menuOptionsWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

@@ -151,7 +151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
-  currentWeaponDamage: 25
+  enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
+  poiseDamage: 0
+  offensivePoiseBonus: 0
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  guardBreakModifier: 1
 --- !u!1 &5511685891843705426
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,11 +183,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5511685891843705426}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054567255, y: -0.6880814, z: 0.7061944, w: 0.15765798}
+  m_LocalRotation: {x: 0.01074787, y: -0.53964835, z: 0.82709676, w: 0.15676486}
   m_LocalPosition: {x: 26.25, y: -8.98, z: -0.78}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8385590850319328993}
   m_Father: {fileID: 2173673336412104172}
-  m_LocalEulerAnglesHint: {x: 72.675, y: 279.107, z: -269.35}
+  m_LocalEulerAnglesHint: {x: 63.644, y: 340.058, z: -213.917}

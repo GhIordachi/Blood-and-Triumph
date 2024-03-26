@@ -40,6 +40,7 @@ namespace GI
                 if (uiManager.player.playerInventoryManager.currentConsumable != null)
                     uiManager.player.playerInventoryManager.consumableInventory.Add(uiManager.player.playerInventoryManager.currentConsumable);
                 uiManager.player.playerInventoryManager.currentConsumable = item;
+                uiManager.quickSlotsUI.UpdateCurrentConsumableIcon(item);
                 uiManager.player.playerInventoryManager.consumableInventory.Remove(item);
             }
             else
