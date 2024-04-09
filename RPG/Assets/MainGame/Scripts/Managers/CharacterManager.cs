@@ -14,6 +14,7 @@ namespace GI {
         public CharacterEffectsManager characterEffectsManager;
         public CharacterSoundFXManager characterSoundFXManager;
         public CharacterCombatManager characterCombatManager;
+        CharacterLocomotionManager characterLocomotionManager;
 
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
@@ -35,6 +36,7 @@ namespace GI {
         public bool isParrying;
         public bool isBlocking;
         public bool isInvulnerable;
+        public bool isMounted;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
         public bool isHoldingArrow;
@@ -71,6 +73,7 @@ namespace GI {
             characterEffectsManager = GetComponent<CharacterEffectsManager>();
             characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
             characterCombatManager = GetComponent<CharacterCombatManager>();
+            characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
         }
 
         protected virtual void Start()
@@ -86,6 +89,14 @@ namespace GI {
         protected virtual void Update()
         {
             characterEffectsManager.ProcessAllTimedEffects();
+        }
+
+        public virtual void MountHorseInteraction(Transform characterStandingPositionWhenMounting)
+        {
+            characterLocomotionManager.GetComponent<Rigidbody>().velocity = Vector3.zero; //Stops the player from ice skating
+            transform.position = characterStandingPositionWhenMounting.transform.position;
+            //Change the animation to an open chest animation
+            characterAnimatorManager.PlayTargetAnimation("Mount Horse", true);
         }
 
         public virtual void UpdateWhichHandCharacterIsUsing(bool usingRightHand)

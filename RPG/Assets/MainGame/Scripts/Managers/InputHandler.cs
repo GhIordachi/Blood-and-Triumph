@@ -13,7 +13,7 @@ namespace GI
         public float mouseY;
 
         public bool shift_Input;
-        public bool t_Input;
+        public bool e_Input;
         public bool consume_Input;
         public bool y_Input;
 
@@ -90,7 +90,7 @@ namespace GI
                 inputActions.PlayerActions.Q.performed += i => tap_Q_Input = true;
                 inputActions.PlayerQuickSlots.LeftArrow.performed += i => left_Arrow_Input = true;
                 inputActions.PlayerQuickSlots.RightArrow.performed += i => right_Arrow_Input = true;
-                inputActions.PlayerActions.PickUpItem.performed += i => t_Input = true;
+                inputActions.PlayerActions.PickUpItem.performed += i => e_Input = true;
                 inputActions.PlayerActions.Consume.performed += i => consume_Input = true;
 
                 inputActions.PlayerActions.Shift.performed += i => shift_Input = true;

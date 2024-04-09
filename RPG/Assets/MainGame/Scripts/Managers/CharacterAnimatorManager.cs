@@ -210,6 +210,16 @@ namespace GI {
 
         }
 
+        public virtual void MountHorse()
+        {
+            character.animator.SetBool("isMounted", true);
+        }
+
+        public virtual void DismountHorse()
+        {
+            character.animator.SetBool("isMounted", false);
+        }
+
         public virtual void SetHandIKForWeapon(RightHandIKTarget rightHandTarget, LeftHandIKTarget leftHandTarget, bool isTwoHandingWeapon)
         {
             if (isTwoHandingWeapon)

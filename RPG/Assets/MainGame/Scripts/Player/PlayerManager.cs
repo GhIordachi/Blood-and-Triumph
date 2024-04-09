@@ -68,6 +68,7 @@ namespace GI
             canDoCombo = animator.GetBool("canDoCombo");
             canRotate = animator.GetBool("canRotate");
             isInvulnerable = animator.GetBool("isInvulnerable");
+            isMounted = animator.GetBool("isMounted");
             isFiringSpell = animator.GetBool("isFiringSpell");
             isHoldingArrow = animator.GetBool("isHoldingArrow");
             isPerformingFullyChargedAttack = animator.GetBool("isPerformingFullyChargedAttack");
@@ -97,7 +98,7 @@ namespace GI
             inputHandler.d_Pad_Down = false;
             inputHandler.left_Arrow_Input = false;
             inputHandler.right_Arrow_Input = false;
-            inputHandler.t_Input = false;
+            inputHandler.e_Input = false;
             inputHandler.inventory_Input = false;
 
             if (cameraHandler != null)
@@ -117,7 +118,7 @@ namespace GI
 
             if(Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
             {
-                if(hit.collider.tag == "Interactable")
+                if (hit.collider.CompareTag("Interactable"))
                 {
                     Interactable interactableObject = hit.collider.GetComponent<Interactable>();
 
@@ -127,7 +128,7 @@ namespace GI
                         interactableUI.interactableText.text = interactableText;
                         interactableUIGameObject.SetActive(true);
 
-                        if (inputHandler.t_Input)
+                        if (inputHandler.e_Input)
                         {
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
@@ -141,7 +142,7 @@ namespace GI
                     interactableUIGameObject.SetActive(false);
                 }
 
-                if(itemInteractableGameObject != null && inputHandler.t_Input)
+                if(itemInteractableGameObject != null && inputHandler.e_Input)
                 {
                     itemInteractableGameObject.SetActive(false);
                 }

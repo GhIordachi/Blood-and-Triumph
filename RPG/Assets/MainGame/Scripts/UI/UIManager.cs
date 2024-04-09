@@ -30,8 +30,10 @@ namespace GI {
         public GameObject ammoInventoryWindow;
         public GameObject itemStatsWindow;
         public GameObject levelUpWindow;
-        public GameObject vendorShopWindow;
         public GameObject menuOptionsWindow;
+
+        [Header("Vendor UI Windows")]
+        public GameObject vendorShopWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -317,6 +319,10 @@ namespace GI {
                     ammoInventorySlots[i].ClearInventorySlot();
                 }
             }
+
+            //Junk Inventory Slots
+
+
         }
 
         public void UpdateInventorySlots()

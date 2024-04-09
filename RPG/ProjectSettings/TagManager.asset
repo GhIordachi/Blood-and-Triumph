@@ -4,11 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Stair
+  - WallRun
+  - Climb
+  - Fly
   - Enemy
   - Interactable
   - Illusionary Wall
   - Character
   - Eyebrows
+  - Animal
+  - Water
   layers:
   - Default
   - TransparentFX
