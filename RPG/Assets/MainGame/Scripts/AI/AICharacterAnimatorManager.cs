@@ -31,6 +31,23 @@ namespace GI
             }
         }
 
+        public void DropItemOnDeath()
+        {
+            StartCoroutine(SpawnItemAfterDeath());
+            WeaponPickUp weaponPickUp = aiCharacter.itemSpawner.GetComponent<WeaponPickUp>();
+
+            if (weaponPickUp != null)
+            {
+                weaponPickUp.weapon = aiCharacter.weaponItemToDrop;
+            }
+        }
+
+        private IEnumerator SpawnItemAfterDeath()
+        {
+            yield return new WaitForSeconds(1f);
+            Instantiate(aiCharacter.itemSpawner, transform);
+        }
+
         public void InstantiateBossParticleFX()
         {
             BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();

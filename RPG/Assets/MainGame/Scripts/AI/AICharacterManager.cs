@@ -22,6 +22,10 @@ namespace GI {
         public float rotationSpeed = 15;
         public float maximumAggroRadius = 1.5f;
 
+        [Header("AI Drop Item")]
+        public GameObject itemSpawner;
+        public WeaponItem weaponItemToDrop;
+
         [Header("AI Settings")]
         public float detectionRadius = 20;
         //The higher, and lower, respectively these angles are, the greater detection Field of view(eye sight of the enemy)
