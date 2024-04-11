@@ -37,10 +37,14 @@ namespace GI
         {
             if (uiManager.ammoSlotSelected)
             {
-                if (uiManager.player.playerInventoryManager.currentAmmo != null)
-                    uiManager.player.playerInventoryManager.ammoInventory.Add(uiManager.player.playerInventoryManager.currentAmmo);
-                uiManager.player.playerInventoryManager.currentAmmo = item;
-                uiManager.player.playerInventoryManager.ammoInventory.Remove(item);
+                if (uiManager.player.playerStatsManager.strengthLevel >= item.strengthLevelRequirement
+                    && uiManager.player.playerStatsManager.faithLevel >= item.faithLevelRequirement)
+                {
+                    if (uiManager.player.playerInventoryManager.currentAmmo != null)
+                        uiManager.player.playerInventoryManager.ammoInventory.Add(uiManager.player.playerInventoryManager.currentAmmo);
+                    uiManager.player.playerInventoryManager.currentAmmo = item;
+                    uiManager.player.playerInventoryManager.ammoInventory.Remove(item);
+                }
             }
             else
             {

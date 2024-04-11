@@ -16,6 +16,8 @@ MonoBehaviour:
   itemName: Shield
   itemID: 3
   value: 0
+  strengthLevelRequirement: 5
+  faithLevelRequirement: 5
   modelPrefab: {fileID: 1385898743171034099, guid: 210cc8e056a8bcc418304328cecef9b4,
     type: 3}
   isUnarmed: 0

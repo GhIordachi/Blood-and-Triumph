@@ -37,13 +37,17 @@ namespace GI
         {
             if (uiManager.handEquipmentSlotSelected)
             {
-                if (uiManager.player.playerInventoryManager.currentHandEquipment != null)
+                if (uiManager.player.playerStatsManager.strengthLevel >= item.strengthLevelRequirement
+                    && uiManager.player.playerStatsManager.faithLevel >= item.faithLevelRequirement)
                 {
-                    uiManager.player.playerInventoryManager.handEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHandEquipment);
+                    if (uiManager.player.playerInventoryManager.currentHandEquipment != null)
+                    {
+                        uiManager.player.playerInventoryManager.handEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHandEquipment);
+                    }
+                    uiManager.player.playerInventoryManager.currentHandEquipment = item;
+                    uiManager.player.playerInventoryManager.handEquipmentInventory.Remove(item);
+                    uiManager.player.playerEquipmentManager.EquipAllArmor();
                 }
-                uiManager.player.playerInventoryManager.currentHandEquipment = item;
-                uiManager.player.playerInventoryManager.handEquipmentInventory.Remove(item);
-                uiManager.player.playerEquipmentManager.EquipAllArmor();
             }
             else
             {

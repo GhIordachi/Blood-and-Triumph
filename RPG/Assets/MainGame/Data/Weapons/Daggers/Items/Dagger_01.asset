@@ -15,12 +15,16 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemName: Simple Dagger
   itemID: 0
+  value: 0
+  strengthLevelRequirement: 5
+  faithLevelRequirement: 1
   modelPrefab: {fileID: 1298650130734191453, guid: 11fda949ddd05674498d4a3733bbd584,
     type: 3}
   isUnarmed: 0
   weaponController: {fileID: 22100000, guid: d1d553f2c7bc36346bff22d9e8557f6b, type: 2}
   weaponType: 8
   canBeTwoHanded: 0
+  isWeaponRightHanded: 1
   physicalDamage: 15
   fireDamage: 0
   magicDamage: 0

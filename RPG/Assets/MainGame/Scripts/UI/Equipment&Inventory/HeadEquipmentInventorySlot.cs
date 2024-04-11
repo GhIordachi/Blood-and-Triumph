@@ -38,13 +38,17 @@ namespace GI
         {
             if (uiManager.headEquipmentSlotSelected)
             {
-                if(uiManager.player.playerInventoryManager.currentHelmetEquipment !=  null)
+                if (uiManager.player.playerStatsManager.strengthLevel >= item.strengthLevelRequirement
+                    && uiManager.player.playerStatsManager.faithLevel >= item.faithLevelRequirement)
                 {
-                    uiManager.player.playerInventoryManager.headEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHelmetEquipment);
+                    if (uiManager.player.playerInventoryManager.currentHelmetEquipment != null)
+                    {
+                        uiManager.player.playerInventoryManager.headEquipmentInventory.Add(uiManager.player.playerInventoryManager.currentHelmetEquipment);
+                    }
+                    uiManager.player.playerInventoryManager.currentHelmetEquipment = item;
+                    uiManager.player.playerInventoryManager.headEquipmentInventory.Remove(item);
+                    uiManager.player.playerEquipmentManager.EquipAllArmor();
                 }
-                uiManager.player.playerInventoryManager.currentHelmetEquipment = item;
-                uiManager.player.playerInventoryManager.headEquipmentInventory.Remove(item);
-                uiManager.player.playerEquipmentManager.EquipAllArmor();
             }
             else
             {

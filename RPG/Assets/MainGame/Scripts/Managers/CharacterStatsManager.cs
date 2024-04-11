@@ -22,8 +22,8 @@ namespace GI {
         public float maxFocusPoints;
         public float currentFocusPoints;
 
-        public int currentSoulCount = 0;
-        public int souldAwardedOnDeath = 50;
+        public int currentXPCount = 0;
+        public int XPAwardedOnDeath = 50;
 
         [Header("Character Level")]
         public int playerLevel = 1;
@@ -34,8 +34,6 @@ namespace GI {
         public int focusLevel = 10;
         public int poiseLevel = 10;
         public int strengthLevel = 10;
-        public int dexterityLevel = 10;
-        public int intelligenceLevel = 10;
         public int faithLevel = 10;
 
         [Header("Equipment Load")]

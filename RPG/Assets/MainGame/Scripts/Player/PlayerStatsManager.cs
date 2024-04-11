@@ -154,9 +154,9 @@ namespace GI {
             focusPointBar.SetCurrentFocusPoint(currentFocusPoints);
         }
 
-        public void AddSouls(int souls)
+        public void AddXP(int XP)
         {
-            currentSoulCount = currentSoulCount + souls;
+            currentXPCount = currentXPCount + XP;
         }
     }
 }

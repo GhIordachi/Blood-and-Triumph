@@ -13,7 +13,7 @@ namespace GI {
 
         [Header("HUD")]
         public GameObject crossHair;
-        public Text soulCount;
+        public Text xpCount;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -141,7 +141,7 @@ namespace GI {
                 quickSlotsUI.UpdateCurrentConsumableIcon(player.playerInventoryManager.currentConsumable);
             }
 
-            soulCount.text = player.playerStatsManager.currentSoulCount.ToString();
+            xpCount.text = player.playerStatsManager.currentXPCount.ToString();
         }
 
         public void UpdateUI()

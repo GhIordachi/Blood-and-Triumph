@@ -40,8 +40,6 @@ namespace GI
             player.playerStatsManager.focusLevel = classStats[classChosen].focusLevel;
             player.playerStatsManager.poiseLevel = classStats[classChosen].poiseLevel;
             player.playerStatsManager.strengthLevel = classStats[classChosen].strengthLevel;
-            player.playerStatsManager.dexterityLevel = classStats[classChosen].dexterityLevel;
-            player.playerStatsManager.intelligenceLevel = classStats[classChosen].intelligenceLevel;
             player.playerStatsManager.faithLevel = classStats[classChosen].faithLevel;
 
             classDescription.text = classStats[classChosen].classDescription;
@@ -67,8 +65,6 @@ namespace GI
             focusStat.text = player.playerStatsManager.focusLevel.ToString();
             poiseStat.text = player.playerStatsManager.poiseLevel.ToString();
             strengthStat.text = player.playerStatsManager.strengthLevel.ToString();
-            dexterityStat.text = player.playerStatsManager.dexterityLevel.ToString();
-            intelligenceStat.text = player.playerStatsManager.intelligenceLevel.ToString();
             faithStat.text = player.playerStatsManager.faithLevel.ToString();
         }
 
@@ -92,8 +88,6 @@ namespace GI
             focusStat.text = player.playerStatsManager.focusLevel.ToString();
             poiseStat.text = player.playerStatsManager.poiseLevel.ToString();
             strengthStat.text = player.playerStatsManager.strengthLevel.ToString();
-            dexterityStat.text = player.playerStatsManager.dexterityLevel.ToString();
-            intelligenceStat.text = player.playerStatsManager.intelligenceLevel.ToString();
             faithStat.text = player.playerStatsManager.faithLevel.ToString();
         }
 

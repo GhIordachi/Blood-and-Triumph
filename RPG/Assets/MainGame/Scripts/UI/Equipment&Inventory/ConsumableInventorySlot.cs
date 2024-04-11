@@ -37,11 +37,15 @@ namespace GI
         {
             if (uiManager.consumableSlotSelected)
             {
-                if (uiManager.player.playerInventoryManager.currentConsumable != null)
-                    uiManager.player.playerInventoryManager.consumableInventory.Add(uiManager.player.playerInventoryManager.currentConsumable);
-                uiManager.player.playerInventoryManager.currentConsumable = item;
-                uiManager.quickSlotsUI.UpdateCurrentConsumableIcon(item);
-                uiManager.player.playerInventoryManager.consumableInventory.Remove(item);
+                if (uiManager.player.playerStatsManager.strengthLevel >= item.strengthLevelRequirement
+                    && uiManager.player.playerStatsManager.faithLevel >= item.faithLevelRequirement)
+                {
+                    if (uiManager.player.playerInventoryManager.currentConsumable != null)
+                        uiManager.player.playerInventoryManager.consumableInventory.Add(uiManager.player.playerInventoryManager.currentConsumable);
+                    uiManager.player.playerInventoryManager.currentConsumable = item;
+                    uiManager.quickSlotsUI.UpdateCurrentConsumableIcon(item);
+                    uiManager.player.playerInventoryManager.consumableInventory.Remove(item);
+                }
             }
             else
             {

@@ -18,15 +18,15 @@ namespace GI
         {
             //Scan for the player in the scene and award him
             PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
-            SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
+            SoulCountBar xpCountBar = FindObjectOfType<SoulCountBar>();
 
             if (playerStats != null)
             {
-                playerStats.AddSouls(aiCharacter.aiCharacterStatsManager.souldAwardedOnDeath);
+                playerStats.AddXP(aiCharacter.aiCharacterStatsManager.XPAwardedOnDeath);
 
-                if (soulCountBar != null)
+                if (xpCountBar != null)
                 {
-                    soulCountBar.SetSoulCountText(playerStats.currentSoulCount);
+                    xpCountBar.SetXPCountText(playerStats.currentXPCount);
                 }
             }
         }

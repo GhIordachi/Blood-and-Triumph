@@ -16,6 +16,8 @@ MonoBehaviour:
   itemName: Talisman
   itemID: 0
   value: 0
+  strengthLevelRequirement: 2
+  faithLevelRequirement: 11
   modelPrefab: {fileID: 4107476383774776263, guid: 3bf1d8e0aa2f35d4abd6d5ebd7d19866,
     type: 3}
   isUnarmed: 0

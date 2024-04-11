@@ -7,11 +7,11 @@ namespace GI
 {
     public class SoulCountBar : MonoBehaviour
     {
-        public Text soulCountText;
+        public Text xpCountText;
 
-        public void SetSoulCountText(int soulCount)
+        public void SetXPCountText(int xpCount)
         {
-            soulCountText.text = soulCount.ToString();
+            xpCountText.text = xpCount.ToString();
         }
     }
 }

@@ -11,5 +11,9 @@ namespace GI
         public string itemName;
         public int itemID;
         public int value;
+
+        [Header("Item Stats Requirement")]
+        public int strengthLevelRequirement;
+        public int faithLevelRequirement;
     }
 }
