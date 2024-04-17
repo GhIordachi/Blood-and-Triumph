@@ -66,6 +66,11 @@ namespace GI {
         public Vector3 targetsDirection;
         public float viewableAngle;
 
+        [Header("Animal A.I Info")]
+        public bool isAnimal = false;
+        public float movementSpeed = 1;
+        public PreyAnimalState preyAnimalState;
+
         protected override void Awake()
         {
             base.Awake();
@@ -77,7 +82,8 @@ namespace GI {
             aiCharacterInventoryManager = GetComponent<AICharacterInventoryManager>();
             aiCharacterRigidBody = GetComponent<Rigidbody>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
-            navMeshAgent.enabled = false;
+            if(!isAnimal)
+                navMeshAgent.enabled = false;
         }
 
         protected override void Start()
@@ -125,8 +131,11 @@ namespace GI {
 
         private void LateUpdate()
         {
-            navMeshAgent.transform.localPosition = Vector3.zero;
-            navMeshAgent.transform.localRotation = Quaternion.identity;
+            if (!isAnimal)
+            {
+                navMeshAgent.transform.localPosition = Vector3.zero;
+                navMeshAgent.transform.localRotation = Quaternion.identity;
+            }
         }
 
         private void HandleStateMachine()

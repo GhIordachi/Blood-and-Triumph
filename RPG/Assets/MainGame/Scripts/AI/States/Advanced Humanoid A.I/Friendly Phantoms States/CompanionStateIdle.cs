@@ -67,8 +67,6 @@ namespace GI
             {
                 return this;
             }
-
-            return this;
         }
     }
 }

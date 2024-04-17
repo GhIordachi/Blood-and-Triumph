@@ -8,7 +8,7 @@ namespace GI
     {
         WorldEventManager worldEventManager;
 
-        private void Awake()
+        protected override void Awake()
         {
             worldEventManager = FindObjectOfType<WorldEventManager>();
         }

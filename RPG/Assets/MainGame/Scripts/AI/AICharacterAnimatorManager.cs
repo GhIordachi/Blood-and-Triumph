@@ -62,12 +62,21 @@ namespace GI
 
         public override void OnAnimatorMove()
         {
-            Vector3 velocity = character.animator.deltaPosition;
-            character.characterController.Move(velocity);
-
-            if (aiCharacter.isRotatingWithRootMotion)
+            // Check if root motion is enabled
+            if (aiCharacter.isAnimal == false)
             {
-                character.transform.rotation *= character.animator.deltaRotation;
+                // Use root motion to move the character
+                Vector3 velocity = character.animator.deltaPosition;
+                character.characterController.Move(velocity);
+
+                if (aiCharacter.isRotatingWithRootMotion)
+                {
+                    character.transform.rotation *= character.animator.deltaRotation;
+                }
+            }
+            else
+            {
+                return;           
             }
         }
     }

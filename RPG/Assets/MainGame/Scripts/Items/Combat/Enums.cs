@@ -70,6 +70,13 @@ namespace GI
         Overloaded
     }
 
+    public enum AnimalState
+    {
+        Idle,
+        Moving,
+        Chase
+    }
+
     public class Enums : MonoBehaviour
     {
         

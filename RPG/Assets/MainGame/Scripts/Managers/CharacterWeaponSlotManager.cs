@@ -71,13 +71,15 @@ namespace GI
                 {
                     if (character.isTwoHandingWeapon)
                     {
-                        backSlot.LoadWeaponItem(leftHandSlot.currentWeapon);
+                        if (backSlot != null)
+                            backSlot.LoadWeaponItem(leftHandSlot.currentWeapon);
                         leftHandSlot.UnloadWeaponAndDestroy();
                         character.characterAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
                     }
                     else
                     {
-                        backSlot.UnloadWeaponAndDestroy();
+                        if(backSlot != null)
+                            backSlot.UnloadWeaponAndDestroy();
                     }
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponItem(weaponItem);

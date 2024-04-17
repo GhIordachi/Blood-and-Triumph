@@ -19,7 +19,7 @@ namespace GI
 
         AudioSource audioSource;
 
-        private void Awake()
+        protected override void Awake()
         {
             //If the bonfire has already been activated by the player, play the "Fire" FX when the bonfire is loaded into the scene
             if(hasBeenActivated)
