@@ -44,7 +44,8 @@ namespace GI
 
         private void Start()
         {
-            character.characterWeaponSlotManager.LoadBothWeaponsOnSlots();
+            if(character != null)
+                character.characterWeaponSlotManager.LoadBothWeaponsOnSlots();
         }
 
         //Call in your save function after loading equipment && form the UI

@@ -9,7 +9,7 @@ namespace GI {
         UIManager uiManager;
 
         public Image icon;
-        WeaponItem weapon;
+        [SerializeField] WeaponItem weapon;       
 
         private void Awake()
         {
@@ -33,10 +33,10 @@ namespace GI {
         }
 
         public void EquipThisItem()
-        {
-            if(uiManager.rightHandSlot01Selected && weapon.isWeaponRightHanded)
+        { 
+            if (uiManager.rightHandSlot01Selected && weapon.isWeaponRightHanded)
             {
-                if (uiManager.player.playerStatsManager.strengthLevel >= weapon.strengthLevelRequirement 
+                if (uiManager.player.playerStatsManager.strengthLevel >= weapon.strengthLevelRequirement
                     && uiManager.player.playerStatsManager.faithLevel >= weapon.faithLevelRequirement)
                 {
                     if (uiManager.player.playerInventoryManager.weaponsInRightHandSlots[0] != null)
@@ -45,7 +45,7 @@ namespace GI {
                     uiManager.player.playerInventoryManager.weaponsInventory.Remove(weapon);
                 }
             }
-            else if(uiManager.rightHandSlot02Selected && weapon.isWeaponRightHanded)
+            else if (uiManager.rightHandSlot02Selected && weapon.isWeaponRightHanded)
             {
                 if (uiManager.player.playerStatsManager.strengthLevel >= weapon.strengthLevelRequirement
                     && uiManager.player.playerStatsManager.faithLevel >= weapon.faithLevelRequirement)
@@ -134,6 +134,39 @@ namespace GI {
 
             uiManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
+        }
+
+        public void PurchaseThisItem()
+        {
+            if(uiManager.player.playerInventoryManager.currentGold >= weapon.value)
+            {
+                uiManager.vendorSelectedWeapon = weapon;
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.confirmWeaponPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(false);
+            }
+            else
+            {
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(true);
+                uiManager.confirmWeaponPurchaseWindow.SetActive(false);
+                uiManager.vendorSelectedWeapon = null;
+            }
+        }
+
+        public void FinishPurchaseUI()
+        {
+            if(uiManager.vendorSelectedWeapon != null) 
+                FinishPurchase(uiManager.vendorSelectedWeapon);
+        }
+
+        public void FinishPurchase(WeaponItem weaponItem)
+        {
+            uiManager.player.playerInventoryManager.weaponsInventory.Add(weaponItem);
+            uiManager.player.playerInventoryManager.currentGold = uiManager.player.playerInventoryManager.currentGold - weaponItem.value;
+            if (uiManager.player.playerInventoryManager.currentGold < 0)
+                uiManager.player.playerInventoryManager.currentGold = 0;
+            uiManager.vendorWeaponInventoryManager.weaponsInventory.Remove(weaponItem);
         }
 
         public void ShowItemStats()

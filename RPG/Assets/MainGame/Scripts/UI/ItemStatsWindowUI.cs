@@ -9,6 +9,8 @@ namespace GI
     {
         public Text itemNameText;
         public Image itemIconImage;
+        public GameObject itemsPriceObject;
+        public Text itemPriceValue;
 
         [Header("Equipment Stats Windows")]
         public GameObject weaponStats;
@@ -58,6 +60,17 @@ namespace GI
                 {
                     itemIconImage.gameObject.SetActive(false);
                     itemIconImage.sprite = null;
+                }
+
+                if(weapon.value >= 0)
+                {
+                    itemsPriceObject.SetActive(true);
+                    itemPriceValue.text = weapon.value.ToString();
+                }
+                else
+                {
+                    itemsPriceObject.SetActive(false);
+                    itemPriceValue.text = "";
                 }
 
                 physicalDamageText.text = weapon.physicalDamage.ToString();

@@ -104,6 +104,18 @@ namespace GI {
         public Transform ammoInventorySlotParent;
         AmmoInventorySlot[] ammoInventorySlots;
 
+        [Header("Confirmation Pop Ups")]
+        public GameObject confirmPurchaseWindow;
+        public GameObject notEnoughMoneyWindow;
+
+        [Header("Vendor's Weapon Inventory")]
+        public GameObject confirmWeaponPurchaseWindow;
+        public WeaponsVendorInventoryManager vendorWeaponInventoryManager;
+        public GameObject vendorWeaponInventorySlotPrefab;
+        public Transform vendorWeaponInventorySlotsParent;
+        WeaponInventorySlot[] vendorWeaponInventorySlots;
+        public WeaponItem vendorSelectedWeapon;
+
         private void Awake()
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
@@ -118,6 +130,8 @@ namespace GI {
             spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
             consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
             ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
+
+            vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
 
             bonfireLitPopUpUI = GetComponentInChildren<BonfireLitPopUpUI>();
         }
@@ -325,6 +339,28 @@ namespace GI {
 
         }
 
+        public void UpdateVendorUI()
+        {
+            vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+
+            for (int i = 0; i < vendorWeaponInventorySlots.Length; i++)
+            {
+                if (i < vendorWeaponInventoryManager.weaponsInventory.Count)
+                {
+                    if (vendorWeaponInventorySlots.Length < vendorWeaponInventoryManager.weaponsInventory.Count)
+                    {
+                        Instantiate(vendorWeaponInventorySlotPrefab, vendorWeaponInventorySlotsParent);
+                        vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+                    }
+                    vendorWeaponInventorySlots[i].AddItem(vendorWeaponInventoryManager.weaponsInventory[i]);
+                }
+                else
+                {
+                    vendorWeaponInventorySlots[i].ClearInventorySlot();
+                }
+            }
+        }
+
         public void UpdateInventorySlots()
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
@@ -367,6 +403,12 @@ namespace GI {
             levelUpWindow.SetActive(false);
             vendorShopWindow.SetActive(false);
             menuOptionsWindow.SetActive(false);
+
+            notEnoughMoneyWindow.SetActive(false);
+            confirmPurchaseWindow.SetActive(false);
+            confirmWeaponPurchaseWindow.SetActive(false);
+
+
         }
 
         public void ResetAllSelectedSlots()
