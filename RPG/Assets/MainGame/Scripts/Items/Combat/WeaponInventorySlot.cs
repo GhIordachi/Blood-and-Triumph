@@ -9,7 +9,7 @@ namespace GI {
         UIManager uiManager;
 
         public Image icon;
-        [SerializeField] WeaponItem weapon;       
+        WeaponItem weapon;       
 
         private void Awake()
         {
@@ -142,6 +142,7 @@ namespace GI {
             {
                 uiManager.vendorSelectedWeapon = weapon;
                 uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
                 uiManager.confirmWeaponPurchaseWindow.SetActive(true);
                 uiManager.notEnoughMoneyWindow.SetActive(false);
             }
@@ -149,7 +150,7 @@ namespace GI {
             {
                 uiManager.confirmPurchaseWindow.SetActive(true);
                 uiManager.notEnoughMoneyWindow.SetActive(true);
-                uiManager.confirmWeaponPurchaseWindow.SetActive(false);
+                uiManager.CloseAllVendorsConfirmWindows();
                 uiManager.vendorSelectedWeapon = null;
             }
         }

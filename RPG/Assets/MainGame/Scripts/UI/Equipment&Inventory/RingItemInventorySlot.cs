@@ -89,6 +89,40 @@ namespace GI
             uiManager.ResetAllSelectedSlots();
         }
 
+        public void PurchaseThisItem()
+        {
+            if (uiManager.player.playerInventoryManager.currentGold >= item.value)
+            {
+                uiManager.vendorSelectedRing = item;
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.confirmRingPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(false);
+            }
+            else
+            {
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.vendorSelectedRing = null;
+            }
+        }
+
+        public void FinishPurchaseUI()
+        {
+            if (uiManager.vendorSelectedRing != null)
+                FinishPurchase(uiManager.vendorSelectedRing);
+        }
+
+        public void FinishPurchase(RingItem ring)
+        {
+            uiManager.player.playerInventoryManager.ringItemInventory.Add(ring);
+            uiManager.player.playerInventoryManager.currentGold = uiManager.player.playerInventoryManager.currentGold - ring.value;
+            if (uiManager.player.playerInventoryManager.currentGold < 0)
+                uiManager.player.playerInventoryManager.currentGold = 0;
+            uiManager.mageVendorInventoryManager.ringInventory.Remove(ring);
+        }
+
         public void ShowItemStats()
         {
             uiManager.itemStatsWindowUI.UpdateRingItemStats(item);

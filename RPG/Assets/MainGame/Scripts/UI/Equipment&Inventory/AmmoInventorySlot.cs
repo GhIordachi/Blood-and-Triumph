@@ -1,3 +1,4 @@
+using RPGCharacterAnims;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,40 @@ namespace GI
 
             uiManager.equipmentWindowUI.LoadAmmoOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
+        }
+
+        public void PurchaseThisItem()
+        {
+            if (uiManager.player.playerInventoryManager.currentGold >= item.value)
+            {
+                uiManager.vendorSelectedAmmo = item;
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.confirmAmmoPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(false);
+            }
+            else
+            {
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.vendorSelectedAmmo = null;
+            }
+        }
+
+        public void FinishPurchaseUI()
+        {
+            if (uiManager.vendorSelectedAmmo != null)
+                FinishPurchase(uiManager.vendorSelectedAmmo);
+        }
+
+        public void FinishPurchase(RangedAmmoItem ammo)
+        {
+            uiManager.player.playerInventoryManager.ammoInventory.Add(ammo);
+            uiManager.player.playerInventoryManager.currentGold = uiManager.player.playerInventoryManager.currentGold - ammo.value;
+            if (uiManager.player.playerInventoryManager.currentGold < 0)
+                uiManager.player.playerInventoryManager.currentGold = 0;
+            uiManager.vendorWeaponInventoryManager.ammoInventory.Remove(ammo);
         }
 
         public void ShowItemStats()

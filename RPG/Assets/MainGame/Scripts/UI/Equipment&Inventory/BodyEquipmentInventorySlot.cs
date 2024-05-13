@@ -58,6 +58,40 @@ namespace GI
             uiManager.ResetAllSelectedSlots();
         }
 
+        public void PurchaseThisItem()
+        {
+            if (uiManager.player.playerInventoryManager.currentGold >= item.value)
+            {
+                uiManager.vendorSelectedBody = item;
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.confirmBodyPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(false);
+            }
+            else
+            {
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.vendorSelectedBody = null;
+            }
+        }
+
+        public void FinishPurchaseUI()
+        {
+            if (uiManager.vendorSelectedBody != null)
+                FinishPurchase(uiManager.vendorSelectedBody);
+        }
+
+        public void FinishPurchase(BodyEquipment body)
+        {
+            uiManager.player.playerInventoryManager.bodyEquipmentInventory.Add(body);
+            uiManager.player.playerInventoryManager.currentGold = uiManager.player.playerInventoryManager.currentGold - body.value;
+            if (uiManager.player.playerInventoryManager.currentGold < 0)
+                uiManager.player.playerInventoryManager.currentGold = 0;
+            uiManager.armorVendorInventoryManager.bodyEquipmentInventory.Remove(body);
+        }
+
         public void ShowItemStats()
         {
             uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);

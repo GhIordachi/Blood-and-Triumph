@@ -7,5 +7,6 @@ namespace GI
     public class WeaponsVendorInventoryManager : VendorInventoryManager
     {
         public List<WeaponItem> weaponsInventory;
+        public List<RangedAmmoItem> ammoInventory;
     }
 }

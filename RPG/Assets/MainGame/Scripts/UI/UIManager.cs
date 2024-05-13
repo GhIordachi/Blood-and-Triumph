@@ -33,7 +33,9 @@ namespace GI {
         public GameObject menuOptionsWindow;
 
         [Header("Vendor UI Windows")]
-        public GameObject vendorShopWindow;
+        public GameObject weaponsVendorShopWindow;
+        public GameObject armorVendorShopWindow;
+        public GameObject mageVendorShopWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -116,6 +118,68 @@ namespace GI {
         WeaponInventorySlot[] vendorWeaponInventorySlots;
         public WeaponItem vendorSelectedWeapon;
 
+        [Header("Vendor's Ammo Inventory")]
+        public GameObject confirmAmmoPurchaseWindow;
+        public GameObject vendorAmmoInventorySlotPrefab;
+        public Transform vendorAmmoInventorySlotsParent;
+        AmmoInventorySlot[] vendorAmmoInventorySlots;
+        public RangedAmmoItem vendorSelectedAmmo;
+
+        [Header("Armor Vendor Inventory")]
+        public ArmorVendorInventoryManager armorVendorInventoryManager;
+
+        [Header("Head Armor Vendor Inventory")]
+        public GameObject confirmHelmetPurchaseWindow;
+        public GameObject helmetVendorInventorySlotPrefab;
+        public Transform helmetVendorInventorySlotParent;
+        HeadEquipmentInventorySlot[] vendorHeadEquipmentInventorySlots;
+        public HelmetEquipment vendorSelectedHelmet;
+
+        [Header("Body Armor Vendor Inventory")]
+        public GameObject confirmBodyPurchaseWindow;
+        public GameObject bodyVendorInventorySlotPrefab;
+        public Transform bodyVendorInventorySlotParent;
+        BodyEquipmentInventorySlot[] vendorBodyEquipmentInventorySlots;
+        public BodyEquipment vendorSelectedBody;
+
+        [Header("Hand Armor Vendor Inventory")]
+        public GameObject confirmHandPurchaseWindow;
+        public GameObject handVendorInventorySlotPrefab;
+        public Transform handVendorInventorySlotParent;
+        HandEquipmentInventorySlot[] vendorHandEquipmentInventorySlots;
+        public HandEquipment vendorSelectedHand;
+
+        [Header("Leg Armor Vendor Inventory")]
+        public GameObject confirmLegPurchaseWindow;
+        public GameObject legVendorInventorySlotPrefab;
+        public Transform legVendorInventorySlotParent;
+        LegEquipmentInventorySlot[] vendorLegEquipmentInventorySlots;
+        public LegEquipment vendorSelectedLeg;
+
+        [Header("Mage Vendor Inventory")]
+        public MageVendorInventoryManager mageVendorInventoryManager;
+
+        [Header("Spell Mage Vendor Inventory")]
+        public GameObject confirmSpellPurchaseWindow;
+        public GameObject spellVendorInventorySlotPrefab;
+        public Transform spellVendorInventorySlotParent;
+        SpellItemInventorySlot[] vendorSpellInventorySlots;
+        public SpellItem vendorSelectedSpell;
+
+        [Header("Consumable Mage Vendor Inventory")]
+        public GameObject confirmConsumablePurchaseWindow;
+        public GameObject consumableVendorInventorySlotPrefab;
+        public Transform consumableVendorInventorySlotParent;
+        ConsumableInventorySlot[] vendorConsumableInventorySlots;
+        public ConsumableItem vendorSelectedConsumable;
+
+        [Header("Ring Mage Vendor Inventory")]
+        public GameObject confirmRingPurchaseWindow;
+        public GameObject ringVendorInventorySlotPrefab;
+        public Transform ringVendorInventorySlotParent;
+        RingItemInventorySlot[] vendorRingInventorySlots;
+        public RingItem vendorSelectedRing;
+
         private void Awake()
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
@@ -132,6 +196,14 @@ namespace GI {
             ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
 
             vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            vendorAmmoInventorySlots = vendorAmmoInventorySlotsParent.GetComponentsInChildren<AmmoInventorySlot>();
+            vendorHeadEquipmentInventorySlots = helmetVendorInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+            vendorBodyEquipmentInventorySlots = bodyVendorInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
+            vendorHandEquipmentInventorySlots = handVendorInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+            vendorLegEquipmentInventorySlots = legVendorInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
+            vendorSpellInventorySlots = spellVendorInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+            vendorConsumableInventorySlots = consumableVendorInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+            vendorRingInventorySlots = ringVendorInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
 
             bonfireLitPopUpUI = GetComponentInChildren<BonfireLitPopUpUI>();
         }
@@ -341,7 +413,7 @@ namespace GI {
 
         public void UpdateVendorUI()
         {
-            vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            UpdateVendorInventorySlots();
 
             for (int i = 0; i < vendorWeaponInventorySlots.Length; i++)
             {
@@ -359,6 +431,142 @@ namespace GI {
                     vendorWeaponInventorySlots[i].ClearInventorySlot();
                 }
             }
+
+            for (int i = 0; i < vendorAmmoInventorySlots.Length; i++)
+            {
+                if (i < vendorWeaponInventoryManager.ammoInventory.Count)
+                {
+                    if (vendorAmmoInventorySlots.Length < vendorWeaponInventoryManager.ammoInventory.Count)
+                    {
+                        Instantiate(vendorAmmoInventorySlotPrefab, vendorAmmoInventorySlotsParent);
+                        vendorAmmoInventorySlots = vendorAmmoInventorySlotsParent.GetComponentsInChildren<AmmoInventorySlot>();
+                    }
+                    vendorAmmoInventorySlots[i].AddItem(vendorWeaponInventoryManager.ammoInventory[i]);
+                }
+                else
+                {
+                    vendorAmmoInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorHeadEquipmentInventorySlots.Length; i++)
+            {
+                if (i < armorVendorInventoryManager.headEquipmentInventory.Count)
+                {
+                    if (vendorHeadEquipmentInventorySlots.Length < armorVendorInventoryManager.headEquipmentInventory.Count)
+                    {
+                        Instantiate(helmetVendorInventorySlotPrefab, helmetVendorInventorySlotParent);
+                        vendorHeadEquipmentInventorySlots = helmetVendorInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+                    }
+                    vendorHeadEquipmentInventorySlots[i].AddItem(armorVendorInventoryManager.headEquipmentInventory[i]);
+                }
+                else
+                {
+                    vendorHeadEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorBodyEquipmentInventorySlots.Length; i++)
+            {
+                if (i < armorVendorInventoryManager.bodyEquipmentInventory.Count)
+                {
+                    if (vendorBodyEquipmentInventorySlots.Length < armorVendorInventoryManager.bodyEquipmentInventory.Count)
+                    {
+                        Instantiate(bodyVendorInventorySlotPrefab, bodyVendorInventorySlotParent);
+                        vendorBodyEquipmentInventorySlots = bodyVendorInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
+                    }
+                    vendorBodyEquipmentInventorySlots[i].AddItem(armorVendorInventoryManager.bodyEquipmentInventory[i]);
+                }
+                else
+                {
+                    vendorBodyEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorHandEquipmentInventorySlots.Length; i++)
+            {
+                if (i < armorVendorInventoryManager.handEquipmentInventory.Count)
+                {
+                    if (vendorHandEquipmentInventorySlots.Length < armorVendorInventoryManager.handEquipmentInventory.Count)
+                    {
+                        Instantiate(handVendorInventorySlotPrefab, handVendorInventorySlotParent);
+                        vendorHandEquipmentInventorySlots = handVendorInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+                    }
+                    vendorHandEquipmentInventorySlots[i].AddItem(armorVendorInventoryManager.handEquipmentInventory[i]);
+                }
+                else
+                {
+                    vendorHandEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorLegEquipmentInventorySlots.Length; i++)
+            {
+                if (i < armorVendorInventoryManager.legEquipmentInventory.Count)
+                {
+                    if (vendorLegEquipmentInventorySlots.Length < armorVendorInventoryManager.legEquipmentInventory.Count)
+                    {
+                        Instantiate(legVendorInventorySlotPrefab, legVendorInventorySlotParent);
+                        vendorLegEquipmentInventorySlots = legVendorInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
+                    }
+                    vendorLegEquipmentInventorySlots[i].AddItem(armorVendorInventoryManager.legEquipmentInventory[i]);
+                }
+                else
+                {
+                    vendorLegEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorSpellInventorySlots.Length; i++)
+            {
+                if (i < mageVendorInventoryManager.spellInventory.Count)
+                {
+                    if (vendorSpellInventorySlots.Length < mageVendorInventoryManager.spellInventory.Count)
+                    {
+                        Instantiate(spellVendorInventorySlotPrefab, spellVendorInventorySlotParent);
+                        vendorSpellInventorySlots = spellVendorInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+                    }
+                    vendorSpellInventorySlots[i].AddItem(mageVendorInventoryManager.spellInventory[i]);
+                }
+                else
+                {
+                    vendorSpellInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorConsumableInventorySlots.Length; i++)
+            {
+                if (i < mageVendorInventoryManager.consumableInventory.Count)
+                {
+                    if (vendorConsumableInventorySlots.Length < mageVendorInventoryManager.consumableInventory.Count)
+                    {
+                        Instantiate(consumableVendorInventorySlotPrefab, consumableVendorInventorySlotParent);
+                        vendorConsumableInventorySlots = consumableVendorInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+                    }
+                    vendorConsumableInventorySlots[i].AddItem(mageVendorInventoryManager.consumableInventory[i]);
+                }
+                else
+                {
+                    vendorConsumableInventorySlots[i].ClearInventorySlot();
+                }
+            }
+
+            for (int i = 0; i < vendorRingInventorySlots.Length; i++)
+            {
+                if (i < mageVendorInventoryManager.ringInventory.Count)
+                {
+                    if (vendorRingInventorySlots.Length < mageVendorInventoryManager.ringInventory.Count)
+                    {
+                        Instantiate(ringVendorInventorySlotPrefab, ringVendorInventorySlotParent);
+                        vendorRingInventorySlots = ringVendorInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
+                    }
+                    vendorRingInventorySlots[i].AddItem(mageVendorInventoryManager.ringInventory[i]);
+                }
+                else
+                {
+                    vendorRingInventorySlots[i].ClearInventorySlot();
+                }
+            }
         }
 
         public void UpdateInventorySlots()
@@ -372,6 +580,19 @@ namespace GI {
             spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
             consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
             ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
+        }
+
+        public void UpdateVendorInventorySlots()
+        {
+            vendorWeaponInventorySlots = vendorWeaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            vendorAmmoInventorySlots = vendorAmmoInventorySlotsParent.GetComponentsInChildren<AmmoInventorySlot>();
+            vendorHeadEquipmentInventorySlots = helmetVendorInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+            vendorBodyEquipmentInventorySlots = bodyVendorInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
+            vendorHandEquipmentInventorySlots = handVendorInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+            vendorLegEquipmentInventorySlots = legVendorInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
+            vendorSpellInventorySlots = spellVendorInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+            vendorConsumableInventorySlots = consumableVendorInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+            vendorRingInventorySlots = ringVendorInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
         }
 
         public void OpenSelectWindow()
@@ -396,19 +617,38 @@ namespace GI {
             ringInventoryWindow.SetActive(false);
             spellInventoryWindow.SetActive(false);
             consumableInventoryWindow.SetActive(false);
-            ammoInventoryWindow.SetActive(false);
+            ammoInventoryWindow.SetActive(false);            
             
             itemStatsWindow.SetActive(false);
 
             levelUpWindow.SetActive(false);
-            vendorShopWindow.SetActive(false);
+            weaponsVendorShopWindow.SetActive(false);
+            armorVendorShopWindow.SetActive(false);
+            mageVendorShopWindow.SetActive(false);
             menuOptionsWindow.SetActive(false);
 
             notEnoughMoneyWindow.SetActive(false);
             confirmPurchaseWindow.SetActive(false);
             confirmWeaponPurchaseWindow.SetActive(false);
+            confirmHelmetPurchaseWindow.SetActive(false);
+            confirmBodyPurchaseWindow.SetActive(false);
+            confirmHandPurchaseWindow.SetActive(false);
+            confirmLegPurchaseWindow.SetActive(false);
 
 
+        }
+
+        public void CloseAllVendorsConfirmWindows()
+        {
+            confirmHandPurchaseWindow.SetActive(false);
+            confirmHelmetPurchaseWindow.SetActive(false);
+            confirmBodyPurchaseWindow.SetActive(false);
+            confirmLegPurchaseWindow.SetActive(false);
+            confirmWeaponPurchaseWindow.SetActive(false);
+            confirmAmmoPurchaseWindow.SetActive(false);
+            confirmSpellPurchaseWindow.SetActive(false);
+            confirmConsumablePurchaseWindow.SetActive(false);
+            confirmRingPurchaseWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()

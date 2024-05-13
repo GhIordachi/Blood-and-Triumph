@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,6 +55,40 @@ namespace GI
 
             uiManager.equipmentWindowUI.LoadSpellOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
+        }
+
+        public void PurchaseThisItem()
+        {
+            if (uiManager.player.playerInventoryManager.currentGold >= item.value)
+            {
+                uiManager.vendorSelectedSpell = item;
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.confirmSpellPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(false);
+            }
+            else
+            {
+                uiManager.confirmPurchaseWindow.SetActive(true);
+                uiManager.notEnoughMoneyWindow.SetActive(true);
+                uiManager.CloseAllVendorsConfirmWindows();
+                uiManager.vendorSelectedSpell = null;
+            }
+        }
+
+        public void FinishPurchaseUI()
+        {
+            if (uiManager.vendorSelectedSpell != null)
+                FinishPurchase(uiManager.vendorSelectedSpell);
+        }
+
+        public void FinishPurchase(SpellItem spell)
+        {
+            uiManager.player.playerInventoryManager.spellInventory.Add(spell);
+            uiManager.player.playerInventoryManager.currentGold = uiManager.player.playerInventoryManager.currentGold - spell.value;
+            if (uiManager.player.playerInventoryManager.currentGold < 0)
+                uiManager.player.playerInventoryManager.currentGold = 0;
+            uiManager.mageVendorInventoryManager.spellInventory.Remove(spell);
         }
 
         public void ShowItemStats()
