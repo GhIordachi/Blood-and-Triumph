@@ -80,6 +80,7 @@ namespace GI
         public void LoadGame()
         {
             //Decide load file based on character save slot
+            Debug.Log("Loading file " + fileName);
 
             saveGameDataWriter = new SaveGameDataWriter();
             saveGameDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
