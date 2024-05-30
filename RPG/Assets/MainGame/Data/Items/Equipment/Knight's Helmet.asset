@@ -15,12 +15,16 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemName: Knight's Helmet
   itemID: 1002
+  value: 0
+  strengthLevelRequirement: 0
+  faithLevelRequirement: 0
   physicalDefense: 7
   fireDefense: 0
-  magicalDefense: 0
+  magicDefense: 0
   weight: 3
   poisonResistance: 0.5
   helmetModelName: Male_Helmet_13
+  helmetAttachmentModelName: 
   hideHair: 1
   hideEyebrows: 1
   hideBeard: 1
