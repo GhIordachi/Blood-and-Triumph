@@ -91,6 +91,50 @@ namespace GI
             faithStat.text = player.playerStatsManager.faithLevel.ToString();
         }
 
-        //Create an assign for each class you want to have
+        public void AssignMageClass()
+        {
+            AssignClassStats(2);
+            player.playerInventoryManager.currentHelmetEquipment = classGears[2].headEquipment;
+            player.playerInventoryManager.currentBodyEquipment = classGears[2].bodyEquipment;
+            player.playerInventoryManager.currentLegEquipment = classGears[2].legEquipment;
+            player.playerInventoryManager.currentHandEquipment = classGears[2].handEquipment;
+
+            player.playerInventoryManager.weaponsInRightHandSlots[0] = classGears[2].primaryWeapon;
+            player.playerInventoryManager.weaponsInLeftHandSlots[0] = classGears[2].offHandWeapon;
+            player.playerInventoryManager.currentAmmo = classGears[2].ammoItem;
+
+            player.playerEquipmentManager.EquipAllArmor();
+            player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+
+            healthStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text = player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
+            poiseStat.text = player.playerStatsManager.poiseLevel.ToString();
+            strengthStat.text = player.playerStatsManager.strengthLevel.ToString();
+            faithStat.text = player.playerStatsManager.faithLevel.ToString();
+        }
+
+        public void AssignGuardianClass()
+        {
+            AssignClassStats(3);
+            player.playerInventoryManager.currentHelmetEquipment = classGears[3].headEquipment;
+            player.playerInventoryManager.currentBodyEquipment = classGears[3].bodyEquipment;
+            player.playerInventoryManager.currentLegEquipment = classGears[3].legEquipment;
+            player.playerInventoryManager.currentHandEquipment = classGears[3].handEquipment;
+
+            player.playerInventoryManager.weaponsInRightHandSlots[0] = classGears[3].primaryWeapon;
+            player.playerInventoryManager.weaponsInLeftHandSlots[0] = classGears[3].offHandWeapon;
+            player.playerInventoryManager.currentAmmo = classGears[3].ammoItem;
+
+            player.playerEquipmentManager.EquipAllArmor();
+            player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+
+            healthStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text = player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
+            poiseStat.text = player.playerStatsManager.poiseLevel.ToString();
+            strengthStat.text = player.playerStatsManager.strengthLevel.ToString();
+            faithStat.text = player.playerStatsManager.faithLevel.ToString();
+        }
     }
 }

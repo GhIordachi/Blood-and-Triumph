@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +40,9 @@ namespace GI
         {
             DontDestroyOnLoad(gameObject);
 
-            //Load all possible character profiles
+            saveGameDataWriter = new SaveGameDataWriter();
+            saveGameDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveGameDataWriter.dataSaveFileName = fileName;
         }
 
         private void Update()
@@ -57,7 +60,10 @@ namespace GI
             }
         }
 
-        // New Game
+        public bool SaveFileExists()
+        {
+            return saveGameDataWriter.CheckIfSaveFileExists();
+        }
 
         // Save Game
         public void SaveGame()
@@ -97,7 +103,7 @@ namespace GI
                 player = FindObjectOfType<PlayerManager>();
             }
 
-            AsyncOperation loadOperation = SceneManager.LoadSceneAsync(0);
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("FirstArenaVillage");
 
             while(!loadOperation.isDone)
             {
