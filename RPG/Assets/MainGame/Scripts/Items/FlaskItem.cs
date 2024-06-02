@@ -24,6 +24,7 @@ namespace GI
             GameObject flask = Instantiate(itemModel, player.playerWeaponSlotManager.rightHandSlot.transform);
             player.playerEffectsManager.currentParticleFX = recoveryFX;
             player.playerEffectsManager.amountToBeHealed = healthRecoverAmount;
+            player.playerEffectsManager.amountOfFocusPointsToBeHealed = focusPointsRecoverAmount;
             player.playerEffectsManager.instantiatedFXModel = flask;
             player.playerWeaponSlotManager.rightHandSlot.UnloadWeapon();
         }

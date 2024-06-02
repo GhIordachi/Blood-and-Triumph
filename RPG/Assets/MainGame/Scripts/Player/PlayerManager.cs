@@ -87,11 +87,6 @@ namespace GI
             CheckForInteractableObject();
         }
 
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
         private void LateUpdate()
         {
             inputHandler.d_Pad_Up = false;

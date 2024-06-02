@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
+  m_Name: Shield_04
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 4eb6a3507e77a9d4c95f482124957318, type: 3}
+  itemName: Knight of the Order Shield
+  itemID: 153
+  value: 300
+  strengthLevelRequirement: 10
+  faithLevelRequirement: 5
+  modelPrefab: {fileID: 1385898743171034099, guid: d4c58a2310371444f816bd7757070d4e,
+    type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
+  weaponType: 5
+  canBeTwoHanded: 0
+  isWeaponRightHanded: 0
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightAttackDamageModifier: 0
+  heavyAttackDamageModifier: 0
+  criticalDamageMultiplier: 4
+  guardBreakModifier: 1
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  physicalBlockingDamageAbsorption: 75
+  fireBlockingDamageAbsorption: 50
+  magicBlockingDamageAbsorption: 60
+  stability: 85
+  baseStaminaCost: 0
+  lightAttackStaminaMultiplier: 0
+  heavyAttackStaminaMultiplier: 0
+  oh_tap_Left_Click: {fileID: 0}
+  oh_hold_Left_Click: {fileID: 0}
+  oh_tap_Right_Click: {fileID: 11400000, guid: fed838d884e04db42afc03df095d3a0d, type: 2}
+  oh_hold_Right_Click: {fileID: 11400000, guid: 66a2a7285443f3a4fac4990355bd3cf9,
+    type: 2}
+  oh_tap_R_Action: {fileID: 0}
+  oh_hold_R_Action: {fileID: 0}
+  oh_tap_Q_Action: {fileID: 0}
+  oh_hold_Q_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 0}
+  th_hold_Left_Click: {fileID: 0}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
+  th_tap_R_Action: {fileID: 0}
+  th_hold_R_Action: {fileID: 0}
+  th_tap_Q_Action: {fileID: 0}
+  th_hold_Q_Action: {fileID: 0}
+  weaponWhooshes:
+  - {fileID: 0}
+  blockingNoises:
+  - {fileID: 8300000, guid: c4792e98b71a9ea4da73ec668a9f03bb, type: 3}

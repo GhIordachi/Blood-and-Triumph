@@ -24,6 +24,9 @@ namespace GI
                 case DamageType.Fire:
                     character.characterStatsManager.fireDamagePercentageModifier += modifiedValue;
                     break;
+                case DamageType.Magic:
+                    character.characterStatsManager.magicDamagePercentageModifier += modifiedValue;
+                    break;
                 default:
                     break;
             }
@@ -41,6 +44,9 @@ namespace GI
                     break;
                 case DamageType.Fire:
                     character.characterStatsManager.fireDamagePercentageModifier -= modifiedValue;
+                    break;
+                case DamageType.Magic:
+                    character.characterStatsManager.magicDamagePercentageModifier -= modifiedValue;
                     break;
                 default:
                     break;

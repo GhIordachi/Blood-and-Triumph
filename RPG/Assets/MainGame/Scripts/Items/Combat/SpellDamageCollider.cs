@@ -12,7 +12,7 @@ namespace GI
 
         bool hasCollided = false;
 
-        CharacterManager spellTarget;
+        [SerializeField]CharacterManager spellTarget;
 
         Vector3 impactNormal; //Used to rotate the impact particles
 

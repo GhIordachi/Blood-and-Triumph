@@ -192,7 +192,6 @@ namespace GI
                             break;
                     }
 
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     player.transform.rotation = rollRotation;
@@ -220,7 +219,6 @@ namespace GI
                             break;
                     }
 
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
                     player.playerStatsManager.DeductStamina(backStepStaminaCost);
                 }
             }
@@ -243,7 +241,6 @@ namespace GI
                     moveDirection = player.cameraHandler.cameraObject.transform.forward * player.inputHandler.vertical;
                     moveDirection += player.cameraHandler.cameraObject.transform.right * player.inputHandler.horizontal;
                     player.playerAnimatorManager.PlayTargetAnimation("Jump", true);
-                    player.playerAnimatorManager.EraseHandIKForWeapon();
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     player.transform.rotation = jumpRotation;

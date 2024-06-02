@@ -12,8 +12,6 @@ namespace GI
             if (character.isInteracting)
                 return;
 
-            character.characterAnimatorManager.EraseHandIKForWeapon();
-
             WeaponItem parryingWeapon = character.characterInventoryManager.currentItemBeingUsed as WeaponItem;
 
             //Check if parrying weapon is a fast parry weapon or a medium parry weapon

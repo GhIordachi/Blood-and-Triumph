@@ -13,7 +13,6 @@ namespace GI
                 return;
 
             character.isAttacking = true;
-            character.characterAnimatorManager.EraseHandIKForWeapon();
             character.characterEffectsManager.PlayWeaponFX(false);
 
             if (character.isSprinting)

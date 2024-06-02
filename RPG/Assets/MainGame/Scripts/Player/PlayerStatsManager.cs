@@ -142,6 +142,13 @@ namespace GI {
             healthBar.SetCurrentHealth(currentHealth);
         }
 
+        public override void HealFocusPointsCharacter(int healAmount)
+        {
+            base.HealFocusPointsCharacter(healAmount);
+
+            focusPointBar.SetCurrentFocusPoint(currentFocusPoints);
+        }
+
         public void DeductFocusPoints(int focusPoints)
         {
             currentFocusPoints = currentFocusPoints - focusPoints;

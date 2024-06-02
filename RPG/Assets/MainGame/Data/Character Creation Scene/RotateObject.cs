@@ -6,26 +6,14 @@ namespace GI
 {
     public class RotateObject : MonoBehaviour
     {
-        PlayerControls playerControls;
-
         public float rotationAmount = 1;
         public float rotationSpeed = 5;
-
-        Vector2 cameraInput;
 
         Vector3 currentRotation;
         Vector3 targetRotation;
 
-        private void OnEnable()
-        {
-            if(playerControls == null )
-            {
-                playerControls = new PlayerControls();
-                playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-            }
-
-            playerControls.Enable();
-        }
+        private bool rotatingLeft = false;
+        private bool rotatingRight = false;
 
         private void Start()
         {
@@ -35,17 +23,37 @@ namespace GI
 
         private void Update()
         {
-            if(cameraInput.x > 0)
+            // Check if rotating left
+            if (rotatingLeft)
             {
-                targetRotation.y = targetRotation.y + rotationAmount;
-            }
-            else if (cameraInput.x < 0)
-            {
-                targetRotation.y = targetRotation.y - rotationAmount;
+                targetRotation.y -= rotationAmount * Time.deltaTime;
             }
 
+            // Check if rotating right
+            if (rotatingRight)
+            {
+                targetRotation.y += rotationAmount * Time.deltaTime;
+            }
+
+            // Smoothly interpolate to the target rotation
             currentRotation = Vector3.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
             transform.eulerAngles = currentRotation;
+        }
+
+        public void StartRotateLeft()
+        {
+            rotatingLeft = true;
+        }
+
+        public void StartRotateRight()
+        {
+            rotatingRight = true;
+        }
+
+        public void StopRotate()
+        {
+            rotatingLeft = false;
+            rotatingRight = false;
         }
     }
 }

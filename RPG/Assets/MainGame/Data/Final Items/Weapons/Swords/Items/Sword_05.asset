@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
+  m_Name: Sword_05
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: 5ff5b9c3a8f55364291bf590ac7dcdbf, type: 3}
+  itemName: King's Sword
+  itemID: 104
+  value: 500
+  strengthLevelRequirement: 10
+  faithLevelRequirement: 5
+  modelPrefab: {fileID: 5268282154714063381, guid: 5b619a3f433b5b94b8320db9499cfb75,
+    type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 216a2e20863b48d4283c18ad8eb64635, type: 2}
+  weaponType: 4
+  canBeTwoHanded: 1
+  isWeaponRightHanded: 1
+  physicalDamage: 40
+  fireDamage: 0
+  magicDamage: 15
+  lightAttackDamageModifier: 1.5
+  heavyAttackDamageModifier: 2.5
+  criticalDamageMultiplier: 5
+  guardBreakModifier: 1
+  poiseBreak: 50
+  offensivePoiseBonus: 15
+  physicalBlockingDamageAbsorption: 0
+  fireBlockingDamageAbsorption: 0
+  magicBlockingDamageAbsorption: 0
+  stability: 67
+  baseStaminaCost: 18
+  lightAttackStaminaMultiplier: 1
+  heavyAttackStaminaMultiplier: 1.8
+  oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  oh_hold_Left_Click: {fileID: 11400000, guid: dc5192f9102187a40828984e2c8e423d, type: 2}
+  oh_tap_Right_Click: {fileID: 0}
+  oh_hold_Right_Click: {fileID: 0}
+  oh_tap_R_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
+  oh_hold_R_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
+  oh_tap_Q_Action: {fileID: 0}
+  oh_hold_Q_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  th_hold_Left_Click: {fileID: 11400000, guid: dc5192f9102187a40828984e2c8e423d, type: 2}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
+  th_tap_R_Action: {fileID: 11400000, guid: 95cc1a566829a1e48bc2a763ac8f9d49, type: 2}
+  th_hold_R_Action: {fileID: 11400000, guid: adaa0795a1aca654e89262bb255950ef, type: 2}
+  th_tap_Q_Action: {fileID: 0}
+  th_hold_Q_Action: {fileID: 0}
+  weaponWhooshes:
+  - {fileID: 8300000, guid: e89c1cfc1a5bb5d4d9e9a67ac19af82b, type: 3}
+  - {fileID: 8300000, guid: 92ab81cfa5de22340b79e76148d22484, type: 3}
+  - {fileID: 8300000, guid: 858eae54e9f7be94fb8fdcd0b3dd456a, type: 3}
+  blockingNoises:
+  - {fileID: 8300000, guid: 083744b5eb24f2e42a6b9bbcc826dcf8, type: 3}
+  canBeBuffed: 0

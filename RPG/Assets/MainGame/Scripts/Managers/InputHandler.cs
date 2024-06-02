@@ -534,14 +534,12 @@ namespace GI
                 {
                     player.isTwoHandingWeapon = true;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
-                    player.playerWeaponSlotManager.LoadTwoHandIKTargets(true);
                 }
                 else
                 {
                     player.isTwoHandingWeapon = false;
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
                     player.playerWeaponSlotManager.LoadWeaponOnSlot(player.playerInventoryManager.leftWeapon, true);
-                    player.playerWeaponSlotManager.LoadTwoHandIKTargets(false);
                 }
             }
         }

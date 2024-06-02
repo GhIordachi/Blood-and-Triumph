@@ -81,11 +81,6 @@ namespace GI {
             
         }
 
-        protected virtual void FixedUpdate()
-        {           
-            characterAnimatorManager.CheckHandIKWeight(characterWeaponSlotManager.rightHandIKTarget, characterWeaponSlotManager.leftHandIKTarget, isTwoHandingWeapon);
-        }
-
         protected virtual void Update()
         {
             characterEffectsManager.ProcessAllTimedEffects();

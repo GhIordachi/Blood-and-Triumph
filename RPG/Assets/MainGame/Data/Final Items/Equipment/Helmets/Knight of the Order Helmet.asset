@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
+  m_Name: Knight of the Order Helmet
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Knight of the Order Helmet
+  itemID: 203
+  value: 150
+  strengthLevelRequirement: 12
+  faithLevelRequirement: 2
+  physicalDefense: 25
+  fireDefense: 10
+  magicDefense: 5
+  weight: 5
+  poisonResistance: 1
+  helmetModelName: Male_Helmet_11
+  helmetAttachmentModelName: Chr_HelmetAttachment_03
+  hideHair: 1
+  hideEyebrows: 1
+  hideBeard: 1

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d145148f47e2d74c8e501569e19b10e, type: 3}
   m_Name: Physical Damage Modifier
   m_EditorClassIdentifier: 
-  effectID: 0
+  effectID: 11
   damageType: 0
   modifiedValue: 25

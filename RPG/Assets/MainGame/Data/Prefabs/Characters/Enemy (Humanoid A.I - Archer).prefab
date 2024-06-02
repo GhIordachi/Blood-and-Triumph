@@ -800,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab619a6eb157a84d9df91e74c464864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
   animator: {fileID: 0}
   characterAnimatorManager: {fileID: 0}
   characterWeaponSlotManager: {fileID: 0}
@@ -815,9 +816,11 @@ MonoBehaviour:
   canBeRiposted: 0
   canBeParried: 0
   canDoCombo: 0
+  canRoll: 1
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isMounted: 0
   isUsingRightHand: 0
   isUsingLeftHand: 0
   isHoldingArrow: 0
@@ -832,7 +835,6 @@ MonoBehaviour:
   isRotatingWithRootMotion: 0
   canRotate: 1
   isSprinting: 0
-  isInAir: 0
   isGrounded: 1
   isFiringSpell: 0
   pendingCriticalDamage: 0
@@ -849,6 +851,8 @@ MonoBehaviour:
   isPerformingAction: 0
   rotationSpeed: 15
   maximumAggroRadius: 1.5
+  itemSpawner: {fileID: 0}
+  weaponItemToDrop: {fileID: 0}
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
@@ -867,9 +871,17 @@ MonoBehaviour:
   isStationaryArcher: 1
   minimumTimeToAimAtTarget: 3
   maximumTimeToAimAtTarget: 6
+  maxDistanceFromCompanion: 0
+  minDistanceFromCompanion: 0
+  returnDistanceFromCompanion: 2
+  distanceFromCompanion: 0
+  companion: {fileID: 0}
   distanceFromTarget: 0
   targetsDirection: {x: 0, y: 0, z: 0}
   viewableAngle: 0
+  isAnimal: 0
+  movementSpeed: 1
+  preyAnimalState: {fileID: 0}
 --- !u!114 &3983086138686543824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +916,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandConstraint: {fileID: 695341036805219994}
   rightHandConstraint: {fileID: 258529991415415511}
+  Damage_Forward_Medium_01: Damage_Forward_01
+  Damage_Forward_Medium_02: Damage_Forward_01
+  Damage_Backward_Medium_01: Damage_Back_01
+  Damage_Backward_Medium_02: Damage_Back_01
+  Damage_Left_Medium_01: Damage_Left_01
+  Damage_Left_Medium_02: Damage_Left_01
+  Damage_Right_Medium_01: Damage_Right_01
+  Damage_Right_Medium_02: Damage_Right_01
+  Damage_Forward_Heavy_01: Damage_Forward_01
+  Damage_Forward_Heavy_02: Damage_Forward_01
+  Damage_Backward_Heavy_01: Damage_Back_01
+  Damage_Backward_Heavy_02: Damage_Back_01
+  Damage_Left_Heavy_01: Damage_Left_01
+  Damage_Left_Heavy_02: Damage_Left_01
+  Damage_Right_Heavy_01: Damage_Right_01
+  Damage_Right_Heavy_02: Damage_Right_01
+  Damage_Colossal_Forward_01: Damage_Forward_01
+  Damage_Colossal_Forward_02: Damage_Forward_01
+  Damage_Colossal_Backward_01: Damage_Back_01
+  Damage_Colossal_Backward_02: Damage_Back_01
+  Damage_Colossal_Left_01: Damage_Left_01
+  Damage_Colossal_Left_02: Damage_Left_01
+  Damage_Colossal_Right_01: Damage_Right_01
+  Damage_Colossal_Right_02: Damage_Right_01
+  Damage_Animations_Medium_Forward: []
+  Damage_Animations_Medium_Backward: []
+  Damage_Animations_Medium_Left: []
+  Damage_Animations_Medium_Right: []
+  Damage_Animations_Heavy_Forward: []
+  Damage_Animations_Heavy_Backward: []
+  Damage_Animations_Heavy_Left: []
+  Damage_Animations_Heavy_Right: []
+  Damage_Animations_Colossal_Forward: []
+  Damage_Animations_Colossal_Backward: []
+  Damage_Animations_Colossal_Left: []
+  Damage_Animations_Colossal_Right: []
 --- !u!114 &4681634825040106185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,6 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f271e8508b5b944a8c30d537234d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
   teamIDNumber: 1
   maxHealth: 0
   currentHealth: 0
@@ -923,17 +972,18 @@ MonoBehaviour:
   currentStamina: 0
   maxFocusPoints: 0
   currentFocusPoints: 0
-  currentSoulCount: 0
-  souldAwardedOnDeath: 50
+  currentXPCount: 0
+  XPAwardedOnDeath: 50
   playerLevel: 1
   healthLevel: 10
   staminaLevel: 10
   focusLevel: 10
   poiseLevel: 10
   strengthLevel: 10
-  dexterityLevel: 10
-  intelligenceLevel: 10
   faithLevel: 10
+  currentEquipLoad: 0
+  maxEquipLoad: 0
+  encumbraceLevel: 0
   totalPoiseDefence: 10
   offensivePoiseBonus: 0
   armorPoiseBonus: 5
@@ -947,9 +997,24 @@ MonoBehaviour:
   fireDamageAbsorptionBody: 0
   fireDamageAbsorptionLegs: 0
   fireDamageAbsorptionHands: 0
+  magicDamageAbsorptionHead: 0
+  magicDamageAbsorptionBody: 0
+  magicDamageAbsorptionLegs: 0
+  magicDamageAbsorptionHands: 0
+  poisonResistance: 0
   blockingPhysicalDamageAbsorption: 0
   blockingFireDamageAbsorption: 0
+  blockingMagicDamageAbsorption: 0
   blockingStabilityRating: 0
+  physicalDamagePercentageModifier: 100
+  fireDamagePercentageModifier: 100
+  magicDamagePercentageModifier: 100
+  physicalAbsorptionPercentageModifier: 0
+  fireAbsorptionPercentageModifier: 0
+  magicAbsorptionPercentageModifier: 0
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
   aiCharacterHealthBar: {fileID: 0}
   isBoss: 0
 --- !u!114 &3117780488976624978
@@ -964,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3a93800040cc74aa7a2c12ce1bf32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGold: 0
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
   rightWeapon: {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
@@ -974,6 +1040,10 @@ MonoBehaviour:
   currentBodyEquipment: {fileID: 0}
   currentLegEquipment: {fileID: 0}
   currentHandEquipment: {fileID: 0}
+  ringSlot01: {fileID: 0}
+  ringSlot02: {fileID: 0}
+  ringSlot03: {fileID: 0}
+  ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
   - {fileID: 0}
@@ -996,20 +1066,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c94c320fa7eee4d9ef08e8aebffbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticCharacterEffects: []
+  timedEffects: []
+  effectTickTimer: 0
+  timedEffectParticles: []
   instantiatedFXModel: {fileID: 0}
   bloodSplatterFX: {fileID: 1407402442211574, guid: 5d31a5b9b348544439d8079453188ecc,
     type: 3}
-  rightWeaponFX: {fileID: 0}
-  leftWeaponFX: {fileID: 0}
-  defaultPoisonParticleFX: {fileID: 0}
-  currentPoisonParticleFX: {fileID: 0}
+  rightWeaponManager: {fileID: 0}
+  leftWeaponManager: {fileID: 0}
+  rightWeaponBuffEffect: {fileID: 0}
   buildUpTransform: {fileID: 0}
-  isPoisoned: 0
-  poisonBuildup: 0
-  poisonAmount: 100
-  defaultPoisonAmount: 100
-  poisonTimer: 2
-  poisonDamage: 1
 --- !u!114 &2463770828821670574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,11 +1089,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99fcdff91f000647aa6ea7f6b02c9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterCollider: {fileID: 4135035841251263352}
-  characterCollisionBlockerCollider: {fileID: 6204796517884921205}
-  detectionLayer:
+  moveDirection: {x: 0, y: 0, z: 0}
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 0
+  inAirTimer: 0
+  yVelocity: {x: 0, y: 0, z: 0}
+  groundedYVelocity: -20
+  fallStartYVelocity: -7
+  gravityForce: -25
+  groundCheckSphereRadius: 1
+  fallingVelocitySet: 0
 --- !u!114 &7992490510605978552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,6 +1246,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   criticalAttackRange: 0.7
+  previousPoiseDamageTaken: 0
   currentAttackType: 0
   oh_light_attack_01: OH_Light_Attack_01
   oh_light_attack_02: OH_Light_Attack_02
@@ -3633,6 +3707,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d5fb7869640604da39764438dc1109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  yellowBarTimer: 2
+  damageText: {fileID: 0}
+  currentDamageTaken: 0
 --- !u!1 &6655431495989359896
 GameObject:
   m_ObjectHideFlags: 0

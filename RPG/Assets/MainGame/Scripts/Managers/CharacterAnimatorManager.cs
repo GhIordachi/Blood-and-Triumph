@@ -8,10 +8,6 @@ namespace GI {
     {
         protected CharacterManager character;
 
-        protected RigBuilder rigBuilder;
-        public TwoBoneIKConstraint leftHandConstraint;
-        public TwoBoneIKConstraint rightHandConstraint;
-
         [Header("Damage Animations")]
         [HideInInspector] public string Damage_Forward_Medium_01 = "Damage_Forward_01";
         [HideInInspector] public string Damage_Forward_Medium_02 = "Damage_Forward_01";
@@ -70,7 +66,6 @@ namespace GI {
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
-            rigBuilder = GetComponent<RigBuilder>();
         }
 
         protected virtual void Start()
@@ -218,79 +213,7 @@ namespace GI {
         public virtual void DismountHorse()
         {
             character.animator.SetBool("isMounted", false);
-        }
-
-        public virtual void SetHandIKForWeapon(RightHandIKTarget rightHandTarget, LeftHandIKTarget leftHandTarget, bool isTwoHandingWeapon)
-        {
-            if (isTwoHandingWeapon)
-            {
-                if(rightHandTarget != null)
-                {
-                    rightHandConstraint.data.target = rightHandTarget.transform;
-                    rightHandConstraint.data.targetPositionWeight = 1; //Assign this from a weapon variable if you'd like
-                    rightHandConstraint.data.targetRotationWeight = 1;
-                }
-
-                if(leftHandTarget != null)
-                {
-                    leftHandConstraint.data.target = leftHandTarget.transform;
-                    leftHandConstraint.data.targetPositionWeight = 1;
-                    leftHandConstraint.data.targetRotationWeight = 1;
-                }
-            }
-            else
-            {
-                if(rightHandTarget != null)
-                    rightHandConstraint.data.target = null;
-                if(leftHandTarget != null)
-                    leftHandConstraint.data.target = null;
-            }
-
-            if(rigBuilder != null)
-                rigBuilder.Build();
-        }
-
-        public virtual void CheckHandIKWeight(RightHandIKTarget rightHandIK, LeftHandIKTarget leftHandIK, bool isTwoHandindWeapon)
-        {
-            if (character.isInteracting)
-                return;
-
-            if (handIKWeightsReset)
-            {
-                handIKWeightsReset = false;
-
-                if (rightHandConstraint.data.target != null)
-                {
-                    rightHandConstraint.data.target = rightHandIK.transform;
-                    rightHandConstraint.data.targetPositionWeight = 1;
-                    rightHandConstraint.data.targetRotationWeight = 1;
-                }
-
-                if (leftHandConstraint.data.target != null)
-                {
-                    leftHandConstraint.data.target = leftHandIK.transform;
-                    leftHandConstraint.data.targetPositionWeight = 1;
-                    leftHandConstraint.data.targetRotationWeight = 1;
-                }
-            }
-        }
-
-        public virtual void EraseHandIKForWeapon()
-        {
-            handIKWeightsReset = true;
-
-            if (rightHandConstraint.data.target != null)
-            {
-                rightHandConstraint.data.targetPositionWeight = 0;
-                rightHandConstraint.data.targetRotationWeight = 0;
-            }
-
-            if(leftHandConstraint.data.target != null)
-            {
-                leftHandConstraint.data.targetPositionWeight = 0;
-                leftHandConstraint.data.targetRotationWeight = 0;
-            }
-        }
+        } 
 
         public virtual void OnAnimatorMove()
         {

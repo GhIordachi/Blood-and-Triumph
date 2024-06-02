@@ -84,7 +84,6 @@ namespace GI
                     rightHandSlot.currentWeapon = weaponItem;
                     rightHandSlot.LoadWeaponItem(weaponItem);
                     LoadRightWeaponDamageCollider();
-                    LoadTwoHandIKTargets(character.isTwoHandingWeapon);
                     character.animator.runtimeAnimatorController = weaponItem.weaponController;
                 }
             }
@@ -146,14 +145,6 @@ namespace GI
                 rightHandDamageCollider.poiseDamage = character.characterInventoryManager.rightWeapon.poiseBreak;
                 character.characterEffectsManager.rightWeaponManager = rightHandSlot.curentWeaponModel.GetComponentInChildren<WeaponManager>();
             }
-        }
-
-        public virtual void LoadTwoHandIKTargets(bool isTwoHandingWeapon)
-        {
-            leftHandIKTarget = rightHandSlot.curentWeaponModel.GetComponentInChildren<LeftHandIKTarget>();
-            rightHandIKTarget = rightHandSlot.curentWeaponModel.GetComponentInChildren<RightHandIKTarget>();
-
-            character.characterAnimatorManager.SetHandIKForWeapon(rightHandIKTarget, leftHandIKTarget, isTwoHandingWeapon);
         }
 
         public virtual void OpenDamageCollider()

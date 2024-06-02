@@ -172,7 +172,6 @@ namespace GI
                     //The enemy cannot be damaged whilst being critically damaged
                     EnableIsInvulnerable();
                     character.isPerformingBackStab = true;
-                    character.characterAnimatorManager.EraseHandIKForWeapon();
 
                     character.characterAnimatorManager.PlayTargetAnimation("Back Stab", true);
 
@@ -198,7 +197,6 @@ namespace GI
                     //The enemy cannot be damaged whilst being critically damaged
                     EnableIsInvulnerable();
                     character.isPerformingRiposte = true;
-                    character.characterAnimatorManager.EraseHandIKForWeapon();
 
                     character.characterAnimatorManager.PlayTargetAnimation("Riposte", true);
 

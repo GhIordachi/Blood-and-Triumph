@@ -250,5 +250,15 @@ namespace GI {
                 currentHealth = maxHealth;
             }
         }
+
+        public virtual void HealFocusPointsCharacter(int healAmount)
+        {
+            currentFocusPoints = currentFocusPoints + healAmount;
+
+            if (currentFocusPoints > maxFocusPoints)
+            {
+                currentFocusPoints = maxFocusPoints;
+            }
+        }
     }
 }

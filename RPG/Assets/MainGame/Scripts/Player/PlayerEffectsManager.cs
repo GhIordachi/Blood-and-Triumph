@@ -14,6 +14,7 @@ namespace GI
 
         public GameObject currentParticleFX; //The particles that will play of the current effect that is effecting the player (drinking estus, poison etc)
         public int amountToBeHealed;
+        public int amountOfFocusPointsToBeHealed;
 
         protected override void Awake()
         {
@@ -26,6 +27,7 @@ namespace GI
         public void HealPlayerFromEffect()
         {
             player.playerStatsManager.HealCharacter(amountToBeHealed);
+            player.playerStatsManager.HealFocusPointsCharacter(amountOfFocusPointsToBeHealed);
             GameObject healParticles = Instantiate(currentParticleFX, player.playerStatsManager.transform);
             Destroy(instantiatedFXModel.gameObject);
             player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();

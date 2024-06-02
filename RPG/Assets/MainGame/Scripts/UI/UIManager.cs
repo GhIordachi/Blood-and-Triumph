@@ -180,6 +180,16 @@ namespace GI {
         RingItemInventorySlot[] vendorRingInventorySlots;
         public RingItem vendorSelectedRing;
 
+        [Header("Quests")]
+        public GameObject questHolder;
+        public GameObject quest1;
+        public GameObject quest2;
+        public GameObject quest3;
+        public GameObject quest4;
+        public GameObject quest5;
+        public GameObject quest6;
+        public GameObject quest7;
+
         private void Awake()
         {
             quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();

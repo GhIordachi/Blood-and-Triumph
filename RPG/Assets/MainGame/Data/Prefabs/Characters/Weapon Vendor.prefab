@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
   - {fileID: 11400000, guid: 04b31c3fd2facf441aeece11e5ae5a7f, type: 2}
   - {fileID: 11400000, guid: 7f20e970aaeb22547bff243bbe8d8cee, type: 2}
+  ammoInventory: []
 --- !u!1 &2648293205951747716
 GameObject:
   m_ObjectHideFlags: 0

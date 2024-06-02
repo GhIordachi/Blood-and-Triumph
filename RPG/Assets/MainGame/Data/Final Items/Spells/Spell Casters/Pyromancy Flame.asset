@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
+  m_Name: Pyromancy Flame
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Pyromancy Flame
+  itemID: 161
+  value: 100
+  strengthLevelRequirement: 3
+  faithLevelRequirement: 10
+  modelPrefab: {fileID: 1974901220181476247, guid: 2f5966a92678a434189b9b04d5bf488a,
+    type: 3}
+  isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 658b00a306fc50d408da9dd4da78467b, type: 2}
+  weaponType: 0
+  canBeTwoHanded: 0
+  isWeaponRightHanded: 0
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightAttackDamageModifier: 1
+  heavyAttackDamageModifier: 2
+  criticalDamageMultiplier: 4
+  guardBreakModifier: 1
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  physicalBlockingDamageAbsorption: 0
+  fireBlockingDamageAbsorption: 0
+  magicBlockingDamageAbsorption: 0
+  stability: 67
+  baseStaminaCost: 0
+  lightAttackStaminaMultiplier: 0
+  heavyAttackStaminaMultiplier: 0
+  oh_tap_Left_Click: {fileID: 0}
+  oh_hold_Left_Click: {fileID: 0}
+  oh_tap_Right_Click: {fileID: 11400000, guid: 865fee9cb50158549beb7b6064aa0196, type: 2}
+  oh_hold_Right_Click: {fileID: 0}
+  oh_tap_R_Action: {fileID: 0}
+  oh_hold_R_Action: {fileID: 0}
+  oh_tap_Q_Action: {fileID: 0}
+  oh_hold_Q_Action: {fileID: 0}
+  th_tap_Left_Click: {fileID: 0}
+  th_hold_Left_Click: {fileID: 0}
+  th_tap_Right_Click: {fileID: 0}
+  th_hold_Right_Click: {fileID: 0}
+  th_tap_R_Action: {fileID: 0}
+  th_hold_R_Action: {fileID: 0}
+  th_tap_Q_Action: {fileID: 0}
+  th_hold_Q_Action: {fileID: 0}
+  weaponWhooshes: []
+  blockingNoises: []

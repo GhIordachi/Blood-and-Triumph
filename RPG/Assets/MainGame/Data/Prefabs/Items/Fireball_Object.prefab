@@ -53,7 +53,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.8
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2857175834560106039
 Rigidbody:
@@ -96,9 +96,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 1
-  currentWeaponDamage: 50
+  teamIDNumber: 0
+  poiseDamage: 0
+  offensivePoiseBonus: 0
+  physicalDamage: 0
+  fireDamage: 25
+  magicDamage: 0
+  guardBreakModifier: 1
   impactParticles: {fileID: 7540050193787710204, guid: c3bb2e3b63f2f0747b37234abc74dbaf,
     type: 3}
   projectileParticles: {fileID: 1207433386840518, guid: 54f02b1571bd2d64a85d53cf0c31d08e,
     type: 3}
   muzzleParticles: {fileID: 100000, guid: 0ca899321fcc4e345828e4e78ca8650e, type: 3}
+  spellTarget: {fileID: 0}

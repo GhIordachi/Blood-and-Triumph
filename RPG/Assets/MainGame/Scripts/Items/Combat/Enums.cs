@@ -47,7 +47,15 @@ namespace GI
     public enum DamageType
     {
         Physical,
-        Fire
+        Fire,
+        Magic
+    }
+
+    public enum AbsorptionType
+    {
+        physicalAbsorption,
+        fireAbsorption, 
+        magicAbsorption
     }
 
     public enum BuffClass

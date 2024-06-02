@@ -124,11 +124,6 @@ namespace GI {
             }
         }
 
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
         private void LateUpdate()
         {
             if (!isAnimal)

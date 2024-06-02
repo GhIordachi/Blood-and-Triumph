@@ -61,8 +61,6 @@ namespace GI
                 magicDamage = Mathf.RoundToInt(magicDamage * (characterCausingDamage.characterStatsManager.magicDamagePercentageModifier / 100));
             }
 
-            character.characterAnimatorManager.EraseHandIKForWeapon();
-
             float totalPhysicalDamageAbsorption = 1 -
                 (1 - character.characterStatsManager.physicalDamageAbsorptionHead / 100) *
                 (1 - character.characterStatsManager.physicalDamageAbsorptionBody / 100) *
