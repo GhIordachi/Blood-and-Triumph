@@ -26,6 +26,7 @@ namespace GI
 
                     if (child != null && child.activeSelf)
                     {
+                        Debug.Log("Done");
                         player.playerEquipmentManager.eyebrows = child;
                         player.playerEquipmentManager.eyebrowID = i;
                     }

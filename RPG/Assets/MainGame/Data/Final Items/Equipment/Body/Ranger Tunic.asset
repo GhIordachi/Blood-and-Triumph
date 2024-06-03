@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
+  m_Name: Ranger Tunic
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Ranger Tunic
+  itemID: 216
+  value: 50
+  strengthLevelRequirement: 3
+  faithLevelRequirement: 2
+  physicalDefense: 5
+  fireDefense: 0
+  magicDefense: 8
+  weight: 3.5
+  poisonResistance: 4
+  torsoModelName: Male_Torso_08
+  upperLeftArmModelName: Chr_ArmUpperLeft_Male_11
+  upperRightArmModelName: Chr_ArmUpperRight_Male_11
+  backAttachmentModelName: Chr_BackAttachment_04
+  shoulderRightAttachmentModelName: Chr_ShoulderAttachRight_16
+  shoulderLeftAttachmentModelName: 

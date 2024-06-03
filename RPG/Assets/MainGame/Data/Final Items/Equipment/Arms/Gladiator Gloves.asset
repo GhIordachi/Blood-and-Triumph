@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
+  m_Name: Gladiator Gloves
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Gladiator Gloves
+  itemID: 232
+  value: 100
+  strengthLevelRequirement: 9
+  faithLevelRequirement: 1
+  physicalDefense: 6
+  fireDefense: 3
+  magicDefense: 1
+  weight: 3.5
+  poisonResistance: 0
+  leftHandModelName: Chr_HandLeft_Male_02
+  rightHandModelName: Chr_HandRight_Male_02
+  lowerLeftArmModelName: Chr_ArmLowerLeft_Male_03
+  lowerRightArmModelName: Chr_ArmLowerRight_Male_03
+  leftElbowModelName: Chr_ElbowAttachLeft_01
+  rightElbowModelName: Chr_ElbowAttachRight_01

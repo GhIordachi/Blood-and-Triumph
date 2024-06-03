@@ -19,8 +19,6 @@ namespace GI
         public int focusLevel;
         public int poiseLevel;
         public int strengthLevel;
-        public int dexterityLevel;
-        public int intelligenceLevel;
         public int faithLevel;
     }
 }

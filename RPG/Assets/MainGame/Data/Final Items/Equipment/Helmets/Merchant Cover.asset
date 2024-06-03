@@ -18,7 +18,7 @@ MonoBehaviour:
   value: 20
   strengthLevelRequirement: 1
   faithLevelRequirement: 2
-  physicalDefense: 3
+  physicalDefense: 1
   fireDefense: 0
   magicDefense: 2
   weight: 1

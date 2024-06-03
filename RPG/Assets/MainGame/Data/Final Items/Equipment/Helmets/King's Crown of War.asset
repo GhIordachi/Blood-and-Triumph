@@ -18,9 +18,9 @@ MonoBehaviour:
   value: 20
   strengthLevelRequirement: 14
   faithLevelRequirement: 5
-  physicalDefense: 30
-  fireDefense: 15
-  magicDefense: 10
+  physicalDefense: 12
+  fireDefense: 5
+  magicDefense: 5
   weight: 4
   poisonResistance: 5
   helmetModelName: Male_Helmet_25

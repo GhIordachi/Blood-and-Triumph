@@ -15,8 +15,6 @@ namespace GI
         public Text focusStat;
         public Text poiseStat;
         public Text strengthStat;
-        public Text dexterityStat;
-        public Text intelligenceStat;
         public Text faithStat;
         public Text classDescription;
 
@@ -102,6 +100,7 @@ namespace GI
             player.playerInventoryManager.weaponsInRightHandSlots[0] = classGears[2].primaryWeapon;
             player.playerInventoryManager.weaponsInLeftHandSlots[0] = classGears[2].offHandWeapon;
             player.playerInventoryManager.currentAmmo = classGears[2].ammoItem;
+            player.playerInventoryManager.currentSpell = classGears[2].startingSpell;
 
             player.playerEquipmentManager.EquipAllArmor();
             player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();

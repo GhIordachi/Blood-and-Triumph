@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
+  m_Name: King's Gloves of War
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: King's Gloves of War
+  itemID: 234
+  value: 250
+  strengthLevelRequirement: 14
+  faithLevelRequirement: 5
+  physicalDefense: 12
+  fireDefense: 5
+  magicDefense: 5
+  weight: 4
+  poisonResistance: 5
+  leftHandModelName: Chr_HandLeft_Male_11
+  rightHandModelName: Chr_HandRight_Male_11
+  lowerLeftArmModelName: Chr_ArmLowerLeft_Male_05
+  lowerRightArmModelName: Chr_ArmLowerRight_Male_05
+  leftElbowModelName: Chr_ElbowAttachLeft_06
+  rightElbowModelName: Chr_ElbowAttachRight_06

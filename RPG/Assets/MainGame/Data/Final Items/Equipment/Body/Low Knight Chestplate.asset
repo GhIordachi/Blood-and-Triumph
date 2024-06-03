@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
+  m_Name: Low Knight Chestplate
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Low Knight Chestplate
+  itemID: 211
+  value: 70
+  strengthLevelRequirement: 6
+  faithLevelRequirement: 1
+  physicalDefense: 11
+  fireDefense: 4
+  magicDefense: 1
+  weight: 6
+  poisonResistance: 0
+  torsoModelName: Male_Torso_25
+  upperLeftArmModelName: Chr_ArmUpperLeft_Male_06
+  upperRightArmModelName: Chr_ArmUpperRight_Male_06
+  backAttachmentModelName: 
+  shoulderRightAttachmentModelName: Chr_ShoulderAttachRight_02
+  shoulderLeftAttachmentModelName: Chr_ShoulderAttachLeft_02

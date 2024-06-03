@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e295521925508548a4a08f7b922ce10, type: 3}
-  m_Name: Knight's Platelegs
+  m_Name: Faith Bringer Leggings
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Knight's Platelegs
-  itemID: 1001
-  physicalDefense: 10
-  fireDefense: 0
-  magicalDefense: 0
-  weight: 5
-  poisonResistance: 0
-  hipModelName: Chr_Hips_Male_04
-  leftLegName: Male_Left_Leg_14
-  rightLegName: Male_Right_Leg_14
+  itemName: Faith Bringer Leggings
+  itemID: 228
+  value: 110
+  strengthLevelRequirement: 2
+  faithLevelRequirement: 7
+  physicalDefense: 4
+  fireDefense: 2
+  magicDefense: 8
+  weight: 2.5
+  poisonResistance: 6
+  hipModelName: Chr_Hips_Male_05
+  leftLegName: Male_Left_Leg_20
+  rightLegName: Male_Right_Leg_20
+  leftKneePadName: 
+  rightKneePadName: 

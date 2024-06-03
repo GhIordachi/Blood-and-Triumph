@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
-  m_Name: Fallen Knight's Gauntlets
+  m_Name: Merchant Gloves
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Fallen Knight's Gauntlets
-  itemID: 1007
-  physicalDefense: 5
+  itemName: Merchant Gloves
+  itemID: 235
+  value: 20
+  strengthLevelRequirement: 1
+  faithLevelRequirement: 2
+  physicalDefense: 1
   fireDefense: 0
-  magicalDefense: 0
+  magicDefense: 2
   weight: 1
-  poisonResistance: 0
+  poisonResistance: 1
   leftHandModelName: Chr_HandLeft_Male_08
   rightHandModelName: Chr_HandRight_Male_08
-  lowerLeftArmModelName: Chr_ArmLowerLeft_Male_12
-  lowerRightArmModelName: Chr_ArmLowerRight_Male_12
+  lowerLeftArmModelName: Chr_ArmLowerLeft_Male_18
+  lowerRightArmModelName: Chr_ArmLowerRight_Male_18
+  leftElbowModelName: 
+  rightElbowModelName: 

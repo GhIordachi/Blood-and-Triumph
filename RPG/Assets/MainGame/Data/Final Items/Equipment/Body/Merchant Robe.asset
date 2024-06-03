@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
-  m_Name: Fallen Knight's Chestplate
+  m_Name: Merchant Robe
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Fallen Knight's Chestplate
-  itemID: 1008
-  physicalDefense: 10
+  itemName: Merchant Robe
+  itemID: 215
+  value: 25
+  strengthLevelRequirement: 1
+  faithLevelRequirement: 2
+  physicalDefense: 2
   fireDefense: 0
-  magicDefense: 0
-  weight: 4
-  poisonResistance: 0
-  torsoModelName: Male_Torso_10
-  upperLeftArmModelName: Chr_ArmUpperLeft_Male_07
-  upperRightArmModelName: Chr_ArmUpperRight_Male_07
+  magicDefense: 4
+  weight: 2.5
+  poisonResistance: 2
+  torsoModelName: Male_Torso_09
+  upperLeftArmModelName: Chr_ArmUpperLeft_Male_20
+  upperRightArmModelName: Chr_ArmUpperRight_Male_20
   backAttachmentModelName: 
-  shoulderRightAttachmentModelName: Chr_ShoulderAttachRight_04
-  shoulderLeftAttachmentModelName: Chr_ShoulderAttachLeft_04
+  shoulderRightAttachmentModelName: 
+  shoulderLeftAttachmentModelName: 

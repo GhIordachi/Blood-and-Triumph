@@ -7,7 +7,7 @@ namespace GI
     public class HelmetHider : MonoBehaviour
     {
         PlayerManager player;
-        HelmetEquipment helmet;
+        public HelmetEquipment helmet;
 
         private void Awake()
         {

@@ -22,6 +22,7 @@ namespace GI
         public LegEquipment legEquipment;
         public HandEquipment handEquipment;
 
-        //public SpellItem startingSpell;
+        [Header("Other")]
+        public SpellItem startingSpell;
     }
 }

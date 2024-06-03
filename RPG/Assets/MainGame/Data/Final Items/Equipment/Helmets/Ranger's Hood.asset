@@ -18,13 +18,13 @@ MonoBehaviour:
   value: 40
   strengthLevelRequirement: 3
   faithLevelRequirement: 2
-  physicalDefense: 6
+  physicalDefense: 2
   fireDefense: 0
   magicDefense: 3
   weight: 1.5
   poisonResistance: 3
-  helmetModelName: Male_Helmet_01
+  helmetModelName: Male_Helmet_21
   helmetAttachmentModelName: 
-  hideHair: 0
-  hideEyebrows: 1
-  hideBeard: 1
+  hideHair: 1
+  hideEyebrows: 0
+  hideBeard: 0

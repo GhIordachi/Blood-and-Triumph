@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
+  m_Name: Knight of the Order Chestplate
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Knight of the Order Chestplate
+  itemID: 213
+  value: 200
+  strengthLevelRequirement: 12
+  faithLevelRequirement: 2
+  physicalDefense: 18
+  fireDefense: 7
+  magicDefense: 3
+  weight: 10
+  poisonResistance: 2
+  torsoModelName: Male_Torso_26
+  upperLeftArmModelName: Chr_ArmUpperLeft_Male_08
+  upperRightArmModelName: Chr_ArmUpperRight_Male_08
+  backAttachmentModelName: Chr_BackAttachment_15
+  shoulderRightAttachmentModelName: Chr_ShoulderAttachRight_19
+  shoulderLeftAttachmentModelName: Chr_ShoulderAttachLeft_19
