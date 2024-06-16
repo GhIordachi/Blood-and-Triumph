@@ -16,7 +16,7 @@ namespace GI
         public Text currentPlayerLevelText;   //The UI text for the number of the current player level
         public Text projectedPlayerLevelText; //The UI text for the projected player level number
 
-        [Header("Souls")]
+        [Header("Experience")]
         public Text currentXPText;
         public Text XPRequiredToLevelUpText;
         private int XPRequiredToLevelUp;

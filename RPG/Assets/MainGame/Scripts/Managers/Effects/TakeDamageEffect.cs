@@ -89,8 +89,6 @@ namespace GI
             fireDamage = fireDamage - Mathf.RoundToInt(fireDamage * (character.characterStatsManager.fireAbsorptionPercentageModifier / 100));
             magicDamage = magicDamage - Mathf.RoundToInt(magicDamage * (character.characterStatsManager.magicAbsorptionPercentageModifier / 100));
 
-            Debug.Log("Total magic damage dealt is " + magicDamage);
-
             float finalDamage = physicalDamage + fireDamage + magicDamage; // + magicDamage etc.
 
             character.characterStatsManager.currentHealth = Mathf.RoundToInt(character.characterStatsManager.currentHealth - finalDamage);

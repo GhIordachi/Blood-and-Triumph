@@ -8,8 +8,8 @@ namespace GI
     public class FlaskItem : ConsumableItem
     {
         [Header("Flask Type")]
-        public bool estusFlask;
-        public bool ashenFlask;
+        public bool healingFlask;
+        public bool manaFlask;
 
         [Header("Recovery Amount")]
         public int healthRecoverAmount;

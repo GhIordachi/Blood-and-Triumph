@@ -127,11 +127,12 @@ namespace GI {
                 return;
             }
 
-            uiManager.player.playerInventoryManager.rightWeapon = uiManager.player.playerInventoryManager.weaponsInRightHandSlots[uiManager.player.playerInventoryManager.currentRightWeaponIndex];
-            uiManager.player.playerInventoryManager.leftWeapon = uiManager.player.playerInventoryManager.weaponsInLeftHandSlots[uiManager.player.playerInventoryManager.currentLeftWeaponIndex];
+            uiManager.player.playerInventoryManager.rightWeapon = 
+                uiManager.player.playerInventoryManager.weaponsInRightHandSlots[uiManager.player.playerInventoryManager.currentRightWeaponIndex];
+            uiManager.player.playerInventoryManager.leftWeapon = 
+                uiManager.player.playerInventoryManager.weaponsInLeftHandSlots[uiManager.player.playerInventoryManager.currentLeftWeaponIndex];
 
             uiManager.player.playerWeaponSlotManager.LoadBothWeaponsOnSlots();
-
             uiManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(uiManager.player);
             uiManager.ResetAllSelectedSlots();
         }

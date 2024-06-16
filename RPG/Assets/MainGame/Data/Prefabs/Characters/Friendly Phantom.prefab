@@ -3381,8 +3381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f9dfaf27f58b84fbf542f0c24282e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandConstraint: {fileID: 6366439525433836439}
-  rightHandConstraint: {fileID: 5824174579319020438}
   Damage_Forward_Medium_01: Damage_Forward_01
   Damage_Forward_Medium_02: Damage_Forward_01
   Damage_Backward_Medium_01: Damage_Back_01
@@ -3522,9 +3520,9 @@ MonoBehaviour:
   isStationaryArcher: 0
   minimumTimeToAimAtTarget: 3
   maximumTimeToAimAtTarget: 6
-  maxDistanceFromCompanion: 5
-  minDistanceFromCompanion: 2
-  returnDistanceFromCompanion: 2
+  maxDistanceFromCompanion: 15
+  minDistanceFromCompanion: 5
+  returnDistanceFromCompanion: 3
   distanceFromCompanion: 0
   companion: {fileID: 0}
   distanceFromTarget: 0
@@ -3659,7 +3657,7 @@ MonoBehaviour:
   currentGold: 0
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 079cf8c3e7b624d4ca70797d8c1896c0, type: 2}
   leftWeapon: {fileID: 0}
   currentConsumable: {fileID: 0}
   currentAmmo: {fileID: 0}
@@ -3672,7 +3670,7 @@ MonoBehaviour:
   ringSlot03: {fileID: 0}
   ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: a87d3d3d85cf0d845ba6d408497f99a7, type: 2}
+  - {fileID: 11400000, guid: 079cf8c3e7b624d4ca70797d8c1896c0, type: 2}
   weaponsInLeftHandSlots:
   - {fileID: 0}
   currentRightWeaponIndex: -1

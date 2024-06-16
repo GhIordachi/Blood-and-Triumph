@@ -11,7 +11,7 @@ namespace GI
         public RotateTowardsTargetStateHumanoid rotateTowardsTargetState;
         public ItemBasedAttackAction currentAttack;
 
-        bool willDoComboNextAttack = false;
+        [SerializeField]bool willDoComboNextAttack = false;
         public bool hasPerformedAttack = false;
 
         private void Awake()
@@ -59,6 +59,7 @@ namespace GI
 
             if (willDoComboNextAttack && hasPerformedAttack)
             {
+                ResetStateFlags();
                 return this;
             }
 

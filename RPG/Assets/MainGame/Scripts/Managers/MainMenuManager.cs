@@ -19,7 +19,6 @@ namespace GI
 
         void Start()
         {
-            // Check if the save file exists and enable/disable the continue button accordingly
             continueButton.interactable = saveGameManager.SaveFileExists();
             continueButton.onClick.AddListener(ContinueGame);
         }

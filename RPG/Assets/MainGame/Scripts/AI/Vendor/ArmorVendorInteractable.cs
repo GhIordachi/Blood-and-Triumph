@@ -14,6 +14,7 @@ namespace GI
             playerManager.UIManager.hudWindow.SetActive(false);
             playerManager.UIManager.UpdateVendorUI();
             playerManager.UIManager.UpdateUI();
+            playerManager.inputHandler.inventoryFlag = true;
         }
     }
 }

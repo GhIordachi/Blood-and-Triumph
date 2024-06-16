@@ -57,6 +57,15 @@ namespace GI
         public float yPosition;
         public float zPosition;
 
+        [Header("Quests")]
+        public bool quest1;
+        public bool quest2;
+        public bool quest3;
+        public bool quest4;
+        public bool quest5;
+        public bool quest6;
+        public bool quest7;
+
         [Header("Player's Inventory")]
         public List<int> weaponsInInventoryByID = new List<int>();
         public List<int> helmetsInInventoryByID = new List<int>();
@@ -69,7 +78,7 @@ namespace GI
         public List<int> ammoInInventoryByID = new List<int>();
 
         [Header("Items Looted From World")]
-        public SerializableDictionary<int, bool> itemsInWorld;   //The int is the world item ID, the bool is if the item has been looetd
+        public SerializableDictionary<int, bool> itemsInWorld;   //The int is the world item ID, the bool is if the item has been looted
 
         public CharacterSaveData()
         {

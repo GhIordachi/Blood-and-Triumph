@@ -10,8 +10,6 @@ namespace GI
         [SerializeField] private List<Tkey> keys = new List<Tkey>();
         [SerializeField] private List<TValue> values = new List<TValue>();
 
-        //Called right before serialization
-        //Saves the dictionary to lists
         public void OnBeforeSerialize()
         {
             keys.Clear();
@@ -24,8 +22,6 @@ namespace GI
             }
         }
 
-        //Called right after serialization
-        //Load the dictionary from lists
         public void OnAfterDeserialize()
         {
             Clear();

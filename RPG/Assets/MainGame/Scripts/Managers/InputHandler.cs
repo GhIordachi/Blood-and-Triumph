@@ -122,6 +122,10 @@ namespace GI
             if(player.isDead) 
                 return;
 
+            HandleInventoryInput();
+
+            if (inventoryFlag)
+                return;
             HandleMoveInput();
             HandleShiftInput();
 
@@ -135,7 +139,6 @@ namespace GI
             HandleTapQInput();
 
             HandleQuickSlotInput();
-            HandleInventoryInput();
 
             HandleLockOnInput();
             HandleTwoHandInput();
@@ -461,6 +464,11 @@ namespace GI
                         inventoryFlag = !inventoryFlag;
                         return;
                     }
+                    moveAmount = 0;
+                    horizontal = 0;
+                    vertical = 0;
+                    mouseX = 0;
+                    mouseY = 0;
                     player.UIManager.OpenSelectWindow();
                     player.UIManager.UpdateUI();
                     player.UIManager.hudWindow.SetActive(false);
@@ -552,7 +560,10 @@ namespace GI
             if (consume_Input)
             {
                 consume_Input = false;
-                player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player);
+                if (player.playerInventoryManager.currentConsumable != null)
+                    player.playerInventoryManager.currentConsumable.AttemptToConsumeItem(player);
+                else
+                    player.playerAnimatorManager.PlayTargetAnimation("No", false);
             }
         }
 

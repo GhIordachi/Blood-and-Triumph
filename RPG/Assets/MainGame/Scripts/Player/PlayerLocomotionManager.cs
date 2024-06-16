@@ -23,6 +23,9 @@ namespace GI
         int rollStaminaCost = 15;
         int backStepStaminaCost = 12;
         int sprintStaminaCost = 1;
+        int jumpStaminaCost = 15;
+
+        bool timeTillJumping = false;
 
         protected override void Awake()
         {
@@ -201,23 +204,7 @@ namespace GI
                 {
                     if (player.playerStatsManager.currentStamina <= backStepStaminaCost)
                         return;
-                    switch (player.playerStatsManager.encumbraceLevel)
-                    {
-                        case EncumbranceLevel.Light:
-                            player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
-                            break;
-                        case EncumbranceLevel.Medium:
-                            player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
-                            break;
-                        case EncumbranceLevel.Heavy:
-                            player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
-                            break;
-                        case EncumbranceLevel.Overloaded:
-                            player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
-                            break;
-                        default:
-                            break;
-                    }
+                    player.playerAnimatorManager.PlayTargetAnimation("StepBack", true);
 
                     player.playerStatsManager.DeductStamina(backStepStaminaCost);
                 }
@@ -232,20 +219,33 @@ namespace GI
             if (player.playerStatsManager.currentStamina <= 0)
                 return;
 
+            if (player.isJumping)
+                return;
+
             if (player.inputHandler.jump_Input)
             {
                 player.inputHandler.jump_Input = false;
+                player.isJumping = true;
+                
+                StartCoroutine(WaitUntilJumpingAgain());               
 
                 if (player.inputHandler.moveAmount > 0)
                 {
                     moveDirection = player.cameraHandler.cameraObject.transform.forward * player.inputHandler.vertical;
                     moveDirection += player.cameraHandler.cameraObject.transform.right * player.inputHandler.horizontal;
-                    player.playerAnimatorManager.PlayTargetAnimation("Jump", true);
+                    player.playerAnimatorManager.PlayTargetAnimation("Jump", false);
+                    player.playerStatsManager.DeductStamina(jumpStaminaCost);
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     player.transform.rotation = jumpRotation;
                 }
             }
+        }
+
+        IEnumerator WaitUntilJumpingAgain()
+        {
+            yield return new WaitForSeconds(2);
+            player.isJumping = false;
         }
     }
 }

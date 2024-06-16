@@ -86,8 +86,7 @@ namespace GI
                 itemIconImage.gameObject.SetActive(false);
                 itemIconImage.sprite = null;
                 weaponStats.SetActive(false);
-            }
-            
+            }            
         }
 
         public void UpdateArmorItemStats(EquipmentItem armor)

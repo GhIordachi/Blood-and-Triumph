@@ -111,7 +111,7 @@ namespace GI {
         public void RegenerateStamina()
         {
             // Do not regenerate stamina while you are performing action or are sprinting
-            if(player.isInteracting || player.isSprinting)
+            if(player.isInteracting || player.isSprinting || player.isJumping)
             {
                 staminaRegenTimer = 0;
             }

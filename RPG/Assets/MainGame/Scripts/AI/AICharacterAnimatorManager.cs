@@ -31,6 +31,47 @@ namespace GI
             }
         }
 
+        public void ResetTheArenaBool()
+        {
+            ArenaManager arenaManager = FindObjectOfType<ArenaManager>();
+            if (arenaManager != null)
+            {
+                Debug.Log("L-a gasit");
+            }
+            if (aiCharacter.isDead && arenaManager.level01 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 1)
+            {               
+                arenaManager.isEnemyLevelOneDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 2)
+            {
+                arenaManager.isEnemyOneLevelTwoDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
+            {
+                arenaManager.isEnemyTwoLevelTwoDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
+            {
+                arenaManager.isEnemyOneLevelThreeDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 4)
+            {
+                arenaManager.isEnemyTwoLevelThreeDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 5)
+            {
+                arenaManager.isEnemyThreeLevelThreeDead = true;
+            }
+            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 6)
+            {
+                arenaManager.isEnemyFourLevelThreeDead = true;
+            }
+            if(aiCharacter.isDead && arenaManager.level04 == true && aiCharacter.aiCharacterStatsManager.isBoss)
+            {
+                arenaManager.isBossDead = true;
+            }
+        }
+
         public void DropItemOnDeath()
         {
             StartCoroutine(SpawnItemAfterDeath());
@@ -44,15 +85,11 @@ namespace GI
 
         private IEnumerator SpawnItemAfterDeath()
         {
-            yield return new WaitForSeconds(1f);
-            Instantiate(aiCharacter.itemSpawner, transform);
-        }
-
-        public void InstantiateBossParticleFX()
-        {
-            BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
-
-            GameObject phaseFX = Instantiate(aiCharacter.aiCharacterBossManager.particleFX, bossFXTransform.transform);
+            yield return new WaitForSeconds(3f);
+            if(aiCharacter.itemSpawner != null)
+                Instantiate(aiCharacter.itemSpawner, transform);
+            if(aiCharacter.isDead)
+                Destroy(aiCharacter.gameObject);
         }
 
         public void PlayWeaponTrailFX()

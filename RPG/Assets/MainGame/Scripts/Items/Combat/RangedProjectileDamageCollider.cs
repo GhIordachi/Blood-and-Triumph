@@ -79,6 +79,8 @@ namespace GI
                 gameObject.transform.parent = collision.collider.transform;
                 
             }
+
+            StartCoroutine(DespawnArrowAfterTime());
         }
 
         private void FixedUpdate()
@@ -87,6 +89,12 @@ namespace GI
             {
                 arrowRigidBody.rotation = Quaternion.LookRotation(arrowRigidBody.velocity);
             }
+        }
+
+        private IEnumerator DespawnArrowAfterTime()
+        {
+            yield return new WaitForSeconds(15);
+            Destroy(gameObject);
         }
     }
 }

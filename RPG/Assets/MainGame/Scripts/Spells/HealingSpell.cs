@@ -14,7 +14,6 @@ namespace GI
             base.AttemptToCastSpell(character);
             GameObject instatiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, character.transform);
             character.characterAnimatorManager.PlayTargetAnimation(spellAnimation, true, false, character.isUsingLeftHand);
-            Debug.Log("Attempting to cast spell...");
         }
 
         public override void SuccessfullyCastSpell(CharacterManager character)
@@ -22,7 +21,6 @@ namespace GI
             base.SuccessfullyCastSpell(character);
             GameObject instantiatedSpellFX = Instantiate(spellCastFX, character.transform);
             character.characterStatsManager.HealCharacter(healAmount);
-            Debug.Log("Spell cast successful");
         }
     }
 }

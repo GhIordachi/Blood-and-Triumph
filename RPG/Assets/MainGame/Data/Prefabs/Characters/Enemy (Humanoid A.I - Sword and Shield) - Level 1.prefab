@@ -3331,7 +3331,7 @@ GameObject:
   - component: {fileID: 4735038596448326902}
   - component: {fileID: 5970560584542043000}
   m_Layer: 12
-  m_Name: Enemy (Humanoid A.I - Sword and Shield)
+  m_Name: Enemy (Humanoid A.I - Sword and Shield) - Level 1
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3345,7 +3345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7494786846278245697}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.917321, z: -0, w: -0.3981484}
+  m_LocalRotation: {x: -0, y: -0.9173209, z: 0, w: -0.39814872}
   m_LocalPosition: {x: 13.49, y: 0.11, z: -9.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3444,9 +3444,8 @@ MonoBehaviour:
   isPerformingAction: 0
   rotationSpeed: 15
   maximumAggroRadius: 1.5
-  itemSpawner: {fileID: 1000651713745630894, guid: caab99904f217c7449fdc34180fca43b,
-    type: 3}
-  weaponItemToDrop: {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
+  itemSpawner: {fileID: 0}
+  weaponItemToDrop: {fileID: 0}
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
@@ -3458,10 +3457,10 @@ MonoBehaviour:
   combatStyle: 0
   allowAIToPerformBlock: 0
   blockLikelyHood: 33
-  allowAIToPerformDodge: 0
-  dodgeLikelyHood: 50
-  allowAIToPerformParry: 0
-  parryLikelyHood: 33
+  allowAIToPerformDodge: 1
+  dodgeLikelyHood: 40
+  allowAIToPerformParry: 1
+  parryLikelyHood: 20
   isStationaryArcher: 0
   minimumTimeToAimAtTarget: 3
   maximumTimeToAimAtTarget: 6
@@ -3517,10 +3516,10 @@ MonoBehaviour:
   maxFocusPoints: 0
   currentFocusPoints: 0
   currentXPCount: 0
-  XPAwardedOnDeath: 50
+  XPAwardedOnDeath: 20
   playerLevel: 1
-  healthLevel: 10
-  staminaLevel: 10
+  healthLevel: 1
+  staminaLevel: 8
   focusLevel: 10
   poiseLevel: 10
   strengthLevel: 10
@@ -3576,8 +3575,8 @@ MonoBehaviour:
   currentGold: 0
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
-  leftWeapon: {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145, type: 2}
+  rightWeapon: {fileID: 11400000, guid: c8c9330695638e24bae8c084e525e85d, type: 2}
+  leftWeapon: {fileID: 0}
   currentConsumable: {fileID: 0}
   currentAmmo: {fileID: 0}
   currentHelmetEquipment: {fileID: 0}
@@ -3589,11 +3588,9 @@ MonoBehaviour:
   ringSlot03: {fileID: 0}
   ringSlot04: {fileID: 0}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: 824b9e72de053d544a089991412f8a6d, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c8c9330695638e24bae8c084e525e85d, type: 2}
   - {fileID: 0}
   weaponsInLeftHandSlots:
-  - {fileID: 11400000, guid: c98dab9652e553f44a4fb1937fb7e145, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   currentRightWeaponIndex: 0
@@ -3823,8 +3820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f9dfaf27f58b84fbf542f0c24282e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandConstraint: {fileID: 0}
-  rightHandConstraint: {fileID: 0}
   Damage_Forward_Medium_01: Damage_Forward_01
   Damage_Forward_Medium_02: Damage_Forward_01
   Damage_Backward_Medium_01: Damage_Back_01

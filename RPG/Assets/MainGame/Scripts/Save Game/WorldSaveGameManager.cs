@@ -72,22 +72,13 @@ namespace GI
             saveGameDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
             saveGameDataWriter.dataSaveFileName = fileName;
 
-            // Pass along our characters data to the current save file
             player.SaveCharacterDataToCurrentSaveData(ref currentCharacterSaveData);
-
-            // Write the current character data to a json file and save it on this device
             saveGameDataWriter.WriteCharacterDataToSaveFile(currentCharacterSaveData);
-
-            Debug.Log("Saving game...");
-            Debug.Log("File saved as " + fileName);
         }
 
         // Load Game
         public void LoadGame()
         {
-            //Decide load file based on character save slot
-            Debug.Log("Loading file " + fileName);
-
             saveGameDataWriter = new SaveGameDataWriter();
             saveGameDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
             saveGameDataWriter .dataSaveFileName = fileName;

@@ -16,7 +16,6 @@ namespace GI
                 return;
 
             //Animate Player
-            character.animator.SetBool("isHoldingArrow", true);
             character.characterAnimatorManager.PlayTargetAnimation("Bow_TH_Draw_01", true);
             //Instantiate Arrow
             GameObject loadedArrow = Instantiate(character.characterInventoryManager.currentAmmo.loadedItemModel, character.characterWeaponSlotManager.leftHandSlot.transform);
@@ -31,6 +30,7 @@ namespace GI
             yield return new WaitForSeconds(1f);
             Animator bowAnimator = character.characterWeaponSlotManager.rightHandSlot.GetComponentInChildren<Animator>();
             bowAnimator.SetBool("isDrawn", true);
+            character.animator.SetBool("isHoldingArrow", true);
             bowAnimator.Play("Bow_TH_Draw_01");
         }
     }

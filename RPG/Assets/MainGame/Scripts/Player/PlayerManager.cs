@@ -19,6 +19,14 @@ namespace GI
         [Header("Input")]
         public InputHandler inputHandler;
 
+        [Header("Interactables")]
+        InteractableUI interactableUI;
+        public GameObject interactableUIGameObject;
+        public GameObject itemInteractableGameObject;
+
+        [Header("Quests")]
+        QuestManager questManager;
+
         [Header("Player")]
         public PlayerLocomotionManager playerLocomotionManager;
         public PlayerStatsManager playerStatsManager;
@@ -28,11 +36,6 @@ namespace GI
         public PlayerEffectsManager playerEffectsManager;
         public PlayerAnimatorManager playerAnimatorManager;
         public PlayerEquipmentManager playerEquipmentManager;
-
-        [Header("Interactables")]
-        InteractableUI interactableUI;
-        public GameObject interactableUIGameObject;
-        public GameObject itemInteractableGameObject;
 
         protected override void Awake()
         {
@@ -51,6 +54,7 @@ namespace GI
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
+            questManager = FindObjectOfType<QuestManager>();
 
             WorldSaveGameManager.instance.player = this;
         }
@@ -152,6 +156,11 @@ namespace GI
             playerAnimatorManager.PlayTargetAnimation("Pick Up Item", true);
         }
 
+        public void TeleportPlayer(Transform teleportPosition)
+        {
+            transform.position = teleportPosition.transform.position;
+        }
+
         public void PassThroughFogWallInteraction(Transform fogWallEntrance)
         {
             playerLocomotionManager.GetComponent<Rigidbody>().velocity = Vector3.zero; //Stops the player from ice skating
@@ -190,6 +199,18 @@ namespace GI
             currentCharacterSaveData.characterLeftHandWeaponID = playerInventoryManager.leftWeapon.itemID;
             currentCharacterSaveData.characterCurrentRightWeaponIndex = playerInventoryManager.currentRightWeaponIndex;
             currentCharacterSaveData.characterCurrentLeftWeaponIndex = playerInventoryManager.currentLeftWeaponIndex;
+
+            //Quests completed
+            if (questManager != null) 
+            {
+                currentCharacterSaveData.quest1 = questManager.quest1;
+                currentCharacterSaveData.quest2 = questManager.quest2;
+                currentCharacterSaveData.quest3 = questManager.quest3;
+                currentCharacterSaveData.quest4 = questManager.quest4;
+                currentCharacterSaveData.quest5 = questManager.quest5;
+                currentCharacterSaveData.quest6 = questManager.quest6;
+                currentCharacterSaveData.quest7 = questManager.quest7;
+            }
 
             if(playerInventoryManager.currentSpell != null)
                 currentCharacterSaveData.characterCurrentSpellID = playerInventoryManager.currentSpell.itemID;
@@ -361,6 +382,18 @@ namespace GI
             playerInventoryManager.ringSlot02 = WorldItemDataBase.Instance.GetRingItemByID(currentCharacterSaveData.ringSlot02);
             playerInventoryManager.ringSlot03 = WorldItemDataBase.Instance.GetRingItemByID(currentCharacterSaveData.ringSlot03);
             playerInventoryManager.ringSlot04 = WorldItemDataBase.Instance.GetRingItemByID(currentCharacterSaveData.ringSlot04);
+
+            //Quests 
+            if(questManager != null)
+            {
+                questManager.quest1 = currentCharacterSaveData.quest1;
+                questManager.quest2 = currentCharacterSaveData.quest2;
+                questManager.quest3 = currentCharacterSaveData.quest3;
+                questManager.quest4 = currentCharacterSaveData.quest4;
+                questManager.quest5 = currentCharacterSaveData.quest5;
+                questManager.quest6 = currentCharacterSaveData.quest6;
+                questManager.quest7 = currentCharacterSaveData.quest7;
+            }
 
             // Load right hand weapons
             for (int i = 0; i < currentCharacterSaveData.weaponsInRightHandByID.Count; i++)

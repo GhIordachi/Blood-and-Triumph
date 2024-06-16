@@ -54,6 +54,7 @@ namespace GI {
         public bool canRotate;
         public bool isSprinting;
         public bool isGrounded;
+        public bool isJumping;
 
         [Header("Spells")]
         public bool isFiringSpell;

@@ -184,11 +184,15 @@ namespace GI {
         public GameObject questHolder;
         public GameObject quest1;
         public GameObject quest2;
+        public GameObject additionalQuest2;
         public GameObject quest3;
         public GameObject quest4;
+        public GameObject additionalQuest4;
         public GameObject quest5;
         public GameObject quest6;
+        public GameObject additionalQuest6;
         public GameObject quest7;
+        public GameObject additionalQuest7;
 
         private void Awake()
         {
@@ -581,15 +585,24 @@ namespace GI {
 
         public void UpdateInventorySlots()
         {
-            weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
-            headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
-            bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
-            legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
-            handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
-            ringItemInventorySlots = ringItemInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
-            spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
-            consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
-            ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
+            if(player.playerInventoryManager.weaponsInventory.Count > 1)
+                weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            if (player.playerInventoryManager.headEquipmentInventory.Count > 1)
+                headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+            if(player.playerInventoryManager.bodyEquipmentInventory.Count > 1)
+                bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
+            if (player.playerInventoryManager.legEquipmentInventory.Count > 1)
+                legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
+            if (player.playerInventoryManager.handEquipmentInventory.Count > 1)
+                handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
+            if (player.playerInventoryManager.ringItemInventory.Count > 1)
+                ringItemInventorySlots = ringItemInventorySlotParent.GetComponentsInChildren<RingItemInventorySlot>();
+            if (player.playerInventoryManager.spellInventory.Count > 1)
+                spellInventorySlots = spellInventorySlotParent.GetComponentsInChildren<SpellItemInventorySlot>();
+            if (player.playerInventoryManager.consumableInventory.Count > 1)
+                consumableInventorySlots = consumableInventorySlotParent.GetComponentsInChildren<ConsumableInventorySlot>();
+            if (player.playerInventoryManager.ammoInventory.Count > 1)
+                ammoInventorySlots = ammoInventorySlotParent.GetComponentsInChildren<AmmoInventorySlot>();
         }
 
         public void UpdateVendorInventorySlots()
@@ -644,8 +657,6 @@ namespace GI {
             confirmBodyPurchaseWindow.SetActive(false);
             confirmHandPurchaseWindow.SetActive(false);
             confirmLegPurchaseWindow.SetActive(false);
-
-
         }
 
         public void CloseAllVendorsConfirmWindows()

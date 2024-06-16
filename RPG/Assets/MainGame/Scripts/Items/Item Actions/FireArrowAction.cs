@@ -9,6 +9,9 @@ namespace GI
     {
         public override void PerformAction(CharacterManager character)
         {
+            if (!character.isHoldingArrow)
+                return;
+
             PlayerManager player = character as PlayerManager;
             //Create the live arrow instantiation location
             ArrowInstantiationLocation arrowInstantiationLocation;
@@ -27,6 +30,7 @@ namespace GI
             //Fire the arrow as a player character
             if(player != null)
             {
+                Debug.Log("Am intrat");
                 //Create and fire the live arrow
                 GameObject liveArrow = Instantiate(character.characterInventoryManager.currentAmmo.liveAmmoModel, 
                     arrowInstantiationLocation.transform.position, player.cameraHandler.cameraPivotTransform.rotation);

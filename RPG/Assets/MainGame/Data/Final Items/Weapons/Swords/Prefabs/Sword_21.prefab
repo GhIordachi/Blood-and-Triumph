@@ -141,8 +141,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05652153, y: 1.5328114, z: 0.22507948}
-  m_Center: {x: 0.00000030963116, y: 0.5835883, z: -0.0068715243}
+  m_Size: {x: 0.31091326, y: 2.2351398, z: 0.9208498}
+  m_Center: {x: 0.02967166, y: 0.9033521, z: -0.005074157}
 --- !u!114 &6567457103786324599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +163,10 @@ MonoBehaviour:
   physicalDamage: 0
   fireDamage: 0
   magicDamage: 0
-  lightningDamage: 0
-  darkDamage: 0
   guardBreakModifier: 1
   physicalBuffDamage: 0
   fireBuffDamage: 0
+  magicBuffDamage: 0
   poiseBuffDamage: 0
 --- !u!1 &2712067560589229945
 GameObject:
@@ -10019,8 +10018,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physiscalBuffFX: {fileID: 8953966645441984487}
   fireBuffFX: {fileID: 2712067560589229945}
+  magicBuffFX: {fileID: 0}
   defaultTrailFX: {fileID: 6887081416930549700}
   fireTrailFX: {fileID: 2088031538655526476}
+  magicTrailFX: {fileID: 0}
   damageCollider: {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!1 &7807137794475031746

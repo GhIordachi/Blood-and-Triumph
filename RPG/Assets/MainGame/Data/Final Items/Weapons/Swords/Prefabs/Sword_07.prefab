@@ -138,8 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physiscalBuffFX: {fileID: 2387264668810443521}
   fireBuffFX: {fileID: 1681979629443326408}
+  magicBuffFX: {fileID: 0}
   defaultTrailFX: {fileID: 230926052419301480}
   fireTrailFX: {fileID: 8917496291017705264}
+  magicTrailFX: {fileID: 0}
   damageCollider: {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!1 &1681979629443326408
@@ -19751,8 +19753,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05652153, y: 1.5328114, z: 0.22507948}
-  m_Center: {x: 0.00000030963116, y: 0.5835883, z: -0.0068715243}
+  m_Size: {x: 0.31091326, y: 2.2351398, z: 0.9208498}
+  m_Center: {x: 0.02967166, y: 0.9033521, z: -0.005074157}
 --- !u!114 &3209428879341343002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19773,9 +19775,8 @@ MonoBehaviour:
   physicalDamage: 0
   fireDamage: 0
   magicDamage: 0
-  lightningDamage: 0
-  darkDamage: 0
   guardBreakModifier: 1
   physicalBuffDamage: 0
   fireBuffDamage: 0
+  magicBuffDamage: 0
   poiseBuffDamage: 0

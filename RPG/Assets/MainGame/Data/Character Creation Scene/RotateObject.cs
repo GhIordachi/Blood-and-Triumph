@@ -23,19 +23,14 @@ namespace GI
 
         private void Update()
         {
-            // Check if rotating left
             if (rotatingLeft)
             {
                 targetRotation.y -= rotationAmount * Time.deltaTime;
             }
-
-            // Check if rotating right
             if (rotatingRight)
             {
                 targetRotation.y += rotationAmount * Time.deltaTime;
             }
-
-            // Smoothly interpolate to the target rotation
             currentRotation = Vector3.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
             transform.eulerAngles = currentRotation;
         }
