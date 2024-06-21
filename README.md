@@ -8,16 +8,16 @@ Proiectul include codul sursă complet și resursele necesare pentru rularea joc
 ## Adresa repository-ului
 
 Codul sursă complet al proiectului poate fi găsit la următoarea adresă:  
-https://github.com/GhIordachi/RPG
+https://github.com/GhIordachi/Blood-and-Triumph
 
 ## Pașii de Compilare a Aplicației:
 
 1. Clonarea repository-ului:
 
 Using web URL:  
-git clone https://github.com/GhIordachi/RPG.git  
+git clone https://github.com/GhIordachi/Blood-and-Triumph.git  
 Using GitHub CLI:  
-gh repo clone GhIordachi/RPG
+gh repo clone GhIordachi/Blood-and-Triumph
 
 2. Deschiderea proiectului în Unity:
 
