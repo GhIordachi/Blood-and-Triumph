@@ -45,3 +45,7 @@ Copiază fișierul executabil și folderul cu resurse într-o locație dorită d
 Navighează la locația unde ai copiat fișierul executabil.
 Dublu-click pe fișierul executabil pentru a lansa jocul.
 Începe jocul!
+
+##Licență
+
+Acest proiect este licențiat sub Licența MIT.
