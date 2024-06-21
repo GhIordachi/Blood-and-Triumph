@@ -46,6 +46,6 @@ Navighează la locația unde ai copiat fișierul executabil.
 Dublu-click pe fișierul executabil pentru a lansa jocul.
 Începe jocul!
 
-##Licență
+## Licență
 
 Acest proiect este licențiat sub Licența MIT.
