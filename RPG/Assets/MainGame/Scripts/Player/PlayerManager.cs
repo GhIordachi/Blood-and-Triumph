@@ -25,7 +25,7 @@ namespace GI
         public GameObject itemInteractableGameObject;
 
         [Header("Quests")]
-        QuestManager questManager;
+        public QuestManager questManager;
 
         [Header("Player")]
         public PlayerLocomotionManager playerLocomotionManager;
@@ -191,9 +191,18 @@ namespace GI
             currentCharacterSaveData.strengthLevel = playerStatsManager.strengthLevel;
             currentCharacterSaveData.faithLevel = playerStatsManager.faithLevel;
             //Player Position
-            currentCharacterSaveData.xPosition = transform.position.x;
-            currentCharacterSaveData.yPosition = transform.position.y;
-            currentCharacterSaveData.zPosition = transform.position.z;
+            if (currentScene.buildIndex != 1)
+            {
+                currentCharacterSaveData.xPosition = transform.position.x;
+                currentCharacterSaveData.yPosition = transform.position.y;
+                currentCharacterSaveData.zPosition = transform.position.z;
+            }
+            else
+            {
+                currentCharacterSaveData.xPosition = 125.5f;
+                currentCharacterSaveData.yPosition = 0;
+                currentCharacterSaveData.zPosition = 242;
+            }
             //Player Current Equiped Items
             currentCharacterSaveData.characterRightHandWeaponID = playerInventoryManager.rightWeapon.itemID;
             currentCharacterSaveData.characterLeftHandWeaponID = playerInventoryManager.leftWeapon.itemID;
@@ -203,13 +212,7 @@ namespace GI
             //Quests completed
             if (questManager != null) 
             {
-                currentCharacterSaveData.quest1 = questManager.quest1;
-                currentCharacterSaveData.quest2 = questManager.quest2;
-                currentCharacterSaveData.quest3 = questManager.quest3;
-                currentCharacterSaveData.quest4 = questManager.quest4;
-                currentCharacterSaveData.quest5 = questManager.quest5;
-                currentCharacterSaveData.quest6 = questManager.quest6;
-                currentCharacterSaveData.quest7 = questManager.quest7;
+                currentCharacterSaveData.lastQuest = questManager.lastQuestFinished;
             }
 
             if(playerInventoryManager.currentSpell != null)
@@ -359,8 +362,12 @@ namespace GI
             playerStatsManager.strengthLevel = currentCharacterSaveData.strengthLevel;
             playerStatsManager.faithLevel = currentCharacterSaveData.faithLevel;
 
-            //Asign the position saved in the file
+            //Teleport player to saved position
+            playerLocomotionManager.moveDirection = Vector3.zero;
             transform.position = new Vector3(currentCharacterSaveData.xPosition, currentCharacterSaveData.yPosition, currentCharacterSaveData.zPosition);
+            characterController.enabled = false;
+            StartCoroutine(ReEnableMovementScript());
+
 
             //Facial Features
             playerEquipmentManager.hairID = currentCharacterSaveData.currentHairID;
@@ -386,13 +393,7 @@ namespace GI
             //Quests 
             if(questManager != null)
             {
-                questManager.quest1 = currentCharacterSaveData.quest1;
-                questManager.quest2 = currentCharacterSaveData.quest2;
-                questManager.quest3 = currentCharacterSaveData.quest3;
-                questManager.quest4 = currentCharacterSaveData.quest4;
-                questManager.quest5 = currentCharacterSaveData.quest5;
-                questManager.quest6 = currentCharacterSaveData.quest6;
-                questManager.quest7 = currentCharacterSaveData.quest7;
+                questManager.lastQuestFinished = currentCharacterSaveData.lastQuest;
             }
 
             // Load right hand weapons
@@ -587,6 +588,15 @@ namespace GI
             playerStatsManager.currentFocusPoints = playerStatsManager.maxFocusPoints;
             playerStatsManager.focusPointBar.SetMaxFocusPoint(playerStatsManager.maxFocusPoints);
             playerStatsManager.focusPointBar.SetCurrentFocusPoint(playerStatsManager.currentFocusPoints);
+        }
+
+        IEnumerator ReEnableMovementScript()
+        {
+            // Wait for a short time before re-enabling the movement script
+            yield return new WaitForSeconds(0.1f);
+
+            // Re-enable the movement script
+            characterController.enabled = true;
         }
     }
 }

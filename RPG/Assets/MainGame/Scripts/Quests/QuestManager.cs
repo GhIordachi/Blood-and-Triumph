@@ -17,6 +17,7 @@ namespace GI
         public bool quest5 = false;
         public bool quest6 = false;
         public bool quest7 = false;
+        public int lastQuestFinished = 0;
 
         [Header("Quest Holders")]
         public QuestOneInteractable questHolder1;
@@ -57,7 +58,8 @@ namespace GI
 
         public void FinishQuestOne()
         {
-            quest1 = true;           
+            quest1 = true;
+            lastQuestFinished = 1;
             Destroy(questHolder1);
             playerManager.playerStatsManager.AddXP(100);
             CapsuleCollider questScript = questHolder2.GetComponent<CapsuleCollider>();
@@ -71,7 +73,7 @@ namespace GI
         public void FinishQuestTwo()
         {
             quest2 = true;
-            questHolder2.GetComponent<CapsuleCollider>().enabled = false;
+            lastQuestFinished = 2;
             Destroy(questHolder2);
             arenaManager.StartLevelOne();
             CapsuleCollider questScript = questHolder3.GetComponent<CapsuleCollider>();
@@ -85,6 +87,7 @@ namespace GI
         public void FinishQuestThree()
         {
             quest3 = true;
+            lastQuestFinished = 3;
             Destroy(questHolder3);
             playerManager.playerStatsManager.AddXP(100);
 
@@ -99,6 +102,7 @@ namespace GI
         public void FinishQuestFour()
         {
             quest4 = true;
+            lastQuestFinished = 4;
             Destroy(questHolder4);
             arenaManager.StartLevelTwo();
 
@@ -120,6 +124,7 @@ namespace GI
         public void FinishQuestFive()
         {
             quest5 = true;
+            lastQuestFinished = 5;
             Destroy(questHolder5);
             playerManager.playerInventoryManager.weaponsInventory.Add(questHolder5.weaponArtifact);
             playerManager.playerInventoryManager.headEquipmentInventory.Add(questHolder5.helmetArtifact);
@@ -132,6 +137,7 @@ namespace GI
         public void FinishQuestSix()
         {
             quest6 = true;
+            lastQuestFinished = 6;
             Destroy(questHolder6);
             arenaManager.StartLevelThree();
 
@@ -146,8 +152,72 @@ namespace GI
         public void FinishQuestSeven()
         {
             quest7 = true;
+            lastQuestFinished = 7;
             Destroy(questHolder7);
             arenaManager.StartBossLevel();
+        }
+
+        public void LoadAllQuests()
+        {
+            if (lastQuestFinished == 1)
+            {
+                CapsuleCollider questScript = questHolder2.GetComponent<CapsuleCollider>();
+
+                if (!questScript.enabled)
+                {
+                    questScript.enabled = true;
+                }
+
+                CapsuleCollider questScript1 = questHolder1.GetComponent<CapsuleCollider>();
+
+                if (questScript1.enabled)
+                {
+                    questScript1.enabled = false;
+                }
+            }
+            else if (lastQuestFinished == 2)
+            {
+                CapsuleCollider questScript = questHolder3.GetComponent<CapsuleCollider>();
+
+                if (!questScript.enabled)
+                {
+                    questScript.enabled = true;
+                }
+            }
+            else if (lastQuestFinished == 3)
+            {
+                CapsuleCollider questScript = questHolder4.GetComponent<CapsuleCollider>();
+
+                if (!questScript.enabled)
+                {
+                    questScript.enabled = true;
+                }
+            }
+            else if (lastQuestFinished == 4)
+            {
+                CapsuleCollider questScript = questHolder6.GetComponent<CapsuleCollider>();
+
+                if (!questScript.enabled)
+                {
+                    questScript.enabled = true;
+                }
+
+                CapsuleCollider artifactScript = questHolder5.GetComponent<CapsuleCollider>();
+
+                if (!artifactScript.enabled)
+                {
+                    artifactScript.enabled = true;
+                }
+            }
+            else if (lastQuestFinished == 6)
+            {
+                CapsuleCollider questScript = questHolder7.GetComponent<CapsuleCollider>();
+
+                if (!questScript.enabled)
+                {
+                    questScript.enabled = true;
+                }
+            }
         }
     }
 }

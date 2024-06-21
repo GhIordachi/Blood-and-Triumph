@@ -58,13 +58,7 @@ namespace GI
         public float zPosition;
 
         [Header("Quests")]
-        public bool quest1;
-        public bool quest2;
-        public bool quest3;
-        public bool quest4;
-        public bool quest5;
-        public bool quest6;
-        public bool quest7;
+        public int lastQuest = 0;
 
         [Header("Player's Inventory")]
         public List<int> weaponsInInventoryByID = new List<int>();

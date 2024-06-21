@@ -84,7 +84,7 @@ namespace GI
             saveGameDataWriter .dataSaveFileName = fileName;
             currentCharacterSaveData = saveGameDataWriter.LoadCharacterDataFromJson();
 
-            StartCoroutine(LoadWorldSceneAsynchronously());
+            StartCoroutine(LoadWorldSceneAsynchronously());        
         }
 
         private IEnumerator LoadWorldSceneAsynchronously()
@@ -104,6 +104,7 @@ namespace GI
             }
 
             player.LoadCharacterDataFromCurrentCharacterSaveData(ref currentCharacterSaveData);
+            player.questManager.LoadAllQuests();
         }
     }
 }
