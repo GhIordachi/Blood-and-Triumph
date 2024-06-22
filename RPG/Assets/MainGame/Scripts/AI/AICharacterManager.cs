@@ -135,6 +135,8 @@ namespace GI {
 
         private void HandleStateMachine()
         {
+            if (isDead)
+                return;
             if (currentState != null)
             {
                 State nextState = currentState.Tick(this);

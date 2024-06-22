@@ -2080,7 +2080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3957116429670237744}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9173209, z: 0, w: -0.39814872}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 13.49, y: 0.11, z: -9.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2094,7 +2094,7 @@ Transform:
   - {fileID: 2182388091289342359}
   - {fileID: 6961775545275033348}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -226.925, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &5467699886009125273
 Animator:
   serializedVersion: 5
@@ -2164,6 +2164,7 @@ MonoBehaviour:
   canRotate: 1
   isSprinting: 0
   isGrounded: 1
+  isJumping: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   aiCharacterBossManager: {fileID: 0}
@@ -2253,7 +2254,7 @@ MonoBehaviour:
   currentXPCount: 0
   XPAwardedOnDeath: 20
   playerLevel: 6
-  healthLevel: 1
+  healthLevel: 5
   staminaLevel: 8
   focusLevel: 10
   poiseLevel: 10
@@ -2817,6 +2818,7 @@ MonoBehaviour:
   pursueTargetState: {fileID: 0}
   rotateTowardsTargetState: {fileID: 0}
   currentAttack: {fileID: 0}
+  willDoComboNextAttack: 0
   hasPerformedAttack: 0
 --- !u!114 &1466556453784108854
 MonoBehaviour:

@@ -35804,7 +35804,7 @@ PrefabInstance:
     - target: {fileID: 1299030642099319935, guid: ddb773e3bb06eea4a9eeea4b0c6e0902,
         type: 3}
       propertyPath: fileName
-      value: test2
+      value: MainSave
       objectReference: {fileID: 0}
     - target: {fileID: 1299030642099319935, guid: ddb773e3bb06eea4a9eeea4b0c6e0902,
         type: 3}
@@ -74444,6 +74444,7 @@ MonoBehaviour:
   spellSlotSelected: 0
   consumableSlotSelected: 0
   ammoSlotSelected: 0
+  bonfireLitPopUpUI: {fileID: 0}
   weaponInventorySlotPrefab: {fileID: 4374776082442235178}
   weaponInventorySlotsParent: {fileID: 952945625182695362}
   headEquipmentInventorySlotPrefab: {fileID: 7079210094480323057}
@@ -74506,11 +74507,15 @@ MonoBehaviour:
   questHolder: {fileID: 0}
   quest1: {fileID: 0}
   quest2: {fileID: 0}
+  additionalQuest2: {fileID: 0}
   quest3: {fileID: 0}
   quest4: {fileID: 0}
+  additionalQuest4: {fileID: 0}
   quest5: {fileID: 0}
   quest6: {fileID: 0}
+  additionalQuest6: {fileID: 0}
   quest7: {fileID: 0}
+  additionalQuest7: {fileID: 0}
 --- !u!114 &3022849005202540440
 MonoBehaviour:
   m_ObjectHideFlags: 0

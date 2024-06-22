@@ -33,42 +33,45 @@ namespace GI
 
         public void ResetTheArenaBool()
         {
-            ArenaManager arenaManager = FindObjectOfType<ArenaManager>();
-            if (arenaManager != null)
+            if (aiCharacter != null)
             {
-                Debug.Log("L-a gasit");
-            }
-            if (aiCharacter.isDead && arenaManager.level01 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 1)
-            {               
-                arenaManager.isEnemyLevelOneDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 2)
-            {
-                arenaManager.isEnemyOneLevelTwoDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
-            {
-                arenaManager.isEnemyTwoLevelTwoDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
-            {
-                arenaManager.isEnemyOneLevelThreeDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 4)
-            {
-                arenaManager.isEnemyTwoLevelThreeDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 5)
-            {
-                arenaManager.isEnemyThreeLevelThreeDead = true;
-            }
-            if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 6)
-            {
-                arenaManager.isEnemyFourLevelThreeDead = true;
-            }
-            if(aiCharacter.isDead && arenaManager.level04 == true && aiCharacter.aiCharacterStatsManager.isBoss)
-            {
-                arenaManager.isBossDead = true;
+                ArenaManager arenaManager = FindObjectOfType<ArenaManager>();
+                if (arenaManager != null)
+                {
+                    Debug.Log("L-a gasit");
+                }
+                if (aiCharacter.isDead && arenaManager.level01 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 1)
+                {
+                    arenaManager.isEnemyLevelOneDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 2)
+                {
+                    arenaManager.isEnemyOneLevelTwoDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level02 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
+                {
+                    arenaManager.isEnemyTwoLevelTwoDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 3)
+                {
+                    arenaManager.isEnemyOneLevelThreeDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 4)
+                {
+                    arenaManager.isEnemyTwoLevelThreeDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 5)
+                {
+                    arenaManager.isEnemyThreeLevelThreeDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level03 == true && aiCharacter.aiCharacterStatsManager.playerLevel == 6)
+                {
+                    arenaManager.isEnemyFourLevelThreeDead = true;
+                }
+                if (aiCharacter.isDead && arenaManager.level04 == true && aiCharacter.aiCharacterStatsManager.isBoss)
+                {
+                    arenaManager.isBossDead = true;
+                }
             }
         }
 

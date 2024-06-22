@@ -354,7 +354,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a64cf0a23f83924f9debcb452685f6f, type: 2}
+  - {fileID: 2100000, guid: ccae2dc6cf6f0c4479b782fedd0c8172, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -379,7 +379,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300054, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300020, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   m_Bones:
   - {fileID: 4738482726318198920}
   - {fileID: 694839625529917529}
@@ -1846,6 +1846,7 @@ MonoBehaviour:
   pursueTargetState: {fileID: 0}
   rotateTowardsTargetState: {fileID: 0}
   currentAttack: {fileID: 0}
+  willDoComboNextAttack: 0
   hasPerformedAttack: 0
 --- !u!114 &3058839245907534308
 MonoBehaviour:
@@ -3685,6 +3686,7 @@ MonoBehaviour:
   canRotate: 1
   isSprinting: 0
   isGrounded: 1
+  isJumping: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   aiCharacterBossManager: {fileID: 0}
@@ -3699,25 +3701,25 @@ MonoBehaviour:
   aiCharacterRigidBody: {fileID: 0}
   isPerformingAction: 0
   rotationSpeed: 15
-  maximumAggroRadius: 15
+  maximumAggroRadius: 25
   itemSpawner: {fileID: 0}
   weaponItemToDrop: {fileID: 0}
-  detectionRadius: 30
+  detectionRadius: 50
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
   currentRecoveryTime: 0
-  stoppingDistance: 15
+  stoppingDistance: 20
   allowAIToPerformCombos: 1
   isPhaseShifting: 0
   comboLikelyHood: 0
   combatStyle: 1
   allowAIToPerformBlock: 0
   blockLikelyHood: 33
-  allowAIToPerformDodge: 0
-  dodgeLikelyHood: 50
+  allowAIToPerformDodge: 1
+  dodgeLikelyHood: 20
   allowAIToPerformParry: 0
   parryLikelyHood: 20
-  isStationaryArcher: 1
+  isStationaryArcher: 0
   minimumTimeToAimAtTarget: 2
   maximumTimeToAimAtTarget: 4
   maxDistanceFromCompanion: 0
@@ -3774,7 +3776,7 @@ MonoBehaviour:
   currentXPCount: 0
   XPAwardedOnDeath: 20
   playerLevel: 3
-  healthLevel: 8
+  healthLevel: 6
   staminaLevel: 8
   focusLevel: 10
   poiseLevel: 10

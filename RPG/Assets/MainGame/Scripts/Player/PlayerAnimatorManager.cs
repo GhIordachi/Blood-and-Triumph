@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace GI
@@ -71,15 +72,15 @@ namespace GI
             }
             #endregion
 
-            if(isSprinting)
+            if (isSprinting)
             {
                 v = 2;
                 h = horizontalMovement;
             }
 
-            player.animator.SetFloat(vertical,v,0.1f,Time.fixedDeltaTime);
-            player.animator.SetFloat(horizontal,h,0.1f,Time.fixedDeltaTime);
-        }       
+            player.animator.SetFloat(vertical, v, 0.1f, Time.fixedDeltaTime);
+            player.animator.SetFloat(horizontal, h, 0.1f, Time.fixedDeltaTime);
+        }
 
         public void DisableCollision()
         {
@@ -97,6 +98,38 @@ namespace GI
             {
                 character.characterInventoryManager.currentConsumable.SuccessfullyConsumeItem(player);
             }
+        }
+
+        public override void HandleDeath()
+        {
+            player.characterController.enabled = false;
+            player.UIManager.ActivateDeathScreenPopUp();
+
+            StartCoroutine(WaitForLoadAfterDeath());
+        }
+
+        private IEnumerator WaitForLoadAfterDeath()
+        {
+            yield return new WaitForSeconds(3.5f);
+
+            WorldSaveGameManager save = FindObjectOfType<WorldSaveGameManager>();
+
+            save.LoadGame();
+        }
+
+        public void AwardSoulsOnDeath()
+        {
+            
+        }
+
+        public void ResetTheArenaBool()
+        {
+            
+        }
+
+        public void DropItemOnDeath()
+        {
+            
         }
     }
 }

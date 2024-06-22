@@ -215,6 +215,11 @@ namespace GI {
             character.animator.SetBool("isMounted", false);
         } 
 
+        public virtual void HandleDeath()
+        {
+
+        }
+
         public virtual void OnAnimatorMove()
         {
             if (character.isInteracting == false)
