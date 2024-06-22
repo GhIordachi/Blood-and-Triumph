@@ -28,6 +28,7 @@ namespace GI
             playerManager.UIManager.hudWindow.SetActive(false);
             playerManager.UIManager.questHolder.SetActive(true);
             playerManager.UIManager.quest5.SetActive(true);
+            playerManager.inputHandler.inventoryFlag = true;
         }
     }
 }

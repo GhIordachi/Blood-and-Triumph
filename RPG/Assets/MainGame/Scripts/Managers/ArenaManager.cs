@@ -131,7 +131,7 @@ namespace GI
             Instantiate(enemyPrefab06, spawnPosition03, Quaternion.identity);
             Instantiate(enemyPrefab04, spawnPosition04, Quaternion.identity);
             Instantiate(enemyPrefab05, spawnPosition01, Quaternion.identity);
-            Instantiate(companionPrefab01, spawnPosition05, Quaternion.identity);
+            //Instantiate(companionPrefab01, spawnPosition05, Quaternion.identity);
 
             if (teleportPoint != null && player != null)
             {

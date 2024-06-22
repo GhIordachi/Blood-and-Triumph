@@ -1113,10 +1113,10 @@ MonoBehaviour:
   stoppingDistance: 1.2
   allowAIToPerformCombos: 1
   isPhaseShifting: 0
-  comboLikelyHood: 50
+  comboLikelyHood: 33
   combatStyle: 0
-  allowAIToPerformBlock: 0
-  blockLikelyHood: 40
+  allowAIToPerformBlock: 1
+  blockLikelyHood: 30
   allowAIToPerformDodge: 1
   dodgeLikelyHood: 20
   allowAIToPerformParry: 1
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   currentXPCount: 0
   XPAwardedOnDeath: 20
   playerLevel: 1
-  healthLevel: 15
+  healthLevel: 20
   staminaLevel: 10
   focusLevel: 10
   poiseLevel: 10
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   currentEquipLoad: 0
   maxEquipLoad: 0
   encumbraceLevel: 0
-  totalPoiseDefence: 10
+  totalPoiseDefence: 150
   offensivePoiseBonus: 0
   armorPoiseBonus: 5
   totalPoiseResetTime: 15
@@ -1235,8 +1235,8 @@ MonoBehaviour:
   currentGold: 0
   currentItemBeingUsed: {fileID: 0}
   currentSpell: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: c8c9330695638e24bae8c084e525e85d, type: 2}
-  leftWeapon: {fileID: 0}
+  rightWeapon: {fileID: 11400000, guid: 4c3f8456d8869f04d903e29f9119f290, type: 2}
+  leftWeapon: {fileID: 11400000, guid: dabd51ba3ec4d494b8fff47153b785b4, type: 2}
   currentConsumable: {fileID: 0}
   currentAmmo: {fileID: 0}
   currentHelmetEquipment: {fileID: 0}
@@ -4222,7 +4222,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a64cf0a23f83924f9debcb452685f6f, type: 2}
+  - {fileID: 2100000, guid: c52535824ad990d478ee81f1a8abe019, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4247,7 +4247,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300054, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300068, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Bones:
   - {fileID: 3049781658741707434}
   - {fileID: 6448452978978754582}

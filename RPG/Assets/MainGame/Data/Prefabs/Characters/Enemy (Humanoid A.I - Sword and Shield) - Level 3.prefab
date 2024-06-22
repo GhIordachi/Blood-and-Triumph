@@ -616,7 +616,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a64cf0a23f83924f9debcb452685f6f, type: 2}
+  - {fileID: 2100000, guid: 396f7abc9b4541548968e21a142b20d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -641,7 +641,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300054, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300024, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   m_Bones:
   - {fileID: 188581488271264752}
   - {fileID: 5611988765625423947}
@@ -2164,6 +2164,7 @@ MonoBehaviour:
   canRotate: 1
   isSprinting: 0
   isGrounded: 1
+  isJumping: 0
   isFiringSpell: 0
   pendingCriticalDamage: 0
   aiCharacterBossManager: {fileID: 0}
@@ -2185,7 +2186,7 @@ MonoBehaviour:
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
   currentRecoveryTime: 0
-  stoppingDistance: 1.2
+  stoppingDistance: 3
   allowAIToPerformCombos: 1
   isPhaseShifting: 0
   comboLikelyHood: 100
@@ -2253,7 +2254,7 @@ MonoBehaviour:
   currentXPCount: 0
   XPAwardedOnDeath: 20
   playerLevel: 5
-  healthLevel: 1
+  healthLevel: 12
   staminaLevel: 8
   focusLevel: 10
   poiseLevel: 10
@@ -2262,7 +2263,7 @@ MonoBehaviour:
   currentEquipLoad: 0
   maxEquipLoad: 0
   encumbraceLevel: 0
-  totalPoiseDefence: 10
+  totalPoiseDefence: 50
   offensivePoiseBonus: 0
   armorPoiseBonus: 5
   totalPoiseResetTime: 15
@@ -2817,6 +2818,7 @@ MonoBehaviour:
   pursueTargetState: {fileID: 0}
   rotateTowardsTargetState: {fileID: 0}
   currentAttack: {fileID: 0}
+  willDoComboNextAttack: 0
   hasPerformedAttack: 0
 --- !u!114 &1466556453784108854
 MonoBehaviour:

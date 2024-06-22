@@ -62,6 +62,7 @@ namespace GI
             lastQuestFinished = 1;
             Destroy(questHolder1);
             playerManager.playerStatsManager.AddXP(100);
+            playerManager.inputHandler.inventoryFlag = false;
             CapsuleCollider questScript = questHolder2.GetComponent<CapsuleCollider>();
 
             if(!questScript.enabled) 
@@ -76,11 +77,19 @@ namespace GI
             lastQuestFinished = 2;
             Destroy(questHolder2);
             arenaManager.StartLevelOne();
+            playerManager.inputHandler.inventoryFlag = false;
             CapsuleCollider questScript = questHolder3.GetComponent<CapsuleCollider>();
 
             if (!questScript.enabled)
             {
                 questScript.enabled = true;
+            }
+
+            CapsuleCollider selfQuestScript = questHolder2.GetComponent<CapsuleCollider>();
+
+            if (selfQuestScript.enabled)
+            {
+                selfQuestScript.enabled = false;
             }
         }
 
@@ -90,7 +99,7 @@ namespace GI
             lastQuestFinished = 3;
             Destroy(questHolder3);
             playerManager.playerStatsManager.AddXP(100);
-
+            playerManager.inputHandler.inventoryFlag = false;
             CapsuleCollider questScript = questHolder4.GetComponent<CapsuleCollider>();
 
             if (!questScript.enabled)
@@ -105,7 +114,7 @@ namespace GI
             lastQuestFinished = 4;
             Destroy(questHolder4);
             arenaManager.StartLevelTwo();
-
+            playerManager.inputHandler.inventoryFlag = false;
             CapsuleCollider questScript = questHolder6.GetComponent<CapsuleCollider>();
 
             if (!questScript.enabled)
@@ -126,6 +135,7 @@ namespace GI
             quest5 = true;
             lastQuestFinished = 5;
             Destroy(questHolder5);
+            playerManager.inputHandler.inventoryFlag = false;
             playerManager.playerInventoryManager.weaponsInventory.Add(questHolder5.weaponArtifact);
             playerManager.playerInventoryManager.headEquipmentInventory.Add(questHolder5.helmetArtifact);
             playerManager.playerInventoryManager.bodyEquipmentInventory.Add(questHolder5.bodyArtifact);
@@ -140,7 +150,7 @@ namespace GI
             lastQuestFinished = 6;
             Destroy(questHolder6);
             arenaManager.StartLevelThree();
-
+            playerManager.inputHandler.inventoryFlag = false;
             CapsuleCollider questScript = questHolder7.GetComponent<CapsuleCollider>();
 
             if (!questScript.enabled)
@@ -155,6 +165,7 @@ namespace GI
             lastQuestFinished = 7;
             Destroy(questHolder7);
             arenaManager.StartBossLevel();
+            playerManager.inputHandler.inventoryFlag = false;
         }
 
         public void LoadAllQuests()

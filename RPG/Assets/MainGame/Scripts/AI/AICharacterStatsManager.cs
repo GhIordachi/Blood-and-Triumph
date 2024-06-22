@@ -80,6 +80,7 @@ namespace GI {
             currentHealth = 0;
             aiCharacter.isDead = true;
             aiCharacter.aiCharacterAnimatorManager.PlayTargetAnimation("Death_01", true);
+            aiCharacter.characterController.enabled = false;
         }
     }
 }

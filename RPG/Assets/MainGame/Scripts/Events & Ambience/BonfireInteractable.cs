@@ -47,7 +47,7 @@ namespace GI
             else
             {
                 playerManager.playerAnimatorManager.PlayTargetAnimation("Bonfire_Activate", true);
-                playerManager.UIManager.ActivateBonfirePopUp();
+                playerManager.UIManager.ActivateDeathScreenPopUp();
                 hasBeenActivated = true;
                 interactableText = "Rest";
                 activationFX.gameObject.SetActive(true);

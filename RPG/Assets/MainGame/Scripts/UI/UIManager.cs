@@ -59,7 +59,7 @@ namespace GI {
         public bool ammoSlotSelected;
 
         [Header("Pop Ups")]
-        BonfireLitPopUpUI bonfireLitPopUpUI;
+        public BonfireLitPopUpUI bonfireLitPopUpUI;
 
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;
@@ -657,6 +657,19 @@ namespace GI {
             confirmBodyPurchaseWindow.SetActive(false);
             confirmHandPurchaseWindow.SetActive(false);
             confirmLegPurchaseWindow.SetActive(false);
+
+            questHolder.SetActive(false);
+            quest1.SetActive(false);
+            quest2.SetActive(false);
+            quest3.SetActive(false);
+            quest4.SetActive(false);
+            quest5.SetActive(false);
+            quest6.SetActive(false);
+            quest7.SetActive(false);
+            additionalQuest2.SetActive(false);
+            additionalQuest4.SetActive(false);
+            additionalQuest6.SetActive(false);
+            additionalQuest7.SetActive(false);
         }
 
         public void CloseAllVendorsConfirmWindows()
@@ -698,7 +711,7 @@ namespace GI {
             ammoSlotSelected = false;
         }
 
-        public void ActivateBonfirePopUp()
+        public void ActivateDeathScreenPopUp()
         {
             bonfireLitPopUpUI.DisplayBonfireLitPopUp();
         }
