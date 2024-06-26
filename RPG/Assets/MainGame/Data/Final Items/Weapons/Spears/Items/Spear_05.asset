@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Spear_05
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 82936d8c5bb5f83438e35f02a4f6f135, type: 3}
   itemName: Royal Halberd
   itemID: 114
   value: 250

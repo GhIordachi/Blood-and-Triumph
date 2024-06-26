@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: King's Gloves of War
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 7b2060b61701de749ad6837da046787b, type: 3}
   itemName: King's Gloves of War
   itemID: 234
   value: 250

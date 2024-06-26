@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e295521925508548a4a08f7b922ce10, type: 3}
   m_Name: Gladiator Leggings
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 411671ae56a67dc4b911af75621578e2, type: 3}
   itemName: Gladiator Leggings
   itemID: 222
   value: 110

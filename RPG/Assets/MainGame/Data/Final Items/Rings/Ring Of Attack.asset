@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01659a69470e2a343b846b4ed5f3ccb4, type: 3}
   m_Name: Ring Of Attack
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: e8d78bf60004c354f960698467bd8503, type: 3}
+  itemIcon: {fileID: 21300000, guid: 5e8b797194d9bdc49a852168e7bad8ac, type: 3}
   itemName: Ring Of Attack
   itemID: 181
   value: 100

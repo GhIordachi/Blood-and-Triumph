@@ -63,7 +63,7 @@ namespace GI
                 {
                     if (character.teamIDNumber != teamIDNumber)
                     {
-                        //character.TakeDamage(0, explosionSplashDamage, currentDamageAnimation, characterManager);
+                        character.TakeDamageNoAnimation(explosionDamage, explosionSplashDamage, 0);
                     }
                 }
             }

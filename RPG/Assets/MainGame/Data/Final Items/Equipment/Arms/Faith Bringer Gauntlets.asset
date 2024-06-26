@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Faith Bringer Gauntlets
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ff6035a7974caf048a7d2725a264f0f9, type: 3}
   itemName: Faith Bringer Gauntlets
   itemID: 238
   value: 100

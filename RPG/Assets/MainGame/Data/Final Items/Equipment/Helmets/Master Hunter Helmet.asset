@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Master Hunter Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 50fab6c8ceddfea45a8068e07af03502, type: 3}
   itemName: Master Hunter Helmet
   itemID: 209
   value: 150

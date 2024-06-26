@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Axe_02
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 3cfb0100ecf609c45a0ebf41de8e0c6f, type: 3}
   itemName: Knight of the Order Axe
   itemID: 121
   value: 150

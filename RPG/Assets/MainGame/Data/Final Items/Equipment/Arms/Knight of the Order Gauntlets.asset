@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Knight of the Order Gauntlets
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1c4add4019466b34ca251f6a816d60f8, type: 3}
   itemName: Knight of the Order Gauntlets
   itemID: 233
   value: 150

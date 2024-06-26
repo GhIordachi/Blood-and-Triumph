@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Dagger_01
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 24cc3d5fb085952409b517e530158262, type: 3}
   itemName: Thief's Knife
   itemID: 130
   value: 10

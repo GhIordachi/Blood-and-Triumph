@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Ranger Gloves
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 83064cc8afb22824aba9bbc55428184f, type: 3}
   itemName: Ranger Gloves
   itemID: 236
   value: 40

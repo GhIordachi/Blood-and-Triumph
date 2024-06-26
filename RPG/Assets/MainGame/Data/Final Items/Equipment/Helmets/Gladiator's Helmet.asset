@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Gladiator's Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ddfdffbaea9deb34dbd8e62ff8c64e7a, type: 3}
   itemName: Gladiator's Helmet
   itemID: 202
   value: 100

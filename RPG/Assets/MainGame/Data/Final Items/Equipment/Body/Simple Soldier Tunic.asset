@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
   m_Name: Simple Soldier Tunic
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c166a7f5d56f6f94ca7eab0330dbdfc2, type: 3}
   itemName: Simple Soldier Tunic
   itemID: 210
   value: 40

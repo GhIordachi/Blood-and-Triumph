@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Merchant Cover
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 683628d06d2029045a61aaa57e903a7c, type: 3}
   itemName: Merchant Cover
   itemID: 205
   value: 20

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e295521925508548a4a08f7b922ce10, type: 3}
   m_Name: Master Hunter Leggings
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 29fd2b362a9039a4f8fdf69bc80f48f4, type: 3}
   itemName: Master Hunter Leggings
   itemID: 229
   value: 170

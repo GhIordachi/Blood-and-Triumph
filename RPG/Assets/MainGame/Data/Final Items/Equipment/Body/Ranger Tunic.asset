@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
   m_Name: Ranger Tunic
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 404c4602d4073d0489b9cdf7d763d464, type: 3}
   itemName: Ranger Tunic
   itemID: 216
   value: 50

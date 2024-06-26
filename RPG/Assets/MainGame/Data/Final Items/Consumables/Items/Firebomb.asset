@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43903be63d4894c44b7e0f159727f89a, type: 3}
   m_Name: Firebomb
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 96d1e3dc56e2bef4da96cfe2b9dda25c, type: 3}
   itemName: Fire Bomb
   itemID: 174
   value: 50

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
   m_Name: Master Hunter Body Armor
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: f03bf4d14a4d8f24682b9032a1e75dcb, type: 3}
   itemName: Master Hunter Body Armor
   itemID: 219
   value: 200

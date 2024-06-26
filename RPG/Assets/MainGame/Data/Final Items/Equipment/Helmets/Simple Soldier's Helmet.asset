@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Simple Soldier's Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 8c571a95d21d8554bb42fa129f87fa7b, type: 3}
   itemName: Simple Soldier's Helmet
   itemID: 200
   value: 30

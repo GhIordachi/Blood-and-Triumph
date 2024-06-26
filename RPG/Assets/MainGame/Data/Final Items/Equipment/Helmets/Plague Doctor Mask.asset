@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Plague Doctor Mask
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: cfb1b49b9fb2a2b40867a1e22e17efae, type: 3}
   itemName: Plague Doctor Mask
   itemID: 207
   value: 75

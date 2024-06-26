@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Low Knight Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 9b126fa3ec47e4f47a3a067361ae9985, type: 3}
   itemName: Low Knight Helmet
   itemID: 201
   value: 60

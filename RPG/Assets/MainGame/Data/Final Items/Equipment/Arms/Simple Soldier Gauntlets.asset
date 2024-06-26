@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Simple Soldier Gauntlets
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 74340b3175ba26541bacf9af735c10c4, type: 3}
   itemName: Simple Soldier Gauntlets
   itemID: 230
   value: 30

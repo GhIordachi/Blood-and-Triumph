@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672200656d7e38746bf844d445153127, type: 3}
   m_Name: Shield_02
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 4eb6a3507e77a9d4c95f482124957318, type: 3}
+  itemIcon: {fileID: 21300000, guid: c3c00779975fa824b843400f1da3573f, type: 3}
   itemName: Wolf Clan Shield
   itemID: 151
   value: 75

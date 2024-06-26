@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e295521925508548a4a08f7b922ce10, type: 3}
   m_Name: King's Leggings of War
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b7f3c153429e0164a887b0c345cb7295, type: 3}
   itemName: King's Leggings of War
   itemID: 224
   value: 300

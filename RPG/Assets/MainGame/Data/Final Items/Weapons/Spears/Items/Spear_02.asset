@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Spear_02
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: a6f79cc3426fd2943923af97bbb3cfd4, type: 3}
   itemName: Soldier's Spear
   itemID: 111
   value: 35

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
   m_Name: Low Knight Chestplate
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 940fb894a56da064b9a0b11be9ee2c7a, type: 3}
   itemName: Low Knight Chestplate
   itemID: 211
   value: 70

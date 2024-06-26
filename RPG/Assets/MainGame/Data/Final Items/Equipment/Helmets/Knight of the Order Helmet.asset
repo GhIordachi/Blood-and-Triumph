@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: Knight of the Order Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 3981fe8a39705d94d9b2fe962dad3dfe, type: 3}
   itemName: Knight of the Order Helmet
   itemID: 203
   value: 150

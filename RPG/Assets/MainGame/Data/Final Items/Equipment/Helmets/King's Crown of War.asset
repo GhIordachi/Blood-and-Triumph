@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8200c70e027440b41e5be63bc5b82, type: 3}
   m_Name: King's Crown of War
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 925d6cd90c873b7438d17ce4098f9ed8, type: 3}
   itemName: King's Crown of War
   itemID: 204
   value: 20

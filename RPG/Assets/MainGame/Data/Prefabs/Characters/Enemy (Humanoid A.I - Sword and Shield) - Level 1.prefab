@@ -3459,8 +3459,8 @@ MonoBehaviour:
   allowAIToPerformBlock: 0
   blockLikelyHood: 33
   allowAIToPerformDodge: 1
-  dodgeLikelyHood: 40
-  allowAIToPerformParry: 1
+  dodgeLikelyHood: 5
+  allowAIToPerformParry: 0
   parryLikelyHood: 20
   isStationaryArcher: 0
   minimumTimeToAimAtTarget: 3

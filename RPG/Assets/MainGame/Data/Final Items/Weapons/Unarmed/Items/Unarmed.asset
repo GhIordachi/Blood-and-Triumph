@@ -41,11 +41,11 @@ MonoBehaviour:
   baseStaminaCost: 5
   lightAttackStaminaMultiplier: 0
   heavyAttackStaminaMultiplier: 0
-  oh_tap_Left_Click: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
+  oh_tap_Left_Click: {fileID: 0}
   oh_hold_Left_Click: {fileID: 0}
   oh_tap_Right_Click: {fileID: 0}
   oh_hold_Right_Click: {fileID: 0}
-  oh_tap_R_Action: {fileID: 0}
+  oh_tap_R_Action: {fileID: 11400000, guid: a9e335a1899a27744a71e1de213f9d2a, type: 2}
   oh_hold_R_Action: {fileID: 0}
   oh_tap_Q_Action: {fileID: 0}
   oh_hold_Q_Action: {fileID: 0}

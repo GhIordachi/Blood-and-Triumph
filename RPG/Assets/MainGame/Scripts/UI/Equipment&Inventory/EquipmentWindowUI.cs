@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GI {
     public class EquipmentWindowUI : MonoBehaviour
@@ -14,6 +15,7 @@ namespace GI {
         public SpellSlotUI spellSlotUI;
         public ConsumableSlotUI consumableSlotUI;
         public AmmoSlotUI ammoSlotUI;
+        public Text gold;
 
         public void LoadWeaponOnEquipmentScreen(PlayerManager player)
         {

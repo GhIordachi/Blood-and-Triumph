@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01659a69470e2a343b846b4ed5f3ccb4, type: 3}
   m_Name: Ring Of Minor Defense
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: f1e0df46cefa39a4c99dcb7fd73975e7, type: 3}
+  itemIcon: {fileID: 21300000, guid: 3db3438532fbbeb419fae4bc5aa68849, type: 3}
   itemName: Ring of Minor Defense
   itemID: 180
   value: 50

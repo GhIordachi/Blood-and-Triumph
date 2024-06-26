@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Master Hunter Hand Wraps
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 262e828e1dac44a4e8f3cbfbaadc6052, type: 3}
   itemName: Master Hunter Hand Wraps
   itemID: 239
   value: 150

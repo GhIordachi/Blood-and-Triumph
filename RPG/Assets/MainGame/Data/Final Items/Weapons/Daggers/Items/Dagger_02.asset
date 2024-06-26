@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Dagger_02
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 9f2ce812330388946bed7ac9cb03c654, type: 3}
   itemName: Hunter's Dagger
   itemID: 131
   value: 25

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece6c2a66beb34c44a6a633d04c4b329, type: 3}
   m_Name: Merchant Robe
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 9373ee6a1b6fa5c4f8abf51bb6b9e568, type: 3}
   itemName: Merchant Robe
   itemID: 215
   value: 25

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17565d914da6a8a478474f9aef5594f6, type: 3}
   m_Name: Mace_02
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 72a1cc0a36dc4a742aa39c37de055adf, type: 3}
   itemName: Strongmen Mace
   itemID: 124
   value: 150

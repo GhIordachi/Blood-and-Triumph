@@ -242,11 +242,13 @@ namespace GI {
             }
 
             xpCount.text = player.playerStatsManager.currentXPCount.ToString();
+            equipmentWindowUI.gold.text = player.playerInventoryManager.currentGold.ToString();
         }
 
         public void UpdateUI()
         {
             UpdateInventorySlots();
+            equipmentWindowUI.gold.text = player.playerInventoryManager.currentGold.ToString();
             //Weapon Inventory Slots
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fceb797248034498f1460d11c25534, type: 3}
   m_Name: Plague Doctor Gloves
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 5d0caaf0637eaf84689d1385df05bec9, type: 3}
   itemName: Plague Doctor Gloves
   itemID: 237
   value: 75

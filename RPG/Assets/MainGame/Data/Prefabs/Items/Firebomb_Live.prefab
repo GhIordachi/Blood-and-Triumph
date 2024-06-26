@@ -212,16 +212,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
   enabledDamageColliderOnStartUp: 1
-  poiseBreak: 0
+  teamIDNumber: 0
+  poiseDamage: 0
   offensivePoiseBonus: 0
   physicalDamage: 0
   fireDamage: 0
   magicDamage: 0
-  lightningDamage: 0
-  darkDamage: 0
+  guardBreakModifier: 1
   explosiveRadius: 1
-  explosionDamage: 0
-  explosionSplashDamage: 0
+  explosionDamage: 30
+  explosionSplashDamage: 20
   bombRigidBody: {fileID: 0}
   impactParticles: {fileID: 824020770442454243, guid: 26d4cd937faf5474ca4ed596098d0f12,
     type: 3}
